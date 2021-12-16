@@ -5,40 +5,63 @@ using UnityEngine;
 public class WarsawPactFormed : Card
 {
     [SerializeField] List<Country> easternEurope = new List<Country>();
-    List<Country> eligibleCountries;
+    [SerializeField] NATO NATO;
 
-    public override void Event(UnityEngine.Events.UnityAction? callback)
+    public override void CardEvent(GameAction.Command command)
     {
-        eligibleCountries = new List<Country>();
-        // Prompt if players wants to add or remove Influence
+        NATO.isPlayable = true;
+
+        // TODO: Present the player a choice. For now, just add USSR influence
+        AddUSSRInfluence(command); 
     }
 
-    public void Remove()
+    void RemoveAllUSInfluence(GameAction.Command command)
     {
+        int count = 4;
+
         foreach (Country country in easternEurope)
-            if (country.influence[Game.Faction.USA] > 0)
-                eligibleCountries.Add(country);
+            if (country.influence[Game.Faction.USA] == 0)
+                easternEurope.Add(country);
 
-        // Create a Country Picker
+        countryClickHandler = new CountryClickHandler(easternEurope, doRemoveInfluence); 
+
+        void doRemoveInfluence(Country country)
+        {
+            Game.SetInfluence.Invoke(country, Game.Faction.USA, 0);
+            countryClickHandler.Remove(country);
+            easternEurope.Remove(country);
+            count--;
+
+            if (count == 0)
+            {
+                countryClickHandler.Close();
+                command.callback.Invoke(); 
+            }
+                
+        }
     }
 
-    public void Add()
+    void AddUSSRInfluence(GameAction.Command command)
     {
-        eligibleCountries = easternEurope; 
+        List<Country> placedCountries = new List<Country>();
+        int count = 5;
+        int limit = 2;
 
-        // Create an Influence Placer
-    }
+        countryClickHandler = new CountryClickHandler(easternEurope, doAddInfluence); 
 
-    public void RemoveUSInfluence(List<Country> countries)
-    {
-        foreach (Country country in countries)
-            Game.SetInfluence.Invoke(country, Game.Faction.USA, 0); 
-    }
+        void doAddInfluence(Country country)
+        {
+            if(placedCountries.CountOf(country) < limit)
+            {
+                Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, 1);
+                count--;
+            }
 
-    public void AddUSSRInfluence(Dictionary<Country, int> influence)
-    {
-        foreach (Country country in influence.Keys)
-            Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, influence[country]);
-
+            if (count == 0)
+            {
+                countryClickHandler.Close();
+                command.callback.Invoke();
+            }
+        }
     }
 }

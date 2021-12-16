@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class NuclearTestBan : Card
 {
-    Game.Faction actingPlayer; 
-
-    public override void Event(UnityEngine.Events.UnityAction callback)
+    public override void CardEvent(GameAction.Command command)
     { 
+        int vpAward = Mathf.Max(0, DEFCON.Status - 2);
+        FindObjectOfType<UIMessage>().Message($"Eventing Nuclear Test Ban for {vpAward} VPs");
 
-        int vpAward = Mathf.Max(0, DEFCON.status - 2);
-        Debug.Log($"Eventing Nuclear Test Ban for {vpAward} VPs");
+        Game.AdjustVPs.Invoke(command.phasingPlayer == Game.Faction.USA ? vpAward : -vpAward);
+        Game.AdjustDEFCON.Invoke(Game.actingPlayer, 2);
 
-        Game.AwardVictoryPoints.Invoke(actingPlayer == Game.Faction.USA ? vpAward : -vpAward);
-        Game.AdjustDEFCON.Invoke(actingPlayer, 2);
-
-        callback.Invoke(); 
+        command.callback.Invoke(); 
     }
 }

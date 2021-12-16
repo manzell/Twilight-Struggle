@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class OlympicGames : Card
 {
-    public override void Event(UnityEngine.Events.UnityAction callback)
+    public override void CardEvent(GameAction.Command command)
     {
-        // Prompt Participate or Boycott
+        // TODO Prompt Participate or Boycott
         Participate(); 
-        callback.Invoke(); 
+        command.callback.Invoke(); 
     }
 
     public void Participate()
@@ -22,7 +22,9 @@ public class OlympicGames : Card
             rolls[Game.phasingPlayer] += 2;
         }
 
-        Game.AwardVictoryPoints.Invoke(rolls[Game.Faction.USA] > rolls[Game.Faction.USSR] ? 2 : -2);
+        Game.AdjustVPs.Invoke(rolls[Game.Faction.USA] > rolls[Game.Faction.USSR] ? 2 : -2);
+
+        FindObjectOfType<UIMessage>().Message($"{(rolls[Game.Faction.USA] > rolls[Game.Faction.USSR] ? Game.Faction.USA : Game.Faction.USSR)} wins the Olympics and 2 VPs!");
     }
 
     public void Boycott()

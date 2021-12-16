@@ -8,7 +8,7 @@ public class VictoryTrack : MonoBehaviour
 
     private void Awake()
     {
-        Game.AwardVictoryPoints.before.AddListener(onAwardVP); 
+        Game.AdjustVPs.before.AddListener(onAwardVP); 
     }
 
     public static void onAwardVP(int vpAmount)

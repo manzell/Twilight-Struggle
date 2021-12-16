@@ -3,66 +3,101 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 
 public abstract class Card : SerializedMonoBehaviour
 {
+    public int bonusOps = 0;
+
+    // TODO: send to ScriptableObject
     public string cardName;
     public Game.Faction faction;
-    public int opsValue = 0; 
+    public int opsValue = 0;
     public string cardText;
-    public bool removeOnEvent = false; 
+    public bool removeOnEvent = false;
 
-    public UnityEvent Play = new UnityEvent();
-    public UnityEvent<Dictionary<Game.Faction, Card>> Headline = new UnityEvent<Dictionary<Game.Faction, Card>>();
+    [HideInInspector] public GameEvent<HeadlinePhase> headlineEvent = new GameEvent<HeadlinePhase>();
+    [HideInInspector] public UnityEvent<Card> clickEvent = new UnityEvent<Card>();    
+    [HideInInspector] public GameEvent<GameAction.Command> cardCommandEvent = new GameEvent<GameAction.Command>();
 
-    [HideInInspector] public abstract void Event(UnityEngine.Events.UnityAction callback);
-    [HideInInspector] public virtual void OnHeadline(Dictionary<Game.Faction, Card> headlines) { }
+    protected static CountryClickHandler countryClickHandler;
+    protected static CardClickHandler cardClickHandler;
 
-    protected UnityEngine.Events.UnityAction callback;
+    public abstract void CardEvent(GameAction.Command command);
 
-    private void Awake()
-    {
-        Headline.AddListener(OnHeadline); 
-    }
-
-    protected void RemoveInfluence(Game.Faction faction, Dictionary<Country, int> countries)
+    protected static void RemoveInfluence(Game.Faction faction, Dictionary<Country, int> countries)
     {
         foreach (Country country in countries.Keys)
             Game.AdjustInfluence.Invoke(country, faction, -countries[country]);
     }
-
-    protected void RemoveInfluence(Game.Faction faction, List<Country> countries, int influence)
+    protected static void RemoveInfluence(Game.Faction faction, List<Country> countries, int influence)
     {
         foreach (Country country in countries)
             Game.AdjustInfluence.Invoke(country, faction, -influence);
     }
+    protected static void RemoveInfluence(Game.Faction faction, Country country, int influence)
+    {
+        if (influence != 0)
+            Game.AdjustInfluence.Invoke(country, faction, -influence); 
+    }
+    protected static void RemoveInfluence(List<Country> countries, Game.Faction faction, int totalInfluence, int maxPerCountry = 0) =>
+        AddInfluence(countries, faction, totalInfluence, maxPerCountry);
 
-    protected void AddInfluence(Game.Faction faction, Dictionary<Country, int> countries)
+    protected static void AddInfluence(Game.Faction faction, Dictionary<Country, int> countries)
     {
         foreach (Country country in countries.Keys)
             Game.AdjustInfluence.Invoke(country, faction, countries[country]);
     }
-
-    protected void AddInfluence(Game.Faction faction, List<Country> countries, int influence)
+    protected static void AddInfluence(Game.Faction faction, List<Country> countries, int influence)
     {
         foreach (Country country in countries)
             Game.AdjustInfluence.Invoke(country, faction, influence);
     }
+    protected static void AddInfluence(Game.Faction faction, Country country, int influence)
+    {
+        if (influence != 0)
+            Game.AdjustInfluence.Invoke(country, faction, influence);
+    }
+    protected static void AddInfluence(List<Country> countries, Game.Faction faction, int totalInfluence, int maxPerCountry = 0)
+    {
+        List<Country> removedCountries = new List<Country>();
 
-    protected void SetInfluence(Game.Faction faction, List<Country> countries, int influence)
+        countryClickHandler = new CountryClickHandler(countries, onCountryClick);
+
+        void onCountryClick(Country country)
+        {
+            if (countries.Contains(country))
+            {
+                if (maxPerCountry > 0 && removedCountries.CountOf(country) < maxPerCountry)
+                {
+                    removedCountries.Add(country);
+                    Game.AdjustInfluence.Invoke(country, faction, 1);
+                    totalInfluence--;
+                }
+
+                if (countries.CountOf(country) == maxPerCountry)
+                {
+                    countryClickHandler.Remove(country);
+                    countries.Remove(country);
+                }
+            }
+
+            if (totalInfluence == 0)
+                countryClickHandler.Close(); 
+        }
+    }
+
+    protected static void SetInfluence(Game.Faction faction, List<Country> countries, int influence)
     {
         foreach (Country country in countries)
             Game.SetInfluence.Invoke(country, faction, influence);
     }
 
-    protected static CountryClickHandler countryClickHandler;
-    public static void PlaceInfluence(Game.Faction faction, List<Country> eligibleCountries, int amount, UnityAction callback)
+    public void PlaceInfluence(Game.Faction faction, List<Country> eligibleCountries, int amount, UnityAction callback)
     {
         FindObjectOfType<UIMessage>().Message($"{(amount > 0 ? "Place" : "Remove")} {Mathf.Abs(amount)} {faction} Influence");
         countryClickHandler = new CountryClickHandler(eligibleCountries, onCountryClick, Color.yellow);
 
-        void onCountryClick(Country country, PointerEventData ped)
+        void onCountryClick(Country country)
         {
             if (eligibleCountries.Contains(country))
             {
@@ -76,7 +111,7 @@ public abstract class Card : SerializedMonoBehaviour
             if (amount == 0)
             {
                 countryClickHandler.Close();
-                callback.Invoke();
+                callback.Invoke(); 
             }
         }
     }

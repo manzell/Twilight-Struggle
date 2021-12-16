@@ -5,16 +5,14 @@ using System.Linq;
 
 public class ChinaCard : Card
 {
-    public bool faceUp;
+    public bool faceUp = true; 
+    public Game.Faction currentFaction = Game.Faction.USSR;
 
-    public override void Event(UnityEngine.Events.UnityAction? callback)
+    public override void CardEvent(GameAction.Command command)
     {
-        FindObjectOfType<Game>().playerMap[Game.phasingPlayer].hand.Remove(this);
+        faceUp = false;
+        currentFaction = currentFaction == Game.Faction.USSR ? Game.Faction.USA : Game.Faction.USSR;
 
-        FindObjectOfType<Game>().playerMap[Game.phasingPlayer == Game.Faction.USA ? Game.Faction.USSR : Game.Faction.USA].hand.Add(this);
-        faceUp = false; 
-
-        // The event on this call mov
-        callback.Invoke();
+        command.callback.Invoke(); 
     }
 }

@@ -17,7 +17,7 @@ public class CountryMarker : MonoBehaviour, IPointerClickHandler
     static Dictionary<Country, CountryMarker> markerLookup = new Dictionary<Country, CountryMarker>();
     static GameObject Line;
 
-    public static UnityEvent<Country, PointerEventData> Click = new UnityEvent<Country, PointerEventData>();
+    public static UnityEvent<Country> Click = new UnityEvent<Country>();
 
     private void Awake()
     {
@@ -37,16 +37,6 @@ public class CountryMarker : MonoBehaviour, IPointerClickHandler
             markerLookup[country] = this;
         else markerLookup.Add(country, this);
 
-        onAddInfluence(country, Game.Faction.Neutral, 0);
-    }
-
-    public void onAddInfluence(Country c, Game.Faction faction, int amount)
-    {
-        if (c != country) return;
-
-        USinfluence.text = country.influence[Game.Faction.USA].ToString();
-        USSRinfluence.text = country.influence[Game.Faction.USSR].ToString();
-
         if (country.isBattleground)
         {
             countryNameBG.color = Color.red;
@@ -58,11 +48,21 @@ public class CountryMarker : MonoBehaviour, IPointerClickHandler
             countryName.color = Color.black;
         }
 
+        onAddInfluence(country, Game.Faction.Neutral, 0);
+    }
+
+    public void onAddInfluence(Country c, Game.Faction faction, int amount)
+    {
+        if (c != country) return;
+
+        USinfluence.text = country.influence[Game.Faction.USA].ToString();
+        USSRinfluence.text = country.influence[Game.Faction.USSR].ToString();
+
         if (country.control == Game.Faction.USA)
         {
             USinfluenceBG.color = Color.blue;
             USinfluence.color = Color.white;
-            USSRinfluenceBG.color = Color.white;
+            USSRinfluenceBG.color = Color.white; 
             USSRinfluence.color = Color.red;
         }
         else if (country.control == Game.Faction.USSR)
@@ -82,7 +82,7 @@ public class CountryMarker : MonoBehaviour, IPointerClickHandler
     }
 
     public void OnPointerClick(PointerEventData data) {
-        Click.Invoke(country, data); 
+        Click.Invoke(country); 
     }
 
 }

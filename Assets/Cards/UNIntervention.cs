@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UNIntervention : Card
 {
-    public override void Event(UnityEngine.Events.UnityAction? callback)
+    public override void CardEvent(GameAction.Command command)
     {
-
+        command.callback.Invoke(); 
     }
 }

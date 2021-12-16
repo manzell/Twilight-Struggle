@@ -8,8 +8,8 @@ public class ActionRound : Phase
 {
     public Game.Faction phasingPlayer;
     public Card card;
-    [ReadOnly] public Action action; 
-    public IGameAction gameAction;
+    [ReadOnly] public GameAction.Command command; 
+
     public bool opponentEventTriggered = false;
 
     public override void StartPhase(UnityAction callback)
@@ -19,12 +19,12 @@ public class ActionRound : Phase
         base.StartPhase(callback);
     }
 
-    public override void NextPhase(UnityAction callback)
-    {
-        // Here we wait for the Action to come back with call to EndPhase
-        foreach(Action action in FindObjectsOfType<Action>())
-            action.SetActionRound(this);
-    }
+    //public override void NextPhase(UnityAction callback)
+    //{
+    //    // Here we wait for the Action to come back with call to EndPhase
+    //    foreach(Action action in FindObjectsOfType<Action>())
+    //        action.SetActionRound(this);
+    //}
 
     public override void EndPhase(UnityAction callback)
     {

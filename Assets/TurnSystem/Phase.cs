@@ -6,28 +6,33 @@ using Sirenix.OdinInspector;
 using System.Linq; 
 
 public class Phase : SerializedMonoBehaviour
-{
+{    
     public string phaseName;
-    Phase parent;
-    public bool skipPhase;
-
     public UnityAction phaseCallback;
-
+    
+    [SerializeField] Phase parentPhase; 
     [SerializeField] public List<UnityAction<UnityAction>> phaseStartActions, phaseEndActions;
 
     public void StartThread()
     {
-        // We start from here with an empty callback
+        // We start the Game from this point with an empty callback. This will probably cause things to break if we don't start at the root of Turn Manager. This should probably exist somewhere else. 
         StartPhase(() => { }); 
+    }
+
+    private void Awake()
+    {
+        if(transform.parent)
+            transform.parent.TryGetComponent(out parentPhase);
     }
 
     [Button] public virtual void StartPhase(UnityAction callback)
     {
-        this.phaseCallback = callback; 
-        Game.currentPhase = this; 
-        parent = transform.parent?.GetComponent<Phase>(); 
+        phaseCallback = callback;
+        Game.currentPhase = this;
 
-        Debug.Log($"Start {(parent == null ? "" : parent.phaseName + " / ")}{phaseName}");
+        if(parentPhase)
+            Debug.Log($"Start {(parentPhase == null ? string.Empty : parentPhase.phaseName + "/")} {phaseName}");
+
         phaseStartActions?.Process(() => NextPhase(callback));
     }
 
@@ -51,8 +56,8 @@ public class Phase : SerializedMonoBehaviour
         phaseEndActions?.Process(callback);
         Game.currentPhase = null;
 
-        if (parent)
-            parent.EndPhase(callback);
+        if (parentPhase)
+            parentPhase.EndPhase(callback);
         else if (callback != null)
             callback.Invoke(); 
             

@@ -6,13 +6,13 @@ public class Decolonization : Card
 {
     [SerializeField] List<Country> countries = new List<Country>();
 
-    public override void Event(UnityEngine.Events.UnityAction callback)
+    public override void CardEvent(GameAction.Command command)
     {
-        this.callback = callback;
         int count = 4; 
+
         countryClickHandler = new CountryClickHandler(countries, onCountryClick);
 
-        void onCountryClick(Country country, UnityEngine.EventSystems.PointerEventData ped)
+        void onCountryClick(Country country)
         {
             count--;
 
@@ -20,12 +20,12 @@ public class Decolonization : Card
             {
                 Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, 1);
                 countries.Remove(country);
-                countryClickHandler.RemoveHighlight(country);
+                countryClickHandler.Remove(country);
             }
             if (count == 0)
             {
                 countryClickHandler.Close();
-                callback.Invoke();
+                command.callback.Invoke();
             }
         }
     }

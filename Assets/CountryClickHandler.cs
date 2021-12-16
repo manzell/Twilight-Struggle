@@ -9,49 +9,52 @@ using UnityEngine.EventSystems;
 public class CountryClickHandler
 {
     Dictionary<Country, Outline> outlines = new Dictionary<Country, Outline>();
-    UnityAction<Country, PointerEventData> action;
+    UnityAction<Country> callback;
     Color color = Color.yellow; 
 
     // This is specific for coming from a Card Place Influence Action
-    public CountryClickHandler(List<Country> countries, UnityAction<Country, PointerEventData> action, Color color)
+    public CountryClickHandler(List<Country> countries, UnityAction<Country> callback, Color color)
     {
-        // Add our Callback Listener 
-        CountryMarker.Click.AddListener(this.action = action);
+        CountryMarker.Click.AddListener(this.callback = callback);
 
-        // Set Color
         this.color = color;
 
-        // Highlight Our Countries
         foreach (Country country in countries)
             AddHighlight(country);
     }
 
-    public CountryClickHandler(List<Country> countries, UnityAction<Country, PointerEventData> action)
+    public CountryClickHandler(List<Country> countries, UnityAction<Country> callback)
     {
-        // Add our Callback Listener 
-        CountryMarker.Click.AddListener(this.action = action);
+        this.callback = callback;
+        CountryMarker.Click.AddListener(onClick);
 
-        // Highlight Our Countries
         foreach (Country country in countries)
             AddHighlight(country);
     }
 
-    public void Update(List<Country> countries)
+    void onClick(Country country)
+    {
+        if(outlines.ContainsKey(country))
+            callback.Invoke(country);
+    }
+
+    public void Refresh(List<Country> countries)
     {
         foreach (Country country in countries)
-            if (!outlines.ContainsKey(country)) AddHighlight(country);
+            if (!outlines.ContainsKey(country)) 
+                AddHighlight(country);
 
         foreach (Country country in outlines.Keys)
-            if (!countries.Contains(country)) RemoveHighlight(country);
+            if (!countries.Contains(country)) 
+                Remove(country);
     }
 
     public void Close()
     {
-        // Turn off our Callback Listener 
-        CountryMarker.Click.RemoveListener(action);
+        CountryMarker.Click.RemoveListener(onClick);
 
         foreach (Country country in outlines.Keys)
-            RemoveHighlight(country);
+            Remove(country);
     }
 
     public void AddHighlight(Country country)
@@ -66,8 +69,11 @@ public class CountryClickHandler
         }
     }
 
-    public void RemoveHighlight(Country country) { 
+    public void Remove(Country country) { 
         if (outlines.ContainsKey(country))
+        {
             GameObject.Destroy(outlines[country]);
+            outlines.Remove(country);
+        }
     }
 }

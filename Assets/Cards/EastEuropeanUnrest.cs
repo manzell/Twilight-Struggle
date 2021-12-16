@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class EastEuropeanUnrest : Card
 {
-    [SerializeField] List<Country> easternEurope; 
+    [SerializeField] List<Country> easternEurope;
 
-    public override void Event(UnityEngine.Events.UnityAction callback)
+    public override void CardEvent(GameAction.Command command)
     {
         int count = 3;
         int amount = Game.gamePhase == Game.GamePhase.LateWar ? 2 : 1;
         List<Country> eligibleCountries = new List<Country>();
-
-        this.callback = callback;
 
         foreach(Country country in easternEurope)
             if(country.influence[Game.Faction.USSR] > 0) 
@@ -20,24 +18,21 @@ public class EastEuropeanUnrest : Card
 
         if(eligibleCountries.Count > 3)
             countryClickHandler = new CountryClickHandler(eligibleCountries, onCountryClick); 
-        else
-            RemoveInfluence(Game.Faction.USSR, eligibleCountries, amount);
+        else // If it's a foregone choice, just jump to it and don't prompt the player
+            RemoveInfluence(Game.Faction.USSR, eligibleCountries, amount); 
 
-        void onCountryClick(Country country, UnityEngine.EventSystems.PointerEventData ped)
+        void onCountryClick(Country country)
         {
             if (eligibleCountries.Contains(country))
             {
                 eligibleCountries.Remove(country);
-                countryClickHandler.RemoveHighlight(country);
+                countryClickHandler.Remove(country);
                 Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, -amount);
                 count--;
             }
 
             if (count == 0)
-            {
-                countryClickHandler.Close();
-                callback.Invoke();
-            }
+                command.callback.Invoke(); 
         }
     }
 

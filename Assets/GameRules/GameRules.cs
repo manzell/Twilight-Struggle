@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems; 
 using Sirenix.OdinInspector;
 
 public class GameRules : SerializedMonoBehaviour
 {
     public void Deal(UnityAction callback)
     {
-        Debug.Log("Dealing Cards to Players");
+        Debug.Log($"Dealing {Game.gamePhase} Cards to Players");
 
         foreach (Player player in FindObjectsOfType<Player>())
         {
-            while (player.hand.Count < (Game.gamePhase == Game.GamePhase.EarlyWar ? 8 : 9)) 
+            while (player.hand.Count < (Game.gamePhase <= Game.GamePhase.EarlyWar ? 8 : 9)) 
             {
                 Card card = Game.deck.Draw();
 
@@ -76,7 +75,7 @@ public class GameRules : SerializedMonoBehaviour
         FindObjectOfType<UIMessage>().Message($"Place {amount} {faction} Influence");
         countryClickHandler = new CountryClickHandler(eligibleCountries, onCountryClick, Color.yellow);
 
-        void onCountryClick(Country country, PointerEventData ped)
+        void onCountryClick(Country country)
         {
             if(eligibleCountries.Contains(country))
             {
@@ -96,7 +95,7 @@ public class GameRules : SerializedMonoBehaviour
 
     public void SetEarlyWar(UnityAction callback)
     {
-        Game.coldwarPhase = Game.GamePhase.EarlyWar;
+        Game.gamePhase = Game.GamePhase.EarlyWar;
         callback.Invoke();
     }
 }

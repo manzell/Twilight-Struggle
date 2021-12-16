@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Fidel : Card
 {
-    [SerializeField] Country cuba; 
+    [SerializeField] Country cuba;
 
-    public override void Event(UnityEngine.Events.UnityAction callback)
+    public override void CardEvent(GameAction.Command command)
     {
         Game.SetInfluence.Invoke(cuba, Game.Faction.USA, 0);
         Game.SetInfluence.Invoke(cuba, Game.Faction.USSR, Mathf.Max(cuba.influence[Game.Faction.USSR], cuba.stability));
 
-        callback.Invoke(); 
+        command.callback.Invoke(); 
     }
 }

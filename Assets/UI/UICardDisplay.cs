@@ -8,14 +8,17 @@ using UnityEngine.EventSystems;
 
 public class UICardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [SerializeField] TextMeshProUGUI cardTitle, cardInfluence;
+    [SerializeField] TextMeshProUGUI cardTitleText, influenceText;
+    [SerializeField] Image cardBackground, influenceBackground;
+    [SerializeField] Outline cardOutline; 
     public Card card;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        eventData.selectedObject = this.gameObject;
-        gameObject.AddComponent<CanvasGroup>().alpha = 0.5f;
-        GetComponent<CanvasGroup>().blocksRaycasts = false;
+        eventData.selectedObject = this.gameObject; // using this explicitly
+        CanvasGroup canvasGroup = gameObject.AddComponent<CanvasGroup>();
+        canvasGroup.alpha = 0.5f;
+        canvasGroup.blocksRaycasts = false;
         transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
     }
 
@@ -26,38 +29,52 @@ public class UICardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         Destroy(GetComponent<CanvasGroup>());
         transform.localScale = Vector3.one;
 
-        LayoutRebuilder.MarkLayoutForRebuild(GetComponent<RectTransform>());
+        LayoutRebuilder.MarkLayoutForRebuild(GetComponent<RectTransform>()); // Shouldn't need this but Horizontal Layout Group doesn't seem to trigger after adjusting local position. 
     }
 
     [Button] public void Setup(Card c)
     {
         card = c;
 
-        cardTitle.text = card.cardName;
-        cardInfluence.text = card.opsValue.ToString(); 
+        cardTitleText.text = card.cardName;
+        influenceText.text = card.opsValue.ToString();
 
-        switch(card.faction)
+        if (card is not ScoringCard)
+            influenceBackground.gameObject.SetActive(true);
+
+        switch (card.faction)
         {
             case Game.Faction.Neutral:
-                GetComponent<Outline>().effectColor = new Color(.8f, .8f, .8f); 
-                cardInfluence.transform.parent.GetComponent<Image>().color = new Color(.8f, .8f, .8f);
-                transform.GetChild(0).GetComponentInChildren<TextMeshProUGUI>().color = Color.black; 
+                cardTitleText.color = new Color(.1f, .1f, .1f);
+                cardBackground.color = new Color(.5f, .5f, .5f);
+                influenceText.color = new Color(.1f, .1f, .1f);
+                influenceBackground.color = new Color(.9f, .9f, .9f); 
+                cardOutline.effectColor = new Color(.25f, .25f, .25f);
                 break;
             case Game.Faction.USA:
-                GetComponent<Outline>().effectColor = Color.blue;
-                cardInfluence.transform.parent.GetComponent<Image>().color = Color.blue;
-                transform.GetChild(0).GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
+                cardTitleText.color = Color.white;
+                cardBackground.color = Color.blue;
+                influenceText.color = Color.blue;
+                influenceBackground.color = Color.white; 
+                cardOutline.effectColor = new Color(.25f, .25f, .25f);
                 break;
             case Game.Faction.USSR:
-                GetComponent<Outline>().effectColor = Color.red;
-                cardInfluence.transform.parent.GetComponent<Image>().color = Color.red;
-                transform.GetChild(0).GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
+                cardTitleText.color = Color.white;
+                cardBackground.color = Color.red; 
+                influenceText.color = Color.black; 
+                influenceBackground.color = Color.yellow;
+                cardOutline.effectColor = Color.red;
                 break;
             case Game.Faction.China:
-                GetComponent<Outline>().effectColor = new Color(1f, .7f, .0f);
-                cardInfluence.transform.parent.GetComponent<Image>().color = new Color(1f, .7f, .0f);
-                transform.GetChild(0).GetComponentInChildren<TextMeshProUGUI>().color = Color.yellow;
+                cardTitleText.color = Color.yellow; 
+                cardBackground.color = new Color(1f, .9f, .1f);
+                influenceText.color = Color.white;
+                influenceBackground.color = Color.yellow; 
+                cardOutline.effectColor = new Color(1f, .75f, 0f);
                 break;
         }
+
+        if (card is ScoringCard)
+            influenceBackground.gameObject.SetActive(true);
     }
 }

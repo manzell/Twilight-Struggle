@@ -1,48 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events; 
 
 public class MarshallPlan : Card
 {
     [SerializeField] List<Country> westernEurope = new List<Country>();
+    [SerializeField] NATO NATO;
 
-    List<Country> eligibleCountries;
-    UnityEngine.Events.UnityAction callback;
-    CountryClickHandler handler;
-    int count; 
-
-    public override void Event(UnityEngine.Events.UnityAction callback)
+    public override void CardEvent(GameAction.Command command)
     {
-        count = 7;
-        List<Country> eligibleCountries = new List<Country>();
+        int count = 7;
+
+        NATO.isPlayable = true;
 
         foreach (Country country in westernEurope)
-            if (country.control != Game.Faction.USSR)
-                eligibleCountries.Add(country);
+            if (country.control == Game.Faction.USSR)
+                westernEurope.Remove(country);
 
-        if (eligibleCountries.Count <= 7)
+        if (westernEurope.Count <= count)
         {
-            AddInfluence(faction, eligibleCountries, 1);
-            callback.Invoke(); 
+            AddInfluence(faction, westernEurope, 1);
+            command.callback.Invoke(); 
         }
         else
-            handler = new CountryClickHandler(eligibleCountries, onCountryClick, new Color(0f, .6f, .6f)); 
-    }
+            countryClickHandler = new CountryClickHandler(westernEurope, onCountryClick, new Color(0f, .6f, .6f));
 
-    void onCountryClick(Country country, UnityEngine.EventSystems.PointerEventData ped)
-    {
-        if (eligibleCountries.Contains(country))
+        void onCountryClick(Country country)
         {
-            eligibleCountries.Remove(country);
-            handler.RemoveHighlight(country);
-            Game.AdjustInfluence.Invoke(country, Game.Faction.USA, 1);
-            count--; 
-        }
+            if (westernEurope.Contains(country))
+            {
+                westernEurope.Remove(country);
+                countryClickHandler.Remove(country);
+                Game.AdjustInfluence.Invoke(country, Game.Faction.USA, 1);
+                count--;
+            }
 
-        if(count == 0)
-        {
-            handler.Close(); 
-            callback.Invoke();
+            if (count == 0)
+            {
+                countryClickHandler.Close();
+                command.callback.Invoke(); 
+            }
         }
     }
 }

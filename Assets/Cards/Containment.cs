@@ -4,12 +4,26 @@ using UnityEngine;
 
 public class Containment : Card
 {
-    public override void Event(UnityEngine.Events.UnityAction callback)
+    public override void CardEvent(GameAction.Command command)
     {
-        // Create an effect that impacts checking a Card's Ops Value; then Remove it 
-        // Player add listener 
-        // Game.TurnEnd.AddListener
+        List<Card> adjustedCards = new List<Card>();
+        
+        foreach(Card card in FindObjectOfType<Game>().playerMap[Game.Faction.USA].hand)
+        {
+            if (card is ScoringCard || card.opsValue >= 4) break; 
 
-        callback.Invoke(); 
+            adjustedCards.Add(card);
+            card.opsValue++; 
+        }
+
+        Game.currentTurn.turnEndEvent.AddListener(ResetInfluenceValues);
+
+        command.callback.Invoke(); 
+
+        void ResetInfluenceValues(Turn turn)
+        {
+            foreach (Card card in adjustedCards)
+                card.opsValue--; 
+        }
     }
 }

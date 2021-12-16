@@ -5,26 +5,31 @@ using UnityEngine.Events;
 
 public class Turn : Phase
 {
-    Dictionary<Game.Faction, Card> headlines = new Dictionary<Game.Faction, Card>();
+    public UnityEvent<Turn> turnStartEvent = new UnityEvent<Turn>(), 
+        turnEndEvent = new UnityEvent<Turn>();
 
-    public Headline headline; 
+    public HeadlinePhase headline; 
     public List<ActionRound> actionRounds = new List<ActionRound>();
 
     private void Awake()
     {
-        headline = GetComponentInChildren<Headline>();
+        headline = GetComponentInChildren<HeadlinePhase>();
         actionRounds.AddRange(GetComponentsInChildren<ActionRound>()); 
     }
 
     public override void StartPhase(UnityAction callback)
     {
         Game.currentTurn = this;
+        turnStartEvent.Invoke(this); 
+        Game.turnStartEvent.Invoke(this); 
         base.StartPhase(callback);
     }
 
     public override void EndPhase(UnityAction callback)
     {
-        Game.currentTurn = null; 
+        Game.currentTurn = null;
+        turnEndEvent.Invoke(this);
+        Game.turnStartEvent.Invoke(this); 
         base.EndPhase(callback);
     }
 }

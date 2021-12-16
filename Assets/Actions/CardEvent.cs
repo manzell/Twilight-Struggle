@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class CardEvent : Action
+public class CardEvent : GameAction
 {
-    public override void Play(UnityEngine.Events.UnityAction callback)
+    public override Command GetCommand(Card card, GameAction action) => new EventCommand(card, action);
+
+    public override void onCommandExecute(Command command) => command.card.CardEvent(command); 
+
+    public class EventCommand : Command
     {
-        card.Event(callback);
+        public EventCommand(Card c, GameAction a) : base(c, a) { }
     }
 }

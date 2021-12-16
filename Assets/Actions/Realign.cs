@@ -1,84 +1,92 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.Events;
+using System.Linq; 
 
-public class Realign : Action
+public class Realign : GameAction
 {
-    RealignmentAttempts realignAttempts = new RealignmentAttempts();
-    List<Country> eligibleCountries = new List<Country>();
+    public override Command GetCommand(Card card, GameAction action) => new RealignCommand(card, action);
 
-    public override void Play(UnityEngine.Events.UnityAction? callback)
+    public override void onCommandExecute(Command command) // This is called when we say "Use This Card for Realignments" - before specifying which countries. 
     {
-        eligibleCountries.Clear();
-        realignAttempts.Clear(); 
+        RealignCommand realign = command as RealignCommand;
 
-        foreach(Country country in FindObjectsOfType<Country>())
-            if(country.influence[opponent] > 0)
-                eligibleCountries.Add(country);
-
-        if (eligibleCountries.Count == 0) return;
-
-        countryClickHandler = new CountryClickHandler(eligibleCountries, SetRealignTarget, Color.green);
-    }
-
-    public void SetRealignTarget(Country country, PointerEventData ped)
-    {
-        RealignAttempt realignAttempt = new RealignAttempt();
-        realignAttempt.targetCountry = country;
-        realignAttempt.faction = Game.phasingPlayer; 
-
-        realignAttempts.Add(realignAttempt);
-
-        // Calculate Realignment Bonuses 
-        if (realignAttempt.targetCountry.influence[Game.Faction.USA] > realignAttempt.targetCountry.influence[Game.Faction.USSR])
+        List<Country> eligibleCountries = FindObjectsOfType<Country>().ToList();
+        
+        foreach(Country country in eligibleCountries)
         {
-            realignAttempt.realignmentBonus[Game.Faction.USA]++;
-
-        }
-        else if (realignAttempt.targetCountry.influence[Game.Faction.USSR] > realignAttempt.targetCountry.influence[Game.Faction.USA])
-            realignAttempt.realignmentBonus[Game.Faction.USSR]++;
-
-        foreach (Country c in country.adjacentCountries)
-            if (c.control != Game.Faction.Neutral)
-                realignAttempt.realignmentBonus[c.control]++;
-
-        // Make our Rolls
-        realignAttempt.realignmentRolls[Game.Faction.USA] = Random.Range(0, 6) + 1;
-        realignAttempt.realignmentRolls[Game.Faction.USSR] = Random.Range(0, 6) + 1;
-
-        // Apply Realignment Results
-        int USAroll = realignAttempt.realignmentBonus[Game.Faction.USA] + realignAttempt.realignmentRolls[Game.Faction.USA];
-        int USSRroll = realignAttempt.realignmentBonus[Game.Faction.USSR] + realignAttempt.realignmentRolls[Game.Faction.USSR];
-
-        Debug.Log($"{realignAttempt.faction} realigning {realignAttempt.targetCountry.countryName} ({realignAttempts.Count}/{card.opsValue}) " +
-            $"USA Roll: {realignAttempt.realignmentRolls[Game.Faction.USA]} + {realignAttempt.realignmentBonus[Game.Faction.USA]}; " +
-            $"USSR Roll: {realignAttempt.realignmentRolls[Game.Faction.USSR]} + {realignAttempt.realignmentBonus[Game.Faction.USSR]}");
-
-        Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, Mathf.Min(0, USSRroll - USAroll));
-        Game.AdjustInfluence.Invoke(country, Game.Faction.USA, Mathf.Min(0, USAroll - USSRroll));
-
-        // Remove them from the list of eligible countries in some situations.
-        if (country.influence[opponent] == 0)
-        {
-            eligibleCountries.Remove(country);
-            countryClickHandler.RemoveHighlight(country); 
+            // Filter out any countries that are prohibited due to DEFCON or due to lack of opponent influence. 
+            if (DEFCON.Status <= DEFCON.defconRestrictions[country.continent] || country.influence[realign.enemyPlayer] == 0 || country.GetComponent<MayNotRealign>()) 
+                eligibleCountries.Remove(country);
         }
 
-        if (eligibleCountries.Count == 0 || realignAttempts.Count == card.opsValue)
+        countryClickHandler = new CountryClickHandler(eligibleCountries, SetRealignTarget); 
+
+        void SetRealignTarget(Country country)
         {
-            Game.currentActionRound.gameAction = realignAttempts;
-            FinishAction();
+            RealignAttempt attempt = new RealignAttempt();
+            realign.realignAttempts.Add(attempt);
+
+            realign.setTargetEvent.Invoke(attempt);
+
+            Debug.Log($"{realign.phasingPlayer} realigning {attempt.targetCountry.countryName} ({realign.realignAttempts.Count}/{realign.cardOpsValue}) " +
+                $"USA Roll: {attempt.roll[Game.Faction.USA]} + {attempt.modifiedRoll[Game.Faction.USA] - attempt.roll[Game.Faction.USA]}; " +
+                $"USSR Roll: {attempt.roll[Game.Faction.USSR]} + {attempt.modifiedRoll[Game.Faction.USSR] - attempt.roll[Game.Faction.USSR]}");
+
+            Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, attempt.influenceRemoved[Game.Faction.USSR]);
+            Game.AdjustInfluence.Invoke(country, Game.Faction.USA, attempt.influenceRemoved[Game.Faction.USA]);
+
+            if(attempt.targetCountry.influence[realign.enemyPlayer] == 0)
+            {
+                eligibleCountries.Remove(attempt.targetCountry); 
+                countryClickHandler.Remove(country);
+            }
+
+            if (realign.realignAttempts.Count == realign.cardOpsValue || eligibleCountries.Count == 0)
+            {
+                countryClickHandler.Close();
+                realign.callback.Invoke(); 
+            }
         }
     }
 
-    public class RealignmentAttempts : List<RealignAttempt>, IGameAction { }
+    public class RealignCommand : Command
+    {
+        public GameEvent<RealignAttempt> setTargetEvent = new GameEvent<RealignAttempt>();  
+        public List<RealignAttempt> realignAttempts = new List<RealignAttempt>();
+
+        public RealignCommand(Card c, GameAction a) : base(c, a) { }
+    }
 
     public class RealignAttempt
     {
         public Country targetCountry;
-        public Game.Faction faction; 
-        public Dictionary<Game.Faction, int> realignmentBonus = new Dictionary<Game.Faction, int> { { Game.Faction.USA, 0 }, { Game.Faction.USSR, 0 } };
-        public Dictionary<Game.Faction, int> realignmentRolls = new Dictionary<Game.Faction, int> { { Game.Faction.USA, 0 }, { Game.Faction.USSR, 0 } };
+        public Dictionary<Game.Faction, int> roll = new Dictionary<Game.Faction, int>(); 
+        public Dictionary<Game.Faction, int> modifiedRoll = new Dictionary<Game.Faction, int>();
+        public Dictionary<Game.Faction, int> influenceRemoved = new Dictionary<Game.Faction, int>();
+
+        public RealignAttempt()
+        {
+            // Make our rolls
+            roll[Game.Faction.USSR] = Random.Range(0, 6) + 1;
+            roll[Game.Faction.USA] = Random.Range(0, 6) + 1;
+
+            modifiedRoll[Game.Faction.USA] = roll[Game.Faction.USA];
+            modifiedRoll[Game.Faction.USSR] = roll[Game.Faction.USSR];
+
+            // Calculate Realignment Bonuses 
+            if (targetCountry.influence[Game.Faction.USA] > targetCountry.influence[Game.Faction.USSR])
+                modifiedRoll[Game.Faction.USA]++;
+            else if (targetCountry.influence[Game.Faction.USSR] > targetCountry.influence[Game.Faction.USA])
+                modifiedRoll[Game.Faction.USSR]++;
+
+            foreach (Country c in targetCountry.adjacentCountries)
+                if (c.control != Game.Faction.Neutral)
+                    modifiedRoll[c.control]++;
+
+            influenceRemoved[Game.Faction.USA] = Mathf.Min(0, modifiedRoll[Game.Faction.USA] - modifiedRoll[Game.Faction.USSR]);
+            influenceRemoved[Game.Faction.USA] = Mathf.Min(0, modifiedRoll[Game.Faction.USA] - modifiedRoll[Game.Faction.USSR]);
+        }
     }
 }

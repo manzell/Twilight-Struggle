@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector; 
+using Sirenix.OdinInspector;
+using TMPro; 
 
 public class SpaceTrack : SerializedMonoBehaviour
 {
     public Dictionary<int, SpaceRaceTrack> spaceRaceTrack = new Dictionary<int, SpaceRaceTrack>();
     public Dictionary<Game.Faction, int> attemptsRemaining = new Dictionary<Game.Faction, int>();
 
+    [SerializeField] TextMeshProUGUI ussrSpace, usaSpace; 
+
     private void Awake()
     {
-        Game.TurnStart.AddListener(ResetSpaceRaceAttempts); 
+        Game.turnStartEvent.AddListener(ResetSpaceRaceAttempts); 
     }
 
     void ResetSpaceRaceAttempts(Phase phase)
@@ -21,8 +24,7 @@ public class SpaceTrack : SerializedMonoBehaviour
 
     public Dictionary<Game.Faction, int> spaceRaceLevel
     {
-        get
-        {
+        get {
             Dictionary<Game.Faction, int> tmp = new Dictionary<Game.Faction, int> { { Game.Faction.USA, 0 }, { Game.Faction.USSR, 0 } };
 
             foreach (SpaceRaceTrack spaceRaceTrack in spaceRaceTrack.Values)
@@ -42,7 +44,7 @@ public class SpaceTrack : SerializedMonoBehaviour
         public int rollRequired;
         public int firstVPaward, secondVPaward;
         public int[] vpAwards; 
-        public Action ability;
+        public GameAction ability;
         public List<Game.Faction> acheived;
     }
 
@@ -56,5 +58,13 @@ public class SpaceTrack : SerializedMonoBehaviour
                 break;
             }
         }
+
+        UpdateSpaceRace(); // I'm aware this is tying our UI into the underlying game logic I'll refactor it out later. 
     } 
+
+    void UpdateSpaceRace()
+    {
+        ussrSpace.text = spaceRaceLevel[Game.Faction.USSR].ToString();
+        usaSpace.text = spaceRaceLevel[Game.Faction.USA].ToString();
+    }
 }

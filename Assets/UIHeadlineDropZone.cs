@@ -4,23 +4,20 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class UIHeadlineDropZone : MonoBehaviour, IDropHandler
-{    
-    [SerializeField] Game.Faction faction;
-    [SerializeField] GameObject cardSlot; 
+{
+    [SerializeField] HeadlineAction headlineAction;
+    [SerializeField] GameObject cardSlot;
+    [SerializeField] ICardStyler cardStyler;
+
+    public Game.Faction faction;
 
     public void OnDrop(PointerEventData eventData)
     {
-        eventData.selectedObject.transform.SetParent(cardSlot.transform);
+        GameObject cardObject = Instantiate(eventData.selectedObject, cardSlot.transform);
+        headlineAction.SetHeadline(faction, cardObject.GetComponent<UICardDisplay>().card);
 
-        eventData.selectedObject.transform.localPosition = Vector3.zero;
-        eventData.selectedObject.transform.localScale = Vector3.one;
-        eventData.selectedObject.transform.localRotation = Quaternion.identity;
-
-        Debug.Log($"Headline Dropped {eventData.selectedObject.GetComponent<UICardDisplay>().card}");
-
-        Game.currentTurn.GetComponentInChildren<Headline>().SubmitHeadline(faction, eventData.selectedObject.GetComponent<UICardDisplay>().card);
-
-        Destroy(eventData.selectedObject.GetComponent<CanvasGroup>());
-        Destroy(eventData.selectedObject.GetComponent<UICardDisplay>());
+        cardStyler.Style(cardObject);
     }
+
+
 }

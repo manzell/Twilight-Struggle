@@ -2,20 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Defectors : Card
+public class Defectors : Card, IHeadlineEvent
 {
-    public override void Event(UnityEngine.Events.UnityAction callback)
+    public override void CardEvent(GameAction.Command command)
     {
         if(Game.phasingPlayer == Game.Faction.USSR)
-            Game.AwardVictoryPoints.Invoke(1);
+            Game.AdjustVPs.Invoke(1);
+
+        command.callback.Invoke(); 
     }
 
-    public override void OnHeadline(Dictionary<Game.Faction, Card> headlines)
+    public void HeadlineEvent(HeadlinePhase headline)
     {
-        if(headlines[Game.Faction.USA] == this)
+        if(headline.headlines[Game.Faction.USA].card == this)
         {
-            Game.deck.AddRange(headlines.Values);
-            headlines.Clear();
+            // Discard the USSR Headline Card
+            Game.deck.Add(headline.headlines[Game.Faction.USSR].card);
+
+            // TODO: Skip Headline Phase
+
+            FindObjectOfType<UIMessage>().Message($"USSR Headline ({headline.headlines[Game.Faction.USSR].card.cardName}) is canceled by Defectors!"); 
         }
     }
 }

@@ -3,49 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SpaceRace : Action, IDropHandler
+public class SpaceRace : GameAction
 {
-    SpaceTrack spaceTrack;
+    public override Command GetCommand(Card card, GameAction action) => new SpaceShotCommand(card, action);
 
-    public override void Play(UnityEngine.Events.UnityAction callback)
+    public override void onCommandExecute(Command command)
     {
-        spaceTrack = FindObjectOfType<SpaceTrack>();
+        SpaceTrack spaceTrack = FindObjectOfType<SpaceTrack>();
+        SpaceShotCommand spaceShot = command as SpaceShotCommand;
 
-        if (card.opsValue < spaceTrack.spaceRaceTrack[spaceTrack.spaceRaceLevel[Game.phasingPlayer]].opsRequired) return;
-        if (spaceTrack.attemptsRemaining[Game.phasingPlayer] <= 0) return;
+        // Assume we've already checked if the player has more space attempts remaining && if the card has enough Ops
+        int spaceRaceLevel = spaceTrack.spaceRaceLevel[spaceShot.phasingPlayer];
 
-        SpaceShot spaceShot = new SpaceShot();
-        spaceShot.card = card;
-        spaceShot.faction = Game.phasingPlayer;
-        spaceShot.spaceRaceTrack = spaceTrack.spaceRaceTrack[spaceTrack.spaceRaceLevel[Game.phasingPlayer]];
-
-        Game.currentActionRound.gameAction = spaceShot; 
-
-        AttemptSpace(spaceShot); 
-    }
-
-    public class SpaceShot: IGameAction
-    {
-        public int roll;
-        public Card card;
-        public Game.Faction faction;
-        public SpaceTrack.SpaceRaceTrack spaceRaceTrack;
-    }
-
-    public void AttemptSpace(SpaceShot attempt)
-    {
-        attempt.roll = Random.Range(0, 6) + 1; 
-        Debug.Log($"{attempt.faction} attempting {attempt.spaceRaceTrack.name}. Rolled {attempt.roll}, needed {attempt.spaceRaceTrack.rollRequired}. {(attempt.roll <= attempt.spaceRaceTrack.rollRequired ? "Success!" : "Failure")}");
-        spaceTrack.attemptsRemaining[attempt.faction]--;
-
-        if(attempt.roll <= attempt.spaceRaceTrack.rollRequired)
+        if(spaceShot.roll <= spaceTrack.spaceRaceTrack[spaceRaceLevel].rollRequired)
         {
-            int vpAward = attempt.spaceRaceTrack.vpAwards[attempt.spaceRaceTrack.acheived.Count];
-            
-            spaceTrack.AdvanceSpaceRace(attempt.faction);
-            Game.AwardVictoryPoints.Invoke(attempt.faction == Game.Faction.USA ? vpAward : -vpAward);
+            spaceShot.success = true;
+
+            spaceTrack.AdvanceSpaceRace(spaceShot.phasingPlayer);
+
+            int vpAward = spaceTrack.spaceRaceTrack[spaceRaceLevel].vpAwards[spaceTrack.spaceRaceTrack[spaceRaceLevel].acheived.Count];
+            Game.AdjustVPs.Invoke(spaceShot.phasingPlayer == Game.Faction.USA ? vpAward : -vpAward);
         }
 
-        FinishAction();
+        Debug.Log($"{spaceShot.phasingPlayer} attempting {spaceTrack.spaceRaceTrack[spaceRaceLevel].name}. Rolled {spaceShot.roll}, needed {spaceTrack.spaceRaceTrack[spaceRaceLevel].rollRequired}. " +
+            $"{(spaceShot.roll <= spaceTrack.spaceRaceTrack[spaceRaceLevel].rollRequired ? "Success!" : "Failure")}");
+
+        spaceShot.callback.Invoke(); 
+    }
+
+    public class SpaceShotCommand : Command
+    {
+        public bool success; 
+        public int roll;
+
+        public SpaceShotCommand(Card c, GameAction a) : base(c, a)
+        {
+            roll = Random.Range(0, 6) + 1;
+        }
     }
 }

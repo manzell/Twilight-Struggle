@@ -9,70 +9,41 @@ public class Game : SerializedMonoBehaviour
     public enum Faction { Neutral, USSR, USA, China }
     public enum GamePhase { Setup, EarlyWar, Midwar, LateWar, FinalScoring }
 
-    public static GamePhase gamePhase = GamePhase.Setup;
+    // These are here for Game-Rule reasons. They are not involved in managing the Sequence of Phases
+    public static UnityEvent<Phase> 
+        turnStartEvent = new UnityEvent<Phase>(),
+        turnEndEvent = new UnityEvent<Phase>();     
+    public static UnityEvent<ActionRound>
+        actionRoundStartEvent = new UnityEvent<ActionRound>(),
+        actionRoundEndEvent = new UnityEvent<ActionRound>();
+    public static GameEvent<HeadlinePhase>
+        headlineEvent = new GameEvent<HeadlinePhase>();
 
-    public static UnityEvent<Phase> // Reminder, these don't manage the turn/phase, **JUST** gamestate effects. 
-        TurnStart = new UnityEvent<Phase>(),
-        TurnEnd = new UnityEvent<Phase>(); 
-    
-    public static UnityEvent<ActionRound> // Reminder, these don't manage the turn/phase, **JUST** gamestate effects. 
-        ActionRoundStart = new UnityEvent<ActionRound>(),
-        ActionRoundEnd = new UnityEvent<ActionRound>();
-
-    public static UnityEvent<Headline>
-        HeadlineStart = new UnityEvent<Headline>(),
-        HeadlineEnd = new UnityEvent<Headline>();
-    
-    //public static UnityEvent<Headline> // Reminder, these don't manage the turn/phase, **JUST** gamestate effects. 
-    //    HeadlinePhase = new UnityEvent<Headline>(),
-    //    HeadlineEvent = new UnityEvent<Headline>();Fac
-
-    //public static UnityEvent<Coup> Coup = new UnityEvent<Coup>();
-    //public static UnityEvent<Coup> CoupSelectTarget = new UnityEvent<Coup>();
-    //public static UnityEvent<Coup> CoupConfirm = new UnityEvent<Coup>();
-
-    //public static UnityEvent<Realign> Realign = new UnityEvent<Realign>();
-    //public static UnityEvent<Realign.RealignAttempt> StartRealign = new UnityEvent<Realign.RealignAttempt>();
-
-    //public static UnityEvent<SpaceRace>
-    //    StartSpaceShot = new UnityEvent<SpaceRace>(),
-    //    SpaceShot = new UnityEvent<SpaceRace>(); 
-
-    public static UnityEvent<Scoring> Score = new UnityEvent<Scoring>();
-
-    public static UnityEvent<CardEvent> CardEvent = new UnityEvent<CardEvent>();
-
-    public static UnityEvent<PlaceInfluence> InfluenceSelectTarget = new UnityEvent<PlaceInfluence>();
-    public static UnityEvent<PlaceInfluence> InfluencePlacement = new UnityEvent<PlaceInfluence>();
-
-    public static UnityEvent<Faction, int> AdjustDEFCON = new UnityEvent<Faction, int>(); 
-    public static GameEvent<int> AwardVictoryPoints = new GameEvent<int>(); 
-    public static UnityEvent<Faction, int> AdjustMilOps = new UnityEvent<Faction, int>();
+    public static GameEvent<Faction, int> AdjustDEFCON = new GameEvent<Faction, int>(); 
+    public static GameEvent<int> AdjustVPs = new GameEvent<int>(); 
+    public static GameEvent<Faction, int> AdjustMilOps = new GameEvent<Faction, int>();
     public static UnityEvent<Faction> AdvanceSpaceRate = new UnityEvent<Faction>();
 
     public static GameEvent<Country, Faction, int> AdjustInfluence = new GameEvent<Country, Faction, int>();
     public static GameEvent<Country, Faction, int> SetInfluence = new GameEvent<Country, Faction, int>();
 
+    public static GameEvent<GameAction.Command> cardCommandEvent = new GameEvent<GameAction.Command>();
+
     public static UnityEvent GameStart = new UnityEvent();
     public static UnityEvent<Faction, string> GameOver = new UnityEvent<Faction, string>();
 
     public static UnityEvent<Country> CountryClick = new UnityEvent<Country>();
+    public static UnityEvent<Card> CardClick = new UnityEvent<Card>();
 
-    public static Faction phasingPlayer;
-    public static GamePhase coldwarPhase;
-
+    public static Faction phasingPlayer, actingPlayer;
+    public static GamePhase gamePhase;
     public static Phase currentPhase; 
     public static Turn currentTurn; 
     public static ActionRound currentActionRound; 
 
-    public static Deck deck;
+    public static Deck deck;    
 
-    public static void onAdjustInfluence(Country country, Faction faction, int amount) => country.influence[faction] = Mathf.Max(0, country.influence[faction] + amount);
-    public static void onSetInfluence(Country country, Faction faction, int amount) => country.influence[faction] = Mathf.Max(0, country.influence[faction] + amount);
-    
-
-    public Dictionary<Faction, Player> playerMap = new Dictionary<Faction,Player>();
-    
+    public Dictionary<Faction, Player> playerMap = new Dictionary<Faction,Player>();    
     public List<Card> earlyWarCards, midwarCards, lateWarCards;
 
     private void Awake()
@@ -85,4 +56,8 @@ public class Game : SerializedMonoBehaviour
         AdjustInfluence.AddListener(onAdjustInfluence);
         SetInfluence.AddListener(onSetInfluence); 
     }
+
+    // These are the only functions that should be allowed to touch the Game State
+    public static void onAdjustInfluence(Country country, Faction faction, int amount) => country.influence[faction] = Mathf.Max(0, country.influence[faction] + amount);
+    public static void onSetInfluence(Country country, Faction faction, int amount) => country.influence[faction] = amount;
 }

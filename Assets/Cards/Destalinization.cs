@@ -4,83 +4,70 @@ using UnityEngine;
 
 public class Destalinization : Card
 {
-    CountryClickHandler countryClickHandler;
-    List<Country> eligibleCountries;
-    UnityEngine.Events.UnityAction callback;
-    int count;
+    List<Country> placedCountries = new List<Country>();
 
-    public override void Event(UnityEngine.Events.UnityAction callback)
+    public override void CardEvent(GameAction.Command command)
     {
-        count = 0;
-        this.callback = callback;
-        eligibleCountries = new List<Country>();
+        int count = 0;
+        List<Country> eligibleCountries = new List<Country>();
+        int eligibleInfluence = 0; 
 
         foreach (Country country in FindObjectsOfType<Country>())
             if (country.influence[Game.Faction.USSR] > 0)
+            {
                 eligibleCountries.Add(country);
-
+                eligibleInfluence += country.influence[Game.Faction.USSR]; 
+            }
 
         countryClickHandler = new CountryClickHandler(eligibleCountries, RemoveInfluence);
 
-
-        // Prompt to PLace 4 Influence Callback to AddInfluence
-    }
-
-    void RemoveInfluence(Country country, UnityEngine.EventSystems.PointerEventData ped)
-    {
-        if (eligibleCountries.Contains(country))
+        void RemoveInfluence(Country country)
         {
-            count++;
-            Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, 1);
-
-            if (country.influence[Game.Faction.USSR] == 0)
+            if (eligibleCountries.Contains(country))
             {
-                countryClickHandler.RemoveHighlight(country);
-                eligibleCountries.Remove(country);
+                count++;
+                eligibleInfluence--; 
+
+                Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, -1);
+
+                if (country.influence[Game.Faction.USSR] == 0)
+                {
+                    countryClickHandler.Remove(country);
+                    eligibleCountries.Remove(country);
+                }
             }
+
+            if (count == 4 || eligibleInfluence == 0)
+                RedeployInfluence();
         }
 
-        if (count == 4)
-            Switch(); 
-    }
-
-    void Switch()
-    {
-        eligibleCountries.Clear();
-        placedCountries.Clear();
-        countryClickHandler.Close();
-
-        foreach (Country c in FindObjectsOfType<Country>())
-            if (c.control != Game.Faction.USA)
-                eligibleCountries.Add(c);
-
-        countryClickHandler = new CountryClickHandler(eligibleCountries, AddInfluence);
-    }
-
-    List<Country> placedCountries; 
-
-    void AddInfluence(Country country, UnityEngine.EventSystems.PointerEventData ped)
-    {
-        if(eligibleCountries.Contains(country))
+        void RedeployInfluence()
         {
-            int influenceLimit = 2; 
-
-            foreach(Country c in placedCountries)
-                if (c == country) 
-                    influenceLimit--;
-
-            if (placedCountries.CountOf(country) < 2)
-            {
-                Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, 1);
-                placedCountries.Add(country);
-                count--; 
-            } 
-        }
-
-        if(count == 0)
-        {
+            eligibleCountries.Clear();
+            placedCountries.Clear();
             countryClickHandler.Close();
-            callback.Invoke(); 
+
+            foreach (Country c in FindObjectsOfType<Country>())
+                if (c.control != Game.Faction.USA)
+                    eligibleCountries.Add(c);
+
+            countryClickHandler = new CountryClickHandler(eligibleCountries, AddInfluence);
+
+            void AddInfluence(Country country)
+            {
+                if (eligibleCountries.Contains(country))
+                {
+                    if (placedCountries.CountOf(country) < 2)
+                    {
+                        Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, 1);
+                        placedCountries.Add(country);
+                        count--;
+                    }
+                }
+
+                if (count == 0)
+                    command.callback.Invoke();
+            }
         }
     }
 }

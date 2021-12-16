@@ -9,18 +9,16 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject headlineDropPanel;
     [SerializeField] public Button button;
 
-
     private void Awake()
     {
-        Game.ActionRoundStart.AddListener(onActionRoundStart);
-        Game.ActionRoundEnd.AddListener(onActionRoundEnd);
-        Game.HeadlineStart.AddListener(onHeadlineStart);
-        Game.HeadlineEnd.AddListener(onHeadlineEnd);
+        Game.actionRoundStartEvent.AddListener(onActionRoundStart);
+        Game.actionRoundEndEvent.AddListener(onActionRoundEnd);
+        Game.headlineEvent.AddListener(onHeadlineStart);
+        Game.headlineEvent.after.AddListener(onHeadlineEnd);
     }
 
     void onActionRoundStart(ActionRound ar) => arDropPanel.SetActive(true);
     void onActionRoundEnd(ActionRound ar) => arDropPanel.SetActive(false);
-    void onHeadlineStart(Headline headline) { Debug.Log("OnHeadline Start");  headlineDropPanel.SetActive(true);  }
-    void onHeadlineEnd(Headline headline) { Debug.Log("OnHeadline End"); headlineDropPanel.SetActive(false); }
-
+    void onHeadlineStart(HeadlinePhase headline) => headlineDropPanel.SetActive(true);
+    void onHeadlineEnd(HeadlinePhase headline) => headlineDropPanel.SetActive(false);
 }

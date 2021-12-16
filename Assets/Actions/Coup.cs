@@ -1,69 +1,64 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.Events;
+using System.Linq; 
 
-public class Coup : Action
+public class Coup : GameAction
 {
-    CoupAttempt coupAttempt;
+    public override Command GetCommand(Card card, GameAction action) => new CoupCommand(card, action);
 
-    public override void Play(UnityEngine.Events.UnityAction callback)
+    public override void onCommandExecute(Command command)
     {
-        this.callback = callback;
-        List<Country> eligibleCountries = new List<Country>();
+        CoupCommand coup = command as CoupCommand;
+        List<Country> eligibleCountries = FindObjectsOfType<Country>().ToList();
 
-        foreach (Country country in FindObjectsOfType<Country>())
-            if (country.influence[opponent] > 0 && DEFCON.status > DEFCON.defconRestrictions[country.continent])
-                eligibleCountries.Add(country);
+        foreach (Country country in eligibleCountries)
+        {
+            // Filter out any countries that are prohibited due to DEFCON or due to lack of opponent influence or cannot be couped for other reasons
+            if (DEFCON.Status <= DEFCON.defconRestrictions[country.continent] || country.influence[command.enemyPlayer] == 0 || country.GetComponent<MayNotCoup>())
+                eligibleCountries.Remove(country);
+        }
 
-        if (eligibleCountries.Count == 0) return;
+        countryClickHandler = new CountryClickHandler(eligibleCountries, SetCoupTarget);
 
-        countryClickHandler = new CountryClickHandler(eligibleCountries, SetTarget, Color.red);
+        void SetCoupTarget(Country country)
+        {
+            coup.SetTargetCountry(country);
 
-        coupAttempt = new CoupAttempt();
-        coupAttempt.coupFaction = Game.phasingPlayer;
-        coupAttempt.coupOps = card.opsValue;
+            Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, coup.influenceAdjusted[Game.Faction.USSR]);
+            Game.AdjustInfluence.Invoke(country, Game.Faction.USA, coup.influenceAdjusted[Game.Faction.USA]);
 
-        Game.currentActionRound.gameAction = coupAttempt;
+            if(coup.targetCountry.isBattleground)
+                Game.AdjustDEFCON.Invoke(Game.phasingPlayer, -1); 
+
+            countryClickHandler.Close();
+            command.callback.Invoke();
+        }
     }
 
-    void SetTarget(Country country, PointerEventData ped) 
-    {
-        coupAttempt.targetCountry = country;
-        countryClickHandler.Close();
-
-        coupAttempt.influenceRemoved = Mathf.Min(Mathf.Max(coupAttempt.roll + coupAttempt.coupOps + coupAttempt.coupStrength - coupAttempt.targetCountry.stability * 2, 0), coupAttempt.targetCountry.influence[opponent]);
-        coupAttempt.influenceAdded = Mathf.Max(coupAttempt.roll + coupAttempt.coupOps + coupAttempt.coupStrength - coupAttempt.targetCountry.stability * 2 - coupAttempt.targetCountry.influence[opponent], 0);
-
-        FindObjectOfType<MilOpsTrack>().GiveMilOps(coupAttempt.coupFaction, coupAttempt.coupOps); 
-
-        Debug.Log($"Roll {coupAttempt.roll} + {coupAttempt.coupOps} Ops - {coupAttempt.targetCountry.stability * 2} Coup Defense = " + 
-            $"{coupAttempt.roll + coupAttempt.coupStrength + coupAttempt.coupOps - coupAttempt.targetCountry.stability * 2} [Removing: {coupAttempt.influenceRemoved} Adding: {coupAttempt.influenceAdded}]");
-
-        Game.AdjustInfluence.Invoke(country, coupAttempt.opponent, -coupAttempt.influenceRemoved);
-        Game.AdjustInfluence.Invoke(country, coupAttempt.coupFaction, coupAttempt.influenceAdded);
-
-        if (country.isBattleground)
-            DEFCON.AdjustDEFCON.Invoke(-1);
-
-        Game.currentActionRound.card = card; 
-        Game.currentActionRound.gameAction = coupAttempt;
-
-        FinishAction(); 
-    }
-
-    public class CoupAttempt : IGameAction
+    public class CoupCommand : Command
     {
         public Country targetCountry;
-        public Game.Faction coupFaction;
-        public Game.Faction opponent { get { return coupFaction == Game.Faction.USA ? Game.Faction.USSR : Game.Faction.USA; } }
-        public bool affectDefcon = true;
-        public int roll = Random.Range(0, 6) + 1;
-        public int
-            coupStrength = 0,
-            coupOps = 0, 
-            influenceRemoved, 
-            influenceAdded;
-    }
+        public int roll;
+        public int modifiedRoll;
+        public Dictionary<Game.Faction, int> influenceAdjusted = new Dictionary<Game.Faction, int>();
+        public GameEvent<Command> setTargetEvent = new GameEvent<Command>();
 
+        public CoupCommand(Card c, GameAction a) : base(c, a) =>
+            roll = Random.Range(0, 6) + 1;
+
+        public void SetTargetCountry(Country country)
+        {
+            targetCountry = country;
+            roll = Random.Range(0, 6) + 1;
+            modifiedRoll = roll + cardOpsValue;
+
+            influenceAdjusted.Add(phasingPlayer, Mathf.Max(0, modifiedRoll - country.stability * 2 - country.influence[enemyPlayer]));
+            influenceAdjusted.Add(enemyPlayer, -Mathf.Min(Mathf.Max(modifiedRoll - country.stability * 2, 0), country.influence[enemyPlayer]));
+
+            Debug.Log($"{phasingPlayer} coups {targetCountry.countryName} with {cardOpsValue} Ops!");
+            Debug.Log($"Coup Roll: {roll}. Removing {influenceAdjusted[enemyPlayer]} {enemyPlayer} influence. Adding {influenceAdjusted[phasingPlayer]} {phasingPlayer} influence in {targetCountry.countryName}");
+        }
+    }
 }

@@ -107,8 +107,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28accac5a117b09499fee29ee9392c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardTitle: {fileID: 2550866273158925362}
-  cardInfluence: {fileID: 2550866273732007469}
+  cardTitleText: {fileID: 2550866273158925362}
+  influenceText: {fileID: 2550866273732007469}
+  cardBackground: {fileID: 2550866272479213909}
+  influenceBackground: {fileID: 2550866272929070241}
+  cardOutline: {fileID: 2550866272479213908}
   card: {fileID: 0}
 --- !u!1 &2550866272929070243
 GameObject:

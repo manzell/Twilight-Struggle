@@ -23,19 +23,21 @@ public class EdgePan : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             // Pan Left and Right
             if (Input.mousePosition.x > defaultScreen.x - edgeBuffer || Input.mousePosition.x < edgeBuffer)
             {
-                float xmove = (Input.mousePosition.x > defaultScreen.x / 2 ? -1 : 1) * speed;
+                float xPanSpeed = (Input.mousePosition.x > defaultScreen.x / 2 ? -1 : 1) * speed;
+                float width = GetComponent<RectTransform>().rect.width / 2;
 
-                if ((xmove < 0 && transform.position.x - 1 >= defaultScreen.x - (GetComponent<RectTransform>().rect.width / 2)) || (xmove > 0 && transform.position.x + 1 <= (GetComponent<RectTransform>().rect.width / 2)))
-                    transform.position = new Vector2(transform.position.x + xmove, transform.position.y);                
+                if ((xPanSpeed < 0 && transform.position.x - 1 >= defaultScreen.x - width) || (xPanSpeed > 0 && transform.position.x + 1 <= width))
+                    transform.position = new Vector2(transform.position.x + xPanSpeed, transform.position.y);                
             }
 
             // Pan Up and Down
             if (Input.mousePosition.y > defaultScreen.y - edgeBuffer || Input.mousePosition.y < edgeBuffer)
             {
-                float ymove = (Input.mousePosition.y > defaultScreen.y / 2 ? -1 : 1) * speed;
+                float yPanSpeed = (Input.mousePosition.y > defaultScreen.y / 2 ? -1 : 1) * speed;
+                float height = GetComponent<RectTransform>().rect.height / 2;
 
-                if ((ymove < 0 && transform.position.y - 1 >= defaultScreen.y - (GetComponent<RectTransform>().rect.height / 2)) || (ymove > 0 && transform.position.y + 1 <= (GetComponent<RectTransform>().rect.height / 2)))
-                    transform.position = new Vector2(transform.position.x, transform.position.y + ymove);
+                if ((yPanSpeed < 0 && transform.position.y - 1 >= defaultScreen.y - height) || (yPanSpeed > 0 && transform.position.y + 1 <= height))
+                    transform.position = new Vector2(transform.position.x, transform.position.y + yPanSpeed);
             }
         }
     }

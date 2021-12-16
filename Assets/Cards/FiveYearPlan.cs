@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class FiveYearPlan : Card
 {
-    public override void Event(UnityEngine.Events.UnityAction callback)
+    public override void CardEvent(GameAction.Command command)
     {
         Player USSR = FindObjectOfType<Game>().playerMap[Game.Faction.USSR];
-
         int i = Random.Range(0, USSR.hand.Count); 
-
         Card card = USSR.hand[i];
 
         USSR.hand.Remove(card);
-        Debug.Log($"5-Year Plan took {card.cardName} from USSR hand");
+        
+        FindObjectOfType<UIMessage>().Message($"5-Year Plan discarded {card.cardName} from USSR hand");
                 
         if(card.faction == Game.Faction.USA)
-            card.Event(callback);
+        {
+            command.actingPlayer = Game.Faction.USA; // TODO - Maybe do some more manipulation of the Command event. Double check other cards for overreliance on the Command. 
+            card.CardEvent(command); // TODO : Warning I have no idea if this is stable. Five year plan is can be an CardEventCommand from either faction, will that mess things up? 
+        }
         else
         {
             Game.deck.discards.Add(card);
-            callback.Invoke(); 
+            command.callback.Invoke();  
         }
     }
 }

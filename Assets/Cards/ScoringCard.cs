@@ -5,16 +5,14 @@ using UnityEngine.Events;
 
 public class ScoringCard : Card
 {
+    public Country.Continent continent;
     public Dictionary<Scoring.ScoreState, int> scoreKey; 
-    public List<Country> battlegrounds, nonBattlegrounds;
-    public UnityEvent<Scoring> Score = new UnityEvent<Scoring>();
+    public UnityEvent<Scoring> scoreEvent = new UnityEvent<Scoring>();
 
-    public override void Event(UnityEngine.Events.UnityAction? callback)
+    public override void CardEvent(GameAction.Command command)
     {
-        Scoring scoring = new Scoring(scoreKey, battlegrounds, nonBattlegrounds);
-
-        Score.Invoke(scoring); 
-        Game.Score.Invoke(scoring);
-        Game.AwardVictoryPoints.Invoke(scoring.vp);
+        Scoring scoring = new Scoring(scoreKey, continent);
+        scoreEvent.Invoke(scoring); 
+        Game.AdjustVPs.Invoke(scoring.vp);
     }
 }

@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class DuckAndCover : Card
 {
-    public override void Event(UnityEngine.Events.UnityAction callback)
+    public override void CardEvent(GameAction.Command command)
     {
+        int vpAward = Mathf.Clamp(5 - DEFCON.Status, 0, 5);
+
         Game.AdjustDEFCON.Invoke(Game.phasingPlayer, -1);
-        int vpAward = Mathf.Clamp(5 - DEFCON.status, 0, 5);
-        Game.AwardVictoryPoints.Invoke(vpAward);
+        Game.AdjustVPs.Invoke(vpAward);
 
-        Debug.Log($"US earns {vpAward} {(vpAward == 1 ? "point" : "points")} from Duck and Cover");
+        FindObjectOfType<UIMessage>().Message($"US earns {vpAward} {(vpAward == 1 ? "point" : "points")} from Duck and Cover");
 
-        callback.Invoke(); 
+        command.callback.Invoke(); 
     }
 }

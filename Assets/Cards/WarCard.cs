@@ -4,48 +4,42 @@ using UnityEngine;
 
 public class WarCard : Card
 {
-    [SerializeField] Country targetCountry;
-    [SerializeField] int victoryPoints = 2, rollRequired = 4; 
+    [SerializeField] List<Country> targetCountries;
+    [SerializeField] int victoryPoints = 2, rollRequired = 4, milOps = 2;
 
-    public override void Event(UnityEngine.Events.UnityAction? callback)
+    public override void CardEvent(GameAction.Command command)
     {
-        Game.Faction enemyFaction = Game.Faction.Neutral;
-        Game.Faction actingFaction = Game.Faction.Neutral;
+        if (targetCountries.Count > 1)
+            countryClickHandler = new CountryClickHandler(targetCountries, War, Color.red);
+        else if (targetCountries.Count == 1)
+            War(targetCountries[0]);
+        else
+            command.callback.Invoke();
 
-        if (base.faction == Game.Faction.Neutral)
+        void War(Country targetCountry)
         {
-            // faction = actingPlayer
+            countryClickHandler.Close(); // Hack! Maybe set CCH to a close-after-n-clicks mode? 
+
+            int adjustment = 0;
+            int roll = Random.Range(0, 6) + 1;
+
+            foreach (Country neighbor in targetCountries[0].adjacentCountries)
+                if (neighbor.control == command.enemyPlayer)
+                    adjustment--;
+
+            Game.Faction warFaction = command.card.faction == Game.Faction.Neutral ? command.phasingPlayer : command.card.faction; 
+            Game.Faction warEnemyFaction = warFaction == Game.Faction.USA ? Game.Faction.USSR : Game.Faction.USA;
+
+            if (roll + adjustment >= rollRequired)
+            {
+                Game.AdjustVPs.Invoke(warFaction == Game.Faction.USA ? victoryPoints : -victoryPoints);
+                Game.AdjustInfluence.Invoke(targetCountry, warFaction, targetCountry.influence[warEnemyFaction]);
+                Game.SetInfluence.Invoke(targetCountry, warEnemyFaction, 0);
+            }
+
+            Game.AdjustMilOps.Invoke(warFaction, milOps);
+
+            command.callback.Invoke();
         }
-
-        switch (base.faction)
-        {
-            case Game.Faction.Neutral:
-                //enemyFaction = actingPlayer == Game.Faction.USA ? Game.Faction.USSR : Game.Faction.USA
-                break;
-            case Game.Faction.USA:
-                enemyFaction = Game.Faction.USSR;
-                break;
-            case Game.Faction.USSR:
-                enemyFaction = Game.Faction.USA;
-                break;
-        }
-
-        int adjustment = 0;
-        int roll = Random.Range(0, 6) + 1;
-
-        foreach (Country neighbor in targetCountry.adjacentCountries)
-        {
-            if (neighbor.control == enemyFaction)
-                adjustment--;
-        }
-
-        if (roll + adjustment >= rollRequired)
-        {
-            Game.AwardVictoryPoints.Invoke(actingFaction == Game.Faction.USA ? victoryPoints : -victoryPoints);
-            targetCountry.influence[actingFaction] += targetCountry.influence[enemyFaction];
-            targetCountry.influence[enemyFaction] = 0;
-        }
-
-        Game.AdjustMilOps.Invoke(Game.Faction.USSR, 2);
     }
 }

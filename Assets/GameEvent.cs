@@ -13,6 +13,8 @@ public class GameEvent : UnityEvent
         after = new UnityEvent();
     }
 
+    public void BaseInvoke() => base.Invoke();
+
     public new void Invoke()
     {
         if (before != null) before.Invoke();
@@ -30,6 +32,8 @@ public class GameEvent<T> : UnityEvent<T>
         before = new UnityEvent<T>();
         after = new UnityEvent<T>();
     }
+
+    public void BaseInvoke(T t) => base.Invoke(t);
 
     public new void Invoke(T t)
     {
@@ -49,6 +53,8 @@ public class GameEvent<T, U> : UnityEvent<T, U>
         after = new UnityEvent<T, U>();
     }
 
+    public void BaseInvoke(T t, U u) => base.Invoke(t, u);
+
     public new void Invoke(T t, U u)
     {
         before.Invoke(t, u);
@@ -66,6 +72,8 @@ public class GameEvent<T, U, V> : UnityEvent<T, U, V>
         before = new UnityEvent<T, U, V>();
         after = new UnityEvent<T, U, V>();
     }
+
+    public void BaseInvoke(T t, U u, V v) => base.Invoke(t, u, v);
 
     public new void Invoke(T t, U u, V v)
     {
