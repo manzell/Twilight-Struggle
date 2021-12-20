@@ -10,9 +10,9 @@ public class HeadlinePhase : Phase // There is just one of these
     public GameEvent<HeadlinePhase> headlineEvent = new GameEvent<HeadlinePhase>();
     public bool skipHeadline = false; 
 
-    public override void StartPhase(UnityAction callback)
+    public override void OnPhase(UnityAction callback)
     {
         FindObjectOfType<UIMessage>().Message("Headline Phase");
-        base.StartPhase(callback);
+        // Don't trigger the callback - we'll do that elsewhere, probably in HeadlinePhase or by calling NextPhase on CurrentPhase from HeadlineAction. 
     }
 }

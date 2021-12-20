@@ -11,10 +11,10 @@ public class MilOpsTrack : MonoBehaviour
 
     void Awake()
     {
-        Game.turnStartEvent.AddListener(onTurnStart);
+        Game.phaseStartEvent.AddListener(onTurnStart);
+        Game.phaseEndEvent.AddListener(ScoreMilOps);
 
         Game.AdjustMilOps.after.AddListener(onAdjustMilOps);
-        Game.turnEndEvent.AddListener(ScoreMilOps);
     }
 
     void onAdjustMilOps(Game.Faction faction, int i)
@@ -24,8 +24,10 @@ public class MilOpsTrack : MonoBehaviour
         reqdMilOps.text = requiredMilOps.ToString(); 
     }
 
-    void onTurnStart(Phase turn)
+    void onTurnStart(Phase phase)
     {
+        if (phase is not Turn) return; 
+
         milOps = new Dictionary<Game.Faction, int>
         {
             {Game.Faction.USA, 0 },
@@ -39,6 +41,8 @@ public class MilOpsTrack : MonoBehaviour
 
     public void ScoreMilOps(Phase phase)
     {
+        if(phase is not Turn) return;   
+
         int usVPadjustment = Mathf.Clamp(milOps[Game.Faction.USA] - requiredMilOps, -5, 0);
         int ussrVPadjustment = Mathf.Clamp(milOps[Game.Faction.USSR] - requiredMilOps, -5, 0);
 

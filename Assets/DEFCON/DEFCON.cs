@@ -27,7 +27,6 @@ public class DEFCON : SerializedMonoBehaviour
     private void Awake()
     {
         Game.AdjustDEFCON.AddListener(onAdjustDefcon);
-        Game.turnStartEvent.AddListener(p => UpdateDefcon()); 
     }
 
     public void onAdjustDefcon(Game.Faction faction, int amount)

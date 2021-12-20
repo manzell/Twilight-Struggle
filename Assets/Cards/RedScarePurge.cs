@@ -16,11 +16,11 @@ public class RedScarePurge : Card
             card.opsValue--;
         }
 
-        Game.currentTurn.turnEndEvent.AddListener(ResetInfluenceValues);
+        Game.currentTurn.phaseEndEvent.AddListener(ResetInfluenceValues);
 
         command.callback.Invoke();
 
-        void ResetInfluenceValues(Turn turn)
+        void ResetInfluenceValues(Phase turn)
         {
             foreach (Card card in adjustedCards)
                 card.opsValue++;

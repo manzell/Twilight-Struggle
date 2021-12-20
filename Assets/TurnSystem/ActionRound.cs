@@ -16,19 +16,7 @@ public class ActionRound : Phase
     {
         Game.phasingPlayer = phasingPlayer;
         Game.currentActionRound = this;
+        Game.setActiveFactionEvent.Invoke(phasingPlayer);
         base.StartPhase(callback);
-    }
-
-    //public override void NextPhase(UnityAction callback)
-    //{
-    //    // Here we wait for the Action to come back with call to EndPhase
-    //    foreach(Action action in FindObjectsOfType<Action>())
-    //        action.SetActionRound(this);
-    //}
-
-    public override void EndPhase(UnityAction callback)
-    {
-        Game.currentActionRound = null; 
-        base.EndPhase(callback);
     }
 }

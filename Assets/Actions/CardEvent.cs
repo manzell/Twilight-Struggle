@@ -7,7 +7,7 @@ public class CardEvent : GameAction
 {
     public override Command GetCommand(Card card, GameAction action) => new EventCommand(card, action);
 
-    public override void onCommandExecute(Command command) => command.card.CardEvent(command); 
+    public override void ExecuteCommandAction(Command command) => command.card.CardEvent(command); 
 
     public class EventCommand : Command
     {

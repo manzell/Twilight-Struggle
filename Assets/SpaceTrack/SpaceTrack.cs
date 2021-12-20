@@ -13,13 +13,16 @@ public class SpaceTrack : SerializedMonoBehaviour
 
     private void Awake()
     {
-        Game.turnStartEvent.AddListener(ResetSpaceRaceAttempts); 
+        Game.phaseStartEvent.AddListener(ResetSpaceRaceAttempts); 
     }
 
     void ResetSpaceRaceAttempts(Phase phase)
     {
-        attemptsRemaining[Game.Faction.USA] = 1;
-        attemptsRemaining[Game.Faction.USSR] = 1; 
+        if(phase is Turn)
+        {
+            attemptsRemaining[Game.Faction.USA] = 1;
+            attemptsRemaining[Game.Faction.USSR] = 1;
+        }
     }
 
     public Dictionary<Game.Faction, int> spaceRaceLevel

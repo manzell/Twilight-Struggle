@@ -16,11 +16,11 @@ public class Containment : Card
             card.opsValue++; 
         }
 
-        Game.currentTurn.turnEndEvent.AddListener(ResetInfluenceValues);
+        Game.currentTurn.phaseEndEvent.AddListener(ResetInfluenceValues);
 
         command.callback.Invoke(); 
 
-        void ResetInfluenceValues(Turn turn)
+        void ResetInfluenceValues(Phase phase)
         {
             foreach (Card card in adjustedCards)
                 card.opsValue--; 

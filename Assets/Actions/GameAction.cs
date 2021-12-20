@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public abstract class GameAction : SerializedMonoBehaviour
 {
     public string actionName; 
-    [ReadOnly] public CountryClickHandler countryClickHandler;
+    [HideInInspector] public CountryClickHandler countryClickHandler;
 
     public void SetCard(Card card)
     {
@@ -17,12 +17,12 @@ public abstract class GameAction : SerializedMonoBehaviour
 
         // Before we Execute, we want to send an event to the Game and to the Card as well as our new command as handy hooks. 
         Game.cardCommandEvent.Invoke(command);
-        card.cardCommandEvent.Invoke(command); // move this code to where it belongs... into the Command constructor
+        card.cardCommandEvent.Invoke(command); // move this code to where it belongs... into the Command constructor?
         command.executeCommand.Invoke(command); 
     }
 
     public abstract Command GetCommand(Card card, GameAction action); // Should I use abstractions here or an Interface?
-    public abstract void onCommandExecute(Command command);
+    public abstract void ExecuteCommandAction(Command command);
 
     public abstract class Command
     {
@@ -38,17 +38,19 @@ public abstract class GameAction : SerializedMonoBehaviour
 
         public Command(Card card, GameAction action)
         {
+            Debug.Log($"Creating Command from {card.cardName}");
             this.card = card; 
             this.action = action;
             phasingPlayer = Game.phasingPlayer;
-            actingPlayer = Game.phasingPlayer; 
-            callback = Game.currentActionRound.phaseCallback;
+            actingPlayer = Game.phasingPlayer;
+            callback = Game.currentPhase.callback; 
             cardOpsValue = card.opsValue;
 
-            Game.currentActionRound.command = this;
+            if(Game.currentActionRound)
+                Game.currentActionRound.command = this; // This fails during the headline phase. TODO:: Fix. 
             executeCommand.AddListener(c => Game.cardCommandEvent.Invoke(c)); // Note that this means that Game.cardCommandEvent.before and after aren't really reliable. 
             executeCommand.AddListener(c => card.cardCommandEvent.Invoke(c));
-            executeCommand.AddListener(action.onCommandExecute);
+            executeCommand.AddListener(action.ExecuteCommandAction);
 
         }
     }

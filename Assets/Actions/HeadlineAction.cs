@@ -7,25 +7,16 @@ public class HeadlineAction : GameAction
 {
     public override Command GetCommand(Card card, GameAction action) => new HeadlineCommand(card, action);
 
-    public override void onCommandExecute(Command command) // This is called from SetHeadline() once we have both Headlines and are ready to trigger. 
-    { 
+    public override void ExecuteCommandAction(Command command) // This is called from SetHeadline() once we have both Headlines and are ready to trigger. 
+    {
+        Debug.Log($"Headling Executing {command.card.cardName}");
+        Debug.Log(command.callback); 
+
+        UnityAction originalCallback = command.callback; 
         HeadlineCommand headlineCommand = command as HeadlineCommand;
-        Dictionary<Game.Faction, HeadlineCommand> headlines = Game.currentTurn.headline.headlines;
+        Dictionary<Game.Faction, HeadlineCommand> headlines = Game.currentTurn.headlinePhase.headlines;
 
         Game.Faction initiative = headlines[Game.Faction.USSR].cardOpsValue > headlines[Game.Faction.USA].cardOpsValue ? Game.Faction.USSR : Game.Faction.USA;
-
-        // Call our card headline events. // This is way to ensure that our Before/On/After events get called on each of the events in the list. 
-        List<GameEvent<HeadlinePhase>> actionList = new List<GameEvent<HeadlinePhase>>();
-
-        actionList.Add(Game.currentTurn.headline.headlineEvent);
-        actionList.Add(Game.headlineEvent);
-        actionList.Add(headlines[Game.Faction.USA].card.headlineEvent);
-        actionList.Add(headlines[Game.Faction.USSR].card.headlineEvent);
-
-        foreach(GameEvent<HeadlinePhase> geph in actionList)
-            geph.before.Invoke(Game.currentTurn.headline);
-        foreach (GameEvent<HeadlinePhase> geph in actionList)
-            geph.BaseInvoke(Game.currentTurn.headline);
 
         FirstHeadline();
         void FirstHeadline()
@@ -48,31 +39,37 @@ public class HeadlineAction : GameAction
 
         void FinishHeadline()
         {
-            foreach (GameEvent<HeadlinePhase> geph in actionList)
-                geph.after.Invoke(Game.currentTurn.headline);
-
-            command.callback.Invoke(); 
+            originalCallback.Invoke(); 
         }
     }
 
     public void SetHeadline(Game.Faction faction, Card card)
     {
         HeadlineCommand headlineCommand = new HeadlineCommand(card, this);
-        Dictionary<Game.Faction, HeadlineCommand> headlines = Game.currentTurn.headline.headlines;
+        Dictionary<Game.Faction, HeadlineCommand> headlines = Game.currentTurn.headlinePhase.headlines;
+        Player player = FindObjectOfType<Game>().playerMap[faction];
 
         if (headlines.ContainsKey(faction))
+        {
+            // Readd the current Headline to the player's hand.             
+            if(headlines[faction] != null)
+                player.hand.Add(headlines[faction].card);
+
             headlines[faction] = headlineCommand;
+        }
         else
             headlines.Add(faction, headlineCommand);
 
+        player.hand.Remove(card);
+
         // For now, automatically trigger the headlines if we have both; but we'll eventually put this into a button. 
-        if (headlines.Count == 2)
-            onCommandExecute(headlineCommand);
+        if (headlines[Game.Faction.USSR] != null && headlines[Game.Faction.USA] != null)
+            ExecuteCommandAction(headlineCommand);
     }
 
     public class HeadlineCommand : Command // in Our case we will have two headline commands
     {
-        public HeadlineCommand(Card c, GameAction a) : base(c, a) { }
+        public HeadlineCommand(Card card, GameAction a) : base(card, a) { }
     }
 }
 

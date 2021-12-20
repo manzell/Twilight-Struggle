@@ -8,7 +8,7 @@ public class Coup : GameAction
 {
     public override Command GetCommand(Card card, GameAction action) => new CoupCommand(card, action);
 
-    public override void onCommandExecute(Command command)
+    public override void ExecuteCommandAction(Command command)
     {
         CoupCommand coup = command as CoupCommand;
         List<Country> eligibleCountries = FindObjectsOfType<Country>().ToList();

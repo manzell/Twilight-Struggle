@@ -116,3 +116,8 @@ public abstract class Card : SerializedMonoBehaviour
         }
     }
 }
+
+public interface IOpsCard
+{
+
+}

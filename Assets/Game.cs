@@ -11,13 +11,14 @@ public class Game : SerializedMonoBehaviour
 
     // These are here for Game-Rule reasons. They are not involved in managing the Sequence of Phases
     public static UnityEvent<Phase> 
-        turnStartEvent = new UnityEvent<Phase>(),
-        turnEndEvent = new UnityEvent<Phase>();     
-    public static UnityEvent<ActionRound>
-        actionRoundStartEvent = new UnityEvent<ActionRound>(),
-        actionRoundEndEvent = new UnityEvent<ActionRound>();
+        phaseStartEvent = new UnityEvent<Phase>(),
+        phaseEndEvent = new UnityEvent<Phase>();     
+    
     public static GameEvent<HeadlinePhase>
         headlineEvent = new GameEvent<HeadlinePhase>();
+
+    public static UnityEvent<IPhaseAction> phaseActionEvent = new UnityEvent<IPhaseAction>();
+    public static UnityEvent<Faction> setActiveFactionEvent = new UnityEvent<Faction>();
 
     public static GameEvent<Faction, int> AdjustDEFCON = new GameEvent<Faction, int>(); 
     public static GameEvent<int> AdjustVPs = new GameEvent<int>(); 
@@ -50,12 +51,13 @@ public class Game : SerializedMonoBehaviour
     {
         if (deck is null) deck = new Deck();
 
-        deck.AddRange(earlyWarCards);
         deck.Shuffle();
 
         AdjustInfluence.AddListener(onAdjustInfluence);
         SetInfluence.AddListener(onSetInfluence); 
     }
+
+    [Button] void AdvancePhase() => currentPhase.NextPhase(currentPhase.callback);
 
     // These are the only functions that should be allowed to touch the Game State
     public static void onAdjustInfluence(Country country, Faction faction, int amount) => country.influence[faction] = Mathf.Max(0, country.influence[faction] + amount);

@@ -7,7 +7,7 @@ public class PlaceInfluence : GameAction
 {
     public override Command GetCommand(Card card, GameAction action) => new PlaceInfluenceCommand(card, action);
 
-    public override void onCommandExecute(Command command) // This is called when we say "Use This Card for Realignments" - before specifying which countries. 
+    public override void ExecuteCommandAction(Command command) // This is called when we say "Use This Card for Realignments" - before specifying which countries. 
     {
         // the command already is a PlaceInfluenceCommand, we're just Upcasting it. This feels like a shitty hack. 
         PlaceInfluenceCommand placement = command as PlaceInfluenceCommand;

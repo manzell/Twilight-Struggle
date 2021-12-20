@@ -58,7 +58,6 @@
     <Compile Include="Assets\Cards\NATO.cs" />
     <Compile Include="Assets\DEFCON\DEFCON.cs" />
     <Compile Include="Assets\Cards\Defectors.cs" />
-    <Compile Include="Assets\GameRules\GameRules.cs" />
     <Compile Include="Assets\Actions\HeadlineAction.cs" />
     <Compile Include="Assets\Actions\SpaceRace.cs" />
     <Compile Include="Assets\GameRules\CheckHeldCards.cs" />
@@ -77,16 +76,20 @@
     <Compile Include="Assets\DeckHandManager\Deck.cs" />
     <Compile Include="Assets\VP Track\VictoryTrack.cs" />
     <Compile Include="Assets\Extensions.cs" />
+    <Compile Include="Assets\GameRules\Deal.cs" />
     <Compile Include="Assets\Cards\Card.cs" />
     <Compile Include="Assets\Cards\SuezCrisis.cs" />
+    <Compile Include="Assets\UI\UICardStyler.cs" />
     <Compile Include="Assets\TurnSystem\Turn.cs" />
     <Compile Include="Assets\UIHeadlineDropZone.cs" />
     <Compile Include="Assets\Cards\MarshallPlan.cs" />
     <Compile Include="Assets\Player.cs" />
     <Compile Include="Assets\Game.cs" />
+    <Compile Include="Assets\Actions\GameAction.cs" />
     <Compile Include="Assets\Cards\Nasser.cs" />
     <Compile Include="Assets\Cards\COMECON.cs" />
     <Compile Include="Assets\CountryClickHandler.cs" />
+    <Compile Include="Assets\TurnSystem\HeadlinePhase.cs" />
     <Compile Include="Assets\GameRules\MayNotCoup.cs" />
     <Compile Include="Assets\Cards\NuclearTestBan.cs" />
     <Compile Include="Assets\UIMessage.cs" />
@@ -98,6 +101,7 @@
     <Compile Include="Assets\Cards\WarCard.cs" />
     <Compile Include="Assets\Cards\VietnamRevolts.cs" />
     <Compile Include="Assets\Cards\CIACreated.cs" />
+    <Compile Include="Assets\UI\UICardDropHandler.cs" />
     <Compile Include="Assets\UI\UIHandManager.cs" />
     <Compile Include="Assets\GameRules\MayNotPlaceInfluence.cs" />
     <Compile Include="Assets\GameRules\MayNotRealign.cs" />
@@ -109,9 +113,9 @@
     <Compile Include="Assets\TurnSystem\ActionRound.cs" />
     <Compile Include="Assets\Cards\TrumanDoctrine.cs" />
     <Compile Include="Assets\Cards\Fidel.cs" />
-    <Compile Include="Assets\UI\CardGenerator.cs" />
     <Compile Include="Assets\Cards\WarsawPactFormed.cs" />
     <Compile Include="Assets\Cards\EastEuropeanUnrest.cs" />
+    <Compile Include="Assets\UI\UIHeadlineStyler.cs" />
     <Compile Include="Assets\Actions\Coup.cs" />
     <Compile Include="Assets\Cards\RedScarePurge.cs" />
     <Compile Include="Assets\TurnSystem\Phase.cs" />
@@ -123,11 +127,11 @@
     <Compile Include="Assets\GameRules\MayNotHeadline.cs" />
     <Compile Include="Assets\Cards\FormosanRevolution.cs" />
     <Compile Include="Assets\EdgePan.cs" />
-    <Compile Include="Assets\TurnSystem\HeadlinePhase.cs" />
-    <Compile Include="Assets\Actions\GameAction.cs" />
-    <Compile Include="Assets\UI\UICardDropHandler.cs" />
-    <Compile Include="Assets\UI\UICardStyler.cs" />
-    <Compile Include="Assets\UI\UIHeadlineStyler.cs" />
+    <Compile Include="Assets\GameRules\PlaceStartingInfluence.cs" />
+    <Compile Include="Assets\GameRules\PlaceBonusInfluence.cs" />
+    <Compile Include="Assets\GameRules\SetActivePlayer.cs" />
+    <Compile Include="Assets\GameRules\ImproveDEFCON.cs" />
+    <Compile Include="Assets\GameRules\AddCards.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

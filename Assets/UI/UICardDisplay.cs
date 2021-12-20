@@ -32,7 +32,7 @@ public class UICardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         LayoutRebuilder.MarkLayoutForRebuild(GetComponent<RectTransform>()); // Shouldn't need this but Horizontal Layout Group doesn't seem to trigger after adjusting local position. 
     }
 
-    [Button] public void Setup(Card c)
+    [Button] public void SetCard(Card c)
     {
         card = c;
 
@@ -40,7 +40,9 @@ public class UICardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         influenceText.text = card.opsValue.ToString();
 
         if (card is not ScoringCard)
+        {
             influenceBackground.gameObject.SetActive(true);
+        }
 
         switch (card.faction)
         {
@@ -75,6 +77,9 @@ public class UICardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
 
         if (card is ScoringCard)
-            influenceBackground.gameObject.SetActive(true);
+        {
+            influenceBackground.gameObject.SetActive(false);
+            cardBackground.color = Color.yellow;
+        }
     }
 }

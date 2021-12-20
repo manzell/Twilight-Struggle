@@ -7,7 +7,7 @@ public class SpaceRace : GameAction
 {
     public override Command GetCommand(Card card, GameAction action) => new SpaceShotCommand(card, action);
 
-    public override void onCommandExecute(Command command)
+    public override void ExecuteCommandAction(Command command)
     {
         SpaceTrack spaceTrack = FindObjectOfType<SpaceTrack>();
         SpaceShotCommand spaceShot = command as SpaceShotCommand;

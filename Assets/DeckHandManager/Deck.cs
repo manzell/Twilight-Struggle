@@ -17,7 +17,7 @@ public class Deck : List<Card>
     {
         discards.Add(card);
         held.Remove(card);
-        this.Remove(card);
+        Remove(card);
 
         discard.Invoke(card); 
     }
@@ -40,7 +40,7 @@ public class Deck : List<Card>
             Card card = this[0];
 
             draw.Invoke(card);
-            this.Remove(card);
+            Remove(card);
             held.Add(card); 
 
             return card;
@@ -57,10 +57,13 @@ public class Deck : List<Card>
         {
             Card card = Draw(); 
             
-            if(card) 
+            if(card)
+            {
                 cards.Add(card);
+                this.Remove(card);
+            }
         }
-
+        
         return cards; 
     }
 

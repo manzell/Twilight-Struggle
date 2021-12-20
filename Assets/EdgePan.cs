@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Sirenix.OdinInspector; 
 
-public class EdgePan : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class EdgePan : SerializedMonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public int edgeBuffer = 100;
+    public (int top, int bottom, int left, int right) buffers; 
+
     public float speed = 1f; 
 
     Vector2 defaultScreen = new Vector2(1920, 1080);
@@ -21,7 +22,7 @@ public class EdgePan : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         if(hover)
         {
             // Pan Left and Right
-            if (Input.mousePosition.x > defaultScreen.x - edgeBuffer || Input.mousePosition.x < edgeBuffer)
+            if (Input.mousePosition.x > defaultScreen.x - buffers.right || Input.mousePosition.x < buffers.left)
             {
                 float xPanSpeed = (Input.mousePosition.x > defaultScreen.x / 2 ? -1 : 1) * speed;
                 float width = GetComponent<RectTransform>().rect.width / 2;
@@ -31,7 +32,7 @@ public class EdgePan : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             }
 
             // Pan Up and Down
-            if (Input.mousePosition.y > defaultScreen.y - edgeBuffer || Input.mousePosition.y < edgeBuffer)
+            if (Input.mousePosition.y > defaultScreen.y - buffers.top || Input.mousePosition.y < buffers.bottom)
             {
                 float yPanSpeed = (Input.mousePosition.y > defaultScreen.y / 2 ? -1 : 1) * speed;
                 float height = GetComponent<RectTransform>().rect.height / 2;

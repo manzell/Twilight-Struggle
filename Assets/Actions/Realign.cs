@@ -8,7 +8,7 @@ public class Realign : GameAction
 {
     public override Command GetCommand(Card card, GameAction action) => new RealignCommand(card, action);
 
-    public override void onCommandExecute(Command command) // This is called when we say "Use This Card for Realignments" - before specifying which countries. 
+    public override void ExecuteCommandAction(Command command) // This is called when we say "Use This Card for Realignments" - before specifying which countries. 
     {
         RealignCommand realign = command as RealignCommand;
 

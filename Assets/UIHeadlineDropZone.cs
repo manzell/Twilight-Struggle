@@ -5,19 +5,22 @@ using UnityEngine.EventSystems;
 
 public class UIHeadlineDropZone : MonoBehaviour, IDropHandler
 {
-    [SerializeField] HeadlineAction headlineAction;
+    public HeadlineAction headlineAction;
     [SerializeField] GameObject cardSlot;
-    [SerializeField] ICardStyler cardStyler;
 
     public Game.Faction faction;
 
     public void OnDrop(PointerEventData eventData)
     {
-        GameObject cardObject = Instantiate(eventData.selectedObject, cardSlot.transform);
-        headlineAction.SetHeadline(faction, cardObject.GetComponent<UICardDisplay>().card);
+        if(Game.currentTurn.headlinePhase.headlines[faction] == null &&
+            FindObjectOfType<UIManager>().currentFaction == faction)
+        {
+            GameObject cardObject = Instantiate(eventData.selectedObject, cardSlot.transform);
+            Card card = eventData.selectedObject.GetComponent<UICardDisplay>().card;
 
-        cardStyler.Style(cardObject);
+            GetComponent<ICardStyler>()?.Style(cardObject);
+            headlineAction.SetHeadline(faction, card);
+            FindObjectOfType<UIHandManager>().RefreshHandDisplay(); 
+        }
     }
-
-
 }
