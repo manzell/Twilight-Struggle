@@ -16,6 +16,19 @@ public class Scoring
         USbattlegrounds = 0, USCountries = 0, USAadjacents = 0,
         USSRbattlegrounds = 0, USSRCountries = 0, USSRadjacents = 0;
 
+    public Game.Faction scoringFaction
+    {
+        get
+        {
+            Debug.Log($"US Battlegrounds: {USbattlegrounds} US Countries: {USCountries} Adjacent Superpower Bonus: {USAadjacents}");
+            Debug.Log($"US Battlegrounds: {USSRbattlegrounds} US Countries: {USSRCountries} Adjacent Superpower Bonus: {USSRadjacents}");
+
+            if (vp > 0) return Game.Faction.USA;
+            else if (vp < 0) return Game.Faction.USSR;
+            else return Game.Faction.Neutral; 
+        }
+    }
+
     public Scoring(Dictionary<ScoreState, int> scoreKey, Country.Continent continent)
     {
         this.scoreKey = scoreKey;

@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq; 
+using UnityEngine.Events; 
+using System.Linq;
+using TMPro; 
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] GameObject arDropPanel;
     [SerializeField] GameObject headlineDropPanel;
-    [SerializeField] public Button button;
+    [SerializeField] public Button primaryButton, confirmButton, cancelButton; 
     public Game.Faction currentFaction;
 
     private void Awake()
@@ -23,8 +25,11 @@ public class UIManager : MonoBehaviour
         });
 
         Game.phaseEndEvent.AddListener(phase => {
-            arDropPanel.SetActive(false);
-            headlineDropPanel.SetActive(false);
+            Debug.Log("Phase End Listener Reached");
+            if (phase is ActionRound)
+                arDropPanel.SetActive(false);
+            else if (phase is HeadlinePhase)
+                headlineDropPanel.SetActive(false);
         });
     }
 
@@ -42,5 +47,24 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SetButton(Button button, string text, UnityAction callback)
+    {
+        Debug.Log(button);
+        Debug.Log(button.onClick); 
+
+        button.onClick.RemoveAllListeners();
+        button.GetComponentInChildren<TextMeshProUGUI>().text = text; 
+        button.onClick.AddListener(callback);
+        button.interactable = true;
+    }
+
+    public void UnsetButton(Button button)
+    {
+
+        button.GetComponentInChildren<TextMeshProUGUI>().text = "-";
+        button.onClick.RemoveAllListeners();
+        button.interactable = false;
     }
 }

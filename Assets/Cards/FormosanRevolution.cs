@@ -22,9 +22,14 @@ public class FormosanRevolution : Card
         {
             if (taiwan.control == Game.Faction.USA)
             {
-                scoring.USSRbattlegrounds += 1;
+                scoring.USbattlegrounds += 1;
                 scoring.totalBattlegrounds += 1;
             }
+        }
+
+        void CancelFormosanResolution()
+        {
+            asiaScoring.scoreEvent.RemoveListener(CountTaiwanAsBattleground); 
         }
     }
 }

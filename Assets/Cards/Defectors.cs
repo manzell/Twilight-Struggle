@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Defectors : Card, IHeadlineEvent
 {
+    bool headlined = false; 
+
     public override void CardEvent(GameAction.Command command)
     {
         if(Game.phasingPlayer == Game.Faction.USSR)
@@ -21,7 +23,7 @@ public class Defectors : Card, IHeadlineEvent
 
             // TODO: Skip Headline Phase
 
-            FindObjectOfType<UIMessage>().Message($"USSR Headline ({headline.headlines[Game.Faction.USSR].card.cardName}) is canceled by Defectors!"); 
+            Message($"USSR Headline ({headline.headlines[Game.Faction.USSR].card.cardName}) is canceled by Defectors!"); 
         }
     }
 }

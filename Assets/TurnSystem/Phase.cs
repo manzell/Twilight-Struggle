@@ -53,12 +53,13 @@ public class Phase : SerializedMonoBehaviour
     public void EndThread() { Debug.Log("Thread Finished");  }
     public void StartThread()
     {
-        callback = EndThread; 
         StartPhase(callback);
     }
 
     public virtual void StartPhase(UnityAction callback)
     {
+        this.callback = callback;
+
         if (parentPhase)
             Debug.Log($"Start Phase: {parentPhase}/{this}");
         else
@@ -68,8 +69,8 @@ public class Phase : SerializedMonoBehaviour
         Game.currentPhase = this;
 
         // We then invoke our PhaseStartEvents
+        Game.phaseStartEvent.Invoke(this);
         phaseStartEvent.Invoke(this);
-        Game.phaseStartEvent.Invoke(this); 
 
         // First we look for Objects on our Game Object implmenet IStartPhaseAction
         ProcessPhaseActions(beforePhaseActions, () => StartPhaseToo(callback));
@@ -91,8 +92,9 @@ public class Phase : SerializedMonoBehaviour
     }
 
     public virtual void EndPhase(UnityAction callback)
-    {
+    {        
         phaseEndEvent.Invoke(this);
+        Game.phaseEndEvent.Invoke(this); 
 
         ProcessPhaseActions(afterPhaseActions, () => Finalize(callback));
     }

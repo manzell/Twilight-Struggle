@@ -60,6 +60,9 @@ public class Game : SerializedMonoBehaviour
     [Button] void AdvancePhase() => currentPhase.NextPhase(currentPhase.callback);
 
     // These are the only functions that should be allowed to touch the Game State
-    public static void onAdjustInfluence(Country country, Faction faction, int amount) => country.influence[faction] = Mathf.Max(0, country.influence[faction] + amount);
-    public static void onSetInfluence(Country country, Faction faction, int amount) => country.influence[faction] = amount;
+    public static void onAdjustInfluence(Country country, Faction faction, int amount) =>
+        country.influence[faction] = Mathf.Max(0, country.influence[faction] + amount);
+
+    public static void onSetInfluence(Country country, Faction faction, int amount) =>
+        AdjustInfluence.Invoke(country, faction, -country.influence[faction]);
 }

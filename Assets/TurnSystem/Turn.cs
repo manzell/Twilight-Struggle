@@ -23,6 +23,6 @@ public class Turn : Phase
     public override void EndPhase(UnityAction callback)
     {
         Game.currentTurn = null;
-        base.NextPhase(callback);
+        base.EndPhase(callback);
     }
 }

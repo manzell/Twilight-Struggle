@@ -22,12 +22,18 @@ public class COMECON : Card
         else
             countryClickHandler = new CountryClickHandler(eligibleCountries, onCountryClick);
 
+        uiManager.SetButton(uiManager.primaryButton, "Finish Placing Ops", onFinish); 
+
+        void onFinish()
+        {
+            uiManager.UnsetButton(uiManager.primaryButton);
+            countryClickHandler.Close();
+            command.callback.Invoke();
+        }
+
         // TODO: Make this into generic calls to like "Add/Remove X influece to any/each of these countries"
         void onCountryClick(Country country)
         {
-            // TODO: Change the country click handler to only exist on presently-eligible countries. 
-            if (!eligibleCountries.Contains(country)) return;
-
             Game.AdjustInfluence.Invoke(country, faction, 1);
             eligibleCountries.Remove(country);
             countryClickHandler.Remove(country);
@@ -35,10 +41,7 @@ public class COMECON : Card
             count--;
 
             if (count == 0)
-            {
-                countryClickHandler.Close();
-                command.callback.Invoke();
-            }
+                onFinish(); 
         }
     }
 }

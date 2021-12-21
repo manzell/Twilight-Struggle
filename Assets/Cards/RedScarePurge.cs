@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class RedScarePurge : Card
 {
+    // TODO: Fix the underlying system whereby we add a Modifier to the Ops Value of the card. 
     public override void CardEvent(GameAction.Command command)
     {
+        if (command.actingPlayer == Game.Faction.USSR)
+            Message("Red Scare grips the US!");
+        else
+            Message("USSR Purges reactionaries from the party"); 
+
         List<Card> adjustedCards = new List<Card>();
 
-        foreach (Card card in FindObjectOfType<Game>().playerMap[Game.Faction.USA].hand)
+        foreach (Card card in FindObjectOfType<Game>().playerMap[command.enemyPlayer].hand)
         {
-            if (card is ScoringCard || card.opsValue < 2) break;
+            if (card is ScoringCard) break;
 
             adjustedCards.Add(card);
-            card.opsValue--;
+            card.bonusOps--; 
         }
 
         Game.currentTurn.phaseEndEvent.AddListener(ResetInfluenceValues);
@@ -23,7 +29,7 @@ public class RedScarePurge : Card
         void ResetInfluenceValues(Phase turn)
         {
             foreach (Card card in adjustedCards)
-                card.opsValue++;
+                card.bonusOps++;
         }
     }
 }

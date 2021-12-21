@@ -18,7 +18,6 @@ public class NATO : Card
                     country.gameObject.AddComponent<MayNotRealign>().faction = Game.Faction.USSR;
                 }
 
-
         command.callback.Invoke(); 
     }
 }

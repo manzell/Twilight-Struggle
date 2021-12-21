@@ -16,10 +16,15 @@ public class EastEuropeanUnrest : Card
             if(country.influence[Game.Faction.USSR] > 0) 
                 eligibleCountries.Add(country);
 
-        if(eligibleCountries.Count > 3)
-            countryClickHandler = new CountryClickHandler(eligibleCountries, onCountryClick); 
-        else // If it's a foregone choice, just jump to it and don't prompt the player
-            RemoveInfluence(Game.Faction.USSR, eligibleCountries, amount); 
+        FindObjectOfType<UIManager>().SetButton(FindObjectOfType<UIManager>().primaryButton, "Unrest Abates", Finish); 
+
+        if (eligibleCountries.Count > 3)
+            countryClickHandler = new CountryClickHandler(eligibleCountries, onCountryClick);
+        else
+        {
+            RemoveInfluence(Game.Faction.USSR, eligibleCountries, amount);
+            Finish(); 
+        }
 
         void onCountryClick(Country country)
         {
@@ -31,8 +36,15 @@ public class EastEuropeanUnrest : Card
                 count--;
             }
 
-            if (count == 0)
-                command.callback.Invoke(); 
+            if (count == 0) 
+                Finish();
+        }
+
+        void Finish()
+        {
+            FindObjectOfType<UIManager>().UnsetButton(FindObjectOfType<UIManager>().primaryButton);
+            countryClickHandler.Close(); 
+            command.callback.Invoke();
         }
     }
 

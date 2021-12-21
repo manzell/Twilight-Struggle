@@ -12,7 +12,7 @@ public class FiveYearPlan : Card
 
         USSR.hand.Remove(card);
         
-        FindObjectOfType<UIMessage>().Message($"5-Year Plan discarded {card.cardName} from USSR hand");
+        Message($"5-Year Plan discarded {card.cardName} from USSR hand");
                 
         if(card.faction == Game.Faction.USA)
         {
@@ -20,9 +20,6 @@ public class FiveYearPlan : Card
             card.CardEvent(command); // TODO : Warning I have no idea if this is stable. Five year plan is can be an CardEventCommand from either faction, will that mess things up? 
         }
         else
-        {
-            Game.deck.discards.Add(card);
             command.callback.Invoke();  
-        }
     }
 }

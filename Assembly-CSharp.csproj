@@ -132,6 +132,9 @@
     <Compile Include="Assets\GameRules\SetActivePlayer.cs" />
     <Compile Include="Assets\GameRules\ImproveDEFCON.cs" />
     <Compile Include="Assets\GameRules\AddCards.cs" />
+    <Compile Include="Assets\GameRules\SetDEFCON.cs" />
+    <Compile Include="Assets\GameBoard\ClickHandler.cs" />
+    <Compile Include="Assets\UI\UIDefcon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -871,6 +874,10 @@
     <ProjectReference Include="Unity.VisualScripting.Core.csproj">
       <Project>{DF993D78-8ABE-E402-518B-24B65DDE5248}</Project>
       <Name>Unity.VisualScripting.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
+      <Project>{9A6E205E-3972-7BFE-A44A-9E4684202508}</Project>
+      <Name>Unity.2D.Sprite.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

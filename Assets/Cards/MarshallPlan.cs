@@ -18,10 +18,12 @@ public class MarshallPlan : Card
             if (country.control == Game.Faction.USSR)
                 westernEurope.Remove(country);
 
+        FindObjectOfType<UIManager>().SetButton(FindObjectOfType<UIManager>().primaryButton, "Finish Rebuilding Europe", Finish); 
+
         if (westernEurope.Count <= count)
         {
             AddInfluence(faction, westernEurope, 1);
-            command.callback.Invoke(); 
+            Finish(); 
         }
         else
             countryClickHandler = new CountryClickHandler(westernEurope, onCountryClick, new Color(0f, .6f, .6f));
@@ -37,10 +39,13 @@ public class MarshallPlan : Card
             }
 
             if (count == 0)
-            {
-                countryClickHandler.Close();
-                command.callback.Invoke(); 
-            }
+                Finish();
+        }
+
+        void Finish()
+        {
+            countryClickHandler.Close();
+            command.callback.Invoke();
         }
     }
 }

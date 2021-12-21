@@ -132,6 +132,9 @@
     <Compile Include="Assets\GameRules\SetActivePlayer.cs" />
     <Compile Include="Assets\GameRules\ImproveDEFCON.cs" />
     <Compile Include="Assets\GameRules\AddCards.cs" />
+    <Compile Include="Assets\GameRules\SetDEFCON.cs" />
+    <Compile Include="Assets\GameBoard\ClickHandler.cs" />
+    <Compile Include="Assets\UI\UIDefcon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

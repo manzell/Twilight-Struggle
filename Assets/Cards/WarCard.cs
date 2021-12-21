@@ -30,6 +30,8 @@ public class WarCard : Card
             Game.Faction warFaction = command.card.faction == Game.Faction.Neutral ? command.phasingPlayer : command.card.faction; 
             Game.Faction warEnemyFaction = warFaction == Game.Faction.USA ? Game.Faction.USSR : Game.Faction.USA;
 
+            FindObjectOfType<UIMessage>().Message($"{warFaction} launched a war in {targetCountry.countryName}! They rolled a {roll}+{adjustment} (needed: {rollRequired}). {(roll + adjustment >= rollRequired ? "Success!" : "Failure.")}");
+
             if (roll + adjustment >= rollRequired)
             {
                 Game.AdjustVPs.Invoke(warFaction == Game.Faction.USA ? victoryPoints : -victoryPoints);

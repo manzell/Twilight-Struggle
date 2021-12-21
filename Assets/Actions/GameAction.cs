@@ -38,13 +38,12 @@ public abstract class GameAction : SerializedMonoBehaviour
 
         public Command(Card card, GameAction action)
         {
-            Debug.Log($"Creating Command from {card.cardName}");
             this.card = card; 
             this.action = action;
             phasingPlayer = Game.phasingPlayer;
             actingPlayer = Game.phasingPlayer;
             callback = Game.currentPhase.callback; 
-            cardOpsValue = card.opsValue;
+            cardOpsValue = card.ops;
 
             if(Game.currentActionRound)
                 Game.currentActionRound.command = this; // This fails during the headline phase. TODO:: Fix. 

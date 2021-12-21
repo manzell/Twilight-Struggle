@@ -6,11 +6,15 @@ using UnityEngine.Events;
 public class DeGaulleLeadsFrance : Card
 {
     [SerializeField] Country france;
+    public int USSRinfluence = 1;
+    public int USAinfluence = -2; 
 
     public override void CardEvent(GameAction.Command command)
     {
-        Game.AdjustInfluence.Invoke(france, Game.Faction.USA, -2);
-        Game.AdjustInfluence.Invoke(france, Game.Faction.USSR, 1);
+        FindObjectOfType<UIMessage>().Message($"De Gaulle removes {Mathf.Min(Mathf.Abs(USAinfluence), france.influence[Game.Faction.USA])} US influence from France and adds {USSRinfluence} USSR Influence"); 
+
+        Game.AdjustInfluence.Invoke(france, Game.Faction.USA, USAinfluence);
+        Game.AdjustInfluence.Invoke(france, Game.Faction.USSR, USSRinfluence);
         
         france.gameObject.AddComponent<DeGaulleLeadsFrance>();
 

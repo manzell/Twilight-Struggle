@@ -12,56 +12,62 @@ public class WarsawPactFormed : Card
         NATO.isPlayable = true;
 
         // TODO: Present the player a choice. For now, just add USSR influence
-        AddUSSRInfluence(command); 
-    }
 
-    void RemoveAllUSInfluence(GameAction.Command command)
-    {
-        int count = 4;
+        uiManager.SetButton(uiManager.confirmButton, "Expel Westerners", RemoveAllUSInfluence);
+        uiManager.SetButton(uiManager.cancelButton, "Solidify the Eastern Bloc", AddUSSRInfluence);
 
-        foreach (Country country in easternEurope)
-            if (country.influence[Game.Faction.USA] == 0)
-                easternEurope.Add(country);
-
-        countryClickHandler = new CountryClickHandler(easternEurope, doRemoveInfluence); 
-
-        void doRemoveInfluence(Country country)
+        void RemoveAllUSInfluence()
         {
-            Game.SetInfluence.Invoke(country, Game.Faction.USA, 0);
-            countryClickHandler.Remove(country);
-            easternEurope.Remove(country);
-            count--;
+            uiManager.UnsetButton(uiManager.confirmButton);
+            uiManager.UnsetButton(uiManager.cancelButton);
+            uiManager.SetButton(uiManager.primaryButton, "Finish purging reactionaries", Finish);
+            int count = 4;
 
-            if (count == 0)
+            foreach (Country country in easternEurope)
+                if (country.influence[Game.Faction.USA] == 0)
+                    easternEurope.Remove(country);
+
+            if(easternEurope.Count <= count)
             {
-                countryClickHandler.Close();
-                command.callback.Invoke(); 
+                foreach(Country country in easternEurope)
+                    Game.SetInfluence.Invoke(country, Game.Faction.USA, 0);
+
+                Finish(); 
             }
-                
-        }
-    }
-
-    void AddUSSRInfluence(GameAction.Command command)
-    {
-        List<Country> placedCountries = new List<Country>();
-        int count = 5;
-        int limit = 2;
-
-        countryClickHandler = new CountryClickHandler(easternEurope, doAddInfluence); 
-
-        void doAddInfluence(Country country)
-        {
-            if(placedCountries.CountOf(country) < limit)
+            else
             {
-                Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, 1);
+                countryClickHandler = new CountryClickHandler(easternEurope, onCountryClick);
+            }
+
+            void onCountryClick(Country country)
+            {
+                Game.SetInfluence.Invoke(country, Game.Faction.USA, 0);
+                countryClickHandler.Remove(country);
+                easternEurope.Remove(country);
                 count--;
-            }
 
-            if (count == 0)
-            {
-                countryClickHandler.Close();
-                command.callback.Invoke();
+                if (count == 0)
+                    Finish(); 
             }
         }
+
+        void AddUSSRInfluence()
+        {
+            uiManager.UnsetButton(uiManager.confirmButton);
+            uiManager.UnsetButton(uiManager.cancelButton);
+            uiManager.SetButton(uiManager.primaryButton, "Finish deploying Influence", Finish);
+            AddInfluence(easternEurope, Game.Faction.USA, 5, 2, Finish); 
+        }
+
+        void Finish()
+        {
+            countryClickHandler.Close();
+            uiManager.UnsetButton(uiManager.primaryButton);
+            uiManager.UnsetButton(uiManager.confirmButton);
+            uiManager.UnsetButton(uiManager.cancelButton);
+            command.callback.Invoke();
+        }
     }
+
+
 }

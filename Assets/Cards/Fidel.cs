@@ -11,6 +11,7 @@ public class Fidel : Card
         Game.SetInfluence.Invoke(cuba, Game.Faction.USA, 0);
         Game.SetInfluence.Invoke(cuba, Game.Faction.USSR, Mathf.Max(cuba.influence[Game.Faction.USSR], cuba.stability));
 
+        Message("Fidel overthrows Batista!"); 
         command.callback.Invoke(); 
     }
 }

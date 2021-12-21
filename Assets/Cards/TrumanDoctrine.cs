@@ -14,7 +14,10 @@ public class TrumanDoctrine : Card
                 eligibleCountries.Add(country);
 
         if (eligibleCountries.Count > 1)
+        {
+            Message("Truman promises to support freedom throughout Europe");
             countryClickHandler = new CountryClickHandler(eligibleCountries, onCountryClick);
+        }
         else
         {
             if (eligibleCountries.Count == 1)

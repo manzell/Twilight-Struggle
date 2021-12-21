@@ -10,20 +10,21 @@ public class Containment : Card
         
         foreach(Card card in FindObjectOfType<Game>().playerMap[Game.Faction.USA].hand)
         {
-            if (card is ScoringCard || card.opsValue >= 4) break; 
+            if (card is ScoringCard) break; 
 
             adjustedCards.Add(card);
-            card.opsValue++; 
+            card.bonusOps++; 
         }
 
-        Game.currentTurn.phaseEndEvent.AddListener(ResetInfluenceValues);
+        if(adjustedCards.Count > 0)
+            Game.currentTurn.phaseEndEvent.AddListener(ResetInfluenceValues);
 
         command.callback.Invoke(); 
 
         void ResetInfluenceValues(Phase phase)
         {
             foreach (Card card in adjustedCards)
-                card.opsValue--; 
+                card.bonusOps = Mathf.Clamp(card.bonusOps - 1, 0, 5); 
         }
     }
 }

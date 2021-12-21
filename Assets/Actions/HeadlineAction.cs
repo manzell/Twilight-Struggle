@@ -9,9 +9,6 @@ public class HeadlineAction : GameAction
 
     public override void ExecuteCommandAction(Command command) // This is called from SetHeadline() once we have both Headlines and are ready to trigger. 
     {
-        Debug.Log($"Headling Executing {command.card.cardName}");
-        Debug.Log(command.callback); 
-
         UnityAction originalCallback = command.callback; 
         HeadlineCommand headlineCommand = command as HeadlineCommand;
         Dictionary<Game.Faction, HeadlineCommand> headlines = Game.currentTurn.headlinePhase.headlines;
@@ -25,7 +22,8 @@ public class HeadlineAction : GameAction
             headlineCommand.actingPlayer = initiative;
             headlineCommand.callback = SecondHeadline;
 
-            headlines[initiative].card.CardEvent(headlineCommand);
+            Debug.Log($"Headlining {headlines[headlineCommand.actingPlayer].card.cardName}");
+            headlines[headlineCommand.actingPlayer].card.CardEvent(headlineCommand);
         }
 
         void SecondHeadline()
@@ -34,12 +32,17 @@ public class HeadlineAction : GameAction
             headlineCommand.actingPlayer = headlineCommand.enemyPlayer;
             headlineCommand.callback = FinishHeadline;
 
+            Debug.Log($"Headlining {headlines[headlineCommand.actingPlayer].card.cardName}");
             headlines[headlineCommand.actingPlayer].card.CardEvent(headlineCommand);
         }
 
         void FinishHeadline()
         {
-            originalCallback.Invoke(); 
+            //headlineCommand.callback = () => Game.currentPhase.NextPhase(originalCallback); 
+            //headlineCommand.callback.Invoke(); 
+
+            Debug.Log("Finishing Headline Phase"); 
+            Game.currentPhase.NextPhase(originalCallback);  
         }
     }
 

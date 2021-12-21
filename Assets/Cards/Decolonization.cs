@@ -5,12 +5,17 @@ using UnityEngine;
 public class Decolonization : Card
 {
     [SerializeField] List<Country> countries = new List<Country>();
+    public int countryCount = 4; 
 
     public override void CardEvent(GameAction.Command command)
     {
-        int count = 4; 
+        int count = countryCount; 
 
         countryClickHandler = new CountryClickHandler(countries, onCountryClick);
+
+        Message($"Place {count} USSR Influence"); 
+
+        uiManager.SetButton(uiManager.primaryButton, "Finish Decol", Finish);         
 
         void onCountryClick(Country country)
         {
@@ -18,15 +23,20 @@ public class Decolonization : Card
 
             if (countries.Contains(country))
             {
+                Message($"Place {count} USSR Influence");
                 Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, 1);
                 countries.Remove(country);
                 countryClickHandler.Remove(country);
             }
             if (count == 0)
-            {
-                countryClickHandler.Close();
-                command.callback.Invoke();
-            }
+                Finish(); 
+        }
+
+        void Finish()
+        {
+            countryClickHandler.Close();
+            uiManager.UnsetButton(uiManager.primaryButton); 
+            command.callback.Invoke();
         }
     }
 }

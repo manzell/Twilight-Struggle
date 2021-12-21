@@ -6,18 +6,20 @@ using UnityEngine.Events;
 
 public abstract class Card : SerializedMonoBehaviour
 {
-    public int bonusOps = 0;
 
     // TODO: send to ScriptableObject
     public string cardName;
     public Game.Faction faction;
-    public int opsValue = 0;
+    public int ops = 0;
+    public int bonusOps = 0;
+    public int OpsValue => ops + bonusOps;
     public string cardText;
     public bool removeOnEvent = false;
 
     [HideInInspector] public GameEvent<HeadlinePhase> headlineEvent = new GameEvent<HeadlinePhase>();
     [HideInInspector] public UnityEvent<Card> clickEvent = new UnityEvent<Card>();    
     [HideInInspector] public GameEvent<GameAction.Command> cardCommandEvent = new GameEvent<GameAction.Command>();
+    protected static UIManager uiManager => FindObjectOfType<UIManager>();
 
     protected static CountryClickHandler countryClickHandler;
     protected static CardClickHandler cardClickHandler;
@@ -39,8 +41,8 @@ public abstract class Card : SerializedMonoBehaviour
         if (influence != 0)
             Game.AdjustInfluence.Invoke(country, faction, -influence); 
     }
-    protected static void RemoveInfluence(List<Country> countries, Game.Faction faction, int totalInfluence, int maxPerCountry = 0) =>
-        AddInfluence(countries, faction, totalInfluence, maxPerCountry);
+    protected static void RemoveInfluence(List<Country> countries, Game.Faction faction, int totalInfluence, int maxPerCountry, UnityAction callback) =>
+        AddInfluence(countries, faction, -totalInfluence, maxPerCountry, callback);
 
     protected static void AddInfluence(Game.Faction faction, Dictionary<Country, int> countries)
     {
@@ -57,7 +59,7 @@ public abstract class Card : SerializedMonoBehaviour
         if (influence != 0)
             Game.AdjustInfluence.Invoke(country, faction, influence);
     }
-    protected static void AddInfluence(List<Country> countries, Game.Faction faction, int totalInfluence, int maxPerCountry = 0)
+    protected static void AddInfluence(List<Country> countries, Game.Faction faction, int totalInfluence, int maxPerCountry, UnityAction callback)
     {
         List<Country> removedCountries = new List<Country>();
 
@@ -65,24 +67,24 @@ public abstract class Card : SerializedMonoBehaviour
 
         void onCountryClick(Country country)
         {
-            if (countries.Contains(country))
+            if (maxPerCountry == 0 && removedCountries.CountOf(country) < maxPerCountry)
             {
-                if (maxPerCountry > 0 && removedCountries.CountOf(country) < maxPerCountry)
-                {
-                    removedCountries.Add(country);
-                    Game.AdjustInfluence.Invoke(country, faction, 1);
-                    totalInfluence--;
-                }
+                removedCountries.Add(country);
+                Game.AdjustInfluence.Invoke(country, faction, totalInfluence > 0 ? 1 : -1);
+                totalInfluence--;
+            }
 
-                if (countries.CountOf(country) == maxPerCountry)
-                {
-                    countryClickHandler.Remove(country);
-                    countries.Remove(country);
-                }
+            if (removedCountries.CountOf(country) == maxPerCountry)
+            {
+                countryClickHandler.Remove(country);
+                countries.Remove(country);
             }
 
             if (totalInfluence == 0)
-                countryClickHandler.Close(); 
+            {
+                countryClickHandler.Close();
+                callback.Invoke(); 
+            }
         }
     }
 
@@ -115,9 +117,6 @@ public abstract class Card : SerializedMonoBehaviour
             }
         }
     }
-}
 
-public interface IOpsCard
-{
-
+    protected static void Message(string message) =>FindObjectOfType<UIMessage>().Message(message); 
 }

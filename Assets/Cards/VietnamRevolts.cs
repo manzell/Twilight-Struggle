@@ -10,8 +10,10 @@ public class VietnamRevolts : Card
 
     public override void CardEvent(GameAction.Command command)
     {
-        Game.AdjustInfluence.Invoke(vietnam, Game.Faction.USSR, 2); 
+        Message("Hi Chi Minh expels French");
+        Game.AdjustInfluence.Invoke(vietnam, Game.Faction.USSR, 2);
 
-
+        // TODO Make this work
+        command.callback.Invoke(); 
     } 
 }

@@ -37,7 +37,7 @@ public class UICardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         card = c;
 
         cardTitleText.text = card.cardName;
-        influenceText.text = card.opsValue.ToString();
+        influenceText.text = card.ops.ToString();
 
         if (card is not ScoringCard)
         {

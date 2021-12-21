@@ -11,7 +11,7 @@ public class UICardDropHandler : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         GameObject cardObject = Instantiate(eventData.selectedObject, cardSlot.transform);
-        gameAction.SetCard(cardObject.GetComponent<UICardDisplay>().card);
+        gameAction.SetCard(eventData.selectedObject.GetComponent<UICardDisplay>().card);
         
         GetComponent<UICardStyler>()?.Style(cardObject);
     }

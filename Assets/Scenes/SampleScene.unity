@@ -2486,10 +2486,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Five Year Plan
   faction: 2
-  opsValue: 3
+  ops: 3
+  bonusOps: 0
   cardText: The USSR must randomly discard a card. If the card has a US associated
     Event, the Event occurs immediately. If the card has a USSR associated Event
     or an Event applicable to both players, then the card must be discarded without
@@ -2805,8 +2805,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1963185791}
   - {fileID: 75689241}
+  - {fileID: 1843678110}
   m_Father: {fileID: 1236129824}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2864,6 +2864,7 @@ GameObject:
   - component: {fileID: 52287713}
   - component: {fileID: 52287715}
   - component: {fileID: 52287716}
+  - component: {fileID: 52287717}
   m_Layer: 0
   m_Name: Turn 10
   m_TagString: Untagged
@@ -2916,7 +2917,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 52287717}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -2957,6 +2959,9 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
       Data: 0
     - Name: 
       Entry: 13
@@ -2986,6 +2991,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dealUpTo: 9
+--- !u!114 &52287717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52287712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3786b234e68c296418b19bea67f34ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &52860909
 GameObject:
   m_ObjectHideFlags: 0
@@ -5099,7 +5116,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 51822354}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -5166,7 +5183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 1}
+  m_Color: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6845,13 +6862,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109055469}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1367843437}
-  m_RootOrder: 2
+  m_Father: {fileID: 1236129824}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &109055471
 MonoBehaviour:
@@ -11852,7 +11869,7 @@ RectTransform:
   - {fileID: 93491082}
   - {fileID: 873057014}
   m_Father: {fileID: 304584626}
-  m_RootOrder: 79
+  m_RootOrder: 75
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15038,10 +15055,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: COMECON
   faction: 1
-  opsValue: 3
+  ops: 3
+  bonusOps: 0
   cardText: Add 1 USSR Influence to each of 4 non-US controlled countries of Eastern
     Europe.
   removeOnEvent: 1
@@ -15938,7 +15955,7 @@ GameObject:
   - component: {fileID: 274884465}
   - component: {fileID: 274884466}
   m_Layer: 0
-  m_Name: Defectors
+  m_Name: '*Defectors'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16134,10 +16151,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Defectors
   faction: 2
-  opsValue: 2
+  ops: 2
+  bonusOps: 0
   cardText: The US may play this card during the Headline Phase in order to cancel
     the USSR Headline Event (including a scoring card). The canceled card is placed
     into the discard pile. If this card is played by the USSR during its action round,
@@ -17817,15 +17834,15 @@ RectTransform:
   - {fileID: 146538410}
   - {fileID: 468320334}
   - {fileID: 2081396036}
-  - {fileID: 2083694789}
-  - {fileID: 1183411858}
-  - {fileID: 1482464817}
-  - {fileID: 893249167}
   - {fileID: 186258602}
-  - {fileID: 1649311464}
-  - {fileID: 348178481}
   - {fileID: 2118922990}
   - {fileID: 544796623}
+  - {fileID: 348178481}
+  - {fileID: 1649311464}
+  - {fileID: 893249167}
+  - {fileID: 1482464817}
+  - {fileID: 1183411858}
+  - {fileID: 2083694789}
   m_Father: {fileID: 1635257470}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18571,6 +18588,7 @@ GameObject:
   - component: {fileID: 320690298}
   - component: {fileID: 320690300}
   - component: {fileID: 320690299}
+  - component: {fileID: 320690301}
   m_Layer: 0
   m_Name: Turn 7
   m_TagString: Untagged
@@ -18625,6 +18643,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 320690300}
+    - {fileID: 320690301}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -18668,7 +18687,10 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 1
     - Name: 
       Entry: 13
       Data: 
@@ -18711,6 +18733,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamePhase: 3
   cards: []
+--- !u!114 &320690301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320690295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3786b234e68c296418b19bea67f34ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &322076910
 GameObject:
   m_ObjectHideFlags: 0
@@ -19669,7 +19703,7 @@ RectTransform:
   - {fileID: 662305332}
   - {fileID: 452577522}
   m_Father: {fileID: 304584626}
-  m_RootOrder: 81
+  m_RootOrder: 78
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -20150,10 +20184,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Middle East Scoring
   faction: 0
-  opsValue: 0
+  ops: 0
+  bonusOps: 0
   cardText: 
   removeOnEvent: 0
   clickEvent:
@@ -20163,6 +20197,83 @@ MonoBehaviour:
   scoreEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &357165928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 357165929}
+  - component: {fileID: 357165931}
+  - component: {fileID: 357165930}
+  m_Layer: 5
+  m_Name: Frame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &357165929
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357165928}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 785098417}
+  m_Father: {fileID: 876023644}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 3840, y: 2160}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &357165930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357165928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 73999825, guid: 6c630fb93c5cecf4ca15c9e66f89cdf1, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &357165931
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357165928}
+  m_CullTransparentMesh: 1
 --- !u!1 &359974848
 GameObject:
   m_ObjectHideFlags: 0
@@ -24560,7 +24671,7 @@ GameObject:
   - component: {fileID: 419933725}
   - component: {fileID: 419933726}
   m_Layer: 0
-  m_Name: Red Scare/Purge
+  m_Name: +Red Scare/Purge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24756,10 +24867,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Red Scare/Purge
   faction: 0
-  opsValue: 4
+  ops: 4
+  bonusOps: 0
   cardText: All Operations cards played by the opponent, for the remainder of this
     turn, receive -1 to their Operations value (to a minimum value of 1 Operations
     point).
@@ -29075,7 +29186,7 @@ GameObject:
   - component: {fileID: 502169176}
   - component: {fileID: 502169177}
   m_Layer: 0
-  m_Name: UN Intervention
+  m_Name: '*UN Intervention'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29271,10 +29382,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: UN Intervention
   faction: 0
-  opsValue: 1
+  ops: 1
+  bonusOps: 0
   cardText: "Play this card simultaneously with a card containing an opponent\u2019s
     associated Event. The opponent\u2019s associated Event is canceled but you may
     use the Operations value of the opponent\u2019s card to conduct Operations. This
@@ -29502,10 +29613,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Marshall Plan
   faction: 2
-  opsValue: 4
+  ops: 4
+  bonusOps: 0
   cardText: "Add 1 US Influence to each of any 7 non-USSR controlled countries in
     Western Europe. This Event allows the \u201C#21 \u2013 NATO\u201D card to be
     played as an Event."
@@ -30421,10 +30532,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Indo-Pakistani War
   faction: 0
-  opsValue: 2
+  ops: 2
+  bonusOps: 0
   cardText: "India invades Pakistan or vice versa (player\u2019s choice). Roll a
     die and subtract (-1) from the die roll for every enemy controlled country adjacent
     to the target of the invasion (India or Pakistan). On a modified die roll of
@@ -30725,10 +30836,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Destalinization
   faction: 1
-  opsValue: 3
+  ops: 3
+  bonusOps: 0
   cardText: The USSR may reallocate up to a total of 4 Influence from one or more
     countries to any non-US controlled countries (adding no more than 2 Influence
     per country).
@@ -31078,10 +31189,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Suez Crisis
   faction: 1
-  opsValue: 3
+  ops: 3
+  bonusOps: 0
   cardText: Remove a total of 4 US Influence from France, the United Kingdom and
     Israel (removing no more than 2 Influence per country).
   removeOnEvent: 1
@@ -32903,10 +33014,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Containment
   faction: 2
-  opsValue: 3
+  ops: 3
+  bonusOps: 0
   cardText: All Operations cards played by the US, for the remainder of this turn,
     receive +1 to their Operations value (to a maximum of 4 Operations per card).
   removeOnEvent: 1
@@ -33368,7 +33479,7 @@ RectTransform:
   - {fileID: 1784315944}
   - {fileID: 1472794262}
   m_Father: {fileID: 304584626}
-  m_RootOrder: 83
+  m_RootOrder: 77
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -34046,7 +34157,7 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -36848,6 +36959,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610536308}
   m_CullTransparentMesh: 1
+--- !u!1 &611043735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 611043736}
+  - component: {fileID: 611043738}
+  - component: {fileID: 611043737}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &611043736
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611043735}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 876023644}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -42, y: -42}
+  m_SizeDelta: {x: 1922, y: 1182.9998}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &611043737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611043735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: dd39409da5f29ad46a88ae1f2d18bcfc, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &611043738
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611043735}
+  m_CullTransparentMesh: 1
 --- !u!1 &612939055
 GameObject:
   m_ObjectHideFlags: 0
@@ -39064,10 +39251,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Nuclear Test Ban
   faction: 0
-  opsValue: 4
+  ops: 4
+  bonusOps: 0
   cardText: The player receives VP equal to the current DEFCON level minus 2 then
     improves the DEFCON level by 2.
   removeOnEvent: 0
@@ -41121,6 +41308,128 @@ MonoBehaviour:
   phasingPlayer: 2
   card: {fileID: 0}
   opponentEventTriggered: 0
+--- !u!1 &664683496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 664683497}
+  - component: {fileID: 664683500}
+  - component: {fileID: 664683499}
+  - component: {fileID: 664683498}
+  m_Layer: 5
+  m_Name: Confirm Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &664683497
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664683496}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 998480303}
+  m_Father: {fileID: 1843678110}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 60, y: -30}
+  m_SizeDelta: {x: 160, y: 60}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &664683498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664683496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 664683499}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &664683499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664683496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &664683500
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664683496}
+  m_CullTransparentMesh: 1
 --- !u!1 &664732064
 GameObject:
   m_ObjectHideFlags: 0
@@ -44038,7 +44347,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.45
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -44096,7 +44405,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -48321,8 +48630,8 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  ussrSpace: {fileID: 0}
-  usaSpace: {fileID: 0}
+  ussrSpace: {fileID: 1916133428}
+  usaSpace: {fileID: 1654697134}
 --- !u!224 &782472987
 RectTransform:
   m_ObjectHideFlags: 0
@@ -48491,6 +48800,82 @@ MonoBehaviour:
   phasingPlayer: 1
   card: {fileID: 0}
   opponentEventTriggered: 0
+--- !u!1 &785098416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 785098417}
+  - component: {fileID: 785098419}
+  - component: {fileID: 785098418}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &785098417
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785098416}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 357165929}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -31, y: -30}
+  m_SizeDelta: {x: 331, y: 3354}
+  m_Pivot: {x: 1, y: 1}
+--- !u!114 &785098418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785098416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 6173bdcf717294e448269718f56986f3, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &785098419
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785098416}
+  m_CullTransparentMesh: 1
 --- !u!1 &786170828
 GameObject:
   m_ObjectHideFlags: 0
@@ -50353,10 +50738,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Independent Reds
   faction: 2
-  opsValue: 2
+  ops: 2
+  bonusOps: 0
   cardText: Add US Influence to either Yugoslavia, Romania, Bulgaria, Hungary, or
     Czechoslovakia so that it equals the USSR Influence in that country.
   removeOnEvent: 1
@@ -53875,6 +54260,109 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 874412790}
   m_CullTransparentMesh: 1
+--- !u!1 &876023640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 876023644}
+  - component: {fileID: 876023643}
+  - component: {fileID: 876023642}
+  - component: {fileID: 876023641}
+  m_Layer: 5
+  m_Name: New UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &876023641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876023640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &876023642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876023640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &876023643
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876023640}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &876023644
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876023640}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 611043736}
+  - {fileID: 357165929}
+  - {fileID: 1386906636}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &876619131
 GameObject:
   m_ObjectHideFlags: 0
@@ -55333,7 +55821,7 @@ RectTransform:
   - {fileID: 1079955910}
   - {fileID: 1669741544}
   m_Father: {fileID: 304584626}
-  m_RootOrder: 78
+  m_RootOrder: 80
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -57318,10 +57806,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Europe Scoring
   faction: 0
-  opsValue: 0
+  ops: 0
+  bonusOps: 0
   cardText: 
   removeOnEvent: 0
   clickEvent:
@@ -60135,7 +60623,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 39
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -60158,14 +60646,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: 0, y: 67.62, z: 0}
+  m_LocalScale: {x: 1, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 180}
 --- !u!1 &968861192
 GameObject:
   m_ObjectHideFlags: 0
@@ -61059,10 +61547,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Nasser
   faction: 1
-  opsValue: 2
+  ops: 1
+  bonusOps: 0
   cardText: Add 2 USSR Influence to Egypt. The US removes half, rounded up, of its
     Influence from Egypt.
   removeOnEvent: 1
@@ -61081,6 +61569,7 @@ GameObject:
   - component: {fileID: 982250789}
   - component: {fileID: 982250791}
   - component: {fileID: 982250792}
+  - component: {fileID: 982250793}
   m_Layer: 0
   m_Name: Turn 5
   m_TagString: Untagged
@@ -61133,7 +61622,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 982250793}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -61174,6 +61664,9 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
       Data: 0
     - Name: 
       Entry: 13
@@ -61203,6 +61696,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dealUpTo: 9
+--- !u!114 &982250793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982250788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3786b234e68c296418b19bea67f34ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &982481105
 GameObject:
   m_ObjectHideFlags: 0
@@ -61311,6 +61816,39 @@ MonoBehaviour:
   phasingPlayer: 2
   card: {fileID: 0}
   opponentEventTriggered: 0
+--- !u!1 &984253467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 984253468}
+  m_Layer: 0
+  m_Name: Game Board
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &984253468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984253467}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1013769103}
+  - {fileID: 1059460244}
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &985087092
 GameObject:
   m_ObjectHideFlags: 0
@@ -61518,10 +62056,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: US/Japan Mututal Defense Pact
   faction: 2
-  opsValue: 4
+  ops: 4
+  bonusOps: 0
   cardText: The US adds sufficient Influence to Japan for Control. The USSR cannot
     make Coup Attempts or Realignment rolls against Japan.
   removeOnEvent: 1
@@ -62104,6 +62642,141 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998149320}
   m_CullTransparentMesh: 1
+--- !u!1 &998480302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 998480303}
+  - component: {fileID: 998480305}
+  - component: {fileID: 998480304}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &998480303
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998480302}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 664683497}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &998480304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998480302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Confirm
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &998480305
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998480302}
+  m_CullTransparentMesh: 1
 --- !u!1 &1000732560
 GameObject:
   m_ObjectHideFlags: 0
@@ -62404,10 +63077,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Socialist Governments
   faction: 1
-  opsValue: 3
+  ops: 3
+  bonusOps: 0
   cardText: "Remove a total of 3 US Influence from any countries in Western Europe
     (removing no more than 2 Influence per country). This Event cannot be used after
     the \u201C#83 \u2013 The Iron Lady\u201D Event has been played."
@@ -62430,6 +63103,181 @@ MonoBehaviour:
   - {fileID: 2039756974}
   - {fileID: 2057891374}
   - {fileID: 829705053}
+--- !u!1 &1013769102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1013769103}
+  - component: {fileID: 1013769106}
+  - component: {fileID: 1013769105}
+  - component: {fileID: 1013769104}
+  - component: {fileID: 1013769107}
+  m_Layer: 0
+  m_Name: Thailand Click Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1013769103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013769102}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -35.9317, y: 0.84, z: -0.682}
+  m_LocalScale: {x: 0.5108732, y: 1, z: 0.35215333}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 984253468}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1013769104
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013769102}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1013769105
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013769102}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials: []
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1013769106
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013769102}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1013769107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013769102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09627e665cdc1264c938f9fbe57c1297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: influence
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[Game+Faction, Assembly-CSharp],[System.Int32,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[Game+Faction, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  countryName: Thailand
+  continent: 1
+  stability: 2
+  isBattleground: 1
+  adjacentCountries: []
+  adjacentSuperpower: 0
 --- !u!1 &1014976172
 GameObject:
   m_ObjectHideFlags: 0
@@ -66043,6 +66891,104 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059337266}
   m_CullTransparentMesh: 1
+--- !u!1 &1059460243
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1059460244}
+  - component: {fileID: 1059460247}
+  - component: {fileID: 1059460246}
+  - component: {fileID: 1059460245}
+  m_Layer: 0
+  m_Name: Board
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1059460244
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059460243}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 4.78}
+  m_LocalScale: {x: 13.9, y: 1, z: 9}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 984253468}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1059460245
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059460243}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1059460246
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059460243}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7d9a0d0b660d54f44880eb0c521434eb, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1059460247
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059460243}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1061114867
 GameObject:
   m_ObjectHideFlags: 0
@@ -66867,10 +67813,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Captured Nazi Scientist
   faction: 0
-  opsValue: 1
+  ops: 1
+  bonusOps: 0
   cardText: Move the Space Race Marker ahead by 1 space.
   removeOnEvent: 1
   clickEvent:
@@ -67856,6 +68802,141 @@ MonoBehaviour:
   phasingPlayer: 2
   card: {fileID: 0}
   opponentEventTriggered: 0
+--- !u!1 &1104243770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1104243771}
+  - component: {fileID: 1104243773}
+  - component: {fileID: 1104243772}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1104243771
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104243770}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1527556654}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1104243772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104243770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Reject
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1104243773
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104243770}
+  m_CullTransparentMesh: 1
 --- !u!1 &1105608623
 GameObject:
   m_ObjectHideFlags: 0
@@ -71163,6 +72244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1159452422}
   - component: {fileID: 1159452421}
+  - component: {fileID: 1159452423}
   m_Layer: 0
   m_Name: Turn Manager
   m_TagString: Untagged
@@ -71185,7 +72267,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 1159452423}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -71213,6 +72296,9 @@ MonoBehaviour:
         System.Xml
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
       Data: 0
     - Name: 
       Entry: 13
@@ -71266,6 +72352,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1159452423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159452420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f454acd60e1926f4c8c62ea300c45b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1160407690
 GameObject:
   m_ObjectHideFlags: 0
@@ -72670,6 +73768,7 @@ GameObject:
   - component: {fileID: 1177346803}
   - component: {fileID: 1177346805}
   - component: {fileID: 1177346806}
+  - component: {fileID: 1177346807}
   m_Layer: 0
   m_Name: Turn 8
   m_TagString: Untagged
@@ -72722,7 +73821,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 1177346807}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -72763,6 +73863,9 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
       Data: 0
     - Name: 
       Entry: 13
@@ -72792,6 +73895,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dealUpTo: 9
+--- !u!114 &1177346807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177346802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3786b234e68c296418b19bea67f34ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1183411857
 GameObject:
   m_ObjectHideFlags: 0
@@ -72831,7 +73946,7 @@ RectTransform:
   - {fileID: 703082092}
   - {fileID: 1552987741}
   m_Father: {fileID: 304584626}
-  m_RootOrder: 76
+  m_RootOrder: 82
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -73755,10 +74870,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: NATO
   faction: 2
-  opsValue: 4
+  ops: 4
+  bonusOps: 0
   cardText: "The USSR cannot make Coup Attempts or Realignment rolls against any
     US controlled countries in Europe. US controlled countries in Europe cannot be
     attacked by play of the \u201C#36 \u2013 Brush War\u201D Event. This card requires
@@ -74538,10 +75653,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Decolonization
   faction: 1
-  opsValue: 2
+  ops: 2
+  bonusOps: 0
   cardText: Add 1 USSR Influence to each of any 4 countries in Africa and/or Southeast
     Asia.
   removeOnEvent: 0
@@ -74574,6 +75689,7 @@ MonoBehaviour:
   - {fileID: 1649311465}
   - {fileID: 348178482}
   - {fileID: 2118922991}
+  countryCount: 4
 --- !u!1 &1208348479
 GameObject:
   m_ObjectHideFlags: 0
@@ -74720,7 +75836,7 @@ GameObject:
   - component: {fileID: 1212095443}
   - component: {fileID: 1212095444}
   m_Layer: 0
-  m_Name: +Warsaw Pact Formed
+  m_Name: Warsaw Pact Formed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74916,10 +76032,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Warsaw Pact Formed
   faction: 1
-  opsValue: 3
+  ops: 3
+  bonusOps: 0
   cardText: "Remove all US influence from 4 countries in Eastern Europe or add 5
     USSR Influence to any countries in Eastern Europe (adding no more than 2 Influence
     per country). This Event allows the \u201C#21 \u2013 NATO\u201D card to be played
@@ -75146,10 +76262,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: The China Card
   faction: 3
-  opsValue: 4
+  ops: 0
+  bonusOps: 0
   cardText: 
   removeOnEvent: 0
   clickEvent:
@@ -75323,6 +76439,7 @@ GameObject:
   - component: {fileID: 1215999067}
   - component: {fileID: 1215999069}
   - component: {fileID: 1215999068}
+  - component: {fileID: 1215999070}
   m_Layer: 0
   m_Name: Turn 4
   m_TagString: Untagged
@@ -75377,6 +76494,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 1215999069}
+    - {fileID: 1215999070}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -75420,7 +76538,10 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 1
     - Name: 
       Entry: 13
       Data: 
@@ -75463,6 +76584,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamePhase: 2
   cards: []
+--- !u!114 &1215999070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215999064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3786b234e68c296418b19bea67f34ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1216053738
 GameObject:
   m_ObjectHideFlags: 0
@@ -76934,10 +78067,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Fidel
   faction: 1
-  opsValue: 2
+  ops: 2
+  bonusOps: 0
   cardText: Remove all US Influence from Cuba. USSR adds sufficient Influence in
     Cuba for Control.
   removeOnEvent: 1
@@ -76964,7 +78097,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1236129821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77046,6 +78179,7 @@ RectTransform:
   - {fileID: 2109756045}
   - {fileID: 782472987}
   - {fileID: 160139691}
+  - {fileID: 109055470}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -77068,7 +78202,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arDropPanel: {fileID: 348595077}
   headlineDropPanel: {fileID: 1787469005}
-  button: {fileID: 1963185792}
+  primaryButton: {fileID: 1963185792}
+  confirmButton: {fileID: 664683498}
+  cancelButton: {fileID: 1527556655}
   currentFaction: 0
 --- !u!1 &1237228847
 GameObject:
@@ -82732,7 +83868,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -83549,10 +84685,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Vietnam Revolts
   faction: 1
-  opsValue: 2
+  ops: 2
+  bonusOps: 0
   cardText: Add 2 USSR Influence to Vietnam. For the remainder of the turn, the USSR
     receives +1 Operations to the Operations value of a card that uses all its Operations
     in Southeast Asia.
@@ -83560,8 +84696,15 @@ MonoBehaviour:
   clickEvent:
     m_PersistentCalls:
       m_Calls: []
-  vietnam: {fileID: 0}
-  southeastAsia: []
+  vietnam: {fileID: 186258603}
+  southeastAsia:
+  - {fileID: 146538411}
+  - {fileID: 468320335}
+  - {fileID: 2081396037}
+  - {fileID: 186258603}
+  - {fileID: 1649311465}
+  - {fileID: 348178482}
+  - {fileID: 2118922991}
 --- !u!1 &1352808588
 GameObject:
   m_ObjectHideFlags: 0
@@ -84039,10 +85182,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Duck and Cover
   faction: 0
-  opsValue: 3
+  ops: 3
+  bonusOps: 0
   cardText: Degrade the DEFCON level by 1. The US receives VP equal to 5 minus the
     current DEFCON level.
   removeOnEvent: 0
@@ -85130,7 +86273,6 @@ Transform:
   m_Children:
   - {fileID: 1705569863}
   - {fileID: 1805569770}
-  - {fileID: 109055470}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -86933,6 +88075,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1384731922}
+  m_CullTransparentMesh: 1
+--- !u!1 &1386906635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1386906636}
+  - component: {fileID: 1386906638}
+  - component: {fileID: 1386906637}
+  m_Layer: 5
+  m_Name: Name Plate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1386906636
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386906635}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 876023644}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -570, y: 400}
+  m_SizeDelta: {x: 674, y: 260}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1386906637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386906635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: bcf6d1638c48bfc4188f7a6c179cd4cd, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1386906638
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386906635}
   m_CullTransparentMesh: 1
 --- !u!1 &1387857666
 GameObject:
@@ -91830,10 +93048,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Arab-Israeli War
   faction: 1
-  opsValue: 2
+  ops: 2
+  bonusOps: 0
   cardText: "Pan-Arab Coalition invades Israel. Roll a die and subtract (-1) from
     the die roll for Israel, if it is US controlled, and for every US controlled
     country adjacent to Israel. On a modified die roll of 4-6, the USSR receives
@@ -92704,6 +93922,7 @@ GameObject:
   - component: {fileID: 1470755671}
   - component: {fileID: 1470755673}
   - component: {fileID: 1470755674}
+  - component: {fileID: 1470755675}
   m_Layer: 0
   m_Name: Turn 3
   m_TagString: Untagged
@@ -92754,7 +93973,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 1470755675}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -92795,6 +94015,9 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
       Data: 0
     - Name: 
       Entry: 13
@@ -92824,6 +94047,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dealUpTo: 8
+--- !u!114 &1470755675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470755670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3786b234e68c296418b19bea67f34ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1472794261
 GameObject:
   m_ObjectHideFlags: 0
@@ -93851,7 +95086,7 @@ RectTransform:
   - {fileID: 419273970}
   - {fileID: 840830834}
   m_Father: {fileID: 304584626}
-  m_RootOrder: 77
+  m_RootOrder: 81
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -95468,6 +96703,7 @@ GameObject:
   - component: {fileID: 1511113115}
   - component: {fileID: 1511113117}
   - component: {fileID: 1511113118}
+  - component: {fileID: 1511113119}
   m_Layer: 0
   m_Name: Turn 9
   m_TagString: Untagged
@@ -95520,7 +96756,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 1511113119}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -95561,6 +96798,9 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
       Data: 0
     - Name: 
       Entry: 13
@@ -95590,6 +96830,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dealUpTo: 9
+--- !u!114 &1511113119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511113114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3786b234e68c296418b19bea67f34ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1516702391
 GameObject:
   m_ObjectHideFlags: 0
@@ -96095,6 +97347,128 @@ MonoBehaviour:
   phasingPlayer: 1
   card: {fileID: 0}
   opponentEventTriggered: 0
+--- !u!1 &1527556653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1527556654}
+  - component: {fileID: 1527556657}
+  - component: {fileID: 1527556656}
+  - component: {fileID: 1527556655}
+  m_Layer: 5
+  m_Name: Reject Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1527556654
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527556653}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1104243771}
+  m_Father: {fileID: 1843678110}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -60, y: -30}
+  m_SizeDelta: {x: 160, y: 60}
+  m_Pivot: {x: 1, y: 1}
+--- !u!114 &1527556655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527556653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 1527556656}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1527556656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527556653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1527556657
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527556653}
+  m_CullTransparentMesh: 1
 --- !u!1 &1527766195
 GameObject:
   m_ObjectHideFlags: 0
@@ -98484,6 +99858,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1559042099}
   - component: {fileID: 1559042101}
+  - component: {fileID: 1559042102}
   m_Layer: 0
   m_Name: Turn 1
   m_TagString: Untagged
@@ -98534,7 +99909,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 1559042102}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -98575,6 +99951,9 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
       Data: 0
     - Name: 
       Entry: 13
@@ -98591,6 +99970,18 @@ MonoBehaviour:
       m_Calls: []
   headlinePhase: {fileID: 0}
   actionRounds: []
+--- !u!114 &1559042102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559042098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3786b234e68c296418b19bea67f34ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1559600846
 GameObject:
   m_ObjectHideFlags: 0
@@ -101626,6 +103017,7 @@ GameObject:
   - component: {fileID: 1616795107}
   - component: {fileID: 1616795109}
   - component: {fileID: 1616795110}
+  - component: {fileID: 1616795111}
   m_Layer: 0
   m_Name: Turn 6
   m_TagString: Untagged
@@ -101678,7 +103070,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 1616795111}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -101719,6 +103112,9 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
       Data: 0
     - Name: 
       Entry: 13
@@ -101748,6 +103144,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dealUpTo: 9
+--- !u!114 &1616795111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616795106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3786b234e68c296418b19bea67f34ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1617378441
 GameObject:
   m_ObjectHideFlags: 0
@@ -102453,7 +103861,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1635257470
 RectTransform:
   m_ObjectHideFlags: 0
@@ -103274,10 +104682,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Olympic Games
   faction: 0
-  opsValue: 2
+  ops: 2
+  bonusOps: 0
   cardText: This player sponsors the Olympics. The opponent must either participate
     or boycott. If the opponent participates, each player rolls a die and the sponsor
     adds 2 to their roll. The player with the highest modified die roll receives
@@ -103326,7 +104734,7 @@ RectTransform:
   - {fileID: 550447340}
   - {fileID: 2059633616}
   m_Father: {fileID: 304584626}
-  m_RootOrder: 80
+  m_RootOrder: 79
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -107526,10 +108934,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: CIA Created
   faction: 2
-  opsValue: 1
+  ops: 1
+  bonusOps: 0
   cardText: The USSR reveals their hand of cards for this turn. The US may use the
     Operations value of this card to conduct Operations.
   removeOnEvent: 1
@@ -107743,10 +109151,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Romanian Abdication
   faction: 1
-  opsValue: 1
+  ops: 1
+  bonusOps: 0
   cardText: Remove all US Influence from Romania. The USSR adds sufficient Influence
     to Romania for Control.
   removeOnEvent: 1
@@ -111889,10 +113297,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Korean War
   faction: 1
-  opsValue: 2
+  ops: 2
+  bonusOps: 0
   cardText: North Korea invades South Korea. Roll a die and subtract (-1) from the
     die roll for every US controlled country adjacent to South Korea. On a modified
     die roll of 4-6, the USSR receives 2 VP and replaces all US Influence in South
@@ -112828,10 +114236,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: De Gaulle Leads France
   faction: 1
-  opsValue: 3
+  ops: 3
+  bonusOps: 0
   cardText: "Remove 2 US Influence from France and add 1 USSR Influence to France.
     This Event cancels the effect(s) of the \u201C#21 \u2013 NATO\u201D Event for
     France only."
@@ -112840,6 +114248,87 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   france: {fileID: 1883645171}
+  USSRinfluence: 1
+  USAinfluence: -2
+--- !u!1 &1843678109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1843678110}
+  - component: {fileID: 1843678112}
+  - component: {fileID: 1843678111}
+  m_Layer: 5
+  m_Name: Button Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1843678110
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843678109}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1963185791}
+  - {fileID: 664683497}
+  - {fileID: 1527556654}
+  m_Father: {fileID: 51822354}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 520, y: 250}
+  m_Pivot: {x: 1, y: 0}
+--- !u!114 &1843678111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843678109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6509434, g: 0.4691705, b: 0.4691705, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1843678112
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843678109}
+  m_CullTransparentMesh: 1
 --- !u!1 &1844510371
 GameObject:
   m_ObjectHideFlags: 0
@@ -113675,7 +115164,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -113982,7 +115471,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -115520,10 +117009,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: East European Unrest
   faction: 2
-  opsValue: 3
+  ops: 3
+  bonusOps: 0
   cardText: 'Early or Mid War: Remove 1 USSR Influence from 3 countries in Eastern
     Europe. Late War: Remove 2 USSR Influence from 3 countries in Eastern Europe.'
   removeOnEvent: 0
@@ -117004,10 +118493,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Blockade
   faction: 1
-  opsValue: 1
+  ops: 1
+  bonusOps: 0
   cardText: Unless the US immediately discards a card with an Operations value of
     3 or more, remove all US Influence from West Germany.
   removeOnEvent: 1
@@ -118084,6 +119573,7 @@ GameObject:
   - component: {fileID: 1945507387}
   - component: {fileID: 1945507389}
   - component: {fileID: 1945507390}
+  - component: {fileID: 1945507391}
   m_Layer: 0
   m_Name: Turn 2
   m_TagString: Untagged
@@ -118134,7 +119624,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 1945507391}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -118175,6 +119666,9 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
       Data: 0
     - Name: 
       Entry: 13
@@ -118204,6 +119698,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dealUpTo: 8
+--- !u!114 &1945507391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945507386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3786b234e68c296418b19bea67f34ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1948166346
 GameObject:
   m_ObjectHideFlags: 0
@@ -119052,7 +120558,7 @@ GameObject:
   - component: {fileID: 1963185793}
   - component: {fileID: 1963185792}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Finalize Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119071,14 +120577,14 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 159546801}
-  m_Father: {fileID: 51822354}
+  m_Father: {fileID: 1843678110}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -25, y: 25}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 20}
   m_SizeDelta: {x: 400, y: 80}
-  m_Pivot: {x: 1, y: 0}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1963185792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124250,10 +125756,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Truman Doctrine
   faction: 2
-  opsValue: 1
+  ops: 1
+  bonusOps: 0
   cardText: Remove all USSR Influence from a single uncontrolled country in Europe.
   removeOnEvent: 1
   clickEvent:
@@ -126812,10 +128318,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Asia Scoring
   faction: 0
-  opsValue: 0
+  ops: 0
+  bonusOps: 0
   cardText: 
   removeOnEvent: 0
   clickEvent:
@@ -126957,7 +128463,7 @@ RectTransform:
   - {fileID: 827181970}
   - {fileID: 826924009}
   m_Father: {fileID: 304584626}
-  m_RootOrder: 75
+  m_RootOrder: 83
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -128607,7 +130113,7 @@ RectTransform:
   - {fileID: 1580979450}
   - {fileID: 830544189}
   m_Father: {fileID: 304584626}
-  m_RootOrder: 82
+  m_RootOrder: 76
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -129971,7 +131477,7 @@ GameObject:
   - component: {fileID: 2136958554}
   - component: {fileID: 2136958555}
   m_Layer: 0
-  m_Name: Formosan Resolution
+  m_Name: '*Formosan Resolution'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130167,10 +131673,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  bonusOps: 0
   cardName: Formosan Resolution
   faction: 2
-  opsValue: 2
+  ops: 2
+  bonusOps: 0
   cardText: "If this card\u2019s Event is in effect, Taiwan will be treated as a
     Battleground country, for scoring purposes only, if Taiwan is US controlled when
     the Asia Scoring Card is played. This Event is cancelled after the US has played

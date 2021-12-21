@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Destalinization : Card
 {
-    List<Country> placedCountries = new List<Country>();
-
     public override void CardEvent(GameAction.Command command)
     {
-        int count = 0;
+        int count = 4;
         List<Country> eligibleCountries = new List<Country>();
+        List<Country> removedFrom = new List<Country>();
+        List<Country> addedTo = new List<Country>();
+
         int eligibleInfluence = 0; 
 
         foreach (Country country in FindObjectsOfType<Country>())
@@ -19,32 +20,33 @@ public class Destalinization : Card
                 eligibleInfluence += country.influence[Game.Faction.USSR]; 
             }
 
+        uiManager.SetButton(uiManager.cancelButton, "Finish Destal", Finish);
+        uiManager.SetButton(uiManager.confirmButton, "Finish Removing Influence", RedeployInfluence);
+
         countryClickHandler = new CountryClickHandler(eligibleCountries, RemoveInfluence);
 
         void RemoveInfluence(Country country)
         {
-            if (eligibleCountries.Contains(country))
+            Message($"Remove {count} Stalinist influence anywhere"); 
+            count--;
+            eligibleInfluence--; 
+
+            Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, -1);
+
+            if (country.influence[Game.Faction.USSR] == 0)
             {
-                count++;
-                eligibleInfluence--; 
-
-                Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, -1);
-
-                if (country.influence[Game.Faction.USSR] == 0)
-                {
-                    countryClickHandler.Remove(country);
-                    eligibleCountries.Remove(country);
-                }
+                countryClickHandler.Remove(country);
+                eligibleCountries.Remove(country);
+                removedFrom.Add(country);
             }
 
-            if (count == 4 || eligibleInfluence == 0)
+            if (count == 0 || eligibleInfluence == 0)
                 RedeployInfluence();
         }
 
         void RedeployInfluence()
         {
-            eligibleCountries.Clear();
-            placedCountries.Clear();
+            Message($"Place {count} USSR influence");
             countryClickHandler.Close();
 
             foreach (Country c in FindObjectsOfType<Country>())
@@ -55,19 +57,26 @@ public class Destalinization : Card
 
             void AddInfluence(Country country)
             {
-                if (eligibleCountries.Contains(country))
+                if (addedTo.CountOf(country) < 2)
                 {
-                    if (placedCountries.CountOf(country) < 2)
-                    {
-                        Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, 1);
-                        placedCountries.Add(country);
-                        count--;
-                    }
+                    Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, 1);
+                    addedTo.Add(country);
+                    count--;
                 }
 
                 if (count == 0)
-                    command.callback.Invoke();
+                    Finish(); 
             }
+        }
+
+        void Finish()
+        {
+            countryClickHandler.Close(); 
+            
+            uiManager.UnsetButton(uiManager.cancelButton);
+            uiManager.UnsetButton(uiManager.confirmButton);
+            
+            command.callback.Invoke();
         }
     }
 }

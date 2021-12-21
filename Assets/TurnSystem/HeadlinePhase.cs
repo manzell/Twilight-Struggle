@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 using UnityEngine.Events;
 
 public class HeadlinePhase : Phase // There is just one of these
@@ -12,7 +11,7 @@ public class HeadlinePhase : Phase // There is just one of these
 
     public override void OnPhase(UnityAction callback)
     {
+        this.callback = callback; 
         FindObjectOfType<UIMessage>().Message("Headline Phase");
-        // Don't trigger the callback - we'll do that elsewhere, probably in HeadlinePhase or by calling NextPhase on CurrentPhase from HeadlineAction. 
     }
 }

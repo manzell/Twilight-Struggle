@@ -14,19 +14,24 @@ public class IndependentReds : Card
                 eligibleCountries.Add(country);
 
         if (eligibleCountries.Count == 1)
-            EqualizeInfluence(eligibleCountries[0]); 
-        else if (eligibleCountries.Count > 1)
-            countryClickHandler = new CountryClickHandler(eligibleCountries, EqualizeInfluence); 
-        else 
+            EqualizeInfluence(eligibleCountries[0]);
+        else
+        {
+            if (eligibleCountries.Count > 1)
+            {
+                countryClickHandler = new CountryClickHandler(eligibleCountries, EqualizeInfluence);
+                Message("Select country to Equalize Influence");
+            }
+            else
+                Message("No eligible countries for Independent Reds");
+
             command.callback.Invoke();
+        }
 
         void EqualizeInfluence(Country country)
         {
-            if (eligibleCountries.Contains(country))
-            {
-                Game.SetInfluence.Invoke(country, Game.Faction.USA, Mathf.Max(country.stability, country.influence[Game.Faction.USA]));
-                command.callback.Invoke();
-            }
+            Game.SetInfluence.Invoke(country, Game.Faction.USA, Mathf.Max(country.stability, country.influence[Game.Faction.USA]));
+            command.callback.Invoke();
         }
     }  
 }
