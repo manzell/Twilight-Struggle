@@ -28,6 +28,8 @@ public class Game : SerializedMonoBehaviour
     public static GameEvent<Country, Faction, int> AdjustInfluence = new GameEvent<Country, Faction, int>();
     public static GameEvent<Country, Faction, int> SetInfluence = new GameEvent<Country, Faction, int>();
 
+    public static UnityEvent<Faction, List<Card>> dealCardsEvent = new UnityEvent<Faction, List<Card>>(); 
+
     public static GameEvent<GameAction.Command> cardCommandEvent = new GameEvent<GameAction.Command>();
 
     public static UnityEvent GameStart = new UnityEvent();
