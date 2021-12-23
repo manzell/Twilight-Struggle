@@ -10,7 +10,6 @@ public class AddCards : MonoBehaviour, IPhaseAction
 
     public void OnPhase(Phase phase, UnityAction callback)
     {
-        Debug.Log($"*** {gamePhase} cards added ***"); 
         Game.gamePhase = gamePhase;
 
         Game.deck.AddRange(cards);

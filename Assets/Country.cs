@@ -12,8 +12,8 @@ public class Country : SerializedMonoBehaviour
     public int stability;
     public bool isBattleground;
 
+    public Game.Faction adjacentSuperpower;
     public List<Country> adjacentCountries = new List<Country>();
-    public Game.Faction adjacentSuperpower; 
     public Dictionary<Game.Faction, int> influence = new Dictionary<Game.Faction, int> {
         { Game.Faction.USSR, 0 },
         { Game.Faction.USA, 0 }

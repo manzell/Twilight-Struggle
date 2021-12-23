@@ -9,7 +9,7 @@ using DG.Tweening;
 public class UICard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] TextMeshProUGUI _cardTitle, _cardOps, _cardText;
-    [SerializeField] Image _cardImage;
+    public Image highlight;
     public Card card;
     CanvasGroup _canvasGroup;
     UIHand _uiHand;
@@ -52,6 +52,5 @@ public class UICard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         // There may be a race condition here regarding if the DragDropHandler gets called first or not. In any case, if we do not 
         _canvasGroup.blocksRaycasts = true;
         _uiHand.RefreshHand();
-        transform.DOScale(1f, 0.25f); 
     }
 }

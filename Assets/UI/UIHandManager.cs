@@ -13,7 +13,7 @@ public class UIHandManager : MonoBehaviour
     private void Awake()
     {
         Game.phaseStartEvent.AddListener(OnActionRoundStart);
-        Game.setActiveFactionEvent.AddListener(SetFaction); 
+        //Game.setActiveFactionEvent.AddListener(SetFaction); 
     }
 
     void OnActionRoundStart(Phase phase)

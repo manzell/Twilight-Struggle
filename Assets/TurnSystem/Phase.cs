@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Sirenix.OdinInspector;
-using System.Linq; 
 
 public class Phase : SerializedMonoBehaviour
 {    
     public string phaseName;
     public UnityAction callback;
-    public UnityEvent<Phase> phaseStartEvent = new UnityEvent<Phase>(),
+    public UnityEvent<Phase> 
+        phaseStartEvent = new UnityEvent<Phase>(),
         phaseEndEvent = new UnityEvent<Phase>();
 
-    public List<IPhaseAction> beforePhaseActions = new List<IPhaseAction>();
-    public List<IPhaseAction> onPhaseActions = new List<IPhaseAction>();
-    public List<IPhaseAction> afterPhaseActions = new List<IPhaseAction>();
+    public List<IPhaseAction> 
+        beforePhaseActions = new List<IPhaseAction>(),
+        onPhaseActions = new List<IPhaseAction>(),
+        afterPhaseActions = new List<IPhaseAction>();
 
     public Phase nextSibling
     {
@@ -50,11 +51,7 @@ public class Phase : SerializedMonoBehaviour
         }
     }
 
-    public void EndThread() { Debug.Log("Thread Finished");  }
-    public void StartThread()
-    {
-        StartPhase(callback);
-    }
+    public void StartThread() => StartPhase(callback);
 
     public virtual void StartPhase(UnityAction callback)
     {
@@ -65,23 +62,22 @@ public class Phase : SerializedMonoBehaviour
         else
             Debug.Log($"Start Phase: {this}");
 
-        // Set our Game State Vars:
+        // Game State Vars:
         Game.currentPhase = this;
 
-        // We then invoke our PhaseStartEvents
+        // PhaseStartEvents
         Game.phaseStartEvent.Invoke(this);
         phaseStartEvent.Invoke(this);
 
-        // First we look for Objects on our Game Object implmenet IStartPhaseAction
-        ProcessPhaseActions(beforePhaseActions, () => StartPhaseToo(callback));
+        ProcessPhaseActions(beforePhaseActions, () => 
+            StartPhaseToo(callback));
+
+        void StartPhaseToo(UnityAction callback) =>
+            ProcessPhaseActions(onPhaseActions, () => OnPhase(callback)); // we could nest this above but eh
     }
 
-    void StartPhaseToo(UnityAction callback)
-    {
-        ProcessPhaseActions(onPhaseActions, () => OnPhase(callback)); // we could nest this above but eh
-    }
-
-    public virtual void OnPhase(UnityAction callback) => NextPhase(callback); // This is meant to be overridden. Default implementation just goes direct to NextPhase. 
+    public virtual void OnPhase(UnityAction callback) => 
+        NextPhase(callback); 
 
     public void NextPhase(UnityAction callback)
     {
@@ -121,7 +117,6 @@ public class Phase : SerializedMonoBehaviour
         else
             callback.Invoke();
     }
-
 }
 
 public interface IPhaseAction {

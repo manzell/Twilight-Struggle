@@ -18,7 +18,7 @@ public class Game : SerializedMonoBehaviour
         headlineEvent = new GameEvent<HeadlinePhase>();
 
     public static UnityEvent<IPhaseAction> phaseActionEvent = new UnityEvent<IPhaseAction>();
-    public static UnityEvent<Faction> setActiveFactionEvent = new UnityEvent<Faction>();
+    public static GameEvent<Faction> setActiveFactionEvent = new GameEvent<Faction>();
 
     public static GameEvent<Faction, int> AdjustDEFCON = new GameEvent<Faction, int>(); 
     public static GameEvent<int> AdjustVPs = new GameEvent<int>(); 
@@ -38,7 +38,8 @@ public class Game : SerializedMonoBehaviour
     public static UnityEvent<Country> CountryClick = new UnityEvent<Country>();
     public static UnityEvent<Card> CardClick = new UnityEvent<Card>();
 
-    public static Faction phasingPlayer, actingPlayer;
+    public static Faction phasingPlayer, 
+        actingPlayer = Faction.USSR;
     public static GamePhase gamePhase;
     public static Phase currentPhase; 
     public static Turn currentTurn; 
@@ -56,15 +57,18 @@ public class Game : SerializedMonoBehaviour
         deck.Shuffle();
 
         AdjustInfluence.AddListener(onAdjustInfluence);
-        SetInfluence.AddListener(onSetInfluence); 
+        SetInfluence.AddListener(onSetInfluence);
+        setActiveFactionEvent.AddListener(onSetActiveFaction); 
     }
 
     [Button] void AdvancePhase() => currentPhase.NextPhase(currentPhase.callback);
 
     // These are the only functions that should be allowed to touch the Game State
-    public static void onAdjustInfluence(Country country, Faction faction, int amount) =>
+    static void onAdjustInfluence(Country country, Faction faction, int amount) =>
         country.influence[faction] = Mathf.Max(0, country.influence[faction] + amount);
 
-    public static void onSetInfluence(Country country, Faction faction, int amount) =>
+    static void onSetInfluence(Country country, Faction faction, int amount) =>
         AdjustInfluence.Invoke(country, faction, -country.influence[faction]);
+
+    static void onSetActiveFaction(Faction faction) => actingPlayer = faction; 
 }

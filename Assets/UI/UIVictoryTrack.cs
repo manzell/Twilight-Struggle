@@ -19,7 +19,7 @@ public class UIVictoryTrack : MonoBehaviour
         foreach(Transform child in transform)
         {
             Image image = child.GetComponent<Image>();
-            TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI text = child.GetComponentInChildren<TextMeshProUGUI>();
 
             int index = 20 - child.GetSiblingIndex();
             if (index >= VictoryTrack.vp)
@@ -49,6 +49,6 @@ public class UIVictoryTrack : MonoBehaviour
         }
 
         vpZero.GetComponent<Image>().color = VictoryTrack.vp == 0 ? neutralColor : Color.white;
-        vpZero.GetComponent<TextMeshProUGUI>().color = VictoryTrack.vp == 0 ? Color.white : neutralColor;
+        vpZero.GetComponentInChildren<TextMeshProUGUI>().color = VictoryTrack.vp == 0 ? Color.white : neutralColor;
     }
 }

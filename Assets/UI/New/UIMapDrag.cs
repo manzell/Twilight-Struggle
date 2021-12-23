@@ -5,9 +5,10 @@ using UnityEngine.EventSystems;
 
 public class UIMapDrag : MonoBehaviour, IDragHandler
 {
-    [SerializeField] GameObject mapDisplayArea; 
-    [SerializeField] float dragSpeed = 1.25f, 
-        zoomSpeed = 1f;
+    [SerializeField] GameObject _mapDisplayArea; 
+    [SerializeField] float 
+        _dragSpeed = 1.25f, 
+        _zoomSpeed = 1f;
 
     float _ratio; 
 
@@ -15,7 +16,7 @@ public class UIMapDrag : MonoBehaviour, IDragHandler
     {
         // TODO: Make sure we can't drag past our boundaries.
 
-        transform.localPosition += new Vector3(eventData.delta.x, eventData.delta.y, 0f) * dragSpeed;
+        transform.localPosition += new Vector3(eventData.delta.x, eventData.delta.y, 0f) * _dragSpeed;
     }
 
     public void Awake()
@@ -25,11 +26,17 @@ public class UIMapDrag : MonoBehaviour, IDragHandler
 
     public void Update()
     {
-        Vector2 delta = new Vector2(Input.mouseScrollDelta.y, Input.mouseScrollDelta.y) * zoomSpeed;
+        float delta = Input.mouseScrollDelta.y * _zoomSpeed;
         Vector2 size = GetComponent<RectTransform>().sizeDelta; 
-        Vector2 displaySize = mapDisplayArea.GetComponent<RectTransform>().sizeDelta;
+        Vector2 displaySize = _mapDisplayArea.GetComponent<RectTransform>().sizeDelta;
 
-        if (size.x + delta.x > displaySize.x && (size.x + delta.x) * _ratio > displaySize.y && (size.x + delta.x) / 2.5f < displaySize.x)
-            GetComponent<RectTransform>().sizeDelta *= (size.x + delta.x) / size.x; 
+        float scaleModifier = (size.x + delta) / size.x;
+
+        if(Input.mouseScrollDelta.y != 0)
+        {
+            if (size.x + delta > displaySize.x && (size.x + delta) * _ratio > displaySize.y && (size.x + delta) / 2.5f < displaySize.x)
+                GetComponent<RectTransform>().localScale += new Vector3(scaleModifier, scaleModifier, scaleModifier);
+
+        }
     }
 }

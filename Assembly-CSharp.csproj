@@ -143,6 +143,8 @@
     <Compile Include="Assets\ImageDOCrossfade.cs" />
     <Compile Include="Assets\UI\New\UINameplate.cs" />
     <Compile Include="Assets\UI\New\UIMapDrag.cs" />
+    <Compile Include="Assets\UI\New\UIHeadline.cs" />
+    <Compile Include="Assets\UI\New\UICountry.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

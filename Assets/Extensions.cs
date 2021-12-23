@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events; 
+using UnityEngine.Events;
+using UnityEngine.UI; 
 
 public static class Extensions
 {
@@ -34,5 +35,13 @@ public static class Extensions
             phaseQueue[i].Invoke(() => Process(phaseQueue, callback, i + 1));
         else
             callback?.Invoke();
+    }
+
+    public static T ChangeAlpha<T>(this T g, float newAlpha) where T : Graphic
+    {
+        var color = g.color;
+        color.a = newAlpha;
+        g.color = color;
+        return g;
     }
 }
