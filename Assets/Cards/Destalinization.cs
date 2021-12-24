@@ -23,7 +23,7 @@ public class Destalinization : Card
         uiManager.SetButton(uiManager.cancelButton, "Finish Destal", Finish);
         uiManager.SetButton(uiManager.confirmButton, "Finish Removing Influence", RedeployInfluence);
 
-        countryClickHandler = new CountryClickHandler(eligibleCountries, RemoveInfluence);
+        CountryClickHandler.Setup(eligibleCountries, RemoveInfluence);
 
         void RemoveInfluence(Country country)
         {
@@ -35,7 +35,7 @@ public class Destalinization : Card
 
             if (country.influence[Game.Faction.USSR] == 0)
             {
-                countryClickHandler.Remove(country);
+                CountryClickHandler.Remove(country);
                 eligibleCountries.Remove(country);
                 removedFrom.Add(country);
             }
@@ -47,13 +47,13 @@ public class Destalinization : Card
         void RedeployInfluence()
         {
             Message($"Place {count} USSR influence");
-            countryClickHandler.Close();
+            CountryClickHandler.Close();
 
             foreach (Country c in FindObjectsOfType<Country>())
                 if (c.control != Game.Faction.USA)
                     eligibleCountries.Add(c);
 
-            countryClickHandler = new CountryClickHandler(eligibleCountries, AddInfluence);
+            CountryClickHandler.Setup(eligibleCountries, AddInfluence);
 
             void AddInfluence(Country country)
             {
@@ -71,7 +71,7 @@ public class Destalinization : Card
 
         void Finish()
         {
-            countryClickHandler.Close(); 
+            CountryClickHandler.Close(); 
             
             uiManager.UnsetButton(uiManager.cancelButton);
             uiManager.UnsetButton(uiManager.confirmButton);

@@ -18,8 +18,7 @@ public class WarsawPactFormed : Card
 
         void RemoveAllUSInfluence()
         {
-            uiManager.UnsetButton(uiManager.confirmButton);
-            uiManager.UnsetButton(uiManager.cancelButton);
+            uiManager.UnsetButtons();
             uiManager.SetButton(uiManager.primaryButton, "Finish purging reactionaries", Finish);
             int count = 4;
 
@@ -36,13 +35,13 @@ public class WarsawPactFormed : Card
             }
             else
             {
-                countryClickHandler = new CountryClickHandler(easternEurope, onCountryClick);
+                CountryClickHandler.Setup(easternEurope, onCountryClick);
             }
 
             void onCountryClick(Country country)
             {
                 Game.SetInfluence.Invoke(country, Game.Faction.USA, 0);
-                countryClickHandler.Remove(country);
+                CountryClickHandler.Remove(country);
                 easternEurope.Remove(country);
                 count--;
 
@@ -56,12 +55,12 @@ public class WarsawPactFormed : Card
             uiManager.UnsetButton(uiManager.confirmButton);
             uiManager.UnsetButton(uiManager.cancelButton);
             uiManager.SetButton(uiManager.primaryButton, "Finish deploying Influence", Finish);
-            AddInfluence(easternEurope, Game.Faction.USA, 5, 2, Finish); 
+            AddInfluence(easternEurope, Game.Faction.USSR, 5, 2, Finish); 
         }
 
         void Finish()
         {
-            countryClickHandler.Close();
+            CountryClickHandler.Close();
             uiManager.UnsetButton(uiManager.primaryButton);
             uiManager.UnsetButton(uiManager.confirmButton);
             uiManager.UnsetButton(uiManager.cancelButton);

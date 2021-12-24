@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87659f4a758c0114d829c558acd3143c, type: 3}
+  m_Name: Algeria
+  m_EditorClassIdentifier: 
+  continent: 3
+  countryName: Algeria
+  stability: 2
+  isBattleground: 1
+  flag: {fileID: 3286163911610860551, guid: a7ae9ed1b832179439d2f5d38edd82c7, type: 3}

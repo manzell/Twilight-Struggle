@@ -9,15 +9,12 @@ public class PlaceStartingInfluence : MonoBehaviour, IPhaseAction
     public int influenceAmt;
     public List<Country> eligibleCountries = new List<Country>();
 
-    CountryClickHandler countryClickHandler;
-
     public void OnPhase(Phase phase, UnityAction callback)
     {
         Game.setActiveFactionEvent.Invoke(faction); 
         FindObjectOfType<UIMessage>().Message($"Place {influenceAmt} {faction} Influence");
 
-        countryClickHandler = new CountryClickHandler(eligibleCountries, onCountryClick, Color.yellow);
-
+        CountryClickHandler.Setup(eligibleCountries, onCountryClick, Color.yellow);
 
         void onCountryClick(Country country)
         {
@@ -31,7 +28,7 @@ public class PlaceStartingInfluence : MonoBehaviour, IPhaseAction
 
             if (influenceAmt == 0)
             {
-                countryClickHandler.Close();
+                CountryClickHandler.Close();
                 callback.Invoke();
             }
         }

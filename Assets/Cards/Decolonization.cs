@@ -11,7 +11,7 @@ public class Decolonization : Card
     {
         int count = countryCount; 
 
-        countryClickHandler = new CountryClickHandler(countries, onCountryClick);
+        CountryClickHandler.Setup(countries, onCountryClick);
 
         Message($"Place {count} USSR Influence"); 
 
@@ -26,7 +26,7 @@ public class Decolonization : Card
                 Message($"Place {count} USSR Influence");
                 Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, 1);
                 countries.Remove(country);
-                countryClickHandler.Remove(country);
+                CountryClickHandler.Remove(country);
             }
             if (count == 0)
                 Finish(); 
@@ -34,7 +34,7 @@ public class Decolonization : Card
 
         void Finish()
         {
-            countryClickHandler.Close();
+            CountryClickHandler.Close();
             uiManager.UnsetButton(uiManager.primaryButton); 
             command.callback.Invoke();
         }

@@ -19,7 +19,7 @@ public class IndependentReds : Card
         {
             if (eligibleCountries.Count > 1)
             {
-                countryClickHandler = new CountryClickHandler(eligibleCountries, EqualizeInfluence);
+                CountryClickHandler.Setup(eligibleCountries, EqualizeInfluence);
                 Message("Select country to Equalize Influence");
             }
             else
@@ -31,6 +31,7 @@ public class IndependentReds : Card
         void EqualizeInfluence(Country country)
         {
             Game.SetInfluence.Invoke(country, Game.Faction.USA, Mathf.Max(country.stability, country.influence[Game.Faction.USA]));
+            CountryClickHandler.Close(); 
             command.callback.Invoke();
         }
     }  

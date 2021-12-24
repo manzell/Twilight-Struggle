@@ -44,42 +44,41 @@ public class UICardDisplay : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             influenceBackground.gameObject.SetActive(true);
         }
 
-        switch (card.faction)
+        if (card is ScoringCard)
+        {
+            influenceBackground.gameObject.SetActive(false);
+            cardBackground.color = Color.yellow;
+        }
+        else switch (card.faction)
         {
             case Game.Faction.Neutral:
                 cardTitleText.color = new Color(.1f, .1f, .1f);
                 cardBackground.color = new Color(.5f, .5f, .5f);
                 influenceText.color = new Color(.1f, .1f, .1f);
-                influenceBackground.color = new Color(.9f, .9f, .9f); 
-                cardOutline.effectColor = new Color(.25f, .25f, .25f);
+                influenceBackground.color = new Color(.9f, .9f, .9f);
+                //cardOutline.effectColor = new Color(.25f, .25f, .25f);
                 break;
             case Game.Faction.USA:
                 cardTitleText.color = Color.white;
                 cardBackground.color = Color.blue;
                 influenceText.color = Color.blue;
-                influenceBackground.color = Color.white; 
-                cardOutline.effectColor = new Color(.25f, .25f, .25f);
+                influenceBackground.color = Color.white;
+                //cardOutline.effectColor = new Color(.25f, .25f, .25f);
                 break;
             case Game.Faction.USSR:
                 cardTitleText.color = Color.white;
-                cardBackground.color = Color.red; 
-                influenceText.color = Color.black; 
+                cardBackground.color = Color.red;
+                influenceText.color = Color.black;
                 influenceBackground.color = Color.yellow;
-                cardOutline.effectColor = Color.red;
+                //cardOutline.effectColor = Color.red;
                 break;
             case Game.Faction.China:
-                cardTitleText.color = Color.yellow; 
+                cardTitleText.color = Color.yellow;
                 cardBackground.color = new Color(1f, .9f, .1f);
                 influenceText.color = Color.white;
-                influenceBackground.color = Color.yellow; 
-                cardOutline.effectColor = new Color(1f, .75f, 0f);
+                influenceBackground.color = Color.yellow;
+                //cardOutline.effectColor = new Color(1f, .75f, 0f);
                 break;
-        }
-
-        if (card is ScoringCard)
-        {
-            influenceBackground.gameObject.SetActive(false);
-            cardBackground.color = Color.yellow;
         }
     }
 }

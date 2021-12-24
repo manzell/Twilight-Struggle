@@ -58,10 +58,12 @@ public class CardClickHandler
     {
         if (!outlines.ContainsKey(card))
         {
+            /*
             Outline outline = card.gameObject.AddComponent<Outline>();
             outline.effectColor = color;
             outline.effectDistance = new Vector2(5f, 5f);
             outlines.Add(card, outline);
+            */
         }
     }
 

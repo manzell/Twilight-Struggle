@@ -21,11 +21,14 @@ public class UIVictoryTrack : MonoBehaviour
             Image image = child.GetComponent<Image>();
             TextMeshProUGUI text = child.GetComponentInChildren<TextMeshProUGUI>();
 
-            int index = 20 - child.GetSiblingIndex();
+            int index = 20 - child.GetSiblingIndex(); // 20 - 0 = 20. 
+            // if(20 >= 4
             if (index >= VictoryTrack.vp)
             {
+                // if 20 > 0 && 3 > 0
                 if(index > 0 && VictoryTrack.vp > 0) // US Lead, US Chip
                 {
+                    Debug.Log($"Coloring in US VP {index} ({VictoryTrack.vp})");
                     image.color = usColor;
                     text.color = Color.white; 
                 }
@@ -37,6 +40,7 @@ public class UIVictoryTrack : MonoBehaviour
                 
                 if(index < 0 && VictoryTrack.vp < 0) // USSR Lead, USSR Chip
                 {
+                    Debug.Log($"Coloring in USSR VP {index} ({VictoryTrack.vp})");
                     image.color = ussrColor;
                     text.color = Color.white;
                 }

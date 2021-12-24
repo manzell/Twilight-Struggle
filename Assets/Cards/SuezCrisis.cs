@@ -13,7 +13,7 @@ public class SuezCrisis : Card
 
         void Finish()
         {
-            uiManager.UnsetButton(uiManager.primaryButton);
+            uiManager.UnsetButtons();
             command.callback.Invoke(); 
         }
     }

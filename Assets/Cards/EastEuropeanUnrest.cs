@@ -19,7 +19,7 @@ public class EastEuropeanUnrest : Card
         FindObjectOfType<UIManager>().SetButton(FindObjectOfType<UIManager>().primaryButton, "Unrest Abates", Finish); 
 
         if (eligibleCountries.Count > 3)
-            countryClickHandler = new CountryClickHandler(eligibleCountries, onCountryClick);
+            CountryClickHandler.Setup(eligibleCountries, onCountryClick);
         else
         {
             RemoveInfluence(Game.Faction.USSR, eligibleCountries, amount);
@@ -31,7 +31,7 @@ public class EastEuropeanUnrest : Card
             if (eligibleCountries.Contains(country))
             {
                 eligibleCountries.Remove(country);
-                countryClickHandler.Remove(country);
+                CountryClickHandler.Remove(country);
                 Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, -amount);
                 count--;
             }
@@ -43,7 +43,7 @@ public class EastEuropeanUnrest : Card
         void Finish()
         {
             FindObjectOfType<UIManager>().UnsetButton(FindObjectOfType<UIManager>().primaryButton);
-            countryClickHandler.Close(); 
+            CountryClickHandler.Close(); 
             command.callback.Invoke();
         }
     }

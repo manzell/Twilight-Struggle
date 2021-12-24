@@ -20,14 +20,14 @@ public class COMECON : Card
             foreach (Country country in eligibleCountries)
                 Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, 1);
         else
-            countryClickHandler = new CountryClickHandler(eligibleCountries, onCountryClick);
+            CountryClickHandler.Setup(eligibleCountries, onCountryClick);
 
         uiManager.SetButton(uiManager.primaryButton, "Finish Placing Ops", onFinish); 
 
         void onFinish()
         {
             uiManager.UnsetButton(uiManager.primaryButton);
-            countryClickHandler.Close();
+            CountryClickHandler.Close();
             command.callback.Invoke();
         }
 
@@ -36,7 +36,7 @@ public class COMECON : Card
         {
             Game.AdjustInfluence.Invoke(country, faction, 1);
             eligibleCountries.Remove(country);
-            countryClickHandler.Remove(country);
+            CountryClickHandler.Remove(country);
 
             count--;
 

@@ -7,7 +7,6 @@ public class PlaceBonusInfluence : MonoBehaviour, IPhaseAction
 {
     public Game.Faction faction;
     public int influenceAmt;
-    CountryClickHandler countryClickHandler;
 
     public void OnPhase(Phase phase, UnityAction callback)
     {
@@ -19,7 +18,7 @@ public class PlaceBonusInfluence : MonoBehaviour, IPhaseAction
             if (country.influence[Game.Faction.USA] > 0)
                 eligibleCountries.Add(country);
 
-        countryClickHandler = new CountryClickHandler(eligibleCountries, onCountryClick, Color.yellow);
+        CountryClickHandler.Setup(eligibleCountries, onCountryClick, Color.yellow);
 
         void onCountryClick(Country country)
         {
@@ -33,7 +32,7 @@ public class PlaceBonusInfluence : MonoBehaviour, IPhaseAction
 
             if (influenceAmt == 0)
             {
-                countryClickHandler.Close();
+                CountryClickHandler.Close();
                 callback.Invoke();
             }
         }

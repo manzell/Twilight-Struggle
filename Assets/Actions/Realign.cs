@@ -21,7 +21,7 @@ public class Realign : GameAction
                 eligibleCountries.Remove(country);
         }
 
-        countryClickHandler = new CountryClickHandler(eligibleCountries, SetRealignTarget); 
+        CountryClickHandler.Setup(eligibleCountries, SetRealignTarget); 
 
         void SetRealignTarget(Country country)
         {
@@ -40,12 +40,12 @@ public class Realign : GameAction
             if(attempt.targetCountry.influence[realign.enemyPlayer] == 0)
             {
                 eligibleCountries.Remove(attempt.targetCountry); 
-                countryClickHandler.Remove(country);
+                CountryClickHandler.Remove(country);
             }
 
             if (realign.realignAttempts.Count == realign.cardOpsValue || eligibleCountries.Count == 0)
             {
-                countryClickHandler.Close();
+                CountryClickHandler.Close();
                 realign.callback.Invoke(); 
             }
         }

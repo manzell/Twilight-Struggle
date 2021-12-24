@@ -19,9 +19,9 @@ public class MilOpsTrack : MonoBehaviour
 
     void onAdjustMilOps(Game.Faction faction, int i)
     {
-        USAmilOps.text = milOps[Game.Faction.USA].ToString();
-        USSRmilOps.text = milOps[Game.Faction.USSR].ToString();
-        reqdMilOps.text = requiredMilOps.ToString(); 
+        //USAmilOps.text = milOps[Game.Faction.USA].ToString();
+        //USSRmilOps.text = milOps[Game.Faction.USSR].ToString();
+        //reqdMilOps.text = requiredMilOps.ToString(); 
     }
 
     void onTurnStart(Phase phase)

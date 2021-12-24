@@ -26,14 +26,14 @@ public class MarshallPlan : Card
             Finish(); 
         }
         else
-            countryClickHandler = new CountryClickHandler(westernEurope, onCountryClick, new Color(0f, .6f, .6f));
+            CountryClickHandler.Setup(westernEurope, onCountryClick, new Color(0f, .6f, .6f));
 
         void onCountryClick(Country country)
         {
             if (westernEurope.Contains(country))
             {
                 westernEurope.Remove(country);
-                countryClickHandler.Remove(country);
+                CountryClickHandler.Remove(country);
                 Game.AdjustInfluence.Invoke(country, Game.Faction.USA, 1);
                 count--;
             }
@@ -44,7 +44,7 @@ public class MarshallPlan : Card
 
         void Finish()
         {
-            countryClickHandler.Close();
+            CountryClickHandler.Close();
             command.callback.Invoke();
         }
     }

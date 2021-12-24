@@ -31,7 +31,6 @@ public class Blockade : Card
         {
             Player.USA.hand.Remove(card);
             Game.deck.discards.Add(card);
-            countryClickHandler.Close(); 
             command.callback.Invoke();
 
             FindObjectOfType<UIMessage>().Message($"US discarded {card.cardName} to Blockade"); 

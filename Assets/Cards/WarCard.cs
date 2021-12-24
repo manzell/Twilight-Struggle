@@ -10,7 +10,7 @@ public class WarCard : Card
     public override void CardEvent(GameAction.Command command)
     {
         if (targetCountries.Count > 1)
-            countryClickHandler = new CountryClickHandler(targetCountries, War, Color.red);
+            CountryClickHandler.Setup(targetCountries, War, Color.red);
         else if (targetCountries.Count == 1)
             War(targetCountries[0]);
         else
@@ -18,7 +18,7 @@ public class WarCard : Card
 
         void War(Country targetCountry)
         {
-            countryClickHandler.Close(); // Hack! Maybe set CCH to a close-after-n-clicks mode? 
+            CountryClickHandler.Close(); // Hack! Maybe set CCH to a close-after-n-clicks mode? 
 
             int adjustment = 0;
             int roll = Random.Range(0, 6) + 1;

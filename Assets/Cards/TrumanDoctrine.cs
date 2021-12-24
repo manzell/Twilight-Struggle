@@ -16,7 +16,7 @@ public class TrumanDoctrine : Card
         if (eligibleCountries.Count > 1)
         {
             Message("Truman promises to support freedom throughout Europe");
-            countryClickHandler = new CountryClickHandler(eligibleCountries, onCountryClick);
+            CountryClickHandler.Setup(eligibleCountries, onCountryClick);
         }
         else
         {
@@ -31,7 +31,7 @@ public class TrumanDoctrine : Card
             if (eligibleCountries.Contains(country))
             {
                 Game.SetInfluence.Invoke(country, Game.Faction.USSR, 0);
-                countryClickHandler.Close();
+                CountryClickHandler.Close();
                 command.callback.Invoke(); 
             }
         }

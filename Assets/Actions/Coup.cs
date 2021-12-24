@@ -20,7 +20,7 @@ public class Coup : GameAction
                 eligibleCountries.Remove(country);
         }
 
-        countryClickHandler = new CountryClickHandler(eligibleCountries, SetCoupTarget);
+        CountryClickHandler.Setup(eligibleCountries, SetCoupTarget);
 
         void SetCoupTarget(Country country)
         {
@@ -32,7 +32,7 @@ public class Coup : GameAction
             if(coup.targetCountry.isBattleground)
                 Game.AdjustDEFCON.Invoke(Game.phasingPlayer, -1); 
 
-            countryClickHandler.Close();
+            CountryClickHandler.Close();
             command.callback.Invoke();
         }
     }

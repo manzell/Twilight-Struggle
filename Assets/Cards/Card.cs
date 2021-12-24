@@ -63,7 +63,7 @@ public abstract class Card : SerializedMonoBehaviour
     {
         List<Country> removedCountries = new List<Country>();
 
-        countryClickHandler = new CountryClickHandler(countries, onCountryClick);
+        CountryClickHandler.Setup(countries, onCountryClick);
 
         void onCountryClick(Country country)
         {
@@ -76,13 +76,13 @@ public abstract class Card : SerializedMonoBehaviour
 
             if (removedCountries.CountOf(country) == maxPerCountry)
             {
-                countryClickHandler.Remove(country);
+                CountryClickHandler.Remove(country);
                 countries.Remove(country);
             }
 
             if (totalInfluence == 0)
             {
-                countryClickHandler.Close();
+                CountryClickHandler.Close();
                 callback.Invoke(); 
             }
         }
@@ -97,7 +97,7 @@ public abstract class Card : SerializedMonoBehaviour
     public void PlaceInfluence(Game.Faction faction, List<Country> eligibleCountries, int amount, UnityAction callback)
     {
         FindObjectOfType<UIMessage>().Message($"{(amount > 0 ? "Place" : "Remove")} {Mathf.Abs(amount)} {faction} Influence");
-        countryClickHandler = new CountryClickHandler(eligibleCountries, onCountryClick, Color.yellow);
+        CountryClickHandler.Setup(eligibleCountries, onCountryClick, Color.yellow);
 
         void onCountryClick(Country country)
         {
@@ -112,7 +112,7 @@ public abstract class Card : SerializedMonoBehaviour
 
             if (amount == 0)
             {
-                countryClickHandler.Close();
+                CountryClickHandler.Close();
                 callback.Invoke(); 
             }
         }

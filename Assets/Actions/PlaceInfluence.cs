@@ -29,7 +29,7 @@ public class PlaceInfluence : GameAction
                     }
         }
 
-        countryClickHandler = new CountryClickHandler(eligibleCountries, onInfluencePlace);
+        CountryClickHandler.Setup(eligibleCountries, onInfluencePlace);
 
         void onInfluencePlace(Country country)
         {
@@ -55,12 +55,12 @@ public class PlaceInfluence : GameAction
                     if (c.control == placement.enemyPlayer)
                     {
                         eligibleCountries.Remove(c);
-                        countryClickHandler.Remove(c); 
+                        CountryClickHandler.Remove(c); 
                     }
             }
             else if(placement.cardOpsValue - placement.opsPlaced == 0)
             {
-                countryClickHandler.Close();
+                CountryClickHandler.Close();
                 placement.callback.Invoke(); 
             }
         }

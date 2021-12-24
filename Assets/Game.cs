@@ -68,7 +68,7 @@ public class Game : SerializedMonoBehaviour
         country.influence[faction] = Mathf.Max(0, country.influence[faction] + amount);
 
     static void onSetInfluence(Country country, Faction faction, int amount) =>
-        AdjustInfluence.Invoke(country, faction, -country.influence[faction]);
+        AdjustInfluence.Invoke(country, faction, amount - country.influence[faction]);
 
     static void onSetActiveFaction(Faction faction) => actingPlayer = faction; 
 }
