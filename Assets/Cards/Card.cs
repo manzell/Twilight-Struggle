@@ -23,6 +23,8 @@ public abstract class Card : SerializedMonoBehaviour
 
     protected static CountryClickHandler countryClickHandler;
     protected static CardClickHandler cardClickHandler;
+    protected static UnityEvent<Country> adjustInfluenceEvent = new UnityEvent<Country>();
+    protected static UnityEvent<Card> cardClickEvent = new UnityEvent<Card>();
 
     public abstract void CardEvent(GameAction.Command command);
 
@@ -67,12 +69,15 @@ public abstract class Card : SerializedMonoBehaviour
 
         void onCountryClick(Country country)
         {
-            if (maxPerCountry == 0 && removedCountries.CountOf(country) < maxPerCountry)
+            Debug.Log($"AdjustInfluence: {totalInfluence}");
+            if (maxPerCountry == 0 || removedCountries.CountOf(country) < maxPerCountry)
             {
                 removedCountries.Add(country);
                 Game.AdjustInfluence.Invoke(country, faction, totalInfluence > 0 ? 1 : -1);
-                totalInfluence--;
+                totalInfluence += totalInfluence < 0 ? 1 : -1;
             }
+
+            adjustInfluenceEvent.Invoke(country);
 
             if (removedCountries.CountOf(country) == maxPerCountry)
             {
@@ -105,10 +110,12 @@ public abstract class Card : SerializedMonoBehaviour
             {
                 int sign = amount / Mathf.Abs(amount); // If we submit a negative influence, we want to remove influence rather than add it. 
                 Game.AdjustInfluence.Invoke(country, faction, 1 * sign);
-                amount--;
+                amount -= 1 * sign;
 
                 FindObjectOfType<UIMessage>().Message($"{(amount > 0 ? "Place" : "Remove")} {Mathf.Abs(amount)} {faction} Influence");
             }
+
+            adjustInfluenceEvent.Invoke(country);
 
             if (amount == 0)
             {

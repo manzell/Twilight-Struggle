@@ -6,7 +6,7 @@ public class Destalinization : Card
 {
     public override void CardEvent(GameAction.Command command)
     {
-        int count = 4;
+        int count = 0;
         List<Country> eligibleCountries = new List<Country>();
         List<Country> removedFrom = new List<Country>();
         List<Country> addedTo = new List<Country>();
@@ -14,35 +14,19 @@ public class Destalinization : Card
         int eligibleInfluence = 0; 
 
         foreach (Country country in FindObjectsOfType<Country>())
+        {
             if (country.influence[Game.Faction.USSR] > 0)
             {
                 eligibleCountries.Add(country);
-                eligibleInfluence += country.influence[Game.Faction.USSR]; 
+                eligibleInfluence += country.influence[Game.Faction.USSR];
             }
+        }
 
         uiManager.SetButton(uiManager.cancelButton, "Finish Destal", Finish);
         uiManager.SetButton(uiManager.confirmButton, "Finish Removing Influence", RedeployInfluence);
 
-        CountryClickHandler.Setup(eligibleCountries, RemoveInfluence);
-
-        void RemoveInfluence(Country country)
-        {
-            Message($"Remove {count} Stalinist influence anywhere"); 
-            count--;
-            eligibleInfluence--; 
-
-            Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, -1);
-
-            if (country.influence[Game.Faction.USSR] == 0)
-            {
-                CountryClickHandler.Remove(country);
-                eligibleCountries.Remove(country);
-                removedFrom.Add(country);
-            }
-
-            if (count == 0 || eligibleInfluence == 0)
-                RedeployInfluence();
-        }
+        RemoveInfluence(eligibleCountries, Game.Faction.USSR, 4, 0, RedeployInfluence);
+        adjustInfluenceEvent.AddListener(c => count++); 
 
         void RedeployInfluence()
         {
@@ -53,20 +37,7 @@ public class Destalinization : Card
                 if (c.control != Game.Faction.USA)
                     eligibleCountries.Add(c);
 
-            CountryClickHandler.Setup(eligibleCountries, AddInfluence);
-
-            void AddInfluence(Country country)
-            {
-                if (addedTo.CountOf(country) < 2)
-                {
-                    Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, 1);
-                    addedTo.Add(country);
-                    count--;
-                }
-
-                if (count == 0)
-                    Finish(); 
-            }
+            AddInfluence(eligibleCountries, Game.Faction.USSR, count, 0, Finish);
         }
 
         void Finish()

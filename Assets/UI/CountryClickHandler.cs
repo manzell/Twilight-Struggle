@@ -39,7 +39,7 @@ public class CountryClickHandler
     {
         if (!_highlights.ContainsKey(country))
         {
-            _highlights.Add(country, UICountry.countryMap[country]);
+            _highlights.Add(country, UICountry.countryMap[country]); // We're assuming that this table is populated!
 
             UICountry.countryMap[country].Shadow.DOColor(_color, .3f);
             UICountry.countryMap[country].Shadow.DOFade(.75f, .3f);

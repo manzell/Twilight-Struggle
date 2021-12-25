@@ -19,7 +19,7 @@ public class SocialistGovernments : Card
 
         uiManager.SetButton(uiManager.primaryButton, "Finish SocGov", Finish);
 
-        RemoveInfluence(westernEurope, Game.Faction.USA, influenceToRemove, limit, Finish);
+        RemoveInfluence(eligibleCountries, Game.Faction.USA, influenceToRemove, limit, Finish);
 
         void Finish()
         {

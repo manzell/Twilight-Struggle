@@ -7,7 +7,7 @@ public class ImproveDEFCON : MonoBehaviour, IPhaseAction
 {
     public void OnPhase(Phase phase, UnityAction callback)
     {
-        DEFCON.AdjustDEFCON.Invoke(1);
+        DEFCONtrack.AdjustDEFCON.Invoke(1);
         callback.Invoke();
     }
 }
