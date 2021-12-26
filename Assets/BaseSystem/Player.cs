@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+
+namespace TwilightStruggle
 {
-    public static Player USA, USSR; 
-
-    public Game.Faction faction;
-    public List<Card> hand;
-
-    private void Awake()
+    public class Player : MonoBehaviour
     {
-        if (faction == Game.Faction.USA) USA = this;
-        else if (faction == Game.Faction.USSR) USSR = this;
+        public static Player USA, USSR;
+
+        public Game.Faction faction;
+        public List<Card> hand;
+
+        private void Awake()
+        {
+            if (faction == Game.Faction.USA) USA = this;
+            else if (faction == Game.Faction.USSR) USSR = this;
+        }
     }
 }

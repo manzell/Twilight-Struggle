@@ -1,26 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events; 
+using UnityEngine.Events;
 
-public class ScoringCard : Card
+namespace TwilightStruggle
 {
-    public Country.Continent continent;
-    public Dictionary<Scoring.ScoreState, int> scoreKey; 
-    public UnityEvent<Scoring> scoreEvent = new UnityEvent<Scoring>();
-
-    public override void CardEvent(GameAction.Command command)
+    public class ScoringCard : Card
     {
-        Scoring scoring = new Scoring(scoreKey, continent);
+        public Country.Continent continent;
+        public Dictionary<Scoring.ScoreState, int> scoreKey;
+        public UnityEvent<Scoring> scoreEvent = new UnityEvent<Scoring>();
 
-        if (scoring.vp != 0)
-            FindObjectOfType<UIMessage>().Message($"{cardName} scored for {scoring.scoringFaction} {scoring.scoreState[scoring.scoringFaction]} (+{scoring.vp} VPs)");
-        else
-            FindObjectOfType<UIMessage>().Message($"{cardName} scored for Even"); 
+        public override void CardEvent(GameAction.Command command)
+        {
+            Scoring scoring = new Scoring(scoreKey, continent);
 
-        scoreEvent.Invoke(scoring); 
-        Game.AdjustVPs.Invoke(scoring.vp);
+            if (scoring.vp != 0)
+                Message($"{cardName} scored for {scoring.scoringFaction} {scoring.scoreState[scoring.scoringFaction]} (+{scoring.vp} VPs)");
+            else
+                Message($"{cardName} scored for Even");
 
-        command.callback.Invoke(); 
+            scoreEvent.Invoke(scoring);
+            Game.AdjustVPs.Invoke(scoring.vp);
+
+            command.callback.Invoke();
+        }
     }
 }

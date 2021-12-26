@@ -2,20 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening; 
+using DG.Tweening;
 
-public class UIDefcon : MonoBehaviour
+namespace TwilightStruggle.UI
 {
-    [SerializeField] Image activeImage; 
-    [SerializeField] Sprite[] defconSprites;
-
-    private void Awake()
+    public class UIDefcon : MonoBehaviour
     {
-        Game.AdjustDEFCON.after.AddListener(UpdateDefcon); 
-    }
+        [SerializeField] Image activeImage;
+        [SerializeField] Sprite[] defconSprites;
 
-    void UpdateDefcon(Game.Faction faction, int amount)
-    {
-        activeImage.DOCrossfadeImage(defconSprites[DEFCONtrack.Status - 1], 2.5f).SetEase(Ease.Linear);
+        private void Awake()
+        {
+            Game.AdjustDEFCON.after.AddListener(UpdateDefcon);
+        }
+
+        void UpdateDefcon(Game.Faction faction, int amount)
+        {
+            activeImage.DOCrossfadeImage(defconSprites[DEFCONtrack.Status - 1], 2.5f).SetEase(Ease.Linear);
+        }
     }
 }

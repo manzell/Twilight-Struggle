@@ -3,31 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
-using TMPro; 
+using TMPro;
 
-public class UIHeadlineDropZone : MonoBehaviour, IDropHandler
+namespace TwilightStruggle.UI
 {
-    public Game.Faction faction;
-    public HeadlineAction headlineAction;
-    [SerializeField] GameObject _cardSlot;
-    [SerializeField] TextMeshProUGUI _revealedHeadline; 
-
-    public void OnDrop(PointerEventData eventData)
+    public class UIHeadlineDropZone : MonoBehaviour, IDropHandler
     {
-        if (Game.currentTurn.headlinePhase.headlines[faction] == null &&
-            Game.actingPlayer == faction)
+        public Game.Faction faction;
+        public HeadlineAction headlineAction;
+        [SerializeField] GameObject _cardSlot;
+        [SerializeField] TextMeshProUGUI _revealedHeadline;
+
+        public void OnDrop(PointerEventData eventData)
         {
-            Card _card = eventData.selectedObject.GetComponent<UICard>().card;
-            _revealedHeadline.text = _card.cardName; 
-            _revealedHeadline.DOFade(1, 0.35f);
+            if (Game.currentTurn.headlinePhase.headlines[faction] == null &&
+                Game.actingPlayer == faction)
+            {
+                Card _card = eventData.selectedObject.GetComponent<UICard>().card;
+                _revealedHeadline.text = _card.cardName;
+                _revealedHeadline.DOFade(1, 0.35f);
 
-            FindObjectOfType<UIHand>().RemoveCard(_card); // Note: This triggers BEFORE UICard.OnDragEnd()
+                FindObjectOfType<UIHand>().RemoveCard(_card); // Note: This triggers BEFORE UICard.OnDragEnd()
 
-            eventData.selectedObject.transform.parent = transform;
-            eventData.selectedObject.transform.DOKill();
-            eventData.selectedObject.transform.DOScale(0f, .35f).OnComplete(() => Destroy(eventData.selectedObject)); 
+                eventData.selectedObject.transform.parent = transform;
+                eventData.selectedObject.transform.DOKill();
+                eventData.selectedObject.transform.DOScale(0f, .35f).OnComplete(() => Destroy(eventData.selectedObject));
 
-            headlineAction.SetHeadline(faction, _card);
+                headlineAction.SetHeadline(faction, _card);
+            }
         }
     }
 }

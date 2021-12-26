@@ -8,7 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>TwilightStruggle</RootNamespace>
     <ProjectGuid>{FFE1FF98-57C2-60F6-A0F0-66552D7CF8D3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -67,7 +67,7 @@
     <Compile Include="Assets\GameRules\CheckHeldCards.cs" />
     <Compile Include="Assets\Cards\EuropeControlVictory.cs" />
     <Compile Include="Assets\UI\UITurnTrack.cs" />
-    <Compile Include="Assets\BaseSystem\UIManager.cs" />
+    <Compile Include="Assets\UI\UIManager.cs" />
     <Compile Include="Assets\GameRules\PlaceStartingInfluence.cs" />
     <Compile Include="Assets\Cards\CapturedNaziScientist.cs" />
     <Compile Include="Assets\Game Actions\Realign.cs" />
@@ -143,6 +143,10 @@
     <Compile Include="Assets\GameRules\MayNotHeadline.cs" />
     <Compile Include="Assets\Cards\FormosanRevolution.cs" />
     <Compile Include="Assets\UI\Animations\StartGameAnimation.cs" />
+    <Compile Include="Assets\UI\UIPhase.cs" />
+    <Compile Include="Assets\UI\UIActionRound.cs" />
+    <Compile Include="Assets\UI\Animations\CoupAnimation.cs" />
+    <Compile Include="Assets\GameRules\GameCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
