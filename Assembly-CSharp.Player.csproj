@@ -90,7 +90,7 @@
     <Compile Include="Assets\Cards\Card.cs" />
     <Compile Include="Assets\Cards\SuezCrisis.cs" />
     <Compile Include="Assets\UI\UIPhase.cs" />
-    <Compile Include="Assets\BaseSystem\Turn.cs" />
+    <Compile Include="Assets\BaseSystem\Turn System\Turn.cs" />
     <Compile Include="Assets\UI\UIHeadlineDropZone.cs" />
     <Compile Include="Assets\Cards\MarshallPlan.cs" />
     <Compile Include="Assets\BaseSystem\Player.cs" />
@@ -99,7 +99,7 @@
     <Compile Include="Assets\Cards\Nasser.cs" />
     <Compile Include="Assets\Cards\COMECON.cs" />
     <Compile Include="Assets\UI\CountryClickHandler.cs" />
-    <Compile Include="Assets\BaseSystem\HeadlinePhase.cs" />
+    <Compile Include="Assets\BaseSystem\Turn System\HeadlinePhase.cs" />
     <Compile Include="Assets\GameRules\MayNotCoup.cs" />
     <Compile Include="Assets\Cards\NuclearTestBan.cs" />
     <Compile Include="Assets\UI\Animations\CoupAnimation.cs" />
@@ -129,7 +129,7 @@
     <Compile Include="Assets\GameRules\SetActivePlayer.cs" />
     <Compile Include="Assets\UI\CardUI.cs" />
     <Compile Include="Assets\Cards\Decolonization.cs" />
-    <Compile Include="Assets\BaseSystem\ActionRound.cs" />
+    <Compile Include="Assets\BaseSystem\Turn System\ActionRound.cs" />
     <Compile Include="Assets\UI\UIDefcon.cs" />
     <Compile Include="Assets\Cards\TrumanDoctrine.cs" />
     <Compile Include="Assets\Cards\Fidel.cs" />
@@ -140,7 +140,7 @@
     <Compile Include="Assets\GameRules\RealignmentBonus.cs" />
     <Compile Include="Assets\Game Actions\Coup.cs" />
     <Compile Include="Assets\Cards\RedScarePurge.cs" />
-    <Compile Include="Assets\BaseSystem\Phase.cs" />
+    <Compile Include="Assets\BaseSystem\Turn System\Phase.cs" />
     <Compile Include="Assets\Cards\RomanianAbdication.cs" />
     <Compile Include="Assets\Cards\DeGaulleLeadsFrance.cs" />
     <Compile Include="Assets\Cards\UNIntervention.cs" />

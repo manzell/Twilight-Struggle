@@ -9,7 +9,7 @@ namespace TwilightStruggle
     {
         public void OnPhase(TurnSystem.Phase phase, UnityAction callback)
         {
-            DEFCONtrack.AdjustDEFCON.Invoke(1);
+            DEFCONtrack.adjustDefconEvent.Invoke(1);
             callback.Invoke();
         }
     }

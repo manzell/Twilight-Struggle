@@ -31,7 +31,7 @@ namespace TwilightStruggle.UI
         {
             // Toggle the Active Faction on Tab. 
             if (Input.GetKeyDown(KeyCode.Tab))
-                Game.setActiveFactionEvent.Invoke(_currentFaction == Game.Faction.USSR ? Game.Faction.USA : Game.Faction.USSR);
+                Game.SetActiveFaction(_currentFaction == Game.Faction.USSR ? Game.Faction.USA : Game.Faction.USSR);
         }
 
         public void SetFaction(Game.Faction faction)

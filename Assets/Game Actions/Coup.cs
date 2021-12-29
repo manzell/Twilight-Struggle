@@ -64,7 +64,7 @@ namespace TwilightStruggle
                 MilOpsTrack.GiveMilOps(command.faction, coupVars.coupOps);
 
             if (coupVars.affectsDefcon && coupVars.targetCountry.isBattleground)
-                Game.AdjustDEFCON.Invoke(command.faction, -1);
+                DEFCONtrack.AdjustDefcon(command.faction, -1);
  
             completeEvent.Invoke(command);
             command.FinishCommand();
@@ -92,7 +92,7 @@ namespace TwilightStruggle
             foreach (Country country in eligibleCountries.ToArray())
             {
                 // Filter out any countries that are prohibited due to DEFCON or due to lack of opponent influence or cannot be couped for other reasons
-                if (DEFCONtrack.Status <= DEFCONtrack.defconRestrictions[country.continent] || country.influence[coupVars.enemyFaction] == 0 || country.GetComponent<MayNotCoup>())
+                if (DEFCONtrack.status <= DEFCONtrack.defconRestrictions[country.continent] || country.influence[coupVars.enemyFaction] == 0 || country.GetComponent<MayNotCoup>())
                     eligibleCountries.Remove(country);
             }
 

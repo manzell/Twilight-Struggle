@@ -11,7 +11,7 @@ namespace TwilightStruggle
 
         public void OnPhase(TurnSystem.Phase p, UnityAction callback)
         {
-            Game.AdjustDEFCON.Invoke(Game.Faction.USA, defcon);
+            DEFCONtrack.AdjustDefcon(Game.Faction.USA, defcon);
             callback.Invoke();
         }
     }

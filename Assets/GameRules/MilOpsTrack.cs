@@ -8,7 +8,7 @@ namespace TwilightStruggle
     public class MilOpsTrack : MonoBehaviour
     {
         [SerializeField] TextMeshProUGUI USAmilOps, USSRmilOps, reqdMilOps;
-        public static int requiredMilOps => DEFCONtrack.Status;
+        public static int requiredMilOps => DEFCONtrack.status;
         public static Dictionary<Game.Faction, int> milOps;
 
         void Awake()

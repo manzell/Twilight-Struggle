@@ -17,7 +17,7 @@ namespace TwilightStruggle
             foreach (Country country in eligibleCountries)
             {
                 // Filter out any countries that are prohibited due to DEFCON or due to lack of opponent influence. 
-                if (DEFCONtrack.Status <= DEFCONtrack.defconRestrictions[country.continent] || country.influence[command.opponent] == 0 || country.GetComponent<MayNotRealign>())
+                if (DEFCONtrack.status <= DEFCONtrack.defconRestrictions[country.continent] || country.influence[command.opponent] == 0 || country.GetComponent<MayNotRealign>())
                     eligibleCountries.Remove(country);
             }
 

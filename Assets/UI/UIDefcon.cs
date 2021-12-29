@@ -13,12 +13,12 @@ namespace TwilightStruggle.UI
 
         private void Awake()
         {
-            Game.AdjustDEFCON.after.AddListener(UpdateDefcon);
+            DEFCONtrack.adjustDefconEvent.AddListener(UpdateDefcon);
         }
 
-        void UpdateDefcon(Game.Faction faction, int amount)
+        void UpdateDefcon(int amount)
         {
-            activeImage.DOCrossfadeImage(defconSprites[DEFCONtrack.Status - 1], 2.5f).SetEase(Ease.Linear);
+            activeImage.DOCrossfadeImage(defconSprites[DEFCONtrack.status - 1], 2.5f).SetEase(Ease.Linear);
         }
     }
 }

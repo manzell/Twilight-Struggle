@@ -36,7 +36,7 @@ namespace TwilightStruggle
             void Boycott()
             {
                 Message($"{command.opponent} Boycotts!");
-                Game.AdjustDEFCON.Invoke(Game.phasingPlayer, -1);
+                DEFCONtrack.AdjustDefcon(Game.phasingPlayer, -1);
                 // Play a generic 4-op Card with Finish as the call back
                 command.FinishCommand();
             }

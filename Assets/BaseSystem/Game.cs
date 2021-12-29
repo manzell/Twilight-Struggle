@@ -16,16 +16,10 @@ namespace TwilightStruggle
             phaseStartEvent = new UnityEvent<TurnSystem.Phase>(),
             phaseEndEvent = new UnityEvent<TurnSystem.Phase>();
 
-        public static GameEvent<TurnSystem.HeadlinePhase>
-            headlineEvent = new GameEvent<TurnSystem.HeadlinePhase>();
+        public static GameEvent<TurnSystem.HeadlinePhase> headlineEvent = new GameEvent<TurnSystem.HeadlinePhase>();
 
         public static UnityEvent<TurnSystem.IPhaseAction> phaseActionEvent = new UnityEvent<TurnSystem.IPhaseAction>();
         public static GameEvent<Faction> setActiveFactionEvent = new GameEvent<Faction>();
-
-        public static GameEvent<Faction, int> AdjustDEFCON = new GameEvent<Faction, int>();
-        public static GameEvent<int> AdjustVPsEvent = new GameEvent<int>();
-        public static GameEvent<Faction, int> AdjustMilOps = new GameEvent<Faction, int>();
-        public static UnityEvent<Faction> AdvanceSpaceRate = new UnityEvent<Faction>();
 
         public static GameEvent<Country, Faction, int> adjustInfluenceEvent = new GameEvent<Country, Faction, int>();
         public static GameEvent<Country, Faction, int> setInfluenceEvent = new GameEvent<Country, Faction, int>();
@@ -38,9 +32,9 @@ namespace TwilightStruggle
         public static UnityEvent<Country> CountryClick = new UnityEvent<Country>();
         public static UnityEvent<Card> CardClick = new UnityEvent<Card>();
 
-        public static Faction phasingPlayer,
-            actingPlayer = Faction.USSR;
+        public static Faction phasingPlayer, actingPlayer = Faction.USSR;
         public static GamePhase gamePhase;
+
         public static TurnSystem.Phase currentPhase;
         public static TurnSystem.Turn currentTurn;
         public static TurnSystem.ActionRound currentActionRound;
@@ -52,14 +46,11 @@ namespace TwilightStruggle
 
         private void Awake()
         {
-            if (deck is null) deck = new Deck();
-
-            deck.Shuffle(); // lol this should be somewhere else 
+            gameStartEvent.AddListener(() => deck.Shuffle()); 
         }
 
         [Button] public void AdvancePhase() => currentPhase.NextPhase(currentPhase.callback);
 
-        // These are the only functions that should be allowed to touch the Game State
         public static void SetInfluence(Country country, Faction faction, int amount) =>
             AdjustInfluence(country, faction, amount - country.influence[faction]);
 
@@ -69,10 +60,13 @@ namespace TwilightStruggle
             adjustInfluenceEvent.Invoke(country, faction, amount); 
         }
 
-        static void SetActiveFaction(Faction faction)
+        public static void SetActiveFaction(Faction faction)
         {
-            actingPlayer = faction;
-            setActiveFactionEvent.Invoke(faction);
+            if(actingPlayer != faction)
+            {
+                actingPlayer = faction;
+                setActiveFactionEvent.Invoke(faction);
+            }
         }
     }
 }

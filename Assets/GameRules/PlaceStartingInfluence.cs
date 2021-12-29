@@ -13,7 +13,7 @@ namespace TwilightStruggle
 
         public void OnPhase(TurnSystem.Phase phase, UnityAction callback)
         {
-            Game.setActiveFactionEvent.Invoke(faction);
+            Game.SetActiveFaction(faction);
             FindObjectOfType<UI.UIMessage>().Message($"Place {influenceAmt} {faction} Influence");
 
             UI.CountryClickHandler.Setup(eligibleCountries, onCountryClick, Color.yellow);
