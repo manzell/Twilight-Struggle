@@ -17,7 +17,7 @@ namespace TwilightStruggle.UI
             if (Game.currentTurn.headlinePhase.headlines[faction] == null &&
                 Game.actingPlayer == faction)
             {
-                Card _card = eventData.selectedObject.GetComponent<UICard>().card;
+                Card _card = eventData.selectedObject.GetComponent<CardUI>().card;
                 _revealedHeadline.text = _card.cardName;
                 _revealedHeadline.DOFade(1, 0.35f);
 

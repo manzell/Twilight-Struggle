@@ -29,7 +29,7 @@ namespace TwilightStruggle
                 if (easternEurope.Count <= count)
                 {
                     foreach (Country country in easternEurope)
-                        Game.setInfluenceEvent.Invoke(country, Game.Faction.USA, 0);
+                        Game.SetInfluence(country, Game.Faction.USA, 0);
 
                     Finish();
                 }
@@ -40,7 +40,7 @@ namespace TwilightStruggle
 
                 void onCountryClick(Country country)
                 {
-                    Game.setInfluenceEvent.Invoke(country, Game.Faction.USA, 0);
+                    Game.SetInfluence(country, Game.Faction.USA, 0);
                     UI.CountryClickHandler.Remove(country);
                     easternEurope.Remove(country);
                     count--;

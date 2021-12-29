@@ -127,7 +127,7 @@
     <Compile Include="Assets\GameRules\GameCommand.cs" />
     <Compile Include="Assets\UI\HandDragBehavior.cs" />
     <Compile Include="Assets\GameRules\SetActivePlayer.cs" />
-    <Compile Include="Assets\UI\UICard.cs" />
+    <Compile Include="Assets\UI\CardUI.cs" />
     <Compile Include="Assets\Cards\Decolonization.cs" />
     <Compile Include="Assets\BaseSystem\ActionRound.cs" />
     <Compile Include="Assets\UI\UIDefcon.cs" />

@@ -11,7 +11,7 @@ namespace TwilightStruggle
             int vpAward = Mathf.Max(0, DEFCONtrack.Status - 2);
             Message($"{command.faction} Events Nuclear Test Ban for {vpAward} VPs");
 
-            Game.AdjustVPsEvent.Invoke(command.faction == Game.Faction.USA ? vpAward : -vpAward);
+            VictoryTrack.AdjustVPs(command.faction == Game.Faction.USA ? vpAward : -vpAward);
             Game.AdjustDEFCON.Invoke(Game.actingPlayer, 2);
 
             command.FinishCommand();

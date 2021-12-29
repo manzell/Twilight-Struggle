@@ -21,7 +21,7 @@ namespace TwilightStruggle
                 Message($"{cardName} scored for Even");
 
             scoreEvent.Invoke(scoring);
-            Game.AdjustVPsEvent.Invoke(scoring.vp);
+            VictoryTrack.AdjustVPs(scoring.vp);
 
             command.FinishCommand();
         }

@@ -32,7 +32,7 @@ namespace TwilightStruggle
 
             void EqualizeInfluence(Country country)
             {
-                Game.setInfluenceEvent.Invoke(country, Game.Faction.USA, Mathf.Max(country.stability, country.influence[Game.Faction.USA]));
+                Game.SetInfluence(country, Game.Faction.USA, Mathf.Max(country.stability, country.influence[Game.Faction.USA]));
                 UI.CountryClickHandler.Close();
                 command.FinishCommand();
             }

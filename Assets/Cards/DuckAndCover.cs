@@ -10,7 +10,7 @@ namespace TwilightStruggle
         {
             Game.AdjustDEFCON.Invoke(Game.phasingPlayer, -1);
             int vpAward = Mathf.Clamp(5 - DEFCONtrack.Status, 0, 5);
-            Game.AdjustVPsEvent.Invoke(vpAward);
+            VictoryTrack.AdjustVPs(vpAward);
 
             Message($"US earns {vpAward} {(vpAward == 1 ? "point" : "points")} from Duck and Cover");
 

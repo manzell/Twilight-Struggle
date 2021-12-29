@@ -23,7 +23,7 @@ namespace TwilightStruggle
             }
             else
             {
-                Game.setInfluenceEvent.Invoke(westGermany, Game.Faction.USA, 0);
+                Game.SetInfluence(westGermany, Game.Faction.USA, 0);
                 command.FinishCommand();
             }
 
@@ -38,7 +38,7 @@ namespace TwilightStruggle
 
             void onPass()
             {
-                Game.setInfluenceEvent.Invoke(westGermany, Game.Faction.USA, 0);
+                Game.SetInfluence(westGermany, Game.Faction.USA, 0);
                 command.FinishCommand();
 
                 FindObjectOfType<UI.UIManager>().UnsetButton(FindObjectOfType<UI.UIManager>().primaryButton);

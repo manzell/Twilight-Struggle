@@ -16,7 +16,7 @@ namespace TwilightStruggle.UI
         public void OnDrop(PointerEventData eventData)
         {
             // TODO Send this out to an Animation Script. 
-            Card card = eventData.selectedObject.GetComponent<UICard>().card;
+            Card card = eventData.selectedObject.GetComponent<CardUI>().card;
 
             FindObjectOfType<HandUI>()?.RemoveCard(card); // Note: This triggers BEFORE UICard.OnDragEnd() // TODO: We may be dropping cards from places other than the hand. Make sure all draggable cards have something
             eventData.selectedObject.transform.parent = transform;

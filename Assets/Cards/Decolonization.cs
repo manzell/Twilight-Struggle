@@ -26,7 +26,7 @@ namespace TwilightStruggle
                 if (countries.Contains(country))
                 {
                     Message($"Place {count} USSR Influence");
-                    Game.adjustInfluenceEvent.Invoke(country, Game.Faction.USSR, 1);
+                    Game.AdjustInfluence(country, Game.Faction.USSR, 1);
                     countries.Remove(country);
                     UI.CountryClickHandler.Remove(country);
                 }

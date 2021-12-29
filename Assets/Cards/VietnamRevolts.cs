@@ -13,7 +13,7 @@ namespace TwilightStruggle
         public override void CardEvent(GameCommand command)
         {
             Message("Hi Chi Minh expels French");
-            Game.adjustInfluenceEvent.Invoke(vietnam, Game.Faction.USSR, 2);
+            Game.AdjustInfluence(vietnam, Game.Faction.USSR, 2);
 
             // TODO Make this work
             command.FinishCommand();

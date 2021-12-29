@@ -130,7 +130,7 @@ namespace TwilightStruggle.UI
 
             GameObject _card = Instantiate(_prefab, cardOrigin.transform.position, Quaternion.identity, transform);
 
-            UICard uiCard = _card.GetComponent<UICard>();
+            CardUI uiCard = _card.GetComponent<CardUI>();
             uiCard.SetCard(card);
             uiCard.SetDragBehavior(_dragBehavior);
 

@@ -12,8 +12,8 @@ namespace TwilightStruggle
         {
             Message("King Michael I of Romania abdicates!");
 
-            Game.setInfluenceEvent.Invoke(romania, Game.Faction.USA, 0);
-            Game.setInfluenceEvent.Invoke(romania, Game.Faction.USSR, Mathf.Max(romania.stability, romania.influence[Game.Faction.USSR]));
+            Game.SetInfluence(romania, Game.Faction.USA, 0);
+            Game.SetInfluence(romania, Game.Faction.USSR, Mathf.Max(romania.stability, romania.influence[Game.Faction.USSR]));
 
             command.FinishCommand();
         }

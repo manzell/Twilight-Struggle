@@ -29,17 +29,17 @@ namespace TwilightStruggle
         protected static void RemoveInfluence(Game.Faction faction, Dictionary<Country, int> countries)
         {
             foreach (Country country in countries.Keys)
-                Game.adjustInfluenceEvent.Invoke(country, faction, -countries[country]);
+                Game.AdjustInfluence(country, faction, -countries[country]);
         }
         protected static void RemoveInfluence(Game.Faction faction, List<Country> countries, int influence)
         {
             foreach (Country country in countries)
-                Game.adjustInfluenceEvent.Invoke(country, faction, -influence);
+                Game.AdjustInfluence(country, faction, -influence);
         }
         protected static void RemoveInfluence(Game.Faction faction, Country country, int influence)
         {
             if (influence != 0)
-                Game.adjustInfluenceEvent.Invoke(country, faction, -influence);
+                Game.AdjustInfluence(country, faction, -influence);
         }
         protected static void RemoveInfluence(List<Country> countries, Game.Faction faction, int totalInfluence, int maxPerCountry, UnityAction callback) =>
             AddInfluence(countries, faction, -totalInfluence, maxPerCountry, callback);
@@ -47,17 +47,17 @@ namespace TwilightStruggle
         protected static void AddInfluence(Game.Faction faction, Dictionary<Country, int> countries)
         {
             foreach (Country country in countries.Keys)
-                Game.adjustInfluenceEvent.Invoke(country, faction, countries[country]);
+                Game.AdjustInfluence(country, faction, countries[country]);
         }
         protected static void AddInfluence(Game.Faction faction, List<Country> countries, int influence)
         {
             foreach (Country country in countries)
-                Game.adjustInfluenceEvent.Invoke(country, faction, influence);
+                Game.AdjustInfluence(country, faction, influence);
         }
         protected static void AddInfluence(Game.Faction faction, Country country, int influence)
         {
             if (influence != 0)
-                Game.adjustInfluenceEvent.Invoke(country, faction, influence);
+                Game.AdjustInfluence(country, faction, influence);
         }
         protected static void AddInfluence(List<Country> countries, Game.Faction faction, int totalInfluence, int maxPerCountry, UnityAction callback)
         {
@@ -71,7 +71,7 @@ namespace TwilightStruggle
                 if (maxPerCountry == 0 || removedCountries.CountOf(country) < maxPerCountry)
                 {
                     removedCountries.Add(country);
-                    Game.adjustInfluenceEvent.Invoke(country, faction, totalInfluence > 0 ? 1 : -1);
+                    Game.AdjustInfluence(country, faction, totalInfluence > 0 ? 1 : -1);
                     totalInfluence += totalInfluence < 0 ? 1 : -1;
                 }
 
@@ -95,7 +95,7 @@ namespace TwilightStruggle
         protected static void SetInfluence(Game.Faction faction, List<Country> countries, int influence)
         {
             foreach (Country country in countries)
-                Game.setInfluenceEvent.Invoke(country, faction, influence);
+                Game.SetInfluence(country, faction, influence);
         }
 
         public abstract void CardEvent(GameCommand command);
@@ -110,7 +110,7 @@ namespace TwilightStruggle
             {
                 if (eligibleCountries.Contains(country))
                 {
-                    Game.adjustInfluenceEvent.Invoke(country, faction, 1 * sign);
+                    Game.AdjustInfluence(country, faction, 1 * sign);
                     influenceAmt -= 1 * sign;
 
                     Message($"{(influenceAmt > 0 ? "Place" : "Remove")} {Mathf.Abs(influenceAmt)} {faction} Influence");

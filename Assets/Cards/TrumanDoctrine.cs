@@ -23,7 +23,7 @@ namespace TwilightStruggle
             else
             {
                 if (eligibleCountries.Count == 1)
-                    Game.setInfluenceEvent.Invoke(eligibleCountries[0], Game.Faction.USSR, 0);
+                    Game.SetInfluence(eligibleCountries[0], Game.Faction.USSR, 0);
 
                 command.FinishCommand();
             }
@@ -32,7 +32,7 @@ namespace TwilightStruggle
             {
                 if (eligibleCountries.Contains(country))
                 {
-                    Game.setInfluenceEvent.Invoke(country, Game.Faction.USSR, 0);
+                    Game.SetInfluence(country, Game.Faction.USSR, 0);
                     UI.CountryClickHandler.Close();
                     command.FinishCommand();
                 }

@@ -10,8 +10,8 @@ namespace TwilightStruggle
 
         public override void CardEvent(GameCommand command)
         {
-            Game.adjustInfluenceEvent.Invoke(egypt, Game.Faction.USSR, 2);
-            Game.adjustInfluenceEvent.Invoke(egypt, Game.Faction.USA, -(int)Mathf.Ceil(egypt.influence[Game.Faction.USA] / 2));
+            Game.AdjustInfluence(egypt, Game.Faction.USSR, 2);
+            Game.AdjustInfluence(egypt, Game.Faction.USA, -(int)Mathf.Ceil(egypt.influence[Game.Faction.USA] / 2));
             Message("July 23rd Revolution in Egypy! Nasser ousts King Farouk!");
             command.FinishCommand();
         }

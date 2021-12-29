@@ -61,7 +61,7 @@ namespace TwilightStruggle
                 Game.AdjustInfluence(coupVars.targetCountry, faction, coupVars.influenceChange[faction]);
 
             if (coupVars.grantsMilOps)
-                FindObjectOfType<MilOpsTrack>().GiveMilOps(command.faction, coupVars.coupOps);
+                MilOpsTrack.GiveMilOps(command.faction, coupVars.coupOps);
 
             if (coupVars.affectsDefcon && coupVars.targetCountry.isBattleground)
                 Game.AdjustDEFCON.Invoke(command.faction, -1);

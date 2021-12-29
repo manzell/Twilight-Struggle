@@ -228,7 +228,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!224 &626043 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2548890223712423963, guid: c334c29ed88c3dc4697ede914b6398be, type: 3}
@@ -2090,7 +2090,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1001 &29981061
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2952,7 +2952,7 @@ MonoBehaviour:
       Data: 
   countryData: {fileID: 11400000, guid: ccd55b02829c9574aaa68d9934027da4, type: 2}
   countryName: Cuba
-  continent: 0
+  continent: 5
   stability: 3
   isBattleground: 1
   adjacentSuperpower: 2
@@ -4375,7 +4375,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &64332106
 GameObject:
   m_ObjectHideFlags: 0
@@ -4481,7 +4481,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &65155469
 GameObject:
   m_ObjectHideFlags: 0
@@ -5942,7 +5942,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &89895110
 GameObject:
   m_ObjectHideFlags: 0
@@ -6048,7 +6048,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &93491081
 GameObject:
   m_ObjectHideFlags: 0
@@ -6951,7 +6951,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &104984237
 GameObject:
   m_ObjectHideFlags: 0
@@ -8697,7 +8697,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &135701604
 GameObject:
   m_ObjectHideFlags: 0
@@ -8803,7 +8803,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &135870055
 GameObject:
   m_ObjectHideFlags: 0
@@ -9906,7 +9906,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &150502959
 GameObject:
   m_ObjectHideFlags: 0
@@ -10225,7 +10225,7 @@ MonoBehaviour:
       Data: 
   countryData: {fileID: 11400000, guid: 15ca72a95b7ea6443a317f68c1e21f36, type: 2}
   countryName: Dominican Republic
-  continent: 0
+  continent: 5
   stability: 1
   isBattleground: 0
   adjacentSuperpower: 0
@@ -10492,7 +10492,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &160822516
 GameObject:
   m_ObjectHideFlags: 0
@@ -10902,7 +10902,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &164640037
 GameObject:
   m_ObjectHideFlags: 0
@@ -11545,7 +11545,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &175158912
 GameObject:
   m_ObjectHideFlags: 0
@@ -14702,7 +14702,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &227418748
 GameObject:
   m_ObjectHideFlags: 0
@@ -17141,7 +17141,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &269636428
 GameObject:
   m_ObjectHideFlags: 0
@@ -18685,7 +18685,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &298286941
 GameObject:
   m_ObjectHideFlags: 0
@@ -19696,7 +19696,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &317626649
 GameObject:
   m_ObjectHideFlags: 0
@@ -20931,16 +20931,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.5849056
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.5623823
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.515379131
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -20949,16 +20949,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.4851417
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.173584878
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -20967,16 +20967,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.753
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.7226779
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.662033558
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -20985,16 +20985,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.355
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.172627449
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.0612548962
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21009,16 +21009,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.438590258
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.6603774
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.6368357
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21027,16 +21027,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.24000001
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.36
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.347142875
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21045,16 +21045,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.65448
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.81
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.7933371
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21063,16 +21063,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.2392157
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.360784322
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.349019617
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21087,16 +21087,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.6698113
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.424455971
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.204734772
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21105,16 +21105,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.4
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.315294117
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.24
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21123,16 +21123,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.780999959
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.6077558
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.453760952
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21141,16 +21141,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.400000036
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.3137255
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.2392157
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21165,16 +21165,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.616798341
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.440583825
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.8584906
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21183,16 +21183,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.384112179
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.3
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.5
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21201,16 +21201,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.8787539
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.787
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21219,16 +21219,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.384313762
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.3019608
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.5019608
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21243,16 +21243,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.102829896
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.247058824
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.08029412
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21261,16 +21261,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.0619047768
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.15
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.047619056
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21279,16 +21279,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.327907
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.5
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.3
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21297,16 +21297,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.101960793
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.247058839
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.0784313753
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21321,16 +21321,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.9056604
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.6741028
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.2597365
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21339,16 +21339,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.196991816
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.4811321
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.461048752
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21357,16 +21357,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.905882359
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.808705866
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.634117663
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21375,16 +21375,16 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.196078449
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.482352972
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.46274513
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -21604,7 +21604,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &339370671
 GameObject:
   m_ObjectHideFlags: 0
@@ -23452,7 +23452,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &371449353
 GameObject:
   m_ObjectHideFlags: 0
@@ -25161,7 +25161,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!224 &396174730 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2548890223712423963, guid: c334c29ed88c3dc4697ede914b6398be, type: 3}
@@ -25931,7 +25931,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &407230239
 GameObject:
   m_ObjectHideFlags: 0
@@ -26761,7 +26761,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &417330537
 GameObject:
   m_ObjectHideFlags: 0
@@ -27356,7 +27356,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &426293087
 GameObject:
   m_ObjectHideFlags: 0
@@ -27555,7 +27555,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &430558845
 GameObject:
   m_ObjectHideFlags: 0
@@ -27889,7 +27889,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &434463689
 GameObject:
   m_ObjectHideFlags: 0
@@ -30603,7 +30603,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &472495576
 GameObject:
   m_ObjectHideFlags: 0
@@ -31258,7 +31258,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1001 &492492860
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31836,7 +31836,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1001 &500530237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32144,7 +32144,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &501972318
 GameObject:
   m_ObjectHideFlags: 0
@@ -32250,7 +32250,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &502169174
 GameObject:
   m_ObjectHideFlags: 0
@@ -34779,7 +34779,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &530697153
 GameObject:
   m_ObjectHideFlags: 0
@@ -35999,7 +35999,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &543569104
 GameObject:
   m_ObjectHideFlags: 0
@@ -36105,7 +36105,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &544565451
 GameObject:
   m_ObjectHideFlags: 0
@@ -36196,7 +36196,7 @@ MonoBehaviour:
       Data: 
   countryData: {fileID: 11400000, guid: 14e267ce16eedff45add3e23eefa8604, type: 2}
   countryName: El Salvador
-  continent: 0
+  continent: 5
   stability: 1
   isBattleground: 0
   adjacentSuperpower: 0
@@ -38159,7 +38159,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!224 &571246169 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2548890223712423963, guid: c334c29ed88c3dc4697ede914b6398be, type: 3}
@@ -38506,7 +38506,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!224 &574149303 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2548890223712423963, guid: c334c29ed88c3dc4697ede914b6398be, type: 3}
@@ -38853,7 +38853,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &581181333
 GameObject:
   m_ObjectHideFlags: 0
@@ -38959,7 +38959,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &583144312
 GameObject:
   m_ObjectHideFlags: 0
@@ -39293,7 +39293,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &588282296
 GameObject:
   m_ObjectHideFlags: 0
@@ -39703,7 +39703,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &595768605
 GameObject:
   m_ObjectHideFlags: 0
@@ -40737,7 +40737,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &617051480
 GameObject:
   m_ObjectHideFlags: 0
@@ -40978,7 +40978,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &621352969
 GameObject:
   m_ObjectHideFlags: 0
@@ -41312,7 +41312,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &627545126
 GameObject:
   m_ObjectHideFlags: 0
@@ -41418,7 +41418,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!224 &627781012 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2548890223712423963, guid: c334c29ed88c3dc4697ede914b6398be, type: 3}
@@ -41611,7 +41611,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!224 &631550495 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2548890223712423963, guid: c334c29ed88c3dc4697ede914b6398be, type: 3}
@@ -42983,7 +42983,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &643521786
 GameObject:
   m_ObjectHideFlags: 0
@@ -43166,7 +43166,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &648655298
 GameObject:
   m_ObjectHideFlags: 0
@@ -44266,7 +44266,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &664683496
 GameObject:
   m_ObjectHideFlags: 0
@@ -45111,7 +45111,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1001 &674663815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46590,7 +46590,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &700556588
 GameObject:
   m_ObjectHideFlags: 0
@@ -47297,7 +47297,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &704239454
 GameObject:
   m_ObjectHideFlags: 0
@@ -47480,7 +47480,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &707585154
 GameObject:
   m_ObjectHideFlags: 0
@@ -47832,7 +47832,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &711094948
 GameObject:
   m_ObjectHideFlags: 0
@@ -49345,7 +49345,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &741032128
 GameObject:
   m_ObjectHideFlags: 0
@@ -50540,7 +50540,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &776887164
 GameObject:
   m_ObjectHideFlags: 0
@@ -51331,7 +51331,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &785098416
 GameObject:
   m_ObjectHideFlags: 0
@@ -54171,7 +54171,7 @@ MonoBehaviour:
       Data: 
   countryData: {fileID: 11400000, guid: 1f613fd3308b55441ad77d7ec923b458, type: 2}
   countryName: Nicaragua
-  continent: 0
+  continent: 5
   stability: 1
   isBattleground: 0
   adjacentSuperpower: 0
@@ -55179,7 +55179,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &838270188
 GameObject:
   m_ObjectHideFlags: 0
@@ -55818,7 +55818,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &853342152
 GameObject:
   m_ObjectHideFlags: 0
@@ -56783,7 +56783,7 @@ MonoBehaviour:
       Data: 
   countryData: {fileID: 11400000, guid: 6848f17c764ceb3449c5adc3e2cdac9f, type: 2}
   countryName: Honduras
-  continent: 0
+  continent: 5
   stability: 2
   isBattleground: 0
   adjacentSuperpower: 0
@@ -57188,7 +57188,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &871032480
 GameObject:
   m_ObjectHideFlags: 0
@@ -57294,7 +57294,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &871825088
 GameObject:
   m_ObjectHideFlags: 0
@@ -58681,7 +58681,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!224 &885530774 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2548890223712423963, guid: c334c29ed88c3dc4697ede914b6398be, type: 3}
@@ -60147,7 +60147,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!224 &898890810 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2548890223712423963, guid: c334c29ed88c3dc4697ede914b6398be, type: 3}
@@ -60351,7 +60351,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &904668340
 GameObject:
   m_ObjectHideFlags: 0
@@ -60457,7 +60457,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &904740772
 GameObject:
   m_ObjectHideFlags: 0
@@ -61281,7 +61281,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1001 &918281983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63927,7 +63927,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &948938487
 GameObject:
   m_ObjectHideFlags: 0
@@ -64566,7 +64566,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &953215562
 GameObject:
   m_ObjectHideFlags: 0
@@ -64885,7 +64885,7 @@ MonoBehaviour:
       Data: 
   countryData: {fileID: 11400000, guid: 3650df8fa35e14946851482ae7454a39, type: 2}
   countryName: Costa Rica
-  continent: 0
+  continent: 5
   stability: 3
   isBattleground: 0
   adjacentSuperpower: 0
@@ -65095,7 +65095,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &970439786
 GameObject:
   m_ObjectHideFlags: 0
@@ -65554,7 +65554,7 @@ MonoBehaviour:
       Data: 
   countryData: {fileID: 11400000, guid: 5432224adfa772343bd7ba0746eb3c46, type: 2}
   countryName: Panama
-  continent: 0
+  continent: 5
   stability: 2
   isBattleground: 1
   adjacentSuperpower: 0
@@ -65687,7 +65687,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &977889766
 GameObject:
   m_ObjectHideFlags: 0
@@ -66236,7 +66236,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &984823332
 GameObject:
   m_ObjectHideFlags: 0
@@ -68704,7 +68704,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1023346110
 GameObject:
   m_ObjectHideFlags: 0
@@ -69465,7 +69465,7 @@ MonoBehaviour:
       Data: 
   countryData: {fileID: 11400000, guid: 5cdd8de9a1feebf40b24c2b27420be00, type: 2}
   countryName: Guatemala
-  continent: 0
+  continent: 5
   stability: 1
   isBattleground: 0
   adjacentSuperpower: 0
@@ -69752,7 +69752,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1039840786
 GameObject:
   m_ObjectHideFlags: 0
@@ -71059,7 +71059,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1056427796
 GameObject:
   m_ObjectHideFlags: 0
@@ -73173,7 +73173,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1085748797
 GameObject:
   m_ObjectHideFlags: 0
@@ -73736,7 +73736,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1104243770
 GameObject:
   m_ObjectHideFlags: 0
@@ -74575,7 +74575,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1118055681
 GameObject:
   m_ObjectHideFlags: 0
@@ -74914,7 +74914,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1122733645
 GameObject:
   m_ObjectHideFlags: 0
@@ -75324,7 +75324,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1001 &1129703355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75724,7 +75724,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1141075257
 GameObject:
   m_ObjectHideFlags: 0
@@ -76115,7 +76115,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1149017820
 GameObject:
   m_ObjectHideFlags: 0
@@ -78340,7 +78340,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1171698396
 GameObject:
   m_ObjectHideFlags: 0
@@ -78844,7 +78844,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1174430860
 GameObject:
   m_ObjectHideFlags: 0
@@ -80364,7 +80364,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1001 &1198551886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80710,7 +80710,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1204750149
 GameObject:
   m_ObjectHideFlags: 0
@@ -85888,7 +85888,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1261676450
 GameObject:
   m_ObjectHideFlags: 0
@@ -86885,7 +86885,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1288098620
 GameObject:
   m_ObjectHideFlags: 0
@@ -88770,7 +88770,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1001 &1316984764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -91188,7 +91188,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1365482918
 GameObject:
   m_ObjectHideFlags: 0
@@ -92096,7 +92096,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1373719543
 GameObject:
   m_ObjectHideFlags: 0
@@ -92202,7 +92202,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1374601587
 GameObject:
   m_ObjectHideFlags: 0
@@ -93111,7 +93111,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1383580846
 GameObject:
   m_ObjectHideFlags: 0
@@ -93956,7 +93956,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1396928153
 GameObject:
   m_ObjectHideFlags: 0
@@ -94965,7 +94965,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1410237762
 GameObject:
   m_ObjectHideFlags: 0
@@ -95513,7 +95513,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1417126968
 GameObject:
   m_ObjectHideFlags: 0
@@ -95860,7 +95860,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1421450882
 GameObject:
   m_ObjectHideFlags: 0
@@ -98339,7 +98339,7 @@ MonoBehaviour:
       Data: 
   countryData: {fileID: 11400000, guid: 9b0559818239b8a489f7d16213a3a58a, type: 2}
   countryName: Haiti
-  continent: 0
+  continent: 5
   stability: 1
   isBattleground: 0
   adjacentSuperpower: 0
@@ -101957,7 +101957,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1511113114
 GameObject:
   m_ObjectHideFlags: 0
@@ -102519,7 +102519,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1527531411
 GameObject:
   m_ObjectHideFlags: 0
@@ -102625,7 +102625,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1527556653
 GameObject:
   m_ObjectHideFlags: 0
@@ -104209,7 +104209,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1548960224
 GameObject:
   m_ObjectHideFlags: 0
@@ -104512,7 +104512,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1552987740
 GameObject:
   m_ObjectHideFlags: 0
@@ -104695,7 +104695,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1556733822
 GameObject:
   m_ObjectHideFlags: 0
@@ -106937,7 +106937,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1588451967
 GameObject:
   m_ObjectHideFlags: 0
@@ -107125,7 +107125,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1593321958
 GameObject:
   m_ObjectHideFlags: 0
@@ -107231,7 +107231,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1594120699
 GameObject:
   m_ObjectHideFlags: 0
@@ -108686,7 +108686,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1617545815
 GameObject:
   m_ObjectHideFlags: 0
@@ -108792,7 +108792,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1617934177
 GameObject:
   m_ObjectHideFlags: 0
@@ -109632,7 +109632,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1635419425
 GameObject:
   m_ObjectHideFlags: 0
@@ -109738,7 +109738,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1635880049
 GameObject:
   m_ObjectHideFlags: 0
@@ -112762,7 +112762,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1682898682
 GameObject:
   m_ObjectHideFlags: 0
@@ -114496,7 +114496,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1708420193
 GameObject:
   m_ObjectHideFlags: 0
@@ -116907,7 +116907,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1761420617
 GameObject:
   m_ObjectHideFlags: 0
@@ -117404,7 +117404,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1774041529
 GameObject:
   m_ObjectHideFlags: 0
@@ -117873,7 +117873,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1784315943
 GameObject:
   m_ObjectHideFlags: 0
@@ -118696,7 +118696,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1803102540
 GameObject:
   m_ObjectHideFlags: 0
@@ -121547,7 +121547,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1850248512
 GameObject:
   m_ObjectHideFlags: 0
@@ -122344,7 +122344,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1001 &1863765359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -123609,7 +123609,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1883645169
 GameObject:
   m_ObjectHideFlags: 0
@@ -123971,7 +123971,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1885595233
 GameObject:
   m_ObjectHideFlags: 0
@@ -124212,7 +124212,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!224 &1889713578 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2548890223712423963, guid: c334c29ed88c3dc4697ede914b6398be, type: 3}
@@ -125706,6 +125706,7 @@ MonoBehaviour:
   completeEvent:
     m_PersistentCalls:
       m_Calls: []
+  spaceTrack: {fileID: 785098420}
 --- !u!222 &1926918730
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -127597,7 +127598,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1001 &1962483749
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -128165,7 +128166,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1975351176
 GameObject:
   m_ObjectHideFlags: 0
@@ -128970,7 +128971,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &1985704156
 GameObject:
   m_ObjectHideFlags: 0
@@ -130126,15 +130127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 522baf8a18a228d4db0ef5b28195a5b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardDropEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  targetEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  completeEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  coupAction: {fileID: 2007817314}
   selectTargetText: {fileID: 564399070}
   influenceChange: {fileID: 194824221}
   defconChange: {fileID: 1196393839}
@@ -130599,7 +130592,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &2021966292
 GameObject:
   m_ObjectHideFlags: 0
@@ -131137,7 +131130,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!224 &2033383042 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2548890223712423963, guid: c334c29ed88c3dc4697ede914b6398be, type: 3}
@@ -131905,7 +131898,7 @@ MonoBehaviour:
       Data: 
   countryData: {fileID: 11400000, guid: 7a2208e34e091e942a85f729a009c092, type: 2}
   countryName: Mexico
-  continent: 0
+  continent: 5
   stability: 2
   isBattleground: 1
   adjacentSuperpower: 2
@@ -133032,7 +133025,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &2057751988
 GameObject:
   m_ObjectHideFlags: 0
@@ -133412,7 +133405,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &2058927303
 GameObject:
   m_ObjectHideFlags: 0
@@ -133518,7 +133511,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &2059633615
 GameObject:
   m_ObjectHideFlags: 0
@@ -136642,7 +136635,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &2093894953
 GameObject:
   m_ObjectHideFlags: 0
@@ -136824,7 +136817,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &2098437549
 GameObject:
   m_ObjectHideFlags: 0
@@ -136930,7 +136923,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &2104531075
 GameObject:
   m_ObjectHideFlags: 0
@@ -138309,7 +138302,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &2124690828
 GameObject:
   m_ObjectHideFlags: 0
@@ -138944,7 +138937,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &2133610830
 GameObject:
   m_ObjectHideFlags: 0
@@ -139050,7 +139043,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &2135756447
 GameObject:
   m_ObjectHideFlags: 0
@@ -139756,7 +139749,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 1
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!1 &2145650719
 GameObject:
   m_ObjectHideFlags: 0
@@ -139955,7 +139948,7 @@ MonoBehaviour:
   prevPhase: {fileID: 0}
   phasingPlayer: 2
   command: {fileID: 0}
-  eventTriggered: 0
+  wasEventTriggered: 0
 --- !u!222 &2316343515625678731
 CanvasRenderer:
   m_ObjectHideFlags: 0

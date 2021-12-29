@@ -15,8 +15,8 @@ namespace TwilightStruggle
         {
             FindObjectOfType<UI.UIMessage>().Message($"De Gaulle removes {Mathf.Min(Mathf.Abs(USAinfluence), france.influence[Game.Faction.USA])} US influence from France and adds {USSRinfluence} USSR Influence");
 
-            Game.adjustInfluenceEvent.Invoke(france, Game.Faction.USA, USAinfluence);
-            Game.adjustInfluenceEvent.Invoke(france, Game.Faction.USSR, USSRinfluence);
+            Game.AdjustInfluence(france, Game.Faction.USA, USAinfluence);
+            Game.AdjustInfluence(france, Game.Faction.USSR, USSRinfluence);
 
             france.gameObject.AddComponent<DeGaulleLeadsFrance>();
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87659f4a758c0114d829c558acd3143c, type: 3}
   m_Name: Honduras
   m_EditorClassIdentifier: 
-  continent: 0
+  continent: 5
   countryName: Honduras
   stability: 2
   isBattleground: 0

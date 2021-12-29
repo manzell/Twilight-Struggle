@@ -20,7 +20,7 @@ namespace TwilightStruggle
 
             if (eligibleCountries.Count <= 5)
                 foreach (Country country in eligibleCountries)
-                    Game.adjustInfluenceEvent.Invoke(country, Game.Faction.USSR, 1);
+                    Game.AdjustInfluence(country, Game.Faction.USSR, 1);
             else
                 UI.CountryClickHandler.Setup(eligibleCountries, onCountryClick);
 
@@ -36,7 +36,7 @@ namespace TwilightStruggle
             // TODO: Make this into generic calls to like "Add/Remove X influece to any/each of these countries"
             void onCountryClick(Country country)
             {
-                Game.adjustInfluenceEvent.Invoke(country, faction, 1);
+                Game.AdjustInfluence(country, faction, 1);
                 eligibleCountries.Remove(country);
                 UI.CountryClickHandler.Remove(country);
 

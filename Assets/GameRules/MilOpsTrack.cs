@@ -9,37 +9,26 @@ namespace TwilightStruggle
     {
         [SerializeField] TextMeshProUGUI USAmilOps, USSRmilOps, reqdMilOps;
         public static int requiredMilOps => DEFCONtrack.Status;
-        public Dictionary<Game.Faction, int> milOps;
+        public static Dictionary<Game.Faction, int> milOps;
 
         void Awake()
         {
             Game.phaseStartEvent.AddListener(onTurnStart);
             Game.phaseEndEvent.AddListener(ScoreMilOps);
-
-            Game.AdjustMilOps.after.AddListener(onAdjustMilOps);
         }
 
-        void onAdjustMilOps(Game.Faction faction, int i)
-        {
-            //USAmilOps.text = milOps[Game.Faction.USA].ToString();
-            //USSRmilOps.text = milOps[Game.Faction.USSR].ToString();
-            //reqdMilOps.text = requiredMilOps.ToString(); 
-        }
-
-        void onTurnStart(TurnSystem.Phase phase)
+        static void onTurnStart(TurnSystem.Phase phase)
         {
             if (phase is not TurnSystem.Turn) return;
 
             milOps = new Dictionary<Game.Faction, int>
-        {
-            {Game.Faction.USA, 0 },
-            {Game.Faction.USSR, 0 }
-        };
-
-            onAdjustMilOps(Game.Faction.USA, 0);
+            {
+                {Game.Faction.USA, 0 },
+                {Game.Faction.USSR, 0 }
+            };
         }
 
-        public void GiveMilOps(Game.Faction faction, int i) => milOps[faction] = Mathf.Clamp(milOps[faction] + i, 0, 5);
+        public static void GiveMilOps(Game.Faction faction, int i) => milOps[faction] = Mathf.Clamp(milOps[faction] + i, 0, 5);
 
         public void ScoreMilOps(TurnSystem.Phase phase)
         {
@@ -57,7 +46,7 @@ namespace TwilightStruggle
             else
                 Debug.Log("No MilOps VP points lose");
 
-            Game.AdjustVPsEvent.Invoke(vpAdjustment);
+            VictoryTrack.AdjustVPs(vpAdjustment);
         }
     }
 }

@@ -35,12 +35,12 @@ namespace TwilightStruggle
 
                 if (roll + adjustment >= rollRequired)
                 {
-                    Game.AdjustVPsEvent.Invoke(warFaction == Game.Faction.USA ? victoryPoints : -victoryPoints);
-                    Game.adjustInfluenceEvent.Invoke(targetCountry, warFaction, targetCountry.influence[warEnemyFaction]);
-                    Game.setInfluenceEvent.Invoke(targetCountry, warEnemyFaction, 0);
+                    VictoryTrack.AdjustVPs(warFaction == Game.Faction.USA ? victoryPoints : -victoryPoints);
+                    Game.AdjustInfluence(targetCountry, warFaction, targetCountry.influence[warEnemyFaction]);
+                    Game.SetInfluence(targetCountry, warEnemyFaction, 0);
                 }
 
-                Game.AdjustMilOps.Invoke(warFaction, milOps);
+                MilOpsTrack.GiveMilOps(warFaction, milOps);
 
                 command.FinishCommand();
             }

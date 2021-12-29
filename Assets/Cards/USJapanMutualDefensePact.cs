@@ -12,7 +12,7 @@ namespace TwilightStruggle
         public override void CardEvent(GameCommand command)
         {
             Message("US/Japan Mutual Defense Pact signed!");
-            Game.setInfluenceEvent.Invoke(japan, Game.Faction.USA, Mathf.Max(japan.influence[Game.Faction.USA], japan.stability + japan.influence[Game.Faction.USSR]));
+            Game.SetInfluence(japan, Game.Faction.USA, Mathf.Max(japan.influence[Game.Faction.USA], japan.stability + japan.influence[Game.Faction.USSR]));
 
             japan.gameObject.AddComponent<MayNotCoup>().faction = Game.Faction.USSR;
             japan.gameObject.AddComponent<MayNotRealign>().faction = Game.Faction.USSR;

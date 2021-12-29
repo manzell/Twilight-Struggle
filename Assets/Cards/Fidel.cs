@@ -10,8 +10,8 @@ namespace TwilightStruggle
 
         public override void CardEvent(GameCommand command)
         {
-            Game.setInfluenceEvent.Invoke(cuba, Game.Faction.USA, 0);
-            Game.setInfluenceEvent.Invoke(cuba, Game.Faction.USSR, Mathf.Max(cuba.influence[Game.Faction.USSR], cuba.stability));
+            Game.SetInfluence(cuba, Game.Faction.USA, 0);
+            Game.SetInfluence(cuba, Game.Faction.USSR, Mathf.Max(cuba.influence[Game.Faction.USSR], cuba.stability));
 
             Message("Fidel overthrows Batista!");
             command.FinishCommand();

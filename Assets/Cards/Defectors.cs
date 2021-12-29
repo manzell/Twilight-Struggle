@@ -11,7 +11,7 @@ namespace TwilightStruggle
         public override void CardEvent(GameCommand command)
         {
             if (Game.phasingPlayer == Game.Faction.USSR)
-                Game.AdjustVPsEvent.Invoke(1);
+                VictoryTrack.AdjustVPs(1);
 
             command.FinishCommand();
         }

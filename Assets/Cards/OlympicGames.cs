@@ -28,7 +28,7 @@ namespace TwilightStruggle
                 }
 
                 Message($"{(rolls[Game.Faction.USA] > rolls[Game.Faction.USSR] ? Game.Faction.USA : Game.Faction.USSR)} wins the Olympics and 2 VPs!");
-                Game.AdjustVPsEvent.Invoke(rolls[Game.Faction.USA] > rolls[Game.Faction.USSR] ? 2 : -2);
+                VictoryTrack.AdjustVPs(rolls[Game.Faction.USA] > rolls[Game.Faction.USSR] ? 2 : -2);
 
                 command.FinishCommand();
             }

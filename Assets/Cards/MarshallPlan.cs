@@ -36,7 +36,7 @@ namespace TwilightStruggle
                 {
                     westernEurope.Remove(country);
                     UI.CountryClickHandler.Remove(country);
-                    Game.adjustInfluenceEvent.Invoke(country, Game.Faction.USA, 1);
+                    Game.AdjustInfluence(country, Game.Faction.USA, 1);
                     count--;
                 }
 

@@ -26,7 +26,7 @@ namespace TwilightStruggle
             {
                 if (eligibleCountries.Contains(country))
                 {
-                    Game.adjustInfluenceEvent.Invoke(country, faction, 1);
+                    Game.AdjustInfluence(country, faction, 1);
                     influenceAmt--;
 
                     FindObjectOfType<UI.UIMessage>().Message($"Place {influenceAmt} {faction} Influence");

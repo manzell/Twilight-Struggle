@@ -24,7 +24,7 @@ namespace TwilightStruggle
         public static void AdjustVPs(int i)
         {
             vp += i;
-            Game.AdjustVPsEvent.Invoke(i); 
+            VictoryTrack.AdjustVPs(i); 
         }
     }
 }

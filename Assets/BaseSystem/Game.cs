@@ -54,9 +54,7 @@ namespace TwilightStruggle
         {
             if (deck is null) deck = new Deck();
 
-            deck.Shuffle();
-
-            setActiveFactionEvent.AddListener(SetActiveFaction);
+            deck.Shuffle(); // lol this should be somewhere else 
         }
 
         [Button] public void AdvancePhase() => currentPhase.NextPhase(currentPhase.callback);

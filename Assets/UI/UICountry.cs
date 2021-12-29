@@ -25,7 +25,7 @@ namespace TwilightStruggle.UI
 
         void Awake()
         {
-            Game.adjustInfluenceEvent.after.AddListener((c, f, i) => { if (c == country) Refresh(); });
+            Game.adjustInfluenceEvent.AddListener((c, f, i) => { if (c == country) Refresh(); });
             Game.gameStartEvent.AddListener(() => SetCountry(country));
         }
 
