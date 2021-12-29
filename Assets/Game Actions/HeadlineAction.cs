@@ -5,15 +5,50 @@ using UnityEngine.Events;
 
 namespace TwilightStruggle
 {
-    public class HeadlineAction : GameAction
+    public class HeadlineAction : GameAction, IActionTarget, IActionComplete
     {
-        //public override void ExecuteCommandAction(Command command) // This is called from SetHeadline() once we have both Headlines and are ready to trigger. 
-        //{
-        //    UnityAction originalCallback = command.callback;
-        //    HeadlineCommand headlineCommand = command as HeadlineCommand;
-        //    Dictionary<Game.Faction, HeadlineCommand> headlines = Game.currentTurn.headlinePhase.headlines;
+        // We write the headline card directly to the current Headline Phase. 
+        // Once we have both, we go through the Headline Events on each card 
+        // and then the Events on each card, in order of Ops. I believe only UN Intervention, The China Card, and Defectors have non-standard headline behaviors. 
 
-        //    Game.Faction initiative = headlines[Game.Faction.USSR].cardOpsValue > headlines[Game.Faction.USA].cardOpsValue ? Game.Faction.USSR : Game.Faction.USA;
+
+        public void Target(GameCommand command) // Get's called each time a card is deposited
+        {
+            HeadlineVars headlineVars = (HeadlineVars)command.parameters;
+
+            if(headlineVars.headlines[command.faction])
+            {
+
+            }
+            else
+            {
+
+            }
+
+        }
+
+        public void Complete(GameCommand command) // Gets called when both cards are placed
+        {
+            HeadlineVars headlineVars = (HeadlineVars)command.parameters; 
+            Game.Faction initiative = headlineVars.headlines[Game.Faction.USSR].opsValue > headlineVars.headlines[Game.Faction.USA].opsValue ? Game.Faction.USSR : Game.Faction.USA;
+            Game.Faction secondary = initiative == Game.Faction.USA ? Game.Faction.USSR : Game.Faction.USA; 
+
+            command.callback = SecondHeadline;
+            headlineVars.headlines[initiative].CardEvent(command); 
+
+            void SecondHeadline(GameCommand command)
+            {
+                command.callback = null; 
+                headlineVars.headlines[initiative].CardEvent(command);
+            }
+        }
+
+        public class HeadlineVars : ICommandVariables
+        {
+            public Dictionary<Game.Faction, Card> headlines; 
+        }
+
+        //    
 
         //    FirstHeadline();
         //    void FirstHeadline()

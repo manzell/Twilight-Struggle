@@ -46,7 +46,8 @@ namespace TwilightStruggle
 
         private void Awake()
         {
-            gameStartEvent.AddListener(() => deck.Shuffle()); 
+            deck = new Deck(); 
+            gameStartEvent.AddListener(() => deck.Shuffle()); // TODO: Move this. 
         }
 
         [Button] public void AdvancePhase() => currentPhase.NextPhase(currentPhase.callback);

@@ -13,7 +13,7 @@ namespace TwilightStruggle
         public Game.Faction faction;
         [SerializeField] int ops = 0;
         public int bonusOps = 0;
-        public int OpsValue => ops + bonusOps;
+        public int opsValue => ops + bonusOps;
         public string cardText;
         public bool removeOnEvent = false;
 

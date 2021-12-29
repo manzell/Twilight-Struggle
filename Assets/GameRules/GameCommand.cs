@@ -45,7 +45,13 @@ namespace TwilightStruggle
             return command;
         }
 
-        public void FinishCommand() => phaseCallback?.Invoke();
+        public void FinishCommand()
+        {
+            if(callback != null)
+                callback.Invoke(this);
+            else
+                phaseCallback?.Invoke();
+        }
 
         public void Prepare() => prepare?.Prepare(this);
         public void Target() => target?.Target(this);

@@ -23,7 +23,7 @@ namespace TwilightStruggle.UI
             _cardText.text = card.cardText;
 
             if (card is not ScoringCard)
-                _cardOps.text = card.OpsValue.ToString();
+                _cardOps.text = card.opsValue.ToString();
         }
 
         public void OnBeginDrag(PointerEventData eventData)

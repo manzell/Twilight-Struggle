@@ -12,7 +12,7 @@ namespace TwilightStruggle
         public void Prepare(GameCommand command)
         {
             CoupVars coupVars = new CoupVars();
-            coupVars.coupOps = command.card.OpsValue;
+            coupVars.coupOps = command.card.opsValue;
             coupVars.enemyFaction = command.faction == Game.Faction.USA ? Game.Faction.USSR : Game.Faction.USA; 
             coupVars.eligibleTargets = GetEligibleCountries(command);
             coupVars.affectsDefcon = false;

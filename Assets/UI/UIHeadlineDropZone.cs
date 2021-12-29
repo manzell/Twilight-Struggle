@@ -12,6 +12,11 @@ namespace TwilightStruggle.UI
         public Game.Faction faction;
         [SerializeField] TextMeshProUGUI _revealedHeadline;
 
+        //
+        // Todo and just replace with a UIDropHandler using a separate Headline Game Action. 
+        //  move the animations to animator like the other actions. 
+        //
+
         public void OnDrop(PointerEventData eventData)
         {
             if (Game.currentTurn.headlinePhase.headlines[faction] == null &&

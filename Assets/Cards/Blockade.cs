@@ -13,7 +13,7 @@ namespace TwilightStruggle
             List<Card> eligibleCards = new List<Card>();
 
             foreach (Card card in FindObjectOfType<Game>().playerMap[Game.Faction.USA].hand)
-                if (card.OpsValue >= 3)
+                if (card.opsValue >= 3)
                     eligibleCards.Add(card);
 
             if (eligibleCards.Count > 0)
