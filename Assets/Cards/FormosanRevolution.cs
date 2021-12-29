@@ -3,33 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class FormosanRevolution : Card
+namespace TwilightStruggle
 {
-    [SerializeField] Country taiwan;
-    [SerializeField] Card chinaCard;
-    [SerializeField] ScoringCard asiaScoring;
-
-    public override void CardEvent(GameAction.Command command)
+    public class FormosanRevolution : Card
     {
-        taiwan.gameObject.AddComponent<FormosanRevolution>();
+        [SerializeField] Country taiwan;
+        [SerializeField] Card chinaCard;
+        [SerializeField] ScoringCard asiaScoring;
 
-        //chinaCard.triggerEvent.AddListener(CancelFormosanResolution);
-        asiaScoring.scoreEvent.AddListener(CountTaiwanAsBattleground);
-
-        command.callback.Invoke();
-
-        void CountTaiwanAsBattleground(Scoring scoring)
+        public override void CardEvent(GameCommand command)
         {
-            if (taiwan.control == Game.Faction.USA)
+            taiwan.gameObject.AddComponent<FormosanRevolution>();
+
+            //chinaCard.triggerEvent.AddListener(CancelFormosanResolution);
+            asiaScoring.scoreEvent.AddListener(CountTaiwanAsBattleground);
+
+            command.FinishCommand();
+
+            void CountTaiwanAsBattleground(Scoring scoring)
             {
-                scoring.USbattlegrounds += 1;
-                scoring.totalBattlegrounds += 1;
+                if (taiwan.control == Game.Faction.USA)
+                {
+                    scoring.USbattlegrounds += 1;
+                    scoring.totalBattlegrounds += 1;
+                }
             }
-        }
 
-        void CancelFormosanResolution()
-        {
-            asiaScoring.scoreEvent.RemoveListener(CountTaiwanAsBattleground); 
+            void CancelFormosanResolution()
+            {
+                asiaScoring.scoreEvent.RemoveListener(CountTaiwanAsBattleground);
+            }
         }
     }
 }

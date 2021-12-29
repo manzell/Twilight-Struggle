@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events; 
+using UnityEngine.Events;
 
-public class CapturedNaziScientist : Card
+namespace TwilightStruggle
 {
-    public override void CardEvent(GameAction.Command command)
+    public class CapturedNaziScientist : Card
     {
-        FindObjectOfType<SpaceTrack>().AdvanceSpaceRace(Game.actingPlayer); 
-        command.callback.Invoke();
+        public override void CardEvent(GameCommand command)
+        {
+            FindObjectOfType<SpaceTrack>().AdvanceSpaceRace(Game.actingPlayer);
+            command.FinishCommand(); 
+        }
     }
 }

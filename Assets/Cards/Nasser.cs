@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Nasser : Card
+namespace TwilightStruggle
 {
-    [SerializeField] Country egypt; 
-
-    public override void CardEvent(GameAction.Command command)
+    public class Nasser : Card
     {
-        Game.AdjustInfluence.Invoke(egypt, Game.Faction.USSR, 2);
-        Game.AdjustInfluence.Invoke(egypt, Game.Faction.USA, -(int)Mathf.Ceil(egypt.influence[Game.Faction.USA] / 2));
-        Message("Nasser ousts King Farouk of Egypt!"); 
-        command.callback.Invoke(); 
+        [SerializeField] Country egypt;
+
+        public override void CardEvent(GameCommand command)
+        {
+            Game.adjustInfluenceEvent.Invoke(egypt, Game.Faction.USSR, 2);
+            Game.adjustInfluenceEvent.Invoke(egypt, Game.Faction.USA, -(int)Mathf.Ceil(egypt.influence[Game.Faction.USA] / 2));
+            Message("July 23rd Revolution in Egypy! Nasser ousts King Farouk!");
+            command.FinishCommand();
+        }
     }
 }

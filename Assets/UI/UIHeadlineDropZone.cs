@@ -10,8 +10,6 @@ namespace TwilightStruggle.UI
     public class UIHeadlineDropZone : MonoBehaviour, IDropHandler
     {
         public Game.Faction faction;
-        public HeadlineAction headlineAction;
-        [SerializeField] GameObject _cardSlot;
         [SerializeField] TextMeshProUGUI _revealedHeadline;
 
         public void OnDrop(PointerEventData eventData)
@@ -23,13 +21,13 @@ namespace TwilightStruggle.UI
                 _revealedHeadline.text = _card.cardName;
                 _revealedHeadline.DOFade(1, 0.35f);
 
-                FindObjectOfType<UIHand>().RemoveCard(_card); // Note: This triggers BEFORE UICard.OnDragEnd()
+                FindObjectOfType<HandUI>().RemoveCard(_card); // Note: This triggers BEFORE UICard.OnDragEnd()
 
                 eventData.selectedObject.transform.parent = transform;
                 eventData.selectedObject.transform.DOKill();
                 eventData.selectedObject.transform.DOScale(0f, .35f).OnComplete(() => Destroy(eventData.selectedObject));
 
-                headlineAction.SetHeadline(faction, _card);
+                //headlineAction.SetHeadline(faction, _card);
             }
         }
     }

@@ -2,28 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Defectors : Card, IHeadlineEvent
+namespace TwilightStruggle
 {
-    bool headlined = false; 
-
-    public override void CardEvent(GameAction.Command command)
+    public class Defectors : Card, IHeadlineEvent
     {
-        if(Game.phasingPlayer == Game.Faction.USSR)
-            Game.AdjustVPs.Invoke(1);
+        bool headlined = false;
 
-        command.callback.Invoke(); 
-    }
-
-    public void HeadlineEvent(HeadlinePhase headline)
-    {
-        if(headline.headlines[Game.Faction.USA].card == this)
+        public override void CardEvent(GameCommand command)
         {
-            // Discard the USSR Headline Card
-            Game.deck.Add(headline.headlines[Game.Faction.USSR].card);
+            if (Game.phasingPlayer == Game.Faction.USSR)
+                Game.AdjustVPsEvent.Invoke(1);
 
-            // TODO: Skip Headline Phase
+            command.FinishCommand();
+        }
 
-            Message($"USSR Headline ({headline.headlines[Game.Faction.USSR].card.cardName}) is canceled by Defectors!"); 
+        public void HeadlineEvent(TurnSystem.HeadlinePhase headline)
+        {
+            //if (headline.headlines[Game.Faction.USA].card == this)
+            //{
+            //    // Discard the USSR Headline Card
+            //    Game.deck.Add(headline.headlines[Game.Faction.USSR].card);
+
+            //    // TODO: Skip Headline Phase
+
+            //    Message($"USSR Headline ({headline.headlines[Game.Faction.USSR].card.cardName}) is canceled by Defectors!");
+            //}
         }
     }
 }

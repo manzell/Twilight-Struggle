@@ -3,37 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlaceBonusInfluence : MonoBehaviour, IPhaseAction
+namespace TwilightStruggle
 {
-    public Game.Faction faction;
-    public int influenceAmt;
-
-    public void OnPhase(Phase phase, UnityAction callback)
+    public class PlaceBonusInfluence : MonoBehaviour, TurnSystem.IPhaseAction
     {
-        FindObjectOfType<UIMessage>().Message($"Place {influenceAmt} bonus {faction} Influence");
+        public Game.Faction faction;
+        public int influenceAmt;
 
-        List<Country> eligibleCountries = new List<Country>();
-
-        foreach (Country country in FindObjectsOfType<Country>())
-            if (country.influence[Game.Faction.USA] > 0)
-                eligibleCountries.Add(country);
-
-        CountryClickHandler.Setup(eligibleCountries, onCountryClick, Color.yellow);
-
-        void onCountryClick(Country country)
+        public void OnPhase(TurnSystem.Phase phase, UnityAction callback)
         {
-            if (eligibleCountries.Contains(country))
-            {
-                Game.AdjustInfluence.Invoke(country, faction, 1);
-                influenceAmt--;
+            FindObjectOfType<UI.UIMessage>().Message($"Place {influenceAmt} bonus {faction} Influence");
 
-                FindObjectOfType<UIMessage>().Message($"Place {influenceAmt} {faction} Influence");
-            }
+            List<Country> eligibleCountries = new List<Country>();
 
-            if (influenceAmt == 0)
+            foreach (Country country in FindObjectsOfType<Country>())
+                if (country.influence[Game.Faction.USA] > 0)
+                    eligibleCountries.Add(country);
+
+            UI.CountryClickHandler.Setup(eligibleCountries, onCountryClick, Color.yellow);
+
+            void onCountryClick(Country country)
             {
-                CountryClickHandler.Close();
-                callback.Invoke();
+                if (eligibleCountries.Contains(country))
+                {
+                    Game.adjustInfluenceEvent.Invoke(country, faction, 1);
+                    influenceAmt--;
+
+                    FindObjectOfType<UI.UIMessage>().Message($"Place {influenceAmt} {faction} Influence");
+                }
+
+                if (influenceAmt == 0)
+                {
+                    UI.CountryClickHandler.Close();
+                    callback.Invoke();
+                }
             }
         }
     }

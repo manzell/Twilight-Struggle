@@ -1,20 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events; 
+using UnityEngine.Events;
 
-public class AddCards : MonoBehaviour, IPhaseAction
+namespace TwilightStruggle
 {
-    public Game.GamePhase gamePhase; 
-    public List<Card> cards;
-
-    public void OnPhase(Phase phase, UnityAction callback)
+    public class AddCards : MonoBehaviour, TurnSystem.IPhaseAction
     {
-        Game.gamePhase = gamePhase;
+        public Game.GamePhase gamePhase;
+        public List<Card> cards;
 
-        Game.deck.AddRange(cards);
-        Game.deck.Shuffle(); 
+        public void OnPhase(TurnSystem.Phase phase, UnityAction callback)
+        {
+            Game.gamePhase = gamePhase;
 
-        callback.Invoke();
+            Game.deck.AddRange(cards);
+            Game.deck.Shuffle();
+
+            callback.Invoke();
+        }
     }
 }

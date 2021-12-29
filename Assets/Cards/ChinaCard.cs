@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq; 
+using System.Linq;
 
-public class ChinaCard : Card
+namespace TwilightStruggle
 {
-    public bool faceUp = true; 
-    public Game.Faction currentFaction = Game.Faction.USSR;
-
-    public override void CardEvent(GameAction.Command command)
+    public class ChinaCard : Card
     {
-        faceUp = false;
-        currentFaction = currentFaction == Game.Faction.USSR ? Game.Faction.USA : Game.Faction.USSR;
+        public bool faceUp = true;
+        public Game.Faction currentFaction = Game.Faction.USSR;
 
-        command.callback.Invoke(); 
+        public override void CardEvent(GameCommand command)
+        {
+            faceUp = false;
+            currentFaction = currentFaction == Game.Faction.USSR ? Game.Faction.USA : Game.Faction.USSR;
+
+            command.FinishCommand();
+        }
     }
 }

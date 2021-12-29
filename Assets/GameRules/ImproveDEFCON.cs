@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events; 
+using UnityEngine.Events;
 
-public class ImproveDEFCON : MonoBehaviour, IPhaseAction
+namespace TwilightStruggle
 {
-    public void OnPhase(Phase phase, UnityAction callback)
+    public class ImproveDEFCON : MonoBehaviour, TurnSystem.IPhaseAction
     {
-        DEFCONtrack.AdjustDEFCON.Invoke(1);
-        callback.Invoke();
+        public void OnPhase(TurnSystem.Phase phase, UnityAction callback)
+        {
+            DEFCONtrack.AdjustDEFCON.Invoke(1);
+            callback.Invoke();
+        }
     }
 }

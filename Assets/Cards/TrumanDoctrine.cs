@@ -1,39 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq; 
+using System.Linq;
 
-public class TrumanDoctrine : Card
+namespace TwilightStruggle
 {
-    public override void CardEvent(GameAction.Command command)
+    public class TrumanDoctrine : Card
     {
-        List<Country> eligibleCountries = new List<Country>();
-
-        foreach (Country country in FindObjectsOfType<Country>())
-            if (country.continent == Country.Continent.Europe && country.control == Game.Faction.Neutral && country.influence[Game.Faction.USSR] > 0)
-                eligibleCountries.Add(country);
-
-        if (eligibleCountries.Count > 1)
+        public override void CardEvent(GameCommand command)
         {
-            Message("Truman promises to support freedom throughout Europe");
-            CountryClickHandler.Setup(eligibleCountries, onCountryClick);
-        }
-        else
-        {
-            if (eligibleCountries.Count == 1)
-                Game.SetInfluence.Invoke(eligibleCountries[0], Game.Faction.USSR, 0);
+            List<Country> eligibleCountries = new List<Country>();
 
-            command.callback.Invoke(); 
-        }
+            foreach (Country country in FindObjectsOfType<Country>())
+                if (country.continent == Country.Continent.Europe && country.control == Game.Faction.Neutral && country.influence[Game.Faction.USSR] > 0)
+                    eligibleCountries.Add(country);
 
-        void onCountryClick(Country country)
-        {
-            if (eligibleCountries.Contains(country))
+            if (eligibleCountries.Count > 1)
             {
-                Game.SetInfluence.Invoke(country, Game.Faction.USSR, 0);
-                CountryClickHandler.Close();
-                command.callback.Invoke(); 
+                Message("Truman promises to support freedom throughout Europe");
+                UI.CountryClickHandler.Setup(eligibleCountries, onCountryClick);
+            }
+            else
+            {
+                if (eligibleCountries.Count == 1)
+                    Game.setInfluenceEvent.Invoke(eligibleCountries[0], Game.Faction.USSR, 0);
+
+                command.FinishCommand();
+            }
+
+            void onCountryClick(Country country)
+            {
+                if (eligibleCountries.Contains(country))
+                {
+                    Game.setInfluenceEvent.Invoke(country, Game.Faction.USSR, 0);
+                    UI.CountryClickHandler.Close();
+                    command.FinishCommand();
+                }
             }
         }
-    }    
+    }
 }

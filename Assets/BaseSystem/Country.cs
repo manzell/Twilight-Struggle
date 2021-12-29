@@ -22,7 +22,7 @@ namespace TwilightStruggle
         { Game.Faction.USA, 0 }
     };
 
-        public UICountry marker;
+        public UI.UICountry marker;
 
         void Awake()
         {

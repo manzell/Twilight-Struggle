@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SuezCrisis : Card
+namespace TwilightStruggle
 {
-    [SerializeField] List<Country> countries;
-
-    public override void CardEvent(GameAction.Command command)
+    public class SuezCrisis : Card
     {
-        uiManager.SetButton(uiManager.primaryButton, "Done repelling Tripartite aggression", Finish);
-        RemoveInfluence(countries, Game.Faction.USA, 4, 2, Finish); 
+        [SerializeField] List<Country> countries;
 
-        void Finish()
+        public override void CardEvent(GameCommand command)
         {
-            uiManager.UnsetButtons();
-            command.callback.Invoke(); 
+            uiManager.SetButton(uiManager.primaryButton, "Done repelling Tripartite aggression", Finish);
+            RemoveInfluence(countries, Game.Faction.USA, 4, 2, Finish);
+
+            void Finish()
+            {
+                uiManager.UnsetButtons();
+                command.FinishCommand();
+            }
         }
     }
 }

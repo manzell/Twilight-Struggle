@@ -2,52 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Destalinization : Card
+namespace TwilightStruggle
 {
-    public override void CardEvent(GameAction.Command command)
+    public class Destalinization : Card
     {
-        int count = 0;
-        List<Country> eligibleCountries = new List<Country>();
-        List<Country> removedFrom = new List<Country>();
-        List<Country> addedTo = new List<Country>();
-
-        int eligibleInfluence = 0; 
-
-        foreach (Country country in FindObjectsOfType<Country>())
+        public override void CardEvent(GameCommand command)
         {
-            if (country.influence[Game.Faction.USSR] > 0)
+            int count = 0;
+            List<Country> eligibleCountries = new List<Country>();
+            List<Country> removedFrom = new List<Country>();
+            List<Country> addedTo = new List<Country>();
+
+            int eligibleInfluence = 0;
+
+            foreach (Country country in FindObjectsOfType<Country>())
             {
-                eligibleCountries.Add(country);
-                eligibleInfluence += country.influence[Game.Faction.USSR];
+                if (country.influence[Game.Faction.USSR] > 0)
+                {
+                    eligibleCountries.Add(country);
+                    eligibleInfluence += country.influence[Game.Faction.USSR];
+                }
             }
-        }
 
-        uiManager.SetButton(uiManager.cancelButton, "Finish Destal", Finish);
-        uiManager.SetButton(uiManager.confirmButton, "Finish Removing Influence", RedeployInfluence);
+            uiManager.SetButton(uiManager.cancelButton, "Finish Destal", Finish);
+            uiManager.SetButton(uiManager.confirmButton, "Finish Removing Influence", RedeployInfluence);
 
-        RemoveInfluence(eligibleCountries, Game.Faction.USSR, 4, 0, RedeployInfluence);
-        adjustInfluenceEvent.AddListener(c => count++); 
+            RemoveInfluence(eligibleCountries, Game.Faction.USSR, 4, 0, RedeployInfluence);
+            adjustInfluenceEvent.AddListener(c => count++);
 
-        void RedeployInfluence()
-        {
-            Message($"Place {count} USSR influence");
-            CountryClickHandler.Close();
+            void RedeployInfluence()
+            {
+                Message($"Place {count} USSR influence");
+                UI.CountryClickHandler.Close();
 
-            foreach (Country c in FindObjectsOfType<Country>())
-                if (c.control != Game.Faction.USA)
-                    eligibleCountries.Add(c);
+                foreach (Country c in FindObjectsOfType<Country>())
+                    if (c.control != Game.Faction.USA)
+                        eligibleCountries.Add(c);
 
-            AddInfluence(eligibleCountries, Game.Faction.USSR, count, 0, Finish);
-        }
+                AddInfluence(eligibleCountries, Game.Faction.USSR, count, 0, Finish);
+            }
 
-        void Finish()
-        {
-            CountryClickHandler.Close(); 
-            
-            uiManager.UnsetButton(uiManager.cancelButton);
-            uiManager.UnsetButton(uiManager.confirmButton);
-            
-            command.callback.Invoke();
+            void Finish()
+            {
+                UI.CountryClickHandler.Close();
+
+                uiManager.UnsetButton(uiManager.cancelButton);
+                uiManager.UnsetButton(uiManager.confirmButton);
+
+                command.FinishCommand();
+            }
         }
     }
 }

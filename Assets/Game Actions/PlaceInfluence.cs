@@ -1,77 +1,102 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq; 
+using System.Linq;
 
-public class PlaceInfluence : GameAction
+namespace TwilightStruggle
 {
-    public override Command GetCommand(Card card, GameAction action) => new PlaceInfluenceCommand(card, action);
-
-    public override void ExecuteCommandAction(Command command) // This is called when we say "Use This Card for Realignments" - before specifying which countries. 
+    public class PlaceInfluence : GameAction, IActionPrepare, IActionTarget, IActionComplete
     {
-        // the command already is a PlaceInfluenceCommand, we're just Upcasting it. This feels like a shitty hack. 
-        PlaceInfluenceCommand placement = command as PlaceInfluenceCommand;
-
-        List<Country> eligibleCountries = new List<Country>();
-
-        foreach (Country country in FindObjectsOfType<Country>())
+        public void Prepare(GameCommand command) 
         {
-            if (eligibleCountries.Contains(country) || country.GetComponent<MayNotPlaceInfluence>()) continue; 
+            PlacementVars placementVars = new PlacementVars();
+            command.callback = Target; 
+            command.parameters = placementVars;
 
-            if(country.influence[placement.phasingPlayer] > 0)
-                eligibleCountries.Add(country);
-            else
-                foreach(Country c in country.adjacentCountries)
-                    if (c.influence[placement.phasingPlayer] > 0)
-                    {
-                        eligibleCountries.Add(country);
-                        break;
-                    }
+            // Check our current Turn & Action Round for a modifier to ops value or coupStrength 
+            foreach (OpsBonus opsBonus in Game.currentTurn.transform.GetComponents<OpsBonus>().Concat(Game.currentActionRound.transform.GetComponents<OpsBonus>()))
+                if (opsBonus.faction == Game.actingPlayer || opsBonus.faction == Game.Faction.Neutral)
+                    placementVars.totalOps += opsBonus.amount;
+
+            placementVars.countries = new List<Country>(); 
+            placementVars.ops = placementVars.totalOps;
+            placementVars.eligibleCountries = EligibleCountries(command); 
+
+            prepareEvent.Invoke(command);
         }
 
-        CountryClickHandler.Setup(eligibleCountries, onInfluencePlace);
-
-        void onInfluencePlace(Country country)
+        public void Target(GameCommand command) 
         {
-            int opsCost = country.control == placement.enemyPlayer ? 2 : 1; 
+            PlacementVars placementVars = (PlacementVars)command.parameters;
 
-            if(placement.cardOpsValue >= placement.opsPlaced + opsCost)
+            Country targetCountry = placementVars.countries.Last();
+            int opsCost = targetCountry.control == command.opponent ? 2 : 1;
+
+            // Check our current Country for a bonus-ops modifier
+            foreach(OpsBonus opsBonus in targetCountry.transform.GetComponents<OpsBonus>())
             {
-                placement.opsPlaced += opsCost;
+                // TODO: Do this. 
+            }
 
-                if (placement.influencePlacement.ContainsKey(country))
-                    placement.influencePlacement[country] += 1;
+            if (placementVars.ops >= opsCost)
+            {
+                placementVars.ops -= opsCost;
+
+                if (placementVars.influencePlacement.ContainsKey(targetCountry))
+                    placementVars.influencePlacement[targetCountry] += 1;
                 else
-                    placement.influencePlacement.Add(country, 1);
+                    placementVars.influencePlacement.Add(targetCountry, 1);
 
-                placement.placeInfluenceEvent.Invoke(placement);
-                Game.AdjustInfluence.Invoke(country, placement.phasingPlayer, 1);
+                Game.AdjustInfluence(targetCountry, command.faction, 1); 
             }
 
-            if(placement.cardOpsValue - placement.opsPlaced == 1)
-            {
-                //Remove any opponent-controlled countries if we don't have at least 2 ops remaining. 
-                foreach(Country c in eligibleCountries)
-                    if (c.control == placement.enemyPlayer)
-                    {
-                        eligibleCountries.Remove(c);
-                        CountryClickHandler.Remove(c); 
-                    }
-            }
-            else if(placement.cardOpsValue - placement.opsPlaced == 0)
-            {
-                CountryClickHandler.Close();
-                placement.callback.Invoke(); 
-            }
+            command.parameters = placementVars;
+            command.callback = Complete;
+            targetEvent.Invoke(command);
         }
-    }
 
-    public class PlaceInfluenceCommand : Command
-    {
-        public int opsPlaced = 0; 
-        public Dictionary<Country, int> influencePlacement = new Dictionary<Country, int>();
-        public GameEvent<PlaceInfluenceCommand> placeInfluenceEvent = new GameEvent<PlaceInfluenceCommand>();
+        public void Complete(GameCommand command) 
+        {
+            completeEvent.Invoke(command);
+            command.phase.callback.Invoke(); 
+        }
 
-        public PlaceInfluenceCommand(Card c, GameAction a) : base(c, a) { }
+        public struct PlacementVars : ICommandVariables
+        {
+            public int totalOps, ops;
+            public Dictionary<Country, int> influencePlacement;
+            public List<Country> countries;
+            public List<Country> eligibleCountries; 
+        }
+
+        public List<Country> EligibleCountries(GameCommand command)
+        {
+            PlacementVars placementVars = (PlacementVars)command.parameters;
+            List<Country> countries = FindObjectsOfType<Country>().ToList();
+            List<Country> eligibleCountries = new List<Country>();
+
+            foreach (Country country in countries)
+            {
+                if ((eligibleCountries.Contains(country)) || // This country already listed as eligible
+                (country.GetComponent<MayNotPlaceInfluence>() && country.GetComponent<MayNotPlaceInfluence>().faction == command.faction) || // Prohibited by rule from placing influence here
+                (placementVars.ops < 1 || country.control == command.opponent && placementVars.ops < 2))// We don't have enough ops to place here
+                    continue;
+
+                if (country.adjacentSuperpower == command.faction)
+                    eligibleCountries.Add(country);
+                else
+                {
+                    foreach (Country c in country.adjacentCountries)
+                    {
+                        if (c.influence[command.faction] > 0)
+                        {
+                            eligibleCountries.Add(country);
+                            break;
+                        }
+                    }
+                }
+            }
+            return eligibleCountries; 
+        }
     }
 }

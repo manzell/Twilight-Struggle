@@ -18,7 +18,7 @@ namespace TwilightStruggle.UI
             Game.phaseStartEvent.AddListener(OnTurnStart); 
         }
 
-        [Button] void OnTurnStart(Phase turn)
+        [Button] void OnTurnStart(TurnSystem.Phase turn)
         {
             if(turn.TryGetComponent(out UIPhase phase))
             {

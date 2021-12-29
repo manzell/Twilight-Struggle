@@ -1,47 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events; 
+using UnityEngine.Events;
 
-public class COMECON : Card
+namespace TwilightStruggle
 {
-    [SerializeField] List<Country> easternEurope = new List<Country>();
-
-    public override void CardEvent(GameAction.Command command)
+    public class COMECON : Card
     {
-        int count = 5;
-        List<Country> eligibleCountries = new List<Country>();
+        [SerializeField] List<Country> easternEurope = new List<Country>();
 
-        foreach(Country country in easternEurope)
-            if (country.control != Game.Faction.USA)
-                eligibleCountries.Add(country);
-
-        if (eligibleCountries.Count <= 5)
-            foreach (Country country in eligibleCountries)
-                Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, 1);
-        else
-            CountryClickHandler.Setup(eligibleCountries, onCountryClick);
-
-        uiManager.SetButton(uiManager.primaryButton, "Finish Placing Ops", onFinish); 
-
-        void onFinish()
+        public override void CardEvent(GameCommand command)
         {
-            uiManager.UnsetButton(uiManager.primaryButton);
-            CountryClickHandler.Close();
-            command.callback.Invoke();
-        }
+            int count = 5;
+            List<Country> eligibleCountries = new List<Country>();
 
-        // TODO: Make this into generic calls to like "Add/Remove X influece to any/each of these countries"
-        void onCountryClick(Country country)
-        {
-            Game.AdjustInfluence.Invoke(country, faction, 1);
-            eligibleCountries.Remove(country);
-            CountryClickHandler.Remove(country);
+            foreach (Country country in easternEurope)
+                if (country.control != Game.Faction.USA)
+                    eligibleCountries.Add(country);
 
-            count--;
+            if (eligibleCountries.Count <= 5)
+                foreach (Country country in eligibleCountries)
+                    Game.adjustInfluenceEvent.Invoke(country, Game.Faction.USSR, 1);
+            else
+                UI.CountryClickHandler.Setup(eligibleCountries, onCountryClick);
 
-            if (count == 0)
-                onFinish(); 
+            uiManager.SetButton(uiManager.primaryButton, "Finish Placing Ops", onFinish);
+
+            void onFinish()
+            {
+                uiManager.UnsetButton(uiManager.primaryButton);
+                UI.CountryClickHandler.Close();
+                command.FinishCommand();
+            }
+
+            // TODO: Make this into generic calls to like "Add/Remove X influece to any/each of these countries"
+            void onCountryClick(Country country)
+            {
+                Game.adjustInfluenceEvent.Invoke(country, faction, 1);
+                eligibleCountries.Remove(country);
+                UI.CountryClickHandler.Remove(country);
+
+                count--;
+
+                if (count == 0)
+                    onFinish();
+            }
         }
     }
 }

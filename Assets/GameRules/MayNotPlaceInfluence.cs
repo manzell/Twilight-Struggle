@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MayNotPlaceInfluence : MonoBehaviour
+namespace TwilightStruggle
 {
-    Game.Faction faction; 
+    public class MayNotPlaceInfluence : MonoBehaviour
+    {
+        public Game.Faction faction;
+    }
 }

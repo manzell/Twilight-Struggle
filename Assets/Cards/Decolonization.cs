@@ -2,41 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Decolonization : Card
+namespace TwilightStruggle
 {
-    [SerializeField] List<Country> countries = new List<Country>();
-    public int countryCount = 4; 
-
-    public override void CardEvent(GameAction.Command command)
+    public class Decolonization : Card
     {
-        int count = countryCount; 
+        [SerializeField] List<Country> countries = new List<Country>();
+        public int countryCount = 4;
 
-        CountryClickHandler.Setup(countries, onCountryClick);
-
-        Message($"Place {count} USSR Influence"); 
-
-        uiManager.SetButton(uiManager.primaryButton, "Finish Decol", Finish);         
-
-        void onCountryClick(Country country)
+        public override void CardEvent(GameCommand command)
         {
-            count--;
+            int count = countryCount;
 
-            if (countries.Contains(country))
+            UI.CountryClickHandler.Setup(countries, onCountryClick);
+
+            Message($"Place {count} USSR Influence");
+
+            uiManager.SetButton(uiManager.primaryButton, "Finish Decol", Finish);
+
+            void onCountryClick(Country country)
             {
-                Message($"Place {count} USSR Influence");
-                Game.AdjustInfluence.Invoke(country, Game.Faction.USSR, 1);
-                countries.Remove(country);
-                CountryClickHandler.Remove(country);
-            }
-            if (count == 0)
-                Finish(); 
-        }
+                count--;
 
-        void Finish()
-        {
-            CountryClickHandler.Close();
-            uiManager.UnsetButton(uiManager.primaryButton); 
-            command.callback.Invoke();
+                if (countries.Contains(country))
+                {
+                    Message($"Place {count} USSR Influence");
+                    Game.adjustInfluenceEvent.Invoke(country, Game.Faction.USSR, 1);
+                    countries.Remove(country);
+                    UI.CountryClickHandler.Remove(country);
+                }
+                if (count == 0)
+                    Finish();
+            }
+
+            void Finish()
+            {
+                UI.CountryClickHandler.Close();
+                uiManager.UnsetButton(uiManager.primaryButton);
+                command.FinishCommand();
+            }
         }
     }
 }

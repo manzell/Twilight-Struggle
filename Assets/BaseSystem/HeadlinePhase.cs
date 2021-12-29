@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class HeadlinePhase : Phase // There is just one of these
+namespace TwilightStruggle.TurnSystem
 {
-    public Dictionary<Game.Faction, HeadlineAction.HeadlineCommand> headlines = new Dictionary<Game.Faction, HeadlineAction.HeadlineCommand>();
-    public GameEvent<HeadlinePhase> headlineEvent = new GameEvent<HeadlinePhase>();
-
-    public override void OnPhase(UnityAction callback)
+    public class HeadlinePhase : Phase // There is just one of these
     {
-        this.callback = callback; 
-        FindObjectOfType<UIMessage>().Message("Headline Phase");
-        //Game.setActiveFactionEvent.Invoke(Game.Faction.USSR);
+        public Dictionary<Game.Faction, Card> headlines = new Dictionary<Game.Faction, Card>();
+        // public GameEvent<HeadlinePhase> headlineEvent = new GameEvent<HeadlinePhase>();
+
+        public override void OnPhase(UnityAction callback)
+        {
+            this.callback = callback;
+            FindObjectOfType<UI.UIMessage>().Message("Headline Phase");
+        }
     }
 }

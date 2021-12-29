@@ -3,77 +3,80 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Deck : List<Card>
+namespace TwilightStruggle
 {
-    public List<Card> discards = new List<Card>();
-    public List<Card> held = new List<Card>();
-    public List<Card> removed = new List<Card>();
-
-    public UnityEvent<Card> draw = new UnityEvent<Card>(),
-        discard = new UnityEvent<Card>(),
-        onShuffle = new UnityEvent<Card>(); 
-
-    public void Discard(Card card)
+    public class Deck : List<Card>
     {
-        discards.Add(card);
-        held.Remove(card);
-        Remove(card);
+        public List<Card> discards = new List<Card>();
+        public List<Card> held = new List<Card>();
+        public List<Card> removed = new List<Card>();
 
-        discard.Invoke(card); 
-    }
+        public UnityEvent<Card> draw = new UnityEvent<Card>(),
+            discard = new UnityEvent<Card>(),
+            onShuffle = new UnityEvent<Card>();
 
-    public void Discard(List<Card> cards)
-    {
-        foreach(Card card in cards)
+        public void Discard(Card card)
         {
-            Discard(card); 
-        }
-    }
-
-    public Card Draw()
-    {
-        if (Count == 0 && discards.Count > 0)
-            Reshuffle(); 
-
-        if(Count > 0)
-        {
-            Card card = this[0];
-
-            draw.Invoke(card);
+            discards.Add(card);
+            held.Remove(card);
             Remove(card);
-            held.Add(card); 
 
-            return card;
+            discard.Invoke(card);
         }
-        else
-            return null;
-    }
 
-    public List<Card> Draw(int count)
-    {
-        List<Card> cards = new List<Card>();
-
-        for(int i = 0; i < count; i++)
+        public void Discard(List<Card> cards)
         {
-            Card card = Draw(); 
-            
-            if(card)
+            foreach (Card card in cards)
             {
-                cards.Add(card);
-                this.Remove(card);
+                Discard(card);
             }
         }
-        
-        return cards; 
-    }
 
-    public Deck Reshuffle()
-    {
-        AddRange(discards);
-        discards.Clear();
+        public Card Draw()
+        {
+            if (Count == 0 && discards.Count > 0)
+                Reshuffle();
 
-        this.Shuffle(); 
+            if (Count > 0)
+            {
+                Card card = this[0];
 
-        return this; 
+                draw.Invoke(card);
+                Remove(card);
+                held.Add(card);
+
+                return card;
+            }
+            else
+                return null;
+        }
+
+        public List<Card> Draw(int count)
+        {
+            List<Card> cards = new List<Card>();
+
+            for (int i = 0; i < count; i++)
+            {
+                Card card = Draw();
+
+                if (card)
+                {
+                    cards.Add(card);
+                    this.Remove(card);
+                }
+            }
+
+            return cards;
+        }
+
+        public Deck Reshuffle()
+        {
+            AddRange(discards);
+            discards.Clear();
+
+            this.Shuffle();
+
+            return this;
+        }
     }
 }

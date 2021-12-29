@@ -11,7 +11,7 @@ namespace TwilightStruggle
         public Dictionary<Scoring.ScoreState, int> scoreKey;
         public UnityEvent<Scoring> scoreEvent = new UnityEvent<Scoring>();
 
-        public override void CardEvent(GameAction.Command command)
+        public override void CardEvent(GameCommand command)
         {
             Scoring scoring = new Scoring(scoreKey, continent);
 
@@ -21,9 +21,9 @@ namespace TwilightStruggle
                 Message($"{cardName} scored for Even");
 
             scoreEvent.Invoke(scoring);
-            Game.AdjustVPs.Invoke(scoring.vp);
+            Game.AdjustVPsEvent.Invoke(scoring.vp);
 
-            command.callback.Invoke();
+            command.FinishCommand();
         }
     }
 }

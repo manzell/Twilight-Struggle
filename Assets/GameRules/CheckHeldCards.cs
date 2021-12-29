@@ -1,26 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events; 
+using UnityEngine.Events;
 
-public class CheckHeldCards : MonoBehaviour, IPhaseAction
+namespace TwilightStruggle
 {
-    public void OnPhase(Phase phase, UnityAction callback)
+    public class CheckHeldCards : MonoBehaviour, TurnSystem.IPhaseAction
     {
-        Debug.Log("Checking Held Cards");
+        public void OnPhase(TurnSystem.Phase phase, UnityAction callback)
+        {
+            Debug.Log("Checking Held Cards");
 
-        List<Game.Faction> factions = new List<Game.Faction>();
+            List<Game.Faction> factions = new List<Game.Faction>();
 
-        foreach (Player player in FindObjectsOfType<Player>())
-            foreach (Card card in player.hand)
-                if (card is ScoringCard && !factions.Contains(player.faction))
-                    factions.Add(player.faction);
+            foreach (Player player in FindObjectsOfType<Player>())
+                foreach (Card card in player.hand)
+                    if (card is ScoringCard && !factions.Contains(player.faction))
+                        factions.Add(player.faction);
 
-        if (factions.Count == 2) // Tie
-            Game.GameOver.Invoke(Game.Faction.Neutral, "Mutual Held Scoring Cards");
-        else if (factions.Count == 1)
-            Game.GameOver.Invoke(factions[0] == Game.Faction.USA ? Game.Faction.USSR : Game.Faction.USA, "Held Scoring Card");
-        else
-            callback.Invoke();
+            if (factions.Count == 2) // Tie
+                Game.GameOver.Invoke(Game.Faction.Neutral, "Mutual Held Scoring Cards");
+            else if (factions.Count == 1)
+                Game.GameOver.Invoke(factions[0] == Game.Faction.USA ? Game.Faction.USSR : Game.Faction.USA, "Held Scoring Card");
+            else
+                callback.Invoke();
+        }
     }
 }

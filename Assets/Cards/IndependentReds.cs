@@ -2,37 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IndependentReds : Card
+namespace TwilightStruggle
 {
-    [SerializeField] List<Country> reds;
-    List<Country> eligibleCountries = new List<Country>();
-
-    public override void CardEvent(GameAction.Command command)
+    public class IndependentReds : Card
     {
-        foreach(Country country in reds)
-            if(country.influence[Game.Faction.USSR] > 0)
-                eligibleCountries.Add(country);
+        [SerializeField] List<Country> reds;
+        List<Country> eligibleCountries = new List<Country>();
 
-        if (eligibleCountries.Count == 1)
-            EqualizeInfluence(eligibleCountries[0]);
-        else
+        public override void CardEvent(GameCommand command)
         {
-            if (eligibleCountries.Count > 1)
-            {
-                CountryClickHandler.Setup(eligibleCountries, EqualizeInfluence);
-                Message("Select country to Equalize Influence");
-            }
+            foreach (Country country in reds)
+                if (country.influence[Game.Faction.USSR] > 0)
+                    eligibleCountries.Add(country);
+
+            if (eligibleCountries.Count == 1)
+                EqualizeInfluence(eligibleCountries[0]);
             else
-                Message("No eligible countries for Independent Reds");
+            {
+                if (eligibleCountries.Count > 1)
+                {
+                    UI.CountryClickHandler.Setup(eligibleCountries, EqualizeInfluence);
+                    Message("Select country to Equalize Influence");
+                }
+                else
+                    Message("No eligible countries for Independent Reds");
 
-            command.callback.Invoke();
-        }
+                command.FinishCommand();
+            }
 
-        void EqualizeInfluence(Country country)
-        {
-            Game.SetInfluence.Invoke(country, Game.Faction.USA, Mathf.Max(country.stability, country.influence[Game.Faction.USA]));
-            CountryClickHandler.Close(); 
-            command.callback.Invoke();
+            void EqualizeInfluence(Country country)
+            {
+                Game.setInfluenceEvent.Invoke(country, Game.Faction.USA, Mathf.Max(country.stability, country.influence[Game.Faction.USA]));
+                UI.CountryClickHandler.Close();
+                command.FinishCommand();
+            }
         }
-    }  
+    }
 }

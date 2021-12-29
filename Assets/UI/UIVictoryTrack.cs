@@ -13,7 +13,7 @@ namespace TwilightStruggle.UI
 
         private void Awake()
         {
-            Game.AdjustVPs.after.AddListener(UpdateVictoryTrack);
+            Game.AdjustVPsEvent.after.AddListener(UpdateVictoryTrack);
         }
 
         void UpdateVictoryTrack(int amount)

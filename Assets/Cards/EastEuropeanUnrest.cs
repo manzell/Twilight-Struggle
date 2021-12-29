@@ -2,37 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EastEuropeanUnrest : Card
+namespace TwilightStruggle
 {
-    [SerializeField] List<Country> easternEurope;
-
-    public override void CardEvent(GameAction.Command command)
+    public class EastEuropeanUnrest : Card
     {
-        int count = 3;
-        int amount = Game.gamePhase == Game.GamePhase.LateWar ? 2 : 1;
-        List<Country> eligibleCountries = new List<Country>();
+        [SerializeField] List<Country> easternEurope;
 
-        foreach(Country country in easternEurope)
-            if(country.influence[Game.Faction.USSR] > 0) 
-                eligibleCountries.Add(country);
-
-        FindObjectOfType<UIManager>().SetButton(FindObjectOfType<UIManager>().primaryButton, "Unrest Abates", Finish);
-
-        if (eligibleCountries.Count > 3)
-            RemoveInfluence(eligibleCountries, Game.Faction.USSR, 3, 1, Finish); 
-        else
+        public override void CardEvent(GameCommand command)
         {
-            RemoveInfluence(Game.Faction.USSR, eligibleCountries, amount);
-            Finish();
-        }
+            int count = 3;
+            int amount = Game.gamePhase == Game.GamePhase.LateWar ? 2 : 1;
+            List<Country> eligibleCountries = new List<Country>();
 
-        void Finish()
-        {
-            FindObjectOfType<UIManager>().UnsetButton(FindObjectOfType<UIManager>().primaryButton);
-            CountryClickHandler.Close(); 
-            command.callback.Invoke();
+            foreach (Country country in easternEurope)
+                if (country.influence[Game.Faction.USSR] > 0)
+                    eligibleCountries.Add(country);
+
+            FindObjectOfType<UI.UIManager>().SetButton(FindObjectOfType<UI.UIManager>().primaryButton, "Unrest Abates", Finish);
+
+            RemoveInfluence(eligibleCountries, Game.Faction.USSR, count, 1, Finish); 
+
+            void Finish()
+            {
+                FindObjectOfType<UI.UIManager>().UnsetButton(FindObjectOfType<UI.UIManager>().primaryButton);
+                UI.CountryClickHandler.Close();
+                command.FinishCommand();
+            }
         }
     }
-
-
 }

@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RomanianAbdication : Card
+namespace TwilightStruggle
 {
-    [SerializeField] Country romania;
-
-    public override void CardEvent(GameAction.Command command)
+    public class RomanianAbdication : Card
     {
-        Message("King Michael I of Romania abdicates!"); 
+        [SerializeField] Country romania;
 
-        Game.SetInfluence.Invoke(romania, Game.Faction.USA, 0);
-        Game.SetInfluence.Invoke(romania, Game.Faction.USSR, Mathf.Max(romania.stability, romania.influence[Game.Faction.USSR]));
+        public override void CardEvent(GameCommand command)
+        {
+            Message("King Michael I of Romania abdicates!");
 
-        command.callback.Invoke(); 
+            Game.setInfluenceEvent.Invoke(romania, Game.Faction.USA, 0);
+            Game.setInfluenceEvent.Invoke(romania, Game.Faction.USSR, Mathf.Max(romania.stability, romania.influence[Game.Faction.USSR]));
+
+            command.FinishCommand();
+        }
     }
 }

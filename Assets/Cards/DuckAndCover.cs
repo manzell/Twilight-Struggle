@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DuckAndCover : Card
+namespace TwilightStruggle
 {
-    public override void CardEvent(GameAction.Command command)
+    public class DuckAndCover : Card
     {
-        Game.AdjustDEFCON.Invoke(Game.phasingPlayer, -1);
-        int vpAward = Mathf.Clamp(5 - DEFCONtrack.Status, 0, 5);
-        Game.AdjustVPs.Invoke(vpAward);
+        public override void CardEvent(GameCommand command)
+        {
+            Game.AdjustDEFCON.Invoke(Game.phasingPlayer, -1);
+            int vpAward = Mathf.Clamp(5 - DEFCONtrack.Status, 0, 5);
+            Game.AdjustVPsEvent.Invoke(vpAward);
 
-        Message($"US earns {vpAward} {(vpAward == 1 ? "point" : "points")} from Duck and Cover");
+            Message($"US earns {vpAward} {(vpAward == 1 ? "point" : "points")} from Duck and Cover");
 
-        command.callback.Invoke(); 
+            command.FinishCommand();
+        }
     }
 }

@@ -3,42 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SpaceRace : GameAction
+namespace TwilightStruggle
 {
-    public override Command GetCommand(Card card, GameAction action) => new SpaceShotCommand(card, action);
-
-    public override void ExecuteCommandAction(Command command)
+    public class SpaceRace : GameAction, IActionPrepare, IActionComplete
     {
-        SpaceTrack spaceTrack = FindObjectOfType<SpaceTrack>();
-        SpaceShotCommand spaceShot = command as SpaceShotCommand;
+        [SerializeField] SpaceTrack spaceTrack;
 
-        // Assume we've already checked if the player has more space attempts remaining && if the card has enough Ops
-        int spaceRaceLevel = spaceTrack.spaceRaceLevel[spaceShot.phasingPlayer];
-
-        if(spaceShot.roll <= spaceTrack.spaceRaceTrack[spaceRaceLevel].rollRequired)
+        public void Prepare(GameCommand command)
         {
-            spaceShot.success = true;
+            SpaceVars spaceVars = new SpaceVars();
+            spaceVars.roll = Random.Range(0, 6) + 1;
 
-            spaceTrack.AdvanceSpaceRace(spaceShot.phasingPlayer);
+            command.callback = Complete;
+            command.parameters = spaceVars;
 
-            int vpAward = spaceTrack.spaceRaceTrack[spaceRaceLevel].vpAwards[spaceTrack.spaceRaceTrack[spaceRaceLevel].acheived.Count];
-            Game.AdjustVPs.Invoke(spaceShot.phasingPlayer == Game.Faction.USA ? vpAward : -vpAward);
+            prepareEvent.Invoke(command);
         }
 
-        Debug.Log($"{spaceShot.phasingPlayer} attempting {spaceTrack.spaceRaceTrack[spaceRaceLevel].name}. Rolled {spaceShot.roll}, needed {spaceTrack.spaceRaceTrack[spaceRaceLevel].rollRequired}. " +
-            $"{(spaceShot.roll <= spaceTrack.spaceRaceTrack[spaceRaceLevel].rollRequired ? "Success!" : "Failure")}");
-
-        spaceShot.callback.Invoke(); 
-    }
-
-    public class SpaceShotCommand : Command
-    {
-        public bool success; 
-        public int roll;
-
-        public SpaceShotCommand(Card c, GameAction a) : base(c, a)
+        public void Complete(GameCommand command)
         {
-            roll = Random.Range(0, 6) + 1;
+            // Assume we've already checked if the player has more space attempts remaining && if the card has enough Ops
+            // That check should occur in GameAction.CanUseAction
+            int spaceRaceLevel = spaceTrack.spaceRaceLevel[command.faction];
+            SpaceVars spaceVars = (SpaceVars)command.parameters;
+
+            if (spaceVars.roll <= spaceTrack.spaceRaceTrack[spaceRaceLevel].rollRequired)
+            {
+                spaceVars.success = true;
+                spaceTrack.AdvanceSpaceRace(command.faction);
+
+                int vpAward = spaceTrack.spaceRaceTrack[spaceRaceLevel].vpAwards[spaceTrack.spaceRaceTrack[spaceRaceLevel].acheived.Count];
+
+                VictoryTrack.AdjustVPs(command.faction == Game.Faction.USA ? vpAward : -vpAward);
+            }
+
+            completeEvent.Invoke(command);
+            command.FinishCommand(); 
+        }
+
+        public class SpaceVars : ICommandVariables
+        {
+            public int roll;
+            public bool success;
         }
     }
 }

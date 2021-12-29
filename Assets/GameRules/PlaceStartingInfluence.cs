@@ -3,33 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlaceStartingInfluence : MonoBehaviour, IPhaseAction
+namespace TwilightStruggle
 {
-    public Game.Faction faction;
-    public int influenceAmt;
-    public List<Country> eligibleCountries = new List<Country>();
-
-    public void OnPhase(Phase phase, UnityAction callback)
+    public class PlaceStartingInfluence : MonoBehaviour, TurnSystem.IPhaseAction
     {
-        Game.setActiveFactionEvent.Invoke(faction); 
-        FindObjectOfType<UIMessage>().Message($"Place {influenceAmt} {faction} Influence");
+        public Game.Faction faction;
+        public int influenceAmt;
+        public List<Country> eligibleCountries = new List<Country>();
 
-        CountryClickHandler.Setup(eligibleCountries, onCountryClick, Color.yellow);
-
-        void onCountryClick(Country country)
+        public void OnPhase(TurnSystem.Phase phase, UnityAction callback)
         {
-            if (eligibleCountries.Contains(country))
-            {
-                Game.AdjustInfluence.Invoke(country, faction, 1);
-                influenceAmt--;
+            Game.setActiveFactionEvent.Invoke(faction);
+            FindObjectOfType<UI.UIMessage>().Message($"Place {influenceAmt} {faction} Influence");
 
-                FindObjectOfType<UIMessage>().Message($"Place {influenceAmt} {faction} Influence");
-            }
+            UI.CountryClickHandler.Setup(eligibleCountries, onCountryClick, Color.yellow);
 
-            if (influenceAmt == 0)
+            void onCountryClick(Country country)
             {
-                CountryClickHandler.Close();
-                callback.Invoke();
+                if (eligibleCountries.Contains(country))
+                {
+                    Game.adjustInfluenceEvent.Invoke(country, faction, 1);
+                    influenceAmt--;
+
+                    FindObjectOfType<UI.UIMessage>().Message($"Place {influenceAmt} {faction} Influence");
+                }
+
+                if (influenceAmt == 0)
+                {
+                    UI.CountryClickHandler.Close();
+                    callback.Invoke();
+                }
             }
         }
     }

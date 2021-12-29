@@ -18,9 +18,9 @@ namespace TwilightStruggle.UI
             Game.phaseStartEvent.AddListener(OnActionRoundStart); 
         }
 
-        void OnActionRoundStart(Phase phase)
+        void OnActionRoundStart(TurnSystem.Phase phase)
         {
-            if (phase is not ActionRound)
+            if (phase is not TurnSystem.ActionRound)
             {
                 usaText.text = string.Empty; 
                 ussrText.text = string.Empty;
@@ -30,9 +30,9 @@ namespace TwilightStruggle.UI
             }
             else
             {
-                ActionRound actionRound = phase as ActionRound;
+                TurnSystem.ActionRound actionRound = phase as TurnSystem.ActionRound;
 
-                List<ActionRound> actionRounds = phase.transform.parent.GetComponentsInChildren<ActionRound>().ToList();
+                List<TurnSystem.ActionRound> actionRounds = phase.transform.parent.GetComponentsInChildren<TurnSystem.ActionRound>().ToList();
                 int actionRoundNumber = actionRounds.IndexOf(actionRound) / 2 + 1; 
 
                 usaText.text = actionRoundNumber.ToString();

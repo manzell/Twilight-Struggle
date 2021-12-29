@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events; 
+using UnityEngine.Events;
 
-public class VietnamRevolts : Card
+namespace TwilightStruggle
 {
-    [SerializeField] Country vietnam;
-    [SerializeField] List<Country> southeastAsia = new List<Country>();
-
-    public override void CardEvent(GameAction.Command command)
+    public class VietnamRevolts : Card
     {
-        Message("Hi Chi Minh expels French");
-        Game.AdjustInfluence.Invoke(vietnam, Game.Faction.USSR, 2);
+        [SerializeField] Country vietnam;
+        [SerializeField] List<Country> southeastAsia = new List<Country>();
 
-        // TODO Make this work
-        command.callback.Invoke(); 
-    } 
+        public override void CardEvent(GameCommand command)
+        {
+            Message("Hi Chi Minh expels French");
+            Game.adjustInfluenceEvent.Invoke(vietnam, Game.Faction.USSR, 2);
+
+            // TODO Make this work
+            command.FinishCommand();
+        }
+    }
 }

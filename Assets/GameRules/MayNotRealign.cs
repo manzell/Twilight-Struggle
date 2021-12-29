@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MayNotRealign : MonoBehaviour
+namespace TwilightStruggle
 {
-    public Game.Faction faction; 
+    public class MayNotRealign : MonoBehaviour
+    {
+        public Game.Faction faction;
+    }
 }

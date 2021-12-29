@@ -5,14 +5,13 @@ using Sirenix.OdinInspector;
 using UnityEngine.Events;
 
 
-namespace TwilightStruggle
+namespace TwilightStruggle.TurnSystem
 {
     public class ActionRound : Phase
     {
         public Game.Faction phasingPlayer;
-        [ReadOnly] public GameAction.Command command;
-
-        public bool opponentEventTriggered = false;
+        public GameCommand command;
+        public bool wasEventTriggered = false;
 
         public override void StartPhase(UnityAction callback)
         {
@@ -25,7 +24,7 @@ namespace TwilightStruggle
 
         public override void OnPhase(UnityAction callback)
         {
-            FindObjectOfType<UIMessage>().Message($"Play {phasingPlayer} Action Round");
+            FindObjectOfType<UI.UIMessage>().Message($"Play {phasingPlayer} Action Round");
 
             // Sit here and wait. 
         }

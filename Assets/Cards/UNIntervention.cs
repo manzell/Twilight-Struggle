@@ -2,23 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UNIntervention : Card
+namespace TwilightStruggle
 {
-    public override void CardEvent(GameAction.Command command)
+    public class UNIntervention : Card
     {
-        List<Card> eligibleCards = new List<Card>();
-
-        foreach(Card card in FindObjectOfType<Game>().playerMap[command.actingPlayer].hand)
-            if(command.actingPlayer == Game.Faction.USA && card.faction == Game.Faction.USSR || command.actingPlayer == Game.Faction.USSR && card.faction == Game.Faction.USA)
-                eligibleCards.Add(card);
-
-        cardClickHandler = new CardClickHandler(eligibleCards, Intervene);                
-
-        void Intervene(Card card)
+        public override void CardEvent(GameCommand command)
         {
-            // TODO - Make this work.
-            Message($"UN intervenes to prevent {card.cardName}");
-            command.callback.Invoke();
+            List<Card> eligibleCards = new List<Card>();
+
+            foreach (Card card in FindObjectOfType<Game>().playerMap[command.faction].hand)
+                if (command.faction == Game.Faction.USA && card.faction == Game.Faction.USSR || command.faction == Game.Faction.USSR && card.faction == Game.Faction.USA)
+                    eligibleCards.Add(card);
+
+            cardClickHandler = new UI.CardClickHandler(eligibleCards, Intervene);
+
+            void Intervene(Card card)
+            {
+                // TODO - Make this work.
+                Message($"UN intervenes to prevent {card.cardName}");
+                command.FinishCommand();
+            }
         }
     }
 }

@@ -1,51 +1,54 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events; 
+using UnityEngine.Events;
 
-public class MarshallPlan : Card
+namespace TwilightStruggle
 {
-    [SerializeField] List<Country> westernEurope = new List<Country>();
-    [SerializeField] NATO NATO;
-
-    public override void CardEvent(GameAction.Command command)
+    public class MarshallPlan : Card
     {
-        int count = 7;
+        [SerializeField] List<Country> westernEurope = new List<Country>();
+        [SerializeField] NATO NATO;
 
-        NATO.isPlayable = true;
-
-        foreach (Country country in westernEurope)
-            if (country.control == Game.Faction.USSR)
-                westernEurope.Remove(country);
-
-        FindObjectOfType<UIManager>().SetButton(FindObjectOfType<UIManager>().primaryButton, "Finish Rebuilding Europe", Finish); 
-
-        if (westernEurope.Count <= count)
+        public override void CardEvent(GameCommand command)
         {
-            AddInfluence(faction, westernEurope, 1);
-            Finish(); 
-        }
-        else
-            CountryClickHandler.Setup(westernEurope, onCountryClick, new Color(0f, .6f, .6f));
+            int count = 7;
 
-        void onCountryClick(Country country)
-        {
-            if (westernEurope.Contains(country))
+            NATO.isPlayable = true;
+
+            foreach (Country country in westernEurope)
+                if (country.control == Game.Faction.USSR)
+                    westernEurope.Remove(country);
+
+            FindObjectOfType<UI.UIManager>().SetButton(FindObjectOfType<UI.UIManager>().primaryButton, "Finish Rebuilding Europe", Finish);
+
+            if (westernEurope.Count <= count)
             {
-                westernEurope.Remove(country);
-                CountryClickHandler.Remove(country);
-                Game.AdjustInfluence.Invoke(country, Game.Faction.USA, 1);
-                count--;
+                AddInfluence(faction, westernEurope, 1);
+                Finish();
+            }
+            else
+                UI.CountryClickHandler.Setup(westernEurope, onCountryClick, new Color(0f, .6f, .6f));
+
+            void onCountryClick(Country country)
+            {
+                if (westernEurope.Contains(country))
+                {
+                    westernEurope.Remove(country);
+                    UI.CountryClickHandler.Remove(country);
+                    Game.adjustInfluenceEvent.Invoke(country, Game.Faction.USA, 1);
+                    count--;
+                }
+
+                if (count == 0)
+                    Finish();
             }
 
-            if (count == 0)
-                Finish();
-        }
-
-        void Finish()
-        {
-            CountryClickHandler.Close();
-            command.callback.Invoke();
+            void Finish()
+            {
+                UI.CountryClickHandler.Close();
+                command.FinishCommand();
+            }
         }
     }
 }

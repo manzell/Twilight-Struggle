@@ -2,71 +2,70 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarsawPactFormed : Card
+namespace TwilightStruggle
 {
-    [SerializeField] List<Country> easternEurope = new List<Country>();
-    [SerializeField] NATO NATO;
-
-    public override void CardEvent(GameAction.Command command)
+    public class WarsawPactFormed : Card
     {
-        NATO.isPlayable = true;
+        [SerializeField] List<Country> easternEurope = new List<Country>();
+        [SerializeField] NATO NATO;
 
-        // TODO: Present the player a choice. For now, just add USSR influence
-
-        uiManager.SetButton(uiManager.confirmButton, "Expel Westerners", RemoveAllUSInfluence);
-        uiManager.SetButton(uiManager.cancelButton, "Solidify the Eastern Bloc", AddUSSRInfluence);
-
-        void RemoveAllUSInfluence()
+        public override void CardEvent(GameCommand command)
         {
-            uiManager.UnsetButtons();
-            uiManager.SetButton(uiManager.primaryButton, "Finish purging reactionaries", Finish);
-            int count = 4;
+            NATO.isPlayable = true;
 
-            foreach (Country country in easternEurope)
-                if (country.influence[Game.Faction.USA] == 0)
+            uiManager.SetButton(uiManager.confirmButton, "Expel Westerners", RemoveAllUSInfluence);
+            uiManager.SetButton(uiManager.cancelButton, "Solidify the Eastern Bloc", AddUSSRInfluence);
+
+            void RemoveAllUSInfluence()
+            {
+                uiManager.UnsetButtons();
+                uiManager.SetButton(uiManager.primaryButton, "Finish purging reactionaries", Finish);
+                int count = 4;
+
+                foreach (Country country in easternEurope)
+                    if (country.influence[Game.Faction.USA] == 0)
+                        easternEurope.Remove(country);
+
+                if (easternEurope.Count <= count)
+                {
+                    foreach (Country country in easternEurope)
+                        Game.setInfluenceEvent.Invoke(country, Game.Faction.USA, 0);
+
+                    Finish();
+                }
+                else
+                {
+                    UI.CountryClickHandler.Setup(easternEurope, onCountryClick);
+                }
+
+                void onCountryClick(Country country)
+                {
+                    Game.setInfluenceEvent.Invoke(country, Game.Faction.USA, 0);
+                    UI.CountryClickHandler.Remove(country);
                     easternEurope.Remove(country);
+                    count--;
 
-            if(easternEurope.Count <= count)
-            {
-                foreach(Country country in easternEurope)
-                    Game.SetInfluence.Invoke(country, Game.Faction.USA, 0);
-
-                Finish(); 
-            }
-            else
-            {
-                CountryClickHandler.Setup(easternEurope, onCountryClick);
+                    if (count == 0)
+                        Finish();
+                }
             }
 
-            void onCountryClick(Country country)
+            void AddUSSRInfluence()
             {
-                Game.SetInfluence.Invoke(country, Game.Faction.USA, 0);
-                CountryClickHandler.Remove(country);
-                easternEurope.Remove(country);
-                count--;
-
-                if (count == 0)
-                    Finish(); 
+                uiManager.UnsetButton(uiManager.confirmButton);
+                uiManager.UnsetButton(uiManager.cancelButton);
+                uiManager.SetButton(uiManager.primaryButton, "Finish deploying Influence", Finish);
+                AddInfluence(easternEurope, Game.Faction.USSR, 5, 2, Finish);
             }
-        }
 
-        void AddUSSRInfluence()
-        {
-            uiManager.UnsetButton(uiManager.confirmButton);
-            uiManager.UnsetButton(uiManager.cancelButton);
-            uiManager.SetButton(uiManager.primaryButton, "Finish deploying Influence", Finish);
-            AddInfluence(easternEurope, Game.Faction.USSR, 5, 2, Finish); 
-        }
-
-        void Finish()
-        {
-            CountryClickHandler.Close();
-            uiManager.UnsetButton(uiManager.primaryButton);
-            uiManager.UnsetButton(uiManager.confirmButton);
-            uiManager.UnsetButton(uiManager.cancelButton);
-            command.callback.Invoke();
+            void Finish()
+            {
+                UI.CountryClickHandler.Close();
+                uiManager.UnsetButton(uiManager.primaryButton);
+                uiManager.UnsetButton(uiManager.confirmButton);
+                uiManager.UnsetButton(uiManager.cancelButton);
+                command.FinishCommand();
+            }
         }
     }
-
-
 }

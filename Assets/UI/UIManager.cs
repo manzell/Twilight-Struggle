@@ -21,7 +21,7 @@ namespace TwilightStruggle.UI
         {
             Game.phaseEndEvent.AddListener(phase =>
             {
-                if (phase is ActionRound)
+                if (phase is TurnSystem.ActionRound)
                     HideARPanel();
             });
         }
@@ -78,7 +78,7 @@ namespace TwilightStruggle.UI
             float f = 0f;
             foreach (Transform t in _arDropPanel.transform)
             {
-                if (t.TryGetComponent<UICardDropHandler>(out UICardDropHandler handler))
+                if (t.TryGetComponent<UIDropHandler>(out UIDropHandler handler))
                 {
                     // TODO: Add a "CanUseGameAction(Faction/Card)" method to determine which actions to show
 
@@ -95,7 +95,7 @@ namespace TwilightStruggle.UI
             float f = 0f;
             foreach (Transform t in _arDropPanel.transform)
             {
-                if (t.TryGetComponent<UICardDropHandler>(out UICardDropHandler handler))
+                if (t.TryGetComponent<UIDropHandler>(out UIDropHandler handler))
                 {
                     // TODO: Add a "CanUseGameAction(Faction/Card)" method to determine which actions to show
                     if (handler.hidden == false)
