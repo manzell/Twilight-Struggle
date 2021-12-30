@@ -26,7 +26,7 @@ namespace TwilightStruggle.TurnSystem
             {
                 int i = transform.GetSiblingIndex();
 
-                if (transform.parent && transform.parent.GetComponent<Phase>() && transform.parent.childCount > i + 1) // let's say we're the 5th of 5 items; i = 4.  5 > 
+                if (transform.parent && transform.parent.GetComponent<Phase>() && transform.parent.childCount > i + 1)
                     return transform.parent.GetChild(i + 1).GetComponent<Phase>();
                 
                 return null;
@@ -103,7 +103,6 @@ namespace TwilightStruggle.TurnSystem
 
         void Finalize(UnityAction callback)
         {
-            Debug.Log($"{this}, {nextSibling}"); 
             if (nextSibling)
             {
                 nextSibling.prevPhase = this;

@@ -14,7 +14,7 @@ namespace TwilightStruggle
             command.parameters = placementVars;
 
             // Check our current Turn & Action Round for a modifier to ops value or coupStrength 
-            foreach (OpsBonus opsBonus in Game.currentTurn.transform.GetComponents<OpsBonus>().Concat(Game.currentActionRound.transform.GetComponents<OpsBonus>()))
+            foreach (OpsBonus opsBonus in Game.currentTurn.GetComponents<OpsBonus>().Concat(Game.currentActionRound.GetComponents<OpsBonus>()))
                 if (opsBonus.faction == Game.actingPlayer || opsBonus.faction == Game.Faction.Neutral)
                     placementVars.totalOps += opsBonus.amount;
 
@@ -33,7 +33,7 @@ namespace TwilightStruggle
             int opsCost = targetCountry.control == command.opponent ? 2 : 1;
 
             // Check our current Country for a bonus-ops modifier
-            foreach(OpsBonus opsBonus in targetCountry.transform.GetComponents<OpsBonus>())
+            foreach(OpsBonus opsBonus in targetCountry.GetComponents<OpsBonus>())
             {
                 // TODO: Do this. 
             }
@@ -78,24 +78,20 @@ namespace TwilightStruggle
 
             foreach (Country country in countries)
             {
-                if ((eligibleCountries.Contains(country)) || // This country already listed as eligible
-                (country.GetComponent<MayNotPlaceInfluence>() && country.GetComponent<MayNotPlaceInfluence>().faction == command.faction) || // Prohibited by rule from placing influence here
-                (placementVars.ops < 1 || country.control == command.opponent && placementVars.ops < 2))// We don't have enough ops to place here
+                if (eligibleCountries.Contains(country) || placementVars.ops < 1 ||
+                (country.GetComponent<MayNotPlaceInfluence>()?.faction == command.faction) || 
+                (country.control == command.opponent && placementVars.ops < 2))
                     continue;
 
                 if (country.adjacentSuperpower == command.faction)
                     eligibleCountries.Add(country);
                 else
-                {
                     foreach (Country c in country.adjacentCountries)
-                    {
                         if (c.influence[command.faction] > 0)
                         {
                             eligibleCountries.Add(country);
                             break;
                         }
-                    }
-                }
             }
             return eligibleCountries; 
         }

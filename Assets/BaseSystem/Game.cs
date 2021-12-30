@@ -69,5 +69,14 @@ namespace TwilightStruggle
                 setActiveFactionEvent.Invoke(faction);
             }
         }
+
+        public static void SetPhasingFaction(Faction faction)
+        {
+            if (phasingPlayer != faction)
+            {
+                phasingPlayer = faction;
+                setActiveFactionEvent.Invoke(faction);
+            }
+        }
     }
 }

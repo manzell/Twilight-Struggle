@@ -10,7 +10,6 @@ namespace TwilightStruggle
     public class DEFCONtrack : SerializedMonoBehaviour
     {
         public static UnityEvent<int> adjustDefconEvent = new UnityEvent<int>();
-        [SerializeField] GameObject[] DefconStatuses;
 
         public static int status = 5;
 

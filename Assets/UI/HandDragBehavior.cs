@@ -44,14 +44,14 @@ namespace TwilightStruggle.UI
             float f = Mathf.Clamp((t.localPosition.y - 35f - _initY) / 80f + 1f, 1f, 1.75f);
             _handUI = FindObjectOfType<HandUI>();
             t.localScale = new Vector3(f, f, f);
-            t.localPosition += new Vector3(eventData.delta.x, eventData.delta.y, 0f); // TODO - At a certain Y coordinate, remove us from the hand or mark it to exclude from the Hand calculation?
+            t.localPosition += new Vector3(eventData.delta.x, eventData.delta.y, 0f); 
         }
 
         public void OnDragEnd(Transform t, PointerEventData eventData)
         {
             _canvasGroup.blocksRaycasts = true;
 
-            if (!eventData.selectedObject.transform.GetComponent<UIDropHandler>()) // If we dropped the card on nothing, close the AR panel if it's hanging out. 
+            if (!eventData.selectedObject.transform.GetComponent<UIDropHandler>()) 
                 _uiManager.HideARPanel();
 
             _handUI.RefreshHand();

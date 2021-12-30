@@ -19,10 +19,10 @@ namespace TwilightStruggle
             coupVars.grantsMilOps = true; 
             
             // Check our current Turn & Action Round for a modifier to ops value or coupStrength 
-            foreach(OpsBonus opsBonus in Game.currentTurn.transform.GetComponents<OpsBonus>().Concat(Game.currentActionRound.transform.GetComponents<OpsBonus>()))
+            foreach(OpsBonus opsBonus in Game.currentTurn.GetComponents<OpsBonus>().Concat(Game.currentActionRound.GetComponents<OpsBonus>()))
                 if(opsBonus.faction == command.faction || opsBonus.faction == Game.Faction.Neutral)
                     coupVars.coupOps += opsBonus.amount;
-            foreach (CoupBonus opsBonus in Game.currentTurn.transform.GetComponents<CoupBonus>().Concat(Game.currentActionRound.transform.GetComponents<CoupBonus>()))
+            foreach (CoupBonus opsBonus in Game.currentTurn.GetComponents<CoupBonus>().Concat(Game.currentActionRound.GetComponents<CoupBonus>()))
                 if (opsBonus.faction == command.faction || opsBonus.faction == Game.Faction.Neutral)
                     coupVars.coupOps += opsBonus.amount;
 
@@ -37,10 +37,10 @@ namespace TwilightStruggle
             coupVars.roll = Random.Range(0, 6) + 1;
 
             // Check our country and card for coup or ops bonuses
-            foreach (OpsBonus opsBonus in coupVars.targetCountry.transform.GetComponents<OpsBonus>().Concat(command.card.transform.GetComponents<OpsBonus>()))
+            foreach (OpsBonus opsBonus in coupVars.targetCountry.GetComponents<OpsBonus>().Concat(command.card.GetComponents<OpsBonus>()))
                 if (opsBonus.faction == command.faction || opsBonus.faction == Game.Faction.Neutral)
                     coupVars.coupOps += opsBonus.amount;
-            foreach (CoupBonus opsBonus in coupVars.targetCountry.transform.GetComponents<CoupBonus>().Concat(command.card.transform.GetComponents<CoupBonus>()))
+            foreach (CoupBonus opsBonus in coupVars.targetCountry.GetComponents<CoupBonus>().Concat(command.card.GetComponents<CoupBonus>()))
                 if (opsBonus.faction == command.faction || opsBonus.faction == Game.Faction.Neutral)
                     coupVars.coupOps += opsBonus.amount;
 
@@ -92,7 +92,6 @@ namespace TwilightStruggle
             List<Country> eligibleCountries = FindObjectsOfType<Country>().ToList();
             foreach (Country country in eligibleCountries.ToArray())
             {
-                // Filter out any countries that are prohibited due to DEFCON or due to lack of opponent influence or cannot be couped for other reasons
                 if (DEFCONtrack.status <= DEFCONtrack.defconRestrictions[country.continent] || 
                     country.influence[command.opponent] == 0 || 
                     country.GetComponent<MayNotCoup>())

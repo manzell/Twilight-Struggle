@@ -5,16 +5,13 @@ using UnityEngine.Events;
 
 namespace TwilightStruggle
 {
-    public class GameCommand : MonoBehaviour
+    public class GameCommand
     {
         // Fauxstructor Vars
         public Game.Faction faction;
         public Card card;
         public GameAction gameAction;
         public TurnSystem.Phase phase;
-
-        // Debug
-        public string marker; 
 
         // Output Vars
         public Dictionary<Country, Dictionary<Game.Faction, int>> influenceChange = new Dictionary<Country, Dictionary<Game.Faction, int>>();
@@ -31,7 +28,8 @@ namespace TwilightStruggle
 
         public static GameCommand Create(Game.Faction faction, Card card, GameAction gameAction)
         {
-            GameCommand command = gameAction.gameObject.AddComponent<GameCommand>();
+            //GameCommand command = gameAction.gameObject.AddComponent<GameCommand>();
+            GameCommand command = new GameCommand();
             command.faction = faction;
             command.card = card;
             command.gameAction = gameAction;
@@ -56,11 +54,7 @@ namespace TwilightStruggle
                 phaseCallback?.Invoke(Game.currentPhase.callback);
         }
 
-        public void Prepare() 
-        {
-            prepare?.Prepare(this);
-        }
-        
+        public void Prepare() => prepare?.Prepare(this);        
         public void Target() => target?.Target(this);
         public void Complete() => complete?.Complete(this);
         public void Undo() => undo?.Undo(this);
@@ -72,8 +66,8 @@ namespace TwilightStruggle
     }
 
     public interface ICommandVariables { }
-    public interface IActionPrepare  { public void Prepare(GameCommand command); }   // Setup all event Variables, and Prompt for a 0, 1, or N targets
-    public interface IActionTarget   { public void Target(GameCommand command); }    // Receive a Target and Execute the event and set all output variables. Recur or set callback to complete
-    public interface IActionComplete { public void Complete(GameCommand command); }  // Implement whatever happened
-    public interface IActionUndo { public void Undo(GameCommand command); } // TODO as long as our parameters contain Gamestate changes, undo should be* easy. 
+    public interface IActionPrepare  { public void Prepare(GameCommand command); } 
+    public interface IActionTarget   { public void Target(GameCommand command); }
+    public interface IActionComplete { public void Complete(GameCommand command); }
+    public interface IActionUndo { public void Undo(GameCommand command); } 
 }

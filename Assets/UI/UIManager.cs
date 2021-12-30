@@ -8,7 +8,7 @@ using TMPro;
 
 namespace TwilightStruggle.UI
 {
-
+    // Needs full Refactor
     public class UIManager : MonoBehaviour
     {
         [SerializeField] GameObject _arDropPanel, _buttonPanel;
@@ -80,8 +80,6 @@ namespace TwilightStruggle.UI
             {
                 if (t.TryGetComponent<UIDropHandler>(out UIDropHandler handler))
                 {
-                    // TODO: Add a "CanUseGameAction(Faction/Card)" method to determine which actions to show
-
                     handler.GetComponent<GameAction>().CanUseAction(Game.actingPlayer, card);
 
                     if (handler.hidden)
@@ -97,7 +95,7 @@ namespace TwilightStruggle.UI
             {
                 if (t.TryGetComponent<UIDropHandler>(out UIDropHandler handler))
                 {
-                    // TODO: Add a "CanUseGameAction(Faction/Card)" method to determine which actions to show
+                    // TODO - Keep our active Action Drop thingy open
                     if (handler.hidden == false)
                         handler.Hide(f += .1f);
                 }

@@ -27,9 +27,7 @@ namespace TwilightStruggle
         public void Discard(List<Card> cards)
         {
             foreach (Card card in cards)
-            {
                 Discard(card);
-            }
         }
 
         public Card Draw()

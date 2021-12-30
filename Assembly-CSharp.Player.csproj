@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>9.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,9 +53,6 @@
     <UnityVersion>2021.2.2f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Assets\BaseSystem\Country.cs" />
     <Compile Include="Assets\UI\GameBoard\UIMapColors.cs" />
     <Compile Include="Assets\BaseSystem\GameEvent.cs" />
@@ -65,7 +62,6 @@
     <Compile Include="Assets\DEFCON\DEFCONtrack.cs" />
     <Compile Include="Assets\Cards\Defectors.cs" />
     <Compile Include="Assets\GameRules\SetInitialDefcon.cs" />
-    <Compile Include="Assets\UI\UIHeadline.cs" />
     <Compile Include="Assets\Game Actions\HeadlineAction.cs" />
     <Compile Include="Assets\Game Actions\SpaceRace.cs" />
     <Compile Include="Assets\GameRules\CheckHeldCards.cs" />
@@ -156,6 +152,7 @@
     <Compile Include="Assets\Cards\FormosanRevolution.cs" />
     <Compile Include="Assets\GameRules\OpsBonus.cs" />
     <Compile Include="Assets\UI\Animations\StartGameAnimation.cs" />
+    <Compile Include="Assets\UI\Animations\HeadlineAnimations.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

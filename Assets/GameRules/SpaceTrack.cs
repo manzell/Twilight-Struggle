@@ -65,7 +65,7 @@ namespace TwilightStruggle
                 }
             }
 
-            UpdateSpaceRace(); // I'm aware this is tying our UI into the underlying game logic I'll refactor it out later. 
+            UpdateSpaceRace(); // TODO Refactor this to a UI component
         }
 
         void UpdateSpaceRace()

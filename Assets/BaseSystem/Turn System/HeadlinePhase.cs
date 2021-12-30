@@ -5,13 +5,13 @@ using UnityEngine.Events;
 
 namespace TwilightStruggle.TurnSystem
 {
-    public class HeadlinePhase : Phase // There is just one of these
+    public class HeadlinePhase : Phase
     {
         public Dictionary<Game.Faction, Card> headlines = new Dictionary<Game.Faction, Card>();
 
         public override void OnPhase(UnityAction callback)
         {
-            FindObjectOfType<UI.UIMessage>().Message("Headline Phase");
+            // override this to do nothing
         }
     }
 }

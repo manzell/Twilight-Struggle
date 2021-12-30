@@ -67,7 +67,6 @@ namespace TwilightStruggle
 
             void onCountryClick(Country country)
             {
-                Debug.Log($"AdjustInfluence: {totalInfluence}");
                 if (maxPerCountry == 0 || removedCountries.CountOf(country) < maxPerCountry)
                 {
                     removedCountries.Add(country);
