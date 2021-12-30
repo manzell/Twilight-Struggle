@@ -31,8 +31,6 @@ namespace TwilightStruggle
 
         public void Prepare(GameCommand command) // Get's called each time a card is deposited
         {
-            Debug.Log(command == _command); 
-
             HeadlineVars headlineVars;
 
             if(command.parameters == null)
@@ -81,6 +79,7 @@ namespace TwilightStruggle
 
         public void Complete(GameCommand command)
         {
+            command.callback = null; 
             command.FinishCommand(); 
         }
 

@@ -7,10 +7,8 @@ namespace TwilightStruggle
 {
     public class CheckHeldCards : MonoBehaviour, TurnSystem.IPhaseAction
     {
-        public void OnPhase(TurnSystem.Phase phase, UnityAction callback)
+        public void Action(TurnSystem.Phase phase, UnityAction callback)
         {
-            Debug.Log("Checking Held Cards");
-
             List<Game.Faction> factions = new List<Game.Faction>();
 
             foreach (Player player in FindObjectsOfType<Player>())

@@ -26,7 +26,7 @@ namespace TwilightStruggle
         // Helper vars: Space Race target roll, realignment rolls, coup roll, bonus ops etc
         public ICommandVariables parameters;
         public UnityAction<GameCommand> callback;
-        public UnityAction phaseCallback; 
+        public UnityAction<UnityAction> phaseCallback; 
         public Game.Faction opponent => faction == Game.Faction.USA ? Game.Faction.USSR : Game.Faction.USA;
 
         public static GameCommand Create(Game.Faction faction, Card card, GameAction gameAction)
@@ -36,7 +36,7 @@ namespace TwilightStruggle
             command.card = card;
             command.gameAction = gameAction;
             command.phase = Game.currentPhase;
-            command.phaseCallback = Game.currentPhase.callback; 
+            command.phaseCallback = Game.currentPhase.NextPhase; 
             
             if (gameAction is IActionPrepare)
                 command.prepare = (IActionPrepare)gameAction;
@@ -53,12 +53,11 @@ namespace TwilightStruggle
             if(callback != null)
                 callback.Invoke(this);
             else
-                phaseCallback?.Invoke();
+                phaseCallback?.Invoke(Game.currentPhase.callback);
         }
 
         public void Prepare() 
         {
-            Debug.Log(this);
             prepare?.Prepare(this);
         }
         

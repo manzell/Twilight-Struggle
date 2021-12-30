@@ -10,7 +10,7 @@ namespace TwilightStruggle.TurnSystem
     {
         public string phaseName;
         public UnityAction callback;
-        public UnityEvent<Phase>
+        [HideInInspector] public UnityEvent<Phase>
             phaseStartEvent = new UnityEvent<Phase>(),
             phaseEndEvent = new UnityEvent<Phase>();
 
@@ -28,6 +28,7 @@ namespace TwilightStruggle.TurnSystem
 
                 if (transform.parent && transform.parent.GetComponent<Phase>() && transform.parent.childCount > i + 1) // let's say we're the 5th of 5 items; i = 4.  5 > 
                     return transform.parent.GetChild(i + 1).GetComponent<Phase>();
+                
                 return null;
             }
         }
@@ -38,6 +39,7 @@ namespace TwilightStruggle.TurnSystem
             {
                 if (transform.childCount > 0)
                     return transform.GetChild(0).GetComponent<Phase>();
+
                 return null;
             }
         }
@@ -48,6 +50,7 @@ namespace TwilightStruggle.TurnSystem
             {
                 if (transform.parent && transform.parent.GetComponent<Phase>())
                     return transform.parent.GetComponent<Phase>();
+
                 return null;
             }
         }
@@ -60,12 +63,8 @@ namespace TwilightStruggle.TurnSystem
 
         public virtual void StartPhase(UnityAction callback)
         {
+            Debug.Log($"Start Phase {this}"); 
             this.callback = callback;
-
-            if (parentPhase)
-                Debug.Log($"Start {parentPhase.name}/{this.name}");
-            else
-                Debug.Log($"Start Phase: {this}");
 
             // Game State Vars:
             Game.currentPhase = this;
@@ -87,7 +86,7 @@ namespace TwilightStruggle.TurnSystem
             if (nextChild)
             {
                 nextChild.prevPhase = this; 
-                nextChild.StartPhase(() => EndPhase(callback)); // Pass our own end Phase to Children
+                nextChild.StartPhase(() => EndPhase(callback));
             }
             else
                 EndPhase(callback);
@@ -95,6 +94,7 @@ namespace TwilightStruggle.TurnSystem
 
         public virtual void EndPhase(UnityAction callback)
         {
+            Debug.Log($"End Phase {this}"); 
             phaseEndEvent.Invoke(this);
             Game.phaseEndEvent.Invoke(this);
 
@@ -103,6 +103,7 @@ namespace TwilightStruggle.TurnSystem
 
         void Finalize(UnityAction callback)
         {
+            Debug.Log($"{this}, {nextSibling}"); 
             if (nextSibling)
             {
                 nextSibling.prevPhase = this;
@@ -111,9 +112,7 @@ namespace TwilightStruggle.TurnSystem
             else if (parentPhase)
                 parentPhase.EndPhase(callback);
             else
-            {
                 callback.Invoke(); // this is Game Over if it happens. 
-            }
         }
 
         void ProcessPhaseActions(List<IPhaseAction> onPhaseActions, UnityAction callback)
@@ -122,7 +121,7 @@ namespace TwilightStruggle.TurnSystem
             {
                 IPhaseAction onPhaseAction = onPhaseActions[0];
                 onPhaseActions.Remove(onPhaseAction);
-                onPhaseAction.OnPhase(this, () => ProcessPhaseActions(onPhaseActions, callback));
+                onPhaseAction.Action(this, () => ProcessPhaseActions(onPhaseActions, callback));
                 Game.phaseActionEvent.Invoke(onPhaseAction);
             }
             else
@@ -132,6 +131,6 @@ namespace TwilightStruggle.TurnSystem
 
     public interface IPhaseAction
     {
-        public void OnPhase(Phase phase, UnityAction callback);
+        public void Action(Phase phase, UnityAction callback);
     }
 }

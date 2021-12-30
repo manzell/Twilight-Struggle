@@ -58,7 +58,8 @@ namespace TwilightStruggle
         public void Complete(GameCommand command) 
         {
             completeEvent.Invoke(command);
-            command.phase.callback.Invoke(); 
+            command.callback = null;
+            command.FinishCommand(); 
         }
 
         public struct PlacementVars : ICommandVariables

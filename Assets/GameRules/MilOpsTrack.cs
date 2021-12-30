@@ -42,9 +42,9 @@ namespace TwilightStruggle
             if (vpAdjustment > 0)
                 Debug.Log($"USA gains {vpAdjustment} {(vpAdjustment == 1 ? "VP" : "VPs")} from MilOps");
             else if (vpAdjustment < 0)
-                Debug.Log($"USSR gains {vpAdjustment} {(vpAdjustment == 1 ? "VP" : "VPs")} from MilOps");
+                Debug.Log($"USSR gains {-vpAdjustment} {(vpAdjustment == -1 ? "VP" : "VPs")} from MilOps");
             else
-                Debug.Log("No MilOps VP points lose");
+                Debug.Log("No MilOps VP points loss");
 
             VictoryTrack.AdjustVPs(vpAdjustment);
         }

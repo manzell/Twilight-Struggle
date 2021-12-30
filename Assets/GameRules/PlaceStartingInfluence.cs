@@ -11,7 +11,7 @@ namespace TwilightStruggle
         public int influenceAmt;
         public List<Country> eligibleCountries = new List<Country>();
 
-        public void OnPhase(TurnSystem.Phase phase, UnityAction callback)
+        public void Action(TurnSystem.Phase phase, UnityAction callback)
         {
             Game.SetActiveFaction(faction);
             FindObjectOfType<UI.UIMessage>().Message($"Place {influenceAmt} {faction} Influence");

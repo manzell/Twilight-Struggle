@@ -7,7 +7,7 @@ namespace TwilightStruggle
 {
     public class ImproveDEFCON : MonoBehaviour, TurnSystem.IPhaseAction
     {
-        public void OnPhase(TurnSystem.Phase phase, UnityAction callback)
+        public void Action(TurnSystem.Phase phase, UnityAction callback)
         {
             DEFCONtrack.adjustDefconEvent.Invoke(1);
             callback.Invoke();

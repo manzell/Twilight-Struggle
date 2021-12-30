@@ -10,7 +10,7 @@ namespace TwilightStruggle
         public Game.Faction faction;
         public int influenceAmt;
 
-        public void OnPhase(TurnSystem.Phase phase, UnityAction callback)
+        public void Action(TurnSystem.Phase phase, UnityAction callback)
         {
             FindObjectOfType<UI.UIMessage>().Message($"Place {influenceAmt} bonus {faction} Influence");
 

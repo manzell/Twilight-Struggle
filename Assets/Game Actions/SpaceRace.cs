@@ -38,6 +38,7 @@ namespace TwilightStruggle
             }
 
             completeEvent.Invoke(command);
+            command.callback = null; 
             command.FinishCommand(); 
         }
 

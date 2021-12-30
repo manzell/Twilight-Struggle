@@ -81,6 +81,7 @@ namespace TwilightStruggle
         public void Complete(GameCommand command)
         {
             completeEvent.Invoke(command);
+            command.callback = null; 
             command.FinishCommand(); 
         }
 

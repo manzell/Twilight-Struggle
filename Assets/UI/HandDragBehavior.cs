@@ -25,12 +25,13 @@ namespace TwilightStruggle.UI
         public void OnDrag(Transform t, PointerEventData eventData)
         {
             _uiManager = FindObjectOfType<UIManager>();
+            _card = t.GetComponent<CardUI>().card; 
 
             if (Game.currentPhase is TurnSystem.ActionRound)
             {
                 if (t.localPosition.y - _initY > 35f && _arOpen == false)
                 {
-                    _uiManager.ShowARPanel(_card); // _card is never set
+                    _uiManager.ShowARPanel(_card);
                     _arOpen = true;
                 }
                 else if (t.localPosition.y - _initY < 35f && _arOpen == true)

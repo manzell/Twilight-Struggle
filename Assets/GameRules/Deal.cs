@@ -9,7 +9,7 @@ namespace TwilightStruggle
     {
         public int dealUpTo = 8;
 
-        public void OnPhase(TurnSystem.Phase phase, UnityAction callback)
+        public void Action(TurnSystem.Phase phase, UnityAction callback)
         {
             foreach (Player _player in FindObjectsOfType<Player>())
             {

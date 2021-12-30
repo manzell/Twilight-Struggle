@@ -10,7 +10,7 @@ namespace TwilightStruggle
         public Game.GamePhase gamePhase;
         public List<Card> cards;
 
-        public void OnPhase(TurnSystem.Phase phase, UnityAction callback)
+        public void Action(TurnSystem.Phase phase, UnityAction callback)
         {
             Game.gamePhase = gamePhase;
 
