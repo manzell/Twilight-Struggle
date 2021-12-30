@@ -13,6 +13,9 @@ namespace TwilightStruggle
         public GameAction gameAction;
         public TurnSystem.Phase phase;
 
+        // Debug
+        public string marker; 
+
         // Output Vars
         public Dictionary<Country, Dictionary<Game.Faction, int>> influenceChange = new Dictionary<Country, Dictionary<Game.Faction, int>>();
         public Dictionary<Game.Faction, int> vpChange = new Dictionary<Game.Faction, int>();
@@ -28,7 +31,7 @@ namespace TwilightStruggle
 
         public static GameCommand Create(Game.Faction faction, Card card, GameAction gameAction)
         {
-            GameCommand command = new GameCommand();
+            GameCommand command = gameAction.gameObject.AddComponent<GameCommand>();
             command.faction = faction;
             command.card = card;
             command.gameAction = gameAction;
@@ -53,7 +56,12 @@ namespace TwilightStruggle
                 phaseCallback?.Invoke();
         }
 
-        public void Prepare() => prepare?.Prepare(this);
+        public void Prepare() 
+        {
+            Debug.Log(this);
+            prepare?.Prepare(this);
+        }
+        
         public void Target() => target?.Target(this);
         public void Complete() => complete?.Complete(this);
         public void Undo() => undo?.Undo(this);

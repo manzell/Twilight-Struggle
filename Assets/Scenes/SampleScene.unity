@@ -1337,6 +1337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 1
+  faction: 0
   cardDropEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5169,6 +5170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 1
+  faction: 0
   cardDropEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -82600,7 +82602,6 @@ GameObject:
   - component: {fileID: 1224307644}
   - component: {fileID: 1224307643}
   - component: {fileID: 1224307645}
-  - component: {fileID: 1224307646}
   m_Layer: 5
   m_Name: USSR Headline
   m_TagString: Untagged
@@ -82678,23 +82679,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1224307641}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c02682103b59ce408803936a1b6968f, type: 3}
+  m_Script: {fileID: 11500000, guid: ad0aecdd149ba8a4890a60c39211b9ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hidden: 1
   faction: 1
-  _revealedHeadline: {fileID: 1088791848}
---- !u!114 &1224307646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1224307641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9efe6a7ebec3ccf40aee4f1c7c70d15e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  cardDropEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1224422311
 GameObject:
   m_ObjectHideFlags: 0
@@ -125681,6 +125673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 1
+  faction: 0
   cardDropEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -130082,6 +130075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 1
+  faction: 0
   cardDropEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -131430,6 +131424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 1
+  faction: 0
   cardDropEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -139024,7 +139019,6 @@ GameObject:
   - component: {fileID: 2135756450}
   - component: {fileID: 2135756449}
   - component: {fileID: 2135756451}
-  - component: {fileID: 2135756452}
   m_Layer: 5
   m_Name: USA Headline
   m_TagString: Untagged
@@ -139102,23 +139096,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2135756447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c02682103b59ce408803936a1b6968f, type: 3}
+  m_Script: {fileID: 11500000, guid: ad0aecdd149ba8a4890a60c39211b9ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hidden: 1
   faction: 2
-  _revealedHeadline: {fileID: 23336866}
---- !u!114 &2135756452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2135756447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9efe6a7ebec3ccf40aee4f1c7c70d15e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  cardDropEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2136958553
 GameObject:
   m_ObjectHideFlags: 0

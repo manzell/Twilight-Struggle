@@ -12,9 +12,15 @@ namespace TwilightStruggle
             targetEvent = new UnityEvent<GameCommand>(),
             completeEvent = new UnityEvent<GameCommand>(); 
 
-        void Awake()
+        public void Awake()
         {
-            GetComponent<UI.UIDropHandler>()?.cardDropEvent.AddListener(card => GameCommand.Create(Game.actingPlayer, card, this).Prepare());
+            GetComponent<UI.UIDropHandler>()?.cardDropEvent.AddListener(OnCardDrop);
+        }
+
+        public void OnCardDrop(Card card)
+        {
+            GameCommand command = GameCommand.Create(Game.actingPlayer, card, this);
+            command.Prepare();
         }
 
         public virtual bool CanUseAction(Game.Faction actingPlayer, Card card) => true;

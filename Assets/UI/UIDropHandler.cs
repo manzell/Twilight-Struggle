@@ -9,12 +9,14 @@ namespace TwilightStruggle.UI
 {
     public class UIDropHandler : MonoBehaviour, IDropHandler
     {
-        [SerializeField] IAnimate hoverAnimation, prepareAnimation, targetAnimation, completeAnimation;
         public bool hidden = true;
+        public Game.Faction faction; 
         [HideInInspector] public UnityEvent<Card> cardDropEvent = new UnityEvent<Card>();
 
         public void OnDrop(PointerEventData eventData)
         {
+            if (faction != Game.Faction.Neutral && Game.actingPlayer != faction) return; 
+
             // TODO Send this out to an Animation Script. 
             Card card = eventData.selectedObject.GetComponent<CardUI>().card;
 
