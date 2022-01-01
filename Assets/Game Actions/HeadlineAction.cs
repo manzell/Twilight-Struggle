@@ -8,7 +8,7 @@ namespace TwilightStruggle
     public class HeadlineAction : GameAction, IActionPrepare, IActionTarget, IActionComplete
     {
         GameCommand _command;
-        public UnityEvent<GameCommand> firstHeadline, secondHeadline; 
+        public UnityEvent<GameCommand> headlineEvent, secondHeadlineEvent;
 
         public new void Awake()
         {
@@ -39,7 +39,7 @@ namespace TwilightStruggle
 
             if(headlineVars.headlines.ContainsKey(Game.actingPlayer))
             {
-                // For now do nothing, TODO, swap the card back for your previous card
+                // TODO, swap the card back for your previous card
             }
             else
             {
@@ -54,52 +54,47 @@ namespace TwilightStruggle
             if (headlineVars.headlines.Count == 2)
                 Target(command);
             else
-                Game.SetActiveFaction(command.opponent); 
+                Game.SetActingFaction(command.opponent); 
         }
 
         public void Target(GameCommand command) // Gets called after both cards are placed
         {
-            _command = null; 
-            HeadlineVars headlineVars = (HeadlineVars)command.parameters; 
-
-            Game.SetActiveFaction(headlineVars.initiative);
-            command.card = headlineVars.headlines[headlineVars.initiative]; 
-            targetEvent.Invoke(command);
-
+            HeadlineVars headlineVars = (HeadlineVars)command.parameters;
             List<Game.Faction> headlineOrder = new List<Game.Faction>();
 
+            _command = null;
             headlineOrder.Add(headlineVars.initiative);
             headlineOrder.Add(headlineVars.secondary);
 
-            command.callback = FirstHeadline;
-
-            FirstHeadline(command); 
-
+            FirstHeadline(command); // leftover from the chained callbacks. TODO: Make this better. 
             void FirstHeadline(GameCommand command)
             {
-                firstHeadline.Invoke(command); 
                 command.callback = SecondHeadline;
-                Game.SetPhasingFaction(headlineOrder[0]);
-                command.card = headlineVars.headlines[headlineOrder[0]];
-
-                Debug.Log($"{Game.phasingPlayer} Headlining {command.card.cardName}");
-                command.card.CardEvent(command);
+                command.faction = headlineOrder[0];
+                Headline(command); 
             }
 
             void SecondHeadline(GameCommand command)
             {
-                StartCoroutine(SecondHeadlineDelay(3f)); 
-                IEnumerator SecondHeadlineDelay(float f)
+                command.callback = Complete;
+                command.faction = headlineOrder[1];
+                Headline(command);
+            }
+
+            void Headline(GameCommand command)
+            {
+                command.card = headlineVars.headlines[command.faction];
+                Game.SetPhasingFaction(command.faction);
+
+                Debug.Log($"{command.faction} Headlining {command.card.cardName}");
+                headlineEvent.Invoke(command); // Hook for Animations
+
+                StartCoroutine(EventAfterDelay(3f)); 
+                IEnumerator EventAfterDelay(float f)
                 {
                     yield return new WaitForSeconds(f);
-                    secondHeadline.Invoke(command);
-                    command.callback = Complete;
-                    Game.SetPhasingFaction(headlineOrder[1]);
-                    command.card = headlineVars.headlines[headlineOrder[1]];
-
-                    Debug.Log($"{Game.phasingPlayer} Headlining {command.card.cardName}");
                     command.card.CardEvent(command);
-                }        
+                }
             }
         }
 
@@ -110,7 +105,7 @@ namespace TwilightStruggle
             command.FinishCommand(); 
         }
 
-        public class HeadlineVars : ICommandVariables
+        public class HeadlineVars : ICommandParameters
         {
             public string marker; 
             public Dictionary<Game.Faction, Card> headlines = new Dictionary<Game.Faction, Card>();
@@ -125,3 +120,4 @@ namespace TwilightStruggle
         public void HeadlineEvent(TurnSystem.HeadlinePhase headline);
     }
 }
+

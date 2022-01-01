@@ -8,13 +8,8 @@ namespace TwilightStruggle
     {
         public override void CardEvent(GameCommand command)
         {
-            UI.UIManager uiManager = FindObjectOfType<UI.UIManager>();
-
             // TODO: Present this to the Enemy Player rather than the playing player
             Message($"The Olympics are being hosted in {SelectHost()}. Participate or Boycott?");
-
-            uiManager.SetButton(uiManager.confirmButton, "Participate", Participate);
-            uiManager.SetButton(uiManager.cancelButton, "Boycott", Boycott);
 
             void Participate()
             {
@@ -289,7 +284,5 @@ namespace TwilightStruggle
                 return hostCities[Random.Range(0, hostCities.Count)];
             }
         }
-
-
     }
 }

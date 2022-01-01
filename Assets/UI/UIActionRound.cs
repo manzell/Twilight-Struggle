@@ -12,10 +12,47 @@ namespace TwilightStruggle.UI
     {
         [SerializeField] Image USAmarker, USSRmarker;
         [SerializeField] TextMeshProUGUI usaText, ussrText;
+        [SerializeField] GameObject _arDropPanel;
+
+        public bool isARpanelOpen = false; 
 
         private void Awake()
         {
             Game.phaseStartEvent.AddListener(OnActionRoundStart); 
+            Game.phaseEndEvent.AddListener(phase =>
+            {
+                if (phase is TurnSystem.ActionRound)
+                    HideARPanel();
+            });
+        }
+
+        public void ShowARPanel(Card card)
+        {
+            float f = 0f;
+            isARpanelOpen = true;
+            foreach (Transform t in _arDropPanel.transform)
+            {
+                if (t.TryGetComponent(out UIDropHandler handler))
+                {
+                    if(handler.GetComponent<GameAction>().CanUseAction(Game.actingPlayer, card) && handler.hidden)
+                        handler.Show(f += .05f);
+                }
+            }
+        }
+
+        public void HideARPanel()
+        {
+            float f = 0f;
+            isARpanelOpen = false; 
+            foreach (Transform t in _arDropPanel.transform)
+            {
+                if (t.TryGetComponent(out UIDropHandler handler))
+                {
+                    // TODO - Keep our active Action Drop thingy open
+                    if (handler.hidden == false)
+                        handler.Hide(f += .1f);
+                }
+            }
         }
 
         void OnActionRoundStart(TurnSystem.Phase phase)

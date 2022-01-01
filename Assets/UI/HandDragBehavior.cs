@@ -11,8 +11,8 @@ namespace TwilightStruggle.UI
         Card _card; 
         bool _arOpen = false;
         CanvasGroup _canvasGroup;
-        HandUI _handUI; 
-        UIManager _uiManager;
+        HandUI _handUI;
+        UIActionRound _uiActionRound; 
 
         public void OnDragStart(Transform t, PointerEventData eventData)
         {
@@ -24,27 +24,27 @@ namespace TwilightStruggle.UI
         
         public void OnDrag(Transform t, PointerEventData eventData)
         {
-            _uiManager = FindObjectOfType<UIManager>();
-            _card = t.GetComponent<CardUI>().card; 
+            float f = Mathf.Clamp((t.localPosition.y - 35f - _initY) / 80f + 1f, 1f, 1.75f);
+            _uiActionRound = FindObjectOfType<UIActionRound>();
+            _card = t.GetComponent<CardUI>().card;
+            _handUI = FindObjectOfType<HandUI>();
+
+            t.localScale = new Vector3(f, f, f);
+            t.localPosition += new Vector3(eventData.delta.x, eventData.delta.y, 0f);
 
             if (Game.currentPhase is TurnSystem.ActionRound)
             {
                 if (t.localPosition.y - _initY > 35f && _arOpen == false)
                 {
-                    _uiManager.ShowARPanel(_card);
+                    _uiActionRound.ShowARPanel(_card);
                     _arOpen = true;
                 }
                 else if (t.localPosition.y - _initY < 35f && _arOpen == true)
                 {
-                    _uiManager.HideARPanel();
+                    _uiActionRound.HideARPanel();
                     _arOpen = false;
                 }
             }
-
-            float f = Mathf.Clamp((t.localPosition.y - 35f - _initY) / 80f + 1f, 1f, 1.75f);
-            _handUI = FindObjectOfType<HandUI>();
-            t.localScale = new Vector3(f, f, f);
-            t.localPosition += new Vector3(eventData.delta.x, eventData.delta.y, 0f); 
         }
 
         public void OnDragEnd(Transform t, PointerEventData eventData)
@@ -52,7 +52,7 @@ namespace TwilightStruggle.UI
             _canvasGroup.blocksRaycasts = true;
 
             if (!eventData.selectedObject.transform.GetComponent<UIDropHandler>()) 
-                _uiManager.HideARPanel();
+                _uiActionRound.HideARPanel();
 
             _handUI.RefreshHand();
         }

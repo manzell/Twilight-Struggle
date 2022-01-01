@@ -18,17 +18,17 @@ namespace TwilightStruggle.UI
 
         void AfterPrepare(GameCommand command)
         {
-            PlaceInfluence.PlacementVars placementVars = (PlaceInfluence.PlacementVars)command.parameters;
+            // We've received a card, set our ops value and all that. 
+            // Now let's set up a Country Click handler: 
+            // We're gonna roll our own function here to calculate ops cost and all that because the one for Card Event's is fundamentally different. 
+            // Of note is that OnClick should not be where the logic resides for this, instead it should be 
 
-            CountryClickHandler.Setup(placementVars.eligibleCountries, Click); 
+            CountryClickHandler.Setup(((PlaceInfluence.InfluencePlacementVars)command.parameters).eligibleCountries, OnClick); 
 
-            void Click(Country country)
+            void OnClick(Country country)
             {
-                placementVars.countries.Add(country); 
-
-                command.parameters = placementVars;
-
-                influencePlacement.Target(command); 
+                ((PlaceInfluence.InfluencePlacementVars)command.parameters).countries.Add(country);
+                influencePlacement.Target(command);
             }
         }
 

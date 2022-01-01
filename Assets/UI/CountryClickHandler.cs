@@ -72,6 +72,10 @@ namespace TwilightStruggle.UI
         {
             foreach (Country country in _highlights.Keys.ToList())
                 Remove(country);
+
+            _color = Color.yellow;
+            _callback = null;
+            _highlights.Clear(); 
         }
     }
 }

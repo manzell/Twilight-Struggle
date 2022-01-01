@@ -2369,7 +2369,7 @@ MonoBehaviour:
   isBattleground: 1
   adjacentSuperpower: 0
   adjacentCountries:
-  - {fileID: 0}
+  - {fileID: 1883645171}
   - {fileID: 2057891374}
   - {fileID: 202370242}
   - {fileID: 1255051424}
@@ -2675,85 +2675,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Five Year Plan
   faction: 2
   ops: 3
@@ -2764,6 +2686,9 @@ MonoBehaviour:
     triggering the Event.
   removeOnEvent: 0
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &39997328
@@ -16241,85 +16166,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: COMECON
   faction: 1
   ops: 3
@@ -16330,6 +16177,10 @@ MonoBehaviour:
   clickEvent:
     m_PersistentCalls:
       m_Calls: []
+  adjustInfluenceEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  influenceAmt: 5
   easternEurope:
   - {fileID: 829705053}
   - {fileID: 1248818255}
@@ -17489,85 +17340,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Defectors
   faction: 2
   ops: 2
@@ -17578,6 +17351,9 @@ MonoBehaviour:
     the US gains 1 VP.
   removeOnEvent: 0
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &279710996
@@ -22151,6 +21927,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 348595078}
+  - component: {fileID: 348595079}
   m_Layer: 5
   m_Name: ActionRound Drop Panel
   m_TagString: Untagged
@@ -22183,6 +21960,18 @@ RectTransform:
   m_AnchoredPosition: {x: -560, y: 672.5}
   m_SizeDelta: {x: 725, y: 265}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &348595079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348595077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02da90c012434df48b7e9c83cd82f77c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &351096148
 GameObject:
   m_ObjectHideFlags: 0
@@ -22236,91 +22025,13 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: scoreKey
       Entry: 7
-      Data: 9|System.Collections.Generic.Dictionary`2[[TwilightStruggle.Scoring+ScoreState,
+      Data: 0|System.Collections.Generic.Dictionary`2[[TwilightStruggle.Scoring+ScoreState,
         Assembly-CSharp],[System.Int32, mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 10|System.Collections.Generic.EnumEqualityComparer`1[[TwilightStruggle.Scoring+ScoreState,
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[TwilightStruggle.Scoring+ScoreState,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -22395,6 +22106,9 @@ MonoBehaviour:
   cardText: 
   removeOnEvent: 0
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   continent: 2
@@ -24035,6 +23749,8 @@ MonoBehaviour:
   USSRmarker: {fileID: 970549186}
   usaText: {fileID: 2140194750}
   ussrText: {fileID: 147838746}
+  _arDropPanel: {fileID: 348595077}
+  isARpanelOpen: 0
 --- !u!1 &383846971
 GameObject:
   m_ObjectHideFlags: 0
@@ -27208,85 +26924,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Red Scare/Purge
   faction: 0
   ops: 4
@@ -27296,6 +26934,9 @@ MonoBehaviour:
     point).
   removeOnEvent: 0
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &420704135
@@ -32367,85 +32008,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: UN Intervention
   faction: 0
   ops: 1
@@ -32456,6 +32019,9 @@ MonoBehaviour:
     Event cannot be played during the Headline Phase."
   removeOnEvent: 0
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &502169177
@@ -32522,85 +32088,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Marshall Plan
   faction: 2
   ops: 4
@@ -32612,6 +32100,10 @@ MonoBehaviour:
   clickEvent:
     m_PersistentCalls:
       m_Calls: []
+  adjustInfluenceEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  numCountries: 7
   westernEurope:
   - {fileID: 1883645171}
   - {fileID: 35711387}
@@ -33370,85 +32862,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Indo-Pakistani War
   faction: 0
   ops: 2
@@ -33461,6 +32875,9 @@ MonoBehaviour:
     Operations Track."
   removeOnEvent: 0
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   targetCountries:
@@ -33598,85 +33015,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Destalinization
   faction: 1
   ops: 3
@@ -33686,6 +33025,9 @@ MonoBehaviour:
     per country).
   removeOnEvent: 0
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &515932329
@@ -34015,85 +33357,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Suez Crisis
   faction: 1
   ops: 3
@@ -34102,6 +33366,9 @@ MonoBehaviour:
     Israel (removing no more than 2 Influence per country).
   removeOnEvent: 1
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   countries:
@@ -35870,85 +35137,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Containment
   faction: 2
   ops: 3
@@ -35957,6 +35146,9 @@ MonoBehaviour:
     receive +1 to their Operations value (to a maximum of 4 Operations per card).
   removeOnEvent: 1
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &542877235
@@ -42517,85 +41709,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Nuclear Test Ban
   faction: 0
   ops: 4
@@ -42604,6 +41718,9 @@ MonoBehaviour:
     improves the DEFCON level by 2.
   removeOnEvent: 0
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &638077715
@@ -53821,85 +52938,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Independent Reds
   faction: 2
   ops: 2
@@ -53908,6 +52947,9 @@ MonoBehaviour:
     Czechoslovakia so that it equals the USSR Influence in that country.
   removeOnEvent: 1
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   reds:
@@ -57978,7 +57020,6 @@ GameObject:
   - component: {fileID: 876023643}
   - component: {fileID: 876023642}
   - component: {fileID: 876023641}
-  - component: {fileID: 876023645}
   m_Layer: 5
   m_Name: UserUI
   m_TagString: Untagged
@@ -58079,24 +57120,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &876023645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876023640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02da90c012434df48b7e9c83cd82f77c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _arDropPanel: {fileID: 348595077}
-  _buttonPanel: {fileID: 1843678109}
-  primaryButton: {fileID: 1527556657}
-  confirmButton: {fileID: 664683498}
-  cancelButton: {fileID: 1011430158}
-  currentFaction: 0
 --- !u!1 &876619131
 GameObject:
   m_ObjectHideFlags: 0
@@ -62285,91 +61308,13 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: scoreKey
       Entry: 7
-      Data: 9|System.Collections.Generic.Dictionary`2[[TwilightStruggle.Scoring+ScoreState,
+      Data: 0|System.Collections.Generic.Dictionary`2[[TwilightStruggle.Scoring+ScoreState,
         Assembly-CSharp],[System.Int32, mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 10|System.Collections.Generic.EnumEqualityComparer`1[[TwilightStruggle.Scoring+ScoreState,
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[TwilightStruggle.Scoring+ScoreState,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -62444,6 +61389,9 @@ MonoBehaviour:
   cardText: 
   removeOnEvent: 0
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   continent: 0
@@ -66153,85 +65101,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Nasser
   faction: 1
   ops: 1
@@ -66240,6 +65110,9 @@ MonoBehaviour:
     Influence from Egypt.
   removeOnEvent: 1
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   egypt: {fileID: 525947866}
@@ -66806,85 +65679,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: US/Japan Mututal Defense Pact
   faction: 2
   ops: 4
@@ -66893,6 +65688,9 @@ MonoBehaviour:
     make Coup Attempts or Realignment rolls against Japan.
   removeOnEvent: 1
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   japan: {fileID: 1482464818}
@@ -67886,85 +66684,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Socialist Governments
   faction: 1
   ops: 3
@@ -67974,6 +66694,9 @@ MonoBehaviour:
     the \u201C#83 \u2013 The Iron Lady\u201D Event has been played."
   removeOnEvent: 0
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   westernEurope:
@@ -72749,85 +71472,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Captured Nazi Scientist
   faction: 0
   ops: 1
@@ -72835,6 +71480,9 @@ MonoBehaviour:
   cardText: Move the Space Race Marker ahead by 1 space.
   removeOnEvent: 1
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1074458433
@@ -73860,8 +72508,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 5483978
-  m_fontColor: {r: 0.7924528, g: 0.67683035, b: 0.32445708, a: 0}
+    rgba: 11382189
+  m_fontColor: {r: 0.68, g: 0.68, b: 0.68, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -80226,85 +78874,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: NATO
   faction: 2
   ops: 4
@@ -80316,6 +78886,9 @@ MonoBehaviour:
     \u2013 Marshall Plan\u201D Event(s) in order to be played as an Event."
   removeOnEvent: 1
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   isPlayable: 0
@@ -81233,85 +79806,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Decolonization
   faction: 1
   ops: 2
@@ -81320,6 +79815,9 @@ MonoBehaviour:
     Asia.
   removeOnEvent: 0
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   countries:
@@ -81536,85 +80034,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Warsaw Pact Formed
   faction: 1
   ops: 3
@@ -81625,6 +80045,9 @@ MonoBehaviour:
     as an Event."
   removeOnEvent: 1
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   easternEurope:
@@ -81690,85 +80113,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: The China Card
   faction: 3
   ops: 0
@@ -81776,6 +80121,9 @@ MonoBehaviour:
   cardText: 
   removeOnEvent: 0
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   faceUp: 1
@@ -83696,85 +82044,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Fidel
   faction: 1
   ops: 2
@@ -83783,6 +82053,9 @@ MonoBehaviour:
     Cuba for Control.
   removeOnEvent: 1
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   cuba: {fileID: 40867013}
@@ -85425,7 +83698,7 @@ MonoBehaviour:
   isBattleground: 0
   adjacentSuperpower: 0
   adjacentCountries:
-  - {fileID: 0}
+  - {fileID: 944219423}
   - {fileID: 35711387}
   marker: {fileID: 0}
 --- !u!4 &1255051425
@@ -90360,85 +88633,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Vietnam Revolts
   faction: 1
   ops: 2
@@ -90448,6 +88643,9 @@ MonoBehaviour:
     in Southeast Asia.
   removeOnEvent: 1
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   vietnam: {fileID: 186258603}
@@ -90781,85 +88979,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Duck and Cover
   faction: 0
   ops: 3
@@ -90868,6 +88988,9 @@ MonoBehaviour:
     current DEFCON level.
   removeOnEvent: 0
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1355646291
@@ -95481,7 +93604,7 @@ MonoBehaviour:
   - {fileID: 1989322008}
   - {fileID: 1548960230}
   - {fileID: 2057891374}
-  - {fileID: 0}
+  - {fileID: 1883645171}
   - {fileID: 551154042}
   marker: {fileID: 0}
 --- !u!4 &1410237769
@@ -98975,85 +97098,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Arab-Israeli War
   faction: 1
   ops: 2
@@ -99066,6 +97111,9 @@ MonoBehaviour:
     \u2013 Camp David Accords\u201D Event has been played."
   removeOnEvent: 0
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   targetCountries: []
@@ -110601,85 +108649,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Olympic Games
   faction: 0
   ops: 2
@@ -110691,6 +108661,9 @@ MonoBehaviour:
     the sponsor may conduct Operations as if they played a 4 Ops card
   removeOnEvent: 0
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1649311463
@@ -111805,7 +109778,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Deploy Ops
+  m_text: Place Influence
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 740c5f1d3ae84f04abfd325b6aabb6d9, type: 2}
   m_sharedMaterial: {fileID: -7913859445665062548, guid: 740c5f1d3ae84f04abfd325b6aabb6d9, type: 2}
@@ -113462,7 +111435,7 @@ MonoBehaviour:
     - Name: _dragBehavior
       Entry: 10
       Data: 0
-    - Name: _cards
+    - Name: _displayedCards
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.Transform, UnityEngine.CoreModule],[TwilightStruggle.Card,
         Assembly-CSharp]], mscorlib
@@ -115438,85 +113411,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: CIA Created
   faction: 2
   ops: 1
@@ -115525,6 +113420,9 @@ MonoBehaviour:
     Operations value of this card to conduct Operations.
   removeOnEvent: 1
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1725952122
@@ -115579,85 +113477,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Romanian Abdication
   faction: 1
   ops: 1
@@ -115666,6 +113486,9 @@ MonoBehaviour:
     to Romania for Control.
   removeOnEvent: 1
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   romania: {fileID: 2037990793}
@@ -118553,6 +116376,12 @@ MonoBehaviour:
   completeEvent:
     m_PersistentCalls:
       m_Calls: []
+  headlineEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  secondHeadlineEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1787469009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118679,6 +116508,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
   headlineAction: {fileID: 1787469008}
+  highlightHeadlineColor: {r: 0.79215693, g: 0.627451, b: 0.28627452, a: 1}
+  animationDuration: 0.8
 --- !u!1 &1789973007
 GameObject:
   m_ObjectHideFlags: 0
@@ -120263,85 +118094,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Korean War
   faction: 1
   ops: 2
@@ -120352,6 +118105,9 @@ MonoBehaviour:
     Korea with USSR Influence. The USSR adds 2 to its Military Operations Track.
   removeOnEvent: 1
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   targetCountries:
@@ -121277,85 +119033,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: De Gaulle Leads France
   faction: 1
   ops: 3
@@ -121365,6 +119043,9 @@ MonoBehaviour:
     France only."
   removeOnEvent: 1
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   france: {fileID: 1883645171}
@@ -123905,85 +121586,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: East European Unrest
   faction: 2
   ops: 3
@@ -123992,6 +121595,9 @@ MonoBehaviour:
     Europe. Late War: Remove 2 USSR Influence from 3 countries in Eastern Europe.'
   removeOnEvent: 0
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   easternEurope:
@@ -125844,85 +123450,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Blockade
   faction: 1
   ops: 1
@@ -125931,6 +123459,9 @@ MonoBehaviour:
     3 or more, remove all US Influence from West Germany.
   removeOnEvent: 1
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   westGermany: {fileID: 1410237768}
@@ -130717,6 +128248,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 522baf8a18a228d4db0ef5b28195a5b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   coupAction: {fileID: 2007817314}
   selectTargetText: {fileID: 564399070}
   influenceChange: {fileID: 194824221}
@@ -131055,7 +128595,7 @@ MonoBehaviour:
   - {fileID: 1421450884}
   - {fileID: 286619416}
   - {fileID: 551154042}
-  - {fileID: 0}
+  - {fileID: 1883645171}
   marker: {fileID: 0}
 --- !u!4 &2012609896
 Transform:
@@ -132004,6 +129544,7 @@ MonoBehaviour:
   completeEvent:
     m_PersistentCalls:
       m_Calls: []
+  afterEventDelay: 3
 --- !u!222 &2035996909
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -133152,85 +130693,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Truman Doctrine
   faction: 2
   ops: 1
@@ -133238,6 +130701,9 @@ MonoBehaviour:
   cardText: Remove all USSR Influence from a single uncontrolled country in Europe.
   removeOnEvent: 1
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &2047175397
@@ -136275,91 +133741,13 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: scoreKey
       Entry: 7
-      Data: 9|System.Collections.Generic.Dictionary`2[[TwilightStruggle.Scoring+ScoreState,
+      Data: 0|System.Collections.Generic.Dictionary`2[[TwilightStruggle.Scoring+ScoreState,
         Assembly-CSharp],[System.Int32, mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 10|System.Collections.Generic.EnumEqualityComparer`1[[TwilightStruggle.Scoring+ScoreState,
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[TwilightStruggle.Scoring+ScoreState,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -136434,6 +133822,9 @@ MonoBehaviour:
   cardText: 
   removeOnEvent: 0
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   continent: 1
@@ -139775,85 +137166,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: headlineEvent
-      Entry: 7
-      Data: 0|GameEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase, Assembly-CSharp]],
-        Assembly-CSharp
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 1|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: before
-      Entry: 7
-      Data: 3|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 4|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: after
-      Entry: 7
-      Data: 6|UnityEngine.Events.UnityEvent`1[[TwilightStruggle.TurnSystem.HeadlinePhase,
-        Assembly-CSharp]], UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   cardName: Formosan Resolution
   faction: 2
   ops: 2
@@ -139864,6 +137177,9 @@ MonoBehaviour:
     the \u201C#6 \u2013 The China Card\u201D card."
   removeOnEvent: 1
   clickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  adjustInfluenceEvent:
     m_PersistentCalls:
       m_Calls: []
   taiwan: {fileID: 893249168}

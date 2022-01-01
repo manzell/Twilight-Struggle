@@ -17,8 +17,6 @@ namespace TwilightStruggle
 
             Message($"Place {count} USSR Influence");
 
-            uiManager.SetButton(uiManager.primaryButton, "Finish Decol", Finish);
-
             void onCountryClick(Country country)
             {
                 count--;
@@ -31,14 +29,7 @@ namespace TwilightStruggle
                     UI.CountryClickHandler.Remove(country);
                 }
                 if (count == 0)
-                    Finish();
-            }
-
-            void Finish()
-            {
-                UI.CountryClickHandler.Close();
-                uiManager.UnsetButton(uiManager.primaryButton);
-                command.FinishCommand();
+                    command.FinishCommand();
             }
         }
     }

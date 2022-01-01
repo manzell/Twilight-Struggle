@@ -10,14 +10,7 @@ namespace TwilightStruggle
 
         public override void CardEvent(GameCommand command)
         {
-            uiManager.SetButton(uiManager.primaryButton, "Done repelling Tripartite aggression", Finish);
-            RemoveInfluence(countries, Game.Faction.USA, 4, 2, Finish);
-
-            void Finish()
-            {
-                uiManager.UnsetButtons();
-                command.FinishCommand();
-            }
+            RemoveInfluence(countries, Game.Faction.USA, 4, 2, command.FinishCommand);
         }
     }
 }

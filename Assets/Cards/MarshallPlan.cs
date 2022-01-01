@@ -7,48 +7,27 @@ namespace TwilightStruggle
 {
     public class MarshallPlan : Card
     {
+        public int numCountries = 7; 
         [SerializeField] List<Country> westernEurope = new List<Country>();
         [SerializeField] NATO NATO;
 
         public override void CardEvent(GameCommand command)
         {
-            int count = 7;
-
             NATO.isPlayable = true;
 
             foreach (Country country in westernEurope)
                 if (country.control == Game.Faction.USSR)
                     westernEurope.Remove(country);
 
-            FindObjectOfType<UI.UIManager>().SetButton(FindObjectOfType<UI.UIManager>().primaryButton, "Finish Rebuilding Europe", Finish);
+            // TODO: Set the Messenger Buttons
 
-            if (westernEurope.Count <= count)
+            if (westernEurope.Count <= numCountries)
             {
                 AddInfluence(faction, westernEurope, 1);
-                Finish();
+                command.FinishCommand(); 
             }
             else
-                UI.CountryClickHandler.Setup(westernEurope, onCountryClick, new Color(0f, .6f, .6f));
-
-            void onCountryClick(Country country)
-            {
-                if (westernEurope.Contains(country))
-                {
-                    westernEurope.Remove(country);
-                    UI.CountryClickHandler.Remove(country);
-                    Game.AdjustInfluence(country, Game.Faction.USA, 1);
-                    count--;
-                }
-
-                if (count == 0)
-                    Finish();
-            }
-
-            void Finish()
-            {
-                UI.CountryClickHandler.Close();
-                command.FinishCommand();
-            }
+                AddInfluence(westernEurope, Game.Faction.USA, numCountries, 1, command.FinishCommand); 
         }
     }
 }

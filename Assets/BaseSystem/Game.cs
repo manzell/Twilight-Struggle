@@ -19,7 +19,7 @@ namespace TwilightStruggle
         public static GameEvent<TurnSystem.HeadlinePhase> headlineEvent = new GameEvent<TurnSystem.HeadlinePhase>();
 
         public static UnityEvent<TurnSystem.IPhaseAction> phaseActionEvent = new UnityEvent<TurnSystem.IPhaseAction>();
-        public static GameEvent<Faction> setActiveFactionEvent = new GameEvent<Faction>();
+        public static GameEvent<Faction> setActingFactionEvent = new GameEvent<Faction>();
 
         public static GameEvent<Country, Faction, int> adjustInfluenceEvent = new GameEvent<Country, Faction, int>();
         public static GameEvent<Country, Faction, int> setInfluenceEvent = new GameEvent<Country, Faction, int>();
@@ -61,12 +61,12 @@ namespace TwilightStruggle
             adjustInfluenceEvent.Invoke(country, faction, amount); 
         }
 
-        public static void SetActiveFaction(Faction faction)
+        public static void SetActingFaction(Faction faction)
         {
             if(actingPlayer != faction)
             {
                 actingPlayer = faction;
-                setActiveFactionEvent.Invoke(faction);
+                setActingFactionEvent.Invoke(faction);
             }
         }
 
@@ -75,7 +75,8 @@ namespace TwilightStruggle
             if (phasingPlayer != faction)
             {
                 phasingPlayer = faction;
-                setActiveFactionEvent.Invoke(faction);
+                actingPlayer = faction;
+                setActingFactionEvent.Invoke(faction);
             }
         }
     }

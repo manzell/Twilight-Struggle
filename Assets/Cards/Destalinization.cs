@@ -24,32 +24,26 @@ namespace TwilightStruggle
                 }
             }
 
-            uiManager.SetButton(uiManager.cancelButton, "Finish Destal", Finish);
-            uiManager.SetButton(uiManager.confirmButton, "Finish Removing Influence", RedeployInfluence);
-
             RemoveInfluence(eligibleCountries, Game.Faction.USSR, 4, 0, RedeployInfluence);
-            adjustInfluenceEvent.AddListener(c => count++);
+            Game.adjustInfluenceEvent.AddListener(TickCount);
+
+            void TickCount(Country c, Game.Faction f, int n)
+            {
+                if (eligibleCountries.Contains(c) && f == Game.Faction.USSR && n < 0) 
+                    count++;
+            }
 
             void RedeployInfluence()
             {
                 Message($"Place {count} USSR influence");
                 UI.CountryClickHandler.Close();
+                Game.adjustInfluenceEvent.RemoveListener(TickCount);
 
                 foreach (Country c in FindObjectsOfType<Country>())
                     if (c.control != Game.Faction.USA)
                         eligibleCountries.Add(c);
 
-                AddInfluence(eligibleCountries, Game.Faction.USSR, count, 0, Finish);
-            }
-
-            void Finish()
-            {
-                UI.CountryClickHandler.Close();
-
-                uiManager.UnsetButton(uiManager.cancelButton);
-                uiManager.UnsetButton(uiManager.confirmButton);
-
-                command.FinishCommand();
+                AddInfluence(eligibleCountries, Game.Faction.USSR, count, 0, command.FinishCommand);
             }
         }
     }

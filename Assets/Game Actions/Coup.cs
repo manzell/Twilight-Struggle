@@ -71,7 +71,7 @@ namespace TwilightStruggle
             command.FinishCommand();
         }
 
-        public class CoupVars : ICommandVariables
+        public class CoupVars : ICommandParameters
         {
             public Country targetCountry;
             public List<Country> eligibleTargets;

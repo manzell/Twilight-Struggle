@@ -13,27 +13,28 @@ namespace TwilightStruggle
 
         public void Action(TurnSystem.Phase phase, UnityAction callback)
         {
-            Game.SetActiveFaction(faction);
+            Game.SetActingFaction(faction);
             FindObjectOfType<UI.UIMessage>().Message($"Place {influenceAmt} {faction} Influence");
 
-            UI.CountryClickHandler.Setup(eligibleCountries, onCountryClick, Color.yellow);
+            Card.AddInfluence(eligibleCountries, faction, influenceAmt, 0, callback); 
+            //UI.CountryClickHandler.Setup(eligibleCountries, onCountryClick, Color.yellow);
 
-            void onCountryClick(Country country)
-            {
-                if (eligibleCountries.Contains(country))
-                {
-                    Game.AdjustInfluence(country, faction, 1);
-                    influenceAmt--;
+            //void onCountryClick(Country country)
+            //{
+            //    if (eligibleCountries.Contains(country))
+            //    {
+            //        Game.AdjustInfluence(country, faction, 1);
+            //        influenceAmt--;
 
-                    FindObjectOfType<UI.UIMessage>().Message($"Place {influenceAmt} {faction} Influence");
-                }
+            //        FindObjectOfType<UI.UIMessage>().Message($"Place {influenceAmt} {faction} Influence");
+            //    }
 
-                if (influenceAmt == 0)
-                {
-                    UI.CountryClickHandler.Close();
-                    callback.Invoke();
-                }
-            }
+            //    if (influenceAmt == 0)
+            //    {
+            //        UI.CountryClickHandler.Close();
+            //        callback.Invoke();
+            //    }
+            //}
         }
     }
 }

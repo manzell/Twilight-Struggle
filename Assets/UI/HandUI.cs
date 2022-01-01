@@ -17,38 +17,30 @@ namespace TwilightStruggle.UI
         bool _canRefresh = true; // This locks out the Refresh Function to functionally once every few seconds or whatever to prevent overlap. 
 
         Game _game;
-        Game.Faction _currentFaction = Game.Faction.USSR;
-        [SerializeField] Dictionary<Transform, Card> _cards = new Dictionary<Transform, Card>();
+        [SerializeField] Dictionary<Transform, Card> _displayedCards = new Dictionary<Transform, Card>();
 
         private void Awake()
         {
             _game = FindObjectOfType<Game>();
             Game.dealCardsEvent.AddListener(OnDealCards);
-            Game.setActiveFactionEvent.AddListener(SetFaction);
+            Game.setActingFactionEvent.AddListener(OnSetFaction);
         }
 
         private void Update()
         {
             // Toggle the Active Faction on Tab. 
             if (Input.GetKeyDown(KeyCode.Tab))
-                Game.SetActiveFaction(_currentFaction == Game.Faction.USSR ? Game.Faction.USA : Game.Faction.USSR);
+                Game.SetActingFaction(Game.actingPlayer == Game.Faction.USSR ? Game.Faction.USA : Game.Faction.USSR);
         }
 
-        public void SetFaction(Game.Faction faction)
-        {
-            if (_currentFaction != faction)
-            {
-                _currentFaction = faction;
-                RefreshHand();
-            }
-        }
+        public void OnSetFaction(Game.Faction faction) => RefreshHand();
 
         [Button]
         public void RefreshHand()
         {
             if (!_canRefresh) return; //  yeah it's a shitty hack so what
 
-            List<Card> _hand = _game.playerMap[_currentFaction].hand;
+            List<Card> _hand = _game.playerMap[Game.actingPlayer].hand;
             List<Card> _toAdd = new List<Card>();
             List<Card> _toRemove = new List<Card>();
 
@@ -56,14 +48,14 @@ namespace TwilightStruggle.UI
 
             // Now we add any new cards that we have
             foreach (Card card in _hand)
-                if (!_cards.ContainsValue(card))
+                if (!_displayedCards.ContainsValue(card))
                     _toAdd.Add(card);
 
             // Get rid of any loose cards and reorganize what we have
-            foreach (Transform card in _cards.Keys)
+            foreach (Transform card in _displayedCards.Keys)
             {
-                if (_cards[card] == null || !_hand.Contains(_cards[card])) // avoid a potential issue where player contains a null card?
-                    _toRemove.Add(_cards[card]);
+                if (_displayedCards[card] == null || !_hand.Contains(_displayedCards[card])) // avoid a potential issue where player contains a null card?
+                    _toRemove.Add(_displayedCards[card]);
                 else
                 {
                     card.DOLocalMove(new Vector3(-GetXaxisRight(card), 0f, 0f), 0.5f).SetEase(Ease.OutBack);
@@ -79,24 +71,24 @@ namespace TwilightStruggle.UI
 
         public void AddCards(List<Card> cards)
         {
-            StartCoroutine(AddCardEveryTenth());
+            StartCoroutine(AddCardOnInterval(.1f));
 
-            IEnumerator AddCardEveryTenth()
+            IEnumerator AddCardOnInterval(float f)
             {
                 foreach (Card card in cards)
                 {
                     AddCard(card);
-                    yield return new WaitForSeconds(0.1f);
+                    yield return new WaitForSeconds(f);
                 }
 
                 yield return null; // try waiting 1 frame so that we can ensure that our _cards table is properly set. Otherwise wait .1 per card + .1
-
+ 
                 // This saves our ordered list of cards back to the player's Hand. 
                 IEnumerable<Card> orderedCards =
-                    from _card in _cards.Keys
-                    where _cards[_card] != null
+                    from _card in _displayedCards.Keys
+                    where _displayedCards[_card] != null
                     orderby _card.localPosition.x descending
-                    select _cards[_card];
+                    select _displayedCards[_card];
 
                 // OK this is causing weirdness because we're interrupting a different process and writing directly to the hand. 
                 // So instead we'll only write to hand a filtered list so it doesn't necessarily matter what's happening with add/removes. 
@@ -107,7 +99,8 @@ namespace TwilightStruggle.UI
                     if (!newHand.Contains(orderedCards.ElementAt(i)))
                         newHand.Add(orderedCards.ElementAt(i));
 
-                _game.playerMap[_currentFaction].hand = newHand; // actually unclear if this works/will work. 
+                _game.playerMap[Game.actingPlayer].hand = newHand; // actually unclear if this works/will work. 
+
                 _canRefresh = true;
             }
         }
@@ -117,7 +110,7 @@ namespace TwilightStruggle.UI
             GameObject _prefab = neutralPrefab;
 
             // Check if this card hasn't already been added by some other process!
-            if (_cards.ContainsValue(card)) return;
+            if (_displayedCards.ContainsValue(card)) return;
 
             if (card is ScoringCard) // Because ScoringCard is not a faction we use branching-if instead of Switch :( 
                 _prefab = scoringPrefab;
@@ -134,13 +127,13 @@ namespace TwilightStruggle.UI
             uiCard.SetCard(card);
             uiCard.SetDragBehavior(_dragBehavior);
 
-            if (_currentFaction == Game.Faction.USSR)
+            if (Game.actingPlayer == Game.Faction.USSR)
                 uiCard.highlight.color = Color.red;
-            else if (_currentFaction == Game.Faction.USA)
+            else if (Game.actingPlayer == Game.Faction.USA)
                 uiCard.highlight.color = Color.cyan;
             uiCard.highlight.SetAlpha(0.5f);
 
-            _cards.Add(_card.transform, card);
+            _displayedCards.Add(_card.transform, card);
 
             _card.transform.DOLocalMove(new Vector3(-GetXaxisLeft(_card.transform), 0f, 0f), 0.7f).SetEase(Ease.OutFlash);
             // TODO: OnComplete, save out the order of our cards back to the player's hand so that we retain our ordering. 
@@ -153,11 +146,11 @@ namespace TwilightStruggle.UI
             // Unset the Card from our list of cards immediately rather than every Nth-of-seconds; this ensures any new cards we're adding won't place themselves based on card's we're about to remove 
             foreach (Card card in cards)
             {
-                foreach (Transform t in _cards.Keys.ToArray())
-                    if (_cards[t] == card || _cards[t] == null)
+                foreach (Transform t in _displayedCards.Keys.ToArray())
+                    if (_displayedCards[t] == card || _displayedCards[t] == null)
                     {
                         _toRemove.Add(t);
-                        _cards.Remove(t);
+                        _displayedCards.Remove(t);
                     }
             }
 
@@ -176,10 +169,10 @@ namespace TwilightStruggle.UI
 
         public void RemoveCard(Card card)
         {
-            if (_cards.ContainsValue(card))
-                foreach (Transform t in _cards.Keys.ToArray())
-                    if (_cards[t] == card)
-                        _cards.Remove(t);
+            if (_displayedCards.ContainsValue(card))
+                foreach (Transform t in _displayedCards.Keys.ToArray())
+                    if (_displayedCards[t] == card)
+                        _displayedCards.Remove(t);
         }
 
         void RemoveCard(Transform card)
@@ -188,14 +181,14 @@ namespace TwilightStruggle.UI
                 SetEase(Ease.Linear).
                 OnComplete(() =>
                 {
-                    _cards.Remove(card);
+                    _displayedCards.Remove(card);
                     Destroy(card.gameObject);
                 });
         }
 
         void OnDealCards(Game.Faction faction, List<Card> cards)
         {
-            if (faction == _currentFaction)
+            if (faction == Game.actingPlayer)
                 AddCards(cards);
         }
 
@@ -206,8 +199,8 @@ namespace TwilightStruggle.UI
 
             // Trying out this cool Query-Body Expression Thingy!
             IEnumerable<Transform> orderedCards =
-                from _card in _cards.Keys
-                where _cards[_card] != null
+                from _card in _displayedCards.Keys
+                where _displayedCards[_card] != null
                 orderby _card.localPosition.x descending
                 select _card;
 
@@ -231,8 +224,8 @@ namespace TwilightStruggle.UI
 
             // Trying out this cool Query-Body Expression Thingy!
             IEnumerable<Transform> orderedCards =
-                from _card in _cards.Keys
-                where _cards[_card] != null
+                from _card in _displayedCards.Keys
+                where _displayedCards[_card] != null
                 orderby _card.localPosition.x
                 select _card;
 

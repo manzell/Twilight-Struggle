@@ -21,7 +21,7 @@ namespace TwilightStruggle
         public int defconChange = 0;
 
         // Helper vars: Space Race target roll, realignment rolls, coup roll, bonus ops etc
-        public ICommandVariables parameters;
+        public ICommandParameters parameters;
         public UnityAction<GameCommand> callback;
         public UnityAction<UnityAction> phaseCallback; 
         public Game.Faction opponent => faction == Game.Faction.USA ? Game.Faction.USSR : Game.Faction.USA;
@@ -65,7 +65,7 @@ namespace TwilightStruggle
         public IActionUndo undo;
     }
 
-    public interface ICommandVariables { }
+    public interface ICommandParameters { }
     public interface IActionPrepare  { public void Prepare(GameCommand command); } 
     public interface IActionTarget   { public void Target(GameCommand command); }
     public interface IActionComplete { public void Complete(GameCommand command); }

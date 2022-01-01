@@ -13,13 +13,8 @@ namespace TwilightStruggle
         {
             NATO.isPlayable = true;
 
-            uiManager.SetButton(uiManager.confirmButton, "Expel Westerners", RemoveAllUSInfluence);
-            uiManager.SetButton(uiManager.cancelButton, "Solidify the Eastern Bloc", AddUSSRInfluence);
-
             void RemoveAllUSInfluence()
             {
-                uiManager.UnsetButtons();
-                uiManager.SetButton(uiManager.primaryButton, "Finish purging reactionaries", Finish);
                 int count = 4;
 
                 foreach (Country country in easternEurope)
@@ -52,18 +47,12 @@ namespace TwilightStruggle
 
             void AddUSSRInfluence()
             {
-                uiManager.UnsetButton(uiManager.confirmButton);
-                uiManager.UnsetButton(uiManager.cancelButton);
-                uiManager.SetButton(uiManager.primaryButton, "Finish deploying Influence", Finish);
                 AddInfluence(easternEurope, Game.Faction.USSR, 5, 2, Finish);
             }
 
             void Finish()
             {
                 UI.CountryClickHandler.Close();
-                uiManager.UnsetButton(uiManager.primaryButton);
-                uiManager.UnsetButton(uiManager.confirmButton);
-                uiManager.UnsetButton(uiManager.cancelButton);
                 command.FinishCommand();
             }
         }

@@ -7,7 +7,7 @@ using DG.Tweening;
 
 namespace TwilightStruggle.UI
 {
-    public class CoupAnimation : MonoBehaviour
+    public class CoupAnimation : Animations
     {
         [SerializeField] Coup coupAction;
         [SerializeField] TextMeshProUGUI selectTargetText, influenceChange, defconChange, confirmText, dieResult;
@@ -79,13 +79,7 @@ namespace TwilightStruggle.UI
             influenceChange.DOFade(1, 2f); 
         }
 
-        public void FadeSwapText(TextMeshProUGUI text, string newText, float time)
-        {
-            text.DOFade(0f, time * .45f).OnComplete(() => { 
-                text.text = newText; 
-                text.DOFade(1f, time * .4f).SetDelay(time * .1f); 
-            }); 
-        }
+
     }
 
 

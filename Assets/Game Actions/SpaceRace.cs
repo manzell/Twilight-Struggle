@@ -42,7 +42,7 @@ namespace TwilightStruggle
             command.FinishCommand(); 
         }
 
-        public class SpaceVars : ICommandVariables
+        public class SpaceVars : ICommandParameters
         {
             public int roll;
             public bool success;

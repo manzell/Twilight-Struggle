@@ -16,68 +16,69 @@ namespace TwilightStruggle
         public int opsValue => ops + bonusOps;
         public string cardText;
         public bool removeOnEvent = false;
-
-        [HideInInspector] public GameEvent<TurnSystem.HeadlinePhase> headlineEvent = new GameEvent<TurnSystem.HeadlinePhase>();
         [HideInInspector] public UnityEvent<Card> clickEvent = new UnityEvent<Card>();
-        protected static UI.UIManager uiManager => FindObjectOfType<UI.UIManager>();
+        [HideInInspector] public UnityEvent<Game.Faction, Country, int> adjustInfluenceEvent; 
 
         protected static UI.CountryClickHandler countryClickHandler;
         protected static UI.CardClickHandler cardClickHandler;
-        protected static UnityEvent<Country> adjustInfluenceEvent = new UnityEvent<Country>();
-        protected static UnityEvent<Card> cardClickEvent = new UnityEvent<Card>();
+        protected static UI.UIMessage _messenger; 
 
-        protected static void RemoveInfluence(Game.Faction faction, Dictionary<Country, int> countries)
+        private void Awake()
+        {
+            _messenger = FindObjectOfType<UI.UIMessage>(); 
+        }
+
+        protected void RemoveInfluence(Game.Faction faction, Dictionary<Country, int> countries)
         {
             foreach (Country country in countries.Keys)
                 Game.AdjustInfluence(country, faction, -countries[country]);
         }
-        protected static void RemoveInfluence(Game.Faction faction, List<Country> countries, int influence)
+        protected void RemoveInfluence(Game.Faction faction, List<Country> countries, int influence)
         {
             foreach (Country country in countries)
                 Game.AdjustInfluence(country, faction, -influence);
         }
-        protected static void RemoveInfluence(Game.Faction faction, Country country, int influence)
+        protected void RemoveInfluence(Game.Faction faction, Country country, int influence)
         {
             if (influence != 0)
                 Game.AdjustInfluence(country, faction, -influence);
         }
-        protected static void RemoveInfluence(List<Country> countries, Game.Faction faction, int totalInfluence, int maxPerCountry, UnityAction callback) =>
+        public static void RemoveInfluence(List<Country> countries, Game.Faction faction, int totalInfluence, int maxPerCountry, UnityAction callback) =>
             AddInfluence(countries, faction, -totalInfluence, maxPerCountry, callback);
 
-        protected static void AddInfluence(Game.Faction faction, Dictionary<Country, int> countries)
+        protected void AddInfluence(Game.Faction faction, Dictionary<Country, int> countries)
         {
             foreach (Country country in countries.Keys)
                 Game.AdjustInfluence(country, faction, countries[country]);
         }
-        protected static void AddInfluence(Game.Faction faction, List<Country> countries, int influence)
+        protected void AddInfluence(Game.Faction faction, List<Country> countries, int influence)
         {
             foreach (Country country in countries)
                 Game.AdjustInfluence(country, faction, influence);
         }
-        protected static void AddInfluence(Game.Faction faction, Country country, int influence)
+        protected void AddInfluence(Game.Faction faction, Country country, int influence)
         {
             if (influence != 0)
                 Game.AdjustInfluence(country, faction, influence);
         }
-        protected static void AddInfluence(List<Country> countries, Game.Faction faction, int totalInfluence, int maxPerCountry, UnityAction callback)
+        
+        public static void AddInfluence(List<Country> countries, Game.Faction faction, int totalInfluence, int maxPerCountry, UnityAction callback)
         {
-            List<Country> removedCountries = new List<Country>();
+            List<Country> selectedCountries = new List<Country>();
 
             UI.CountryClickHandler.Setup(countries, onCountryClick);
 
             void onCountryClick(Country country)
             {
-                if (maxPerCountry == 0 || removedCountries.CountOf(country) < maxPerCountry)
+                if (maxPerCountry == 0 || selectedCountries.CountOf(country) < maxPerCountry)
                 {
-                    removedCountries.Add(country);
+                    selectedCountries.Add(country);
                     Game.AdjustInfluence(country, faction, totalInfluence > 0 ? 1 : -1);
-                    totalInfluence += totalInfluence < 0 ? 1 : -1;
+                    totalInfluence -= totalInfluence > 0 ? 1 : -1;
                 }
 
-                adjustInfluenceEvent.Invoke(country);
-
-                if (removedCountries.CountOf(country) == maxPerCountry ||
-                    totalInfluence < 0 && country.influence[faction] == 0) // cannot remove from countries w/ Zero influence :)
+                if (selectedCountries.CountOf(country) == maxPerCountry ||
+                    (totalInfluence < 0 && country.influence[faction] == 0)) // cannot remove from countries w/ Zero influence :)
                 {
                     UI.CountryClickHandler.Remove(country);
                     countries.Remove(country);
@@ -91,7 +92,7 @@ namespace TwilightStruggle
             }
         }
 
-        protected static void SetInfluence(Game.Faction faction, List<Country> countries, int influence)
+        public static void SetInfluence(Game.Faction faction, List<Country> countries, int influence)
         {
             foreach (Country country in countries)
                 Game.SetInfluence(country, faction, influence);
@@ -115,8 +116,6 @@ namespace TwilightStruggle
                     Message($"{(influenceAmt > 0 ? "Place" : "Remove")} {Mathf.Abs(influenceAmt)} {faction} Influence");
                 }
 
-                adjustInfluenceEvent.Invoke(country);
-
                 if (influenceAmt == 0)
                 {
                     UI.CountryClickHandler.Close();
@@ -125,6 +124,6 @@ namespace TwilightStruggle
             }
         }
 
-        protected static void Message(string message) => FindObjectOfType<UI.UIMessage>().Message(message);
+        protected static void Message(string message) => _messenger.Message(message);
     }
 }

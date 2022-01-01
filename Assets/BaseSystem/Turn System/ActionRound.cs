@@ -18,7 +18,7 @@ namespace TwilightStruggle.TurnSystem
             Game.phasingPlayer = phasingPlayer;
             Game.currentPhase = this;
             Game.currentActionRound = this;
-            Game.SetActiveFaction(phasingPlayer);
+            Game.SetActingFaction(phasingPlayer);
             base.StartPhase(callback);
         }
 

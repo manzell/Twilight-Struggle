@@ -19,7 +19,6 @@ namespace TwilightStruggle
             if (eligibleCards.Count > 0)
             {
                 cardClickHandler = new UI.CardClickHandler(eligibleCards, onCardClick);
-                FindObjectOfType<UI.UIManager>().SetButton(FindObjectOfType<UI.UIManager>().primaryButton, "Don't Discard", onPass);
             }
             else
             {
@@ -29,22 +28,19 @@ namespace TwilightStruggle
 
             void onCardClick(Card card) // TODO: We can't pass null card 
             {
+                FindObjectOfType<UI.UIMessage>().Message($"US discarded {card.cardName} to Blockade");
                 Player.USA.hand.Remove(card);
                 Game.deck.discards.Add(card);
                 command.FinishCommand();
-
-                FindObjectOfType<UI.UIMessage>().Message($"US discarded {card.cardName} to Blockade");
             }
 
             void onPass()
             {
+                FindObjectOfType<UI.UIMessage>().Message($"USSR Blockade eliminates US influence in West Germany!");
                 Game.SetInfluence(westGermany, Game.Faction.USA, 0);
                 command.FinishCommand();
 
-                FindObjectOfType<UI.UIManager>().UnsetButton(FindObjectOfType<UI.UIManager>().primaryButton);
 
-
-                FindObjectOfType<UI.UIMessage>().Message($"USSR Blockade eliminates US influence in West Germany!");
             }
         }
     }

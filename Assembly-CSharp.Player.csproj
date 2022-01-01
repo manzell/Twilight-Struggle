@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,6 +53,9 @@
     <UnityVersion>2021.2.2f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\BaseSystem\Country.cs" />
     <Compile Include="Assets\UI\GameBoard\UIMapColors.cs" />
     <Compile Include="Assets\BaseSystem\GameEvent.cs" />
@@ -68,7 +71,6 @@
     <Compile Include="Assets\Cards\EuropeControlVictory.cs" />
     <Compile Include="Assets\UI\IDragBehavior.cs" />
     <Compile Include="Assets\UI\UITurnTrack.cs" />
-    <Compile Include="Assets\UI\UIManager.cs" />
     <Compile Include="Assets\GameRules\PlaceStartingInfluence.cs" />
     <Compile Include="Assets\Cards\CapturedNaziScientist.cs" />
     <Compile Include="Assets\Game Actions\Realign.cs" />
@@ -86,7 +88,7 @@
     <Compile Include="Assets\GameRules\VictoryTrack.cs" />
     <Compile Include="Assets\GameRules\AddCards.cs" />
     <Compile Include="Assets\BaseSystem\Extensions\Extensions.cs" />
-    <Compile Include="Assets\GameRules\CanUseEvent.cs" />
+    <Compile Include="Assets\GameRules\MayNotEvent.cs" />
     <Compile Include="Assets\GameRules\Deal.cs" />
     <Compile Include="Assets\Cards\Card.cs" />
     <Compile Include="Assets\Cards\SuezCrisis.cs" />
@@ -120,6 +122,7 @@
     <Compile Include="Assets\GameRules\MayNotPlaceInfluence.cs" />
     <Compile Include="Assets\GameRules\MayNotRealign.cs" />
     <Compile Include="Assets\UI\Animations\SpaceRaceAnims.cs" />
+    <Compile Include="Assets\UI\Animations\EventAnimations.cs" />
     <Compile Include="Assets\Cards\USJapanMutualDefensePact.cs" />
     <Compile Include="Assets\GameRules\SpaceTrack.cs" />
     <Compile Include="Assets\UI\UIActionRound.cs" />
@@ -129,12 +132,14 @@
     <Compile Include="Assets\GameRules\GameCommand.cs" />
     <Compile Include="Assets\UI\HandDragBehavior.cs" />
     <Compile Include="Assets\GameRules\SetActivePlayer.cs" />
+    <Compile Include="Assets\UI\Animations\Animations.cs" />
     <Compile Include="Assets\UI\CardUI.cs" />
     <Compile Include="Assets\Cards\Decolonization.cs" />
     <Compile Include="Assets\BaseSystem\Turn System\ActionRound.cs" />
     <Compile Include="Assets\UI\UIDefcon.cs" />
     <Compile Include="Assets\Cards\TrumanDoctrine.cs" />
     <Compile Include="Assets\Cards\Fidel.cs" />
+    <Compile Include="Assets\UI\Animations\HeadlineAnimations.cs" />
     <Compile Include="Assets\UI\GameBoard\UIMapDrag.cs" />
     <Compile Include="Assets\UI\Animations\IAnimate.cs" />
     <Compile Include="Assets\Cards\WarsawPactFormed.cs" />
@@ -152,7 +157,6 @@
     <Compile Include="Assets\Cards\FormosanRevolution.cs" />
     <Compile Include="Assets\GameRules\OpsBonus.cs" />
     <Compile Include="Assets\UI\Animations\StartGameAnimation.cs" />
-    <Compile Include="Assets\UI\Animations\HeadlineAnimations.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

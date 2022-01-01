@@ -19,15 +19,7 @@ namespace TwilightStruggle
                 if (country.influence[Game.Faction.USA] > 0)
                     eligibleCountries.Add(country);
 
-            uiManager.SetButton(uiManager.primaryButton, "Finish SocGov", Finish);
-
-            RemoveInfluence(eligibleCountries, Game.Faction.USA, influenceToRemove, limit, Finish);
-
-            void Finish()
-            {
-                uiManager.UnsetButton(uiManager.primaryButton);
-                command.FinishCommand();
-            }
+            RemoveInfluence(eligibleCountries, Game.Faction.USA, influenceToRemove, limit, command.FinishCommand);
         }
     }
 }
