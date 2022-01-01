@@ -32,14 +32,14 @@ namespace TwilightStruggle.UI
             }
         }
 
-        void AfterTarget(GameCommand command) 
-        { 
-            // After each click... the CountryClickHandler covers most UI stuff already - maybe we send an additional animation later? 
+        void AfterTarget(GameCommand command)
+        {
+            CountryClickHandler.Close();
+            influencePlacement.Complete(command);
         }
 
         void AfterComplete(GameCommand command)
         {
-            CountryClickHandler.Close(); 
         }
     }
 }

@@ -14,7 +14,7 @@ namespace TwilightStruggle
 
             // Check our current Turn & Action Round for a modifier to ops value or coupStrength 
             foreach (OpsBonus opsBonus in Game.currentTurn.GetComponents<OpsBonus>().Concat(Game.currentActionRound.GetComponents<OpsBonus>()))
-                if (opsBonus.faction == Game.actingPlayer || opsBonus.faction == Game.Faction.Neutral)
+                if (opsBonus.faction == command.faction || opsBonus.faction == Game.Faction.Neutral)
                     ((InfluencePlacementVars)command.parameters).totalOps += opsBonus.amount;
 
             ((InfluencePlacementVars)command.parameters).countries = new List<Country>();
@@ -22,13 +22,6 @@ namespace TwilightStruggle
             ((InfluencePlacementVars)command.parameters).eligibleCountries = EligibleCountries(command);
 
             prepareEvent.Invoke(command);
-        }
-
-        public void Complete(GameCommand command)
-        {
-            completeEvent.Invoke(command);
-            command.callback = null;
-            command.FinishCommand();
         }
 
         public void Target(GameCommand command)
@@ -41,7 +34,25 @@ namespace TwilightStruggle
             if(((InfluencePlacementVars)command.parameters).ops >= placementCost)
             {
                 ((InfluencePlacementVars)command.parameters).ops -= placementCost;
+                Game.AdjustInfluence(targetCountry, command.faction, 1); 
+
+                if(((InfluencePlacementVars)command.parameters).ops == 1)
+                {
+                    foreach(Country country in ((InfluencePlacementVars)command.parameters).eligibleCountries.ToArray())
+                        if (country.control == command.opponent)
+                            ((InfluencePlacementVars)command.parameters).eligibleCountries.Remove(country);
+                }
+
+                if (((InfluencePlacementVars)command.parameters).ops == 0)
+                    targetEvent.Invoke(command);
             }
+        }
+
+        public void Complete(GameCommand command)
+        {
+            completeEvent.Invoke(command);
+            command.callback = null;
+            command.FinishCommand();
         }
 
         public class InfluencePlacementVars : ICommandParameters

@@ -44,7 +44,7 @@ namespace TwilightStruggle.UI
         {
             Coup.CoupVars coupVars = (Coup.CoupVars)coup.parameters;
 
-            FadeSwapText(selectTargetText, $"{coupVars.targetCountry}\n[{coupVars.targetCountry.stability * 2}]", .8f);
+            FadeSwapText(selectTargetText, $"{coupVars.targetCountry.countryName}\n[{coupVars.targetCountry.stability * 2}]", .8f);
             confirmText.DOFade(1, .5f);
 
             if (coupVars.targetCountry.isBattleground)

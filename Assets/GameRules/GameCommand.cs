@@ -5,6 +5,13 @@ using UnityEngine.Events;
 
 namespace TwilightStruggle
 {
+    // Friendly Interface Definitions
+    public interface ICommandParameters { }
+    public interface IActionPrepare { public void Prepare(GameCommand command); }
+    public interface IActionTarget { public void Target(GameCommand command); }
+    public interface IActionComplete { public void Complete(GameCommand command); }
+    public interface IActionUndo { public void Undo(GameCommand command); }
+
     public class GameCommand
     {
         // Fauxstructor Vars
@@ -13,11 +20,13 @@ namespace TwilightStruggle
         public GameAction gameAction;
         public TurnSystem.Phase phase;
 
-        // Output Vars
+        // Output Vars - Gamestate Changes used for Undo purposes (TODO: UNDO)
         public Dictionary<Country, Dictionary<Game.Faction, int>> influenceChange = new Dictionary<Country, Dictionary<Game.Faction, int>>();
         public Dictionary<Game.Faction, int> vpChange = new Dictionary<Game.Faction, int>();
         public Dictionary<Game.Faction, int> milOpsChange = new Dictionary<Game.Faction, int>();
-        public Dictionary<Game.Faction, int> spaceRaceChange = new Dictionary<Game.Faction, int>(); // TODO: Space Race Commands? 
+        public Dictionary<Game.Faction, int> spaceRaceChange = new Dictionary<Game.Faction, int>(); 
+        public List<Card> cardsDrawn = new List<Card>();
+        public List<Card> cardsDiscard = new List<Card>(); 
         public int defconChange = 0;
 
         // Helper vars: Space Race target roll, realignment rolls, coup roll, bonus ops etc
@@ -26,9 +35,20 @@ namespace TwilightStruggle
         public UnityAction<UnityAction> phaseCallback; 
         public Game.Faction opponent => faction == Game.Faction.USA ? Game.Faction.USSR : Game.Faction.USA;
 
+        //Interface Library
+        public IActionPrepare prepare;
+        public IActionTarget target;
+        public IActionComplete complete;
+        public IActionUndo undo;
+
+        // Callback wrappers
+        public void Prepare() => prepare?.Prepare(this);
+        public void Target() => target?.Target(this);
+        public void Complete() => complete?.Complete(this);
+        public void Undo() => undo?.Undo(this);
+
         public static GameCommand Create(Game.Faction faction, Card card, GameAction gameAction)
         {
-            //GameCommand command = gameAction.gameObject.AddComponent<GameCommand>();
             GameCommand command = new GameCommand();
             command.faction = faction;
             command.card = card;
@@ -53,21 +73,5 @@ namespace TwilightStruggle
             else
                 phaseCallback?.Invoke(Game.currentPhase.callback);
         }
-
-        public void Prepare() => prepare?.Prepare(this);        
-        public void Target() => target?.Target(this);
-        public void Complete() => complete?.Complete(this);
-        public void Undo() => undo?.Undo(this);
-
-        public IActionPrepare prepare;
-        public IActionTarget target; 
-        public IActionComplete complete;
-        public IActionUndo undo;
     }
-
-    public interface ICommandParameters { }
-    public interface IActionPrepare  { public void Prepare(GameCommand command); } 
-    public interface IActionTarget   { public void Target(GameCommand command); }
-    public interface IActionComplete { public void Complete(GameCommand command); }
-    public interface IActionUndo { public void Undo(GameCommand command); } 
 }

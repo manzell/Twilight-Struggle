@@ -1241,7 +1241,9 @@ MonoBehaviour:
   stability: 2
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1321242517}
+  - {fileID: 409110274}
   marker: {fileID: 0}
 --- !u!4 &13706435
 Transform:
@@ -3237,7 +3239,7 @@ Transform:
   - {fileID: 616094858}
   - {fileID: 2133610831}
   m_Father: {fileID: 1159452422}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &52287715
 MonoBehaviour:
@@ -4178,7 +4180,10 @@ MonoBehaviour:
   stability: 2
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 634219006}
+  - {fileID: 2116830387}
+  - {fileID: 409110274}
   marker: {fileID: 0}
 --- !u!4 &63178511
 Transform:
@@ -6294,7 +6299,9 @@ MonoBehaviour:
   stability: 1
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 472495578}
+  - {fileID: 795479022}
   marker: {fileID: 0}
 --- !u!4 &98674797
 Transform:
@@ -9589,7 +9596,9 @@ MonoBehaviour:
   stability: 2
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 468320335}
+  - {fileID: 612939057}
   marker: {fileID: 0}
 --- !u!4 &146538412
 Transform:
@@ -10948,7 +10957,10 @@ MonoBehaviour:
   stability: 1
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1863870950}
+  - {fileID: 462178035}
+  - {fileID: 719710860}
   marker: {fileID: 0}
 --- !u!4 &164640040
 Transform:
@@ -12479,7 +12491,9 @@ MonoBehaviour:
   stability: 1
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 2081396037}
+  - {fileID: 468320335}
   marker: {fileID: 0}
 --- !u!4 &186258604
 Transform:
@@ -14103,7 +14117,9 @@ MonoBehaviour:
   stability: 1
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1488679973}
+  - {fileID: 485957192}
   marker: {fileID: 0}
 --- !u!4 &214577163
 Transform:
@@ -16011,7 +16027,9 @@ MonoBehaviour:
   stability: 2
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 2116830387}
+  - {fileID: 1586524794}
   marker: {fileID: 0}
 --- !u!4 &252173663
 Transform:
@@ -18901,8 +18919,8 @@ RectTransform:
   - {fileID: 958476946}
   - {fileID: 827765672}
   - {fileID: 974998593}
-  - {fileID: 1586524795}
   - {fileID: 1548503539}
+  - {fileID: 1586524795}
   - {fileID: 1134221665}
   - {fileID: 1321242518}
   - {fileID: 252173663}
@@ -19905,7 +19923,7 @@ Transform:
   - {fileID: 28871137}
   - {fileID: 64332107}
   m_Father: {fileID: 1159452422}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &320690298
 MonoBehaviour:
@@ -21896,7 +21914,9 @@ MonoBehaviour:
   stability: 1
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 2118922991}
+  - {fileID: 1649311465}
   marker: {fileID: 0}
 --- !u!4 &348178483
 Transform:
@@ -24216,7 +24236,9 @@ MonoBehaviour:
   stability: 3
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1816828980}
+  - {fileID: 1800218860}
   marker: {fileID: 0}
 --- !u!4 &387678021
 Transform:
@@ -24843,7 +24865,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559042099}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &392642021
 MonoBehaviour:
@@ -26091,7 +26113,10 @@ MonoBehaviour:
   stability: 2
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 63178510}
+  - {fileID: 13706434}
+  - {fileID: 2116830387}
   marker: {fileID: 0}
 --- !u!4 &409110275
 Transform:
@@ -29784,7 +29809,9 @@ MonoBehaviour:
   stability: 2
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 164640039}
+  - {fileID: 1387857668}
   marker: {fileID: 0}
 --- !u!4 &462178036
 Transform:
@@ -30035,7 +30062,10 @@ MonoBehaviour:
   stability: 1
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 146538411}
+  - {fileID: 2081396037}
+  - {fileID: 186258603}
   marker: {fileID: 0}
 --- !u!4 &468320336
 Transform:
@@ -30394,7 +30424,9 @@ MonoBehaviour:
   stability: 2
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 485957192}
+  - {fileID: 98674796}
   marker: {fileID: 0}
 --- !u!4 &472495579
 Transform:
@@ -30692,7 +30724,9 @@ MonoBehaviour:
   stability: 2
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 214577162}
+  - {fileID: 472495578}
   marker: {fileID: 0}
 --- !u!4 &485957193
 Transform:
@@ -31877,7 +31911,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559042099}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &501972320
 MonoBehaviour:
@@ -33469,7 +33503,11 @@ MonoBehaviour:
   stability: 2
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 555057511}
+  - {fileID: 1975351178}
+  - {fileID: 1816828980}
+  - {fileID: 1800218860}
   marker: {fileID: 0}
 --- !u!4 &522438494
 Transform:
@@ -33982,7 +34020,10 @@ MonoBehaviour:
   stability: 2
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1765586966}
+  - {fileID: 1488679973}
+  - {fileID: 555057511}
   marker: {fileID: 0}
 --- !u!4 &525947867
 Transform:
@@ -35579,7 +35620,8 @@ MonoBehaviour:
   stability: 4
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 2118922991}
   marker: {fileID: 0}
 --- !u!4 &544796625
 Transform:
@@ -36071,7 +36113,11 @@ MonoBehaviour:
   stability: 4
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1975351178}
+  - {fileID: 525947866}
+  - {fileID: 1855188470}
+  - {fileID: 522438493}
   marker: {fileID: 0}
 --- !u!4 &555057512
 Transform:
@@ -39790,7 +39836,9 @@ MonoBehaviour:
   stability: 3
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1373296754}
+  - {fileID: 146538411}
   marker: {fileID: 0}
 --- !u!4 &612939058
 Transform:
@@ -40514,7 +40562,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559042099}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &626720581
 MonoBehaviour:
@@ -40817,7 +40865,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559042099}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &630674392
 MonoBehaviour:
@@ -41399,7 +41447,9 @@ MonoBehaviour:
   stability: 3
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 63178510}
+  - {fileID: 1321242517}
   marker: {fileID: 0}
 --- !u!4 &634219007
 Transform:
@@ -46625,7 +46675,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559042099}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &705239277
 MonoBehaviour:
@@ -47438,7 +47488,9 @@ MonoBehaviour:
   stability: 1
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1429179889}
+  - {fileID: 164640039}
   marker: {fileID: 0}
 --- !u!4 &719710861
 Transform:
@@ -51781,7 +51833,10 @@ MonoBehaviour:
   stability: 1
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1356626156}
+  - {fileID: 98674796}
+  - {fileID: 1970011553}
   marker: {fileID: 0}
 --- !u!4 &795479023
 Transform:
@@ -56532,7 +56587,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559042099}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &871032482
 MonoBehaviour:
@@ -58938,7 +58993,9 @@ MonoBehaviour:
   stability: 3
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1482464818}
+  - {fileID: 1183411859}
   marker: {fileID: 0}
 --- !u!4 &893249169
 Transform:
@@ -59570,13 +59627,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902451702}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559042099}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &902451704
 MonoBehaviour:
@@ -62908,7 +62965,10 @@ MonoBehaviour:
   stability: 2
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1429179889}
+  - {fileID: 1387857668}
+  - {fileID: 1255051424}
   marker: {fileID: 0}
 --- !u!4 &944219424
 Transform:
@@ -65265,7 +65325,7 @@ Transform:
   - {fileID: 577776662}
   - {fileID: 2146891543}
   m_Father: {fileID: 1159452422}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &982250791
 MonoBehaviour:
@@ -73387,7 +73447,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559042099}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1115181057
 MonoBehaviour:
@@ -74643,7 +74703,9 @@ MonoBehaviour:
   stability: 2
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1321242517}
+  - {fileID: 1548503538}
   marker: {fileID: 0}
 --- !u!4 &1134221665
 Transform:
@@ -74943,7 +75005,10 @@ MonoBehaviour:
   stability: 2
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1816828980}
+  - {fileID: 2088820069}
+  - {fileID: 1373296754}
   marker: {fileID: 0}
 --- !u!4 &1141414297
 Transform:
@@ -76300,7 +76365,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1433058565}
   - {fileID: 1559042099}
   - {fileID: 1945507387}
   - {fileID: 1470755671}
@@ -78024,7 +78088,7 @@ Transform:
   - {fileID: 1587704922}
   - {fileID: 773923472}
   m_Father: {fileID: 1159452422}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1177346805
 MonoBehaviour:
@@ -78242,7 +78306,10 @@ MonoBehaviour:
   stability: 3
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 2083694790}
+  - {fileID: 1482464818}
+  - {fileID: 893249168}
   marker: {fileID: 0}
 --- !u!4 &1183411860
 Transform:
@@ -80331,7 +80398,7 @@ Transform:
   - {fileID: 1167367724}
   - {fileID: 1148352786}
   m_Father: {fileID: 1159452422}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1215999067
 MonoBehaviour:
@@ -83700,6 +83767,7 @@ MonoBehaviour:
   adjacentCountries:
   - {fileID: 944219423}
   - {fileID: 35711387}
+  - {fileID: 1883645171}
   marker: {fileID: 0}
 --- !u!4 &1255051425
 Transform:
@@ -87372,7 +87440,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559042099}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1316468750
 MonoBehaviour:
@@ -87785,7 +87853,10 @@ MonoBehaviour:
   stability: 2
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1134221664}
+  - {fileID: 13706434}
+  - {fileID: 634219006}
   marker: {fileID: 0}
 --- !u!4 &1321242518
 Transform:
@@ -89180,7 +89251,10 @@ MonoBehaviour:
   stability: 2
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 2130249396}
+  - {fileID: 1542186724}
+  - {fileID: 98674796}
   marker: {fileID: 0}
 --- !u!4 &1356626157
 Transform:
@@ -90406,7 +90480,10 @@ MonoBehaviour:
   stability: 2
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 2088820069}
+  - {fileID: 1141414296}
+  - {fileID: 612939057}
   marker: {fileID: 0}
 --- !u!4 &1373296755
 Transform:
@@ -90659,7 +90736,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559042099}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1373719545
 MonoBehaviour:
@@ -91954,7 +92031,9 @@ MonoBehaviour:
   stability: 2
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 944219423}
+  - {fileID: 462178035}
   marker: {fileID: 0}
 --- !u!4 &1387857669
 Transform:
@@ -95098,7 +95177,11 @@ MonoBehaviour:
   stability: 2
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1883645171}
+  - {fileID: 1431067246}
+  - {fileID: 719710860}
+  - {fileID: 944219423}
   marker: {fileID: 0}
 --- !u!4 &1429179890
 Transform:
@@ -95484,7 +95567,9 @@ MonoBehaviour:
   stability: 2
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1429179889}
+  - {fileID: 1765586966}
   marker: {fileID: 0}
 --- !u!4 &1431067247
 Transform:
@@ -95804,13 +95889,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433058564}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1159452422}
-  m_RootOrder: 0
+  m_Father: {fileID: 1559042099}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1433058566
 MonoBehaviour:
@@ -98016,7 +98101,7 @@ Transform:
   - {fileID: 740620249}
   - {fileID: 663857369}
   m_Father: {fileID: 1159452422}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1470755673
 MonoBehaviour:
@@ -99135,7 +99220,10 @@ MonoBehaviour:
   stability: 4
   isBattleground: 1
   adjacentSuperpower: 2
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1183411859}
+  - {fileID: 1649311465}
+  - {fileID: 893249168}
   marker: {fileID: 0}
 --- !u!4 &1482464819
 Transform:
@@ -99632,7 +99720,9 @@ MonoBehaviour:
   stability: 1
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 525947866}
+  - {fileID: 214577162}
   marker: {fileID: 0}
 --- !u!4 &1488679974
 Transform:
@@ -100477,7 +100567,7 @@ Transform:
   - {fileID: 1527531412}
   - {fileID: 164188578}
   m_Father: {fileID: 1159452422}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1511113117
 MonoBehaviour:
@@ -102441,7 +102531,9 @@ MonoBehaviour:
   stability: 3
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1356626156}
+  - {fileID: 2130249396}
   marker: {fileID: 0}
 --- !u!4 &1542186725
 Transform:
@@ -102557,7 +102649,10 @@ MonoBehaviour:
   stability: 1
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1586524794}
+  - {fileID: 974998592}
+  - {fileID: 1134221664}
   marker: {fileID: 0}
 --- !u!4 &1548503539
 Transform:
@@ -102577,7 +102672,7 @@ Transform:
   - {fileID: 1078179543}
   - {fileID: 1258398667}
   m_Father: {fileID: 304584626}
-  m_RootOrder: 32
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1548577796
 GameObject:
@@ -103512,11 +103607,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1115181056}
   - {fileID: 626720580}
   - {fileID: 871032481}
   - {fileID: 1974301895}
   - {fileID: 902451703}
+  - {fileID: 1433058565}
+  - {fileID: 1115181056}
   - {fileID: 1848578360}
   - {fileID: 501972319}
   - {fileID: 2143808526}
@@ -103526,7 +103622,7 @@ Transform:
   - {fileID: 392642020}
   - {fileID: 630674391}
   m_Father: {fileID: 1159452422}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1559042101
 MonoBehaviour:
@@ -105214,7 +105310,9 @@ MonoBehaviour:
   stability: 2
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 252173662}
+  - {fileID: 1548503538}
   marker: {fileID: 0}
 --- !u!4 &1586524795
 Transform:
@@ -105234,7 +105332,7 @@ Transform:
   - {fileID: 287282021}
   - {fileID: 1189668046}
   m_Father: {fileID: 304584626}
-  m_RootOrder: 31
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1586620515
 GameObject:
@@ -106949,7 +107047,7 @@ Transform:
   - {fileID: 1635419426}
   - {fileID: 1203297122}
   m_Father: {fileID: 1159452422}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1616795109
 MonoBehaviour:
@@ -108760,7 +108858,9 @@ MonoBehaviour:
   stability: 2
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 348178482}
+  - {fileID: 1482464818}
   marker: {fileID: 0}
 --- !u!4 &1649311466
 Transform:
@@ -115547,7 +115647,9 @@ MonoBehaviour:
   stability: 2
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1431067246}
+  - {fileID: 525947866}
   marker: {fileID: 0}
 --- !u!4 &1765586967
 Transform:
@@ -116893,7 +116995,10 @@ MonoBehaviour:
   stability: 3
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1816828980}
+  - {fileID: 387678020}
+  - {fileID: 522438493}
   marker: {fileID: 0}
 --- !u!4 &1800218861
 Transform:
@@ -118572,7 +118677,11 @@ MonoBehaviour:
   stability: 3
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 522438493}
+  - {fileID: 1800218860}
+  - {fileID: 387678020}
+  - {fileID: 1141414296}
   marker: {fileID: 0}
 --- !u!4 &1816828981
 Transform:
@@ -119725,7 +119834,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559042099}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1848578361
 MonoBehaviour:
@@ -120167,7 +120276,10 @@ MonoBehaviour:
   stability: 2
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1696694943}
+  - {fileID: 1975351178}
+  - {fileID: 555057511}
   marker: {fileID: 0}
 --- !u!4 &1855188471
 Transform:
@@ -120797,7 +120909,9 @@ MonoBehaviour:
   stability: 1
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 164640039}
+  - {fileID: 1970011553}
   marker: {fileID: 0}
 --- !u!4 &1863870951
 Transform:
@@ -121893,6 +122007,7 @@ MonoBehaviour:
   - {fileID: 1410237768}
   - {fileID: 1255051424}
   - {fileID: 35711387}
+  - {fileID: 1429179889}
   marker: {fileID: 0}
 --- !u!4 &1883645172
 Transform:
@@ -124756,7 +124871,7 @@ Transform:
   - {fileID: 1284138812}
   - {fileID: 2052292462}
   m_Father: {fileID: 1159452422}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1945507389
 MonoBehaviour:
@@ -126003,7 +126118,10 @@ MonoBehaviour:
   stability: 1
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1863870950}
+  - {fileID: 2130249396}
+  - {fileID: 795479022}
   marker: {fileID: 0}
 --- !u!4 &1970011554
 Transform:
@@ -126207,7 +126325,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559042099}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1974301896
 MonoBehaviour:
@@ -126379,7 +126497,10 @@ MonoBehaviour:
   stability: 1
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 555057511}
+  - {fileID: 1855188470}
+  - {fileID: 522438493}
   marker: {fileID: 0}
 --- !u!4 &1975351179
 Transform:
@@ -133337,7 +133458,10 @@ MonoBehaviour:
   stability: 2
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 186258603}
+  - {fileID: 468320335}
+  - {fileID: 2118922991}
   marker: {fileID: 0}
 --- !u!4 &2081396038
 Transform:
@@ -134419,7 +134543,9 @@ MonoBehaviour:
   stability: 2
   isBattleground: 0
   adjacentSuperpower: 1
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1141414296}
+  - {fileID: 1373296754}
   marker: {fileID: 0}
 --- !u!4 &2088820070
 Transform:
@@ -135651,7 +135777,10 @@ MonoBehaviour:
   stability: 2
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 252173662}
+  - {fileID: 63178510}
+  - {fileID: 409110274}
   marker: {fileID: 0}
 --- !u!4 &2116830388
 Transform:
@@ -135860,7 +135989,10 @@ MonoBehaviour:
   stability: 2
   isBattleground: 0
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 2081396037}
+  - {fileID: 544796624}
+  - {fileID: 348178482}
   marker: {fileID: 0}
 --- !u!4 &2118922992
 Transform:
@@ -136698,7 +136830,10 @@ MonoBehaviour:
   stability: 1
   isBattleground: 1
   adjacentSuperpower: 0
-  adjacentCountries: []
+  adjacentCountries:
+  - {fileID: 1970011553}
+  - {fileID: 1542186724}
+  - {fileID: 1356626156}
   marker: {fileID: 0}
 --- !u!4 &2130249397
 Transform:
@@ -137562,7 +137697,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559042099}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2143808527
 MonoBehaviour:
