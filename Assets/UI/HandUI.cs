@@ -30,10 +30,15 @@ namespace TwilightStruggle.UI
         {
             // Toggle the Active Faction on Tab. 
             if (Input.GetKeyDown(KeyCode.Tab))
+            {
                 Game.SetActingFaction(Game.actingPlayer == Game.Faction.USSR ? Game.Faction.USA : Game.Faction.USSR);
+
+            }
         }
 
         public void OnSetFaction(Game.Faction faction) => RefreshHand();
+
+        public bool HasCard(Card card) => _displayedCards.ContainsValue(card); 
 
         [Button]
         public void RefreshHand()
@@ -45,11 +50,6 @@ namespace TwilightStruggle.UI
             List<Card> _toRemove = new List<Card>();
 
             _canRefresh = false;
-
-            // Now we add any new cards that we have
-            foreach (Card card in _hand)
-                if (!_displayedCards.ContainsValue(card))
-                    _toAdd.Add(card);
 
             // Get rid of any loose cards and reorganize what we have
             foreach (Transform card in _displayedCards.Keys)
@@ -66,7 +66,27 @@ namespace TwilightStruggle.UI
             if (_toRemove.Count > 0)
                 RemoveCards(_toRemove);
 
-            AddCards(_toAdd);
+            AddCards(_hand.Where(card => !_displayedCards.ContainsValue(card)).ToList());
+        }
+
+        void SetHandOrder()
+        {
+            // This saves our ordered list of cards back to the player's Hand. 
+            IEnumerable<Card> orderedCards =
+                from _card in _displayedCards.Keys
+                where _displayedCards[_card] != null
+                orderby _card.localPosition.x descending
+                select _displayedCards[_card];
+
+            List<Card> newHand = new List<Card>();
+
+            for (int i = 0; i < orderedCards.Count(); i++)
+                if (!newHand.Contains(orderedCards.ElementAt(i)))
+                    newHand.Add(orderedCards.ElementAt(i));
+
+            _game.playerMap[Game.actingPlayer].hand = newHand; // TODO: we're saving out the present order. If the player tabs to quickly, it's based on their animated X-axis order
+                                                               // and then gets shuffled oddly. See about setting our hand value only before tabbing out. Presently this is resolved
+                                                               // by delaying .1 seconds per card before executing this code but that feels mid. 
         }
 
         public void AddCards(List<Card> cards)
@@ -79,29 +99,11 @@ namespace TwilightStruggle.UI
                 {
                     AddCard(card);
                     yield return new WaitForSeconds(f);
-                }
+                }                
 
-                yield return null; // try waiting 1 frame so that we can ensure that our _cards table is properly set. Otherwise wait .1 per card + .1
- 
-                // This saves our ordered list of cards back to the player's Hand. 
-                IEnumerable<Card> orderedCards =
-                    from _card in _displayedCards.Keys
-                    where _displayedCards[_card] != null
-                    orderby _card.localPosition.x descending
-                    select _displayedCards[_card];
-
-                // OK this is causing weirdness because we're interrupting a different process and writing directly to the hand. 
-                // So instead we'll only write to hand a filtered list so it doesn't necessarily matter what's happening with add/removes. 
-
-                List<Card> newHand = new List<Card>();
-
-                for (int i = 0; i < orderedCards.Count(); i++)
-                    if (!newHand.Contains(orderedCards.ElementAt(i)))
-                        newHand.Add(orderedCards.ElementAt(i));
-
-                _game.playerMap[Game.actingPlayer].hand = newHand; // actually unclear if this works/will work. 
-
+                yield return new WaitForSeconds(cards.Count * 0.1f); // try waiting 1 frame so that we can ensure that our _cards table is properly set. Otherwise wait .1 per card + .1
                 _canRefresh = true;
+                SetHandOrder();
             }
         }
 
@@ -112,7 +114,7 @@ namespace TwilightStruggle.UI
             // Check if this card hasn't already been added by some other process!
             if (_displayedCards.ContainsValue(card)) return;
 
-            if (card is ScoringCard) // Because ScoringCard is not a faction we use branching-if instead of Switch :( 
+            if (card is ScoringCard) // Because ScoringCard is not a faction we use branching-if instead of a Dictionary
                 _prefab = scoringPrefab;
             else if (card.faction == Game.Faction.China)
                 _prefab = chinaPrefab;
@@ -146,33 +148,34 @@ namespace TwilightStruggle.UI
             // Unset the Card from our list of cards immediately rather than every Nth-of-seconds; this ensures any new cards we're adding won't place themselves based on card's we're about to remove 
             foreach (Card card in cards)
             {
-                foreach (Transform t in _displayedCards.Keys.ToArray())
-                    if (_displayedCards[t] == card || _displayedCards[t] == null)
-                    {
-                        _toRemove.Add(t);
-                        _displayedCards.Remove(t);
-                    }
+                foreach (Transform t in _displayedCards.Keys.Where(u => _displayedCards[u] == card || _displayedCards[u] == null).ToArray())
+                {
+                    _toRemove.Add(t);
+                    _displayedCards.Remove(t);
+                }
             }
 
-            StartCoroutine(RemoveCardEveryTenth());
-
-            IEnumerator RemoveCardEveryTenth()
+            StartCoroutine(RemoveOnInterval(.08f));
+            IEnumerator RemoveOnInterval(float f)
             {
                 while (_toRemove.Count > 0)
                 {
                     RemoveCard(_toRemove[0]);
                     _toRemove.RemoveAt(0);
-                    yield return new WaitForSeconds(0.08f);
+                    yield return new WaitForSeconds(f);
                 }
+
+                SetHandOrder();
             }
         }
 
         public void RemoveCard(Card card)
         {
-            if (_displayedCards.ContainsValue(card))
-                foreach (Transform t in _displayedCards.Keys.ToArray())
-                    if (_displayedCards[t] == card)
-                        _displayedCards.Remove(t);
+                foreach (Transform t in _displayedCards.Keys.Where(u => _displayedCards[u] == card).ToArray())
+                {
+                    _displayedCards.Remove(t);
+                    //Destroy(t);
+                }
         }
 
         void RemoveCard(Transform card)

@@ -94,7 +94,6 @@
     <Compile Include="Assets\Cards\SuezCrisis.cs" />
     <Compile Include="Assets\UI\UIPhase.cs" />
     <Compile Include="Assets\BaseSystem\Turn System\Turn.cs" />
-    <Compile Include="Assets\UI\UIHeadlineDropZone.cs" />
     <Compile Include="Assets\Cards\MarshallPlan.cs" />
     <Compile Include="Assets\BaseSystem\Player.cs" />
     <Compile Include="Assets\BaseSystem\Game.cs" />
@@ -116,7 +115,7 @@
     <Compile Include="Assets\Cards\WarCard.cs" />
     <Compile Include="Assets\Cards\VietnamRevolts.cs" />
     <Compile Include="Assets\Cards\CIACreated.cs" />
-    <Compile Include="Assets\UI\UIDropHandler.cs" />
+    <Compile Include="Assets\UI\CardDropHandler.cs" />
     <Compile Include="Assets\UI\UICountry.cs" />
     <Compile Include="Assets\GameRules\PlaceBonusInfluence.cs" />
     <Compile Include="Assets\GameRules\MayNotPlaceInfluence.cs" />

@@ -14,7 +14,7 @@ namespace TwilightStruggle
 
     public class GameCommand
     {
-        // Fauxstructor Vars
+        // Base Variables
         public Game.Faction faction;
         public Card card;
         public GameAction gameAction;
@@ -34,6 +34,7 @@ namespace TwilightStruggle
         public UnityAction<GameCommand> callback;
         public UnityAction<UnityAction> phaseCallback; 
         public Game.Faction opponent => faction == Game.Faction.USA ? Game.Faction.USSR : Game.Faction.USA;
+        public GameCommand subCommand; 
 
         //Interface Library
         public IActionPrepare prepare;

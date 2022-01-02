@@ -11,11 +11,11 @@ public class UIMapDrag : MonoBehaviour, IDragHandler
         _dragSpeed = 1.25f, 
         _zoomSpeed = 1f;
 
-    RectTransform _thisRect; 
+    RectTransform _gameBoard; 
 
     void Awake()
     {
-        _thisRect = GetComponent<RectTransform>(); 
+        _gameBoard = GetComponent<RectTransform>(); 
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -32,17 +32,17 @@ public class UIMapDrag : MonoBehaviour, IDragHandler
         if (_viewportCorners[2].x > _mapCorners[2].x + eventData.delta.x) return;
         if (_viewportCorners[2].y > _mapCorners[2].y + eventData.delta.y) return;
 
-        _thisRect.localPosition += new Vector3(eventData.delta.x, eventData.delta.y, 0f) * _dragSpeed;
+        _gameBoard.localPosition += new Vector3(eventData.delta.x, eventData.delta.y, 0f) * _dragSpeed;
     }
 
     public void OnMouseOver()
     {
         if (Input.mouseScrollDelta.y != 0)
         {
-            float newScale = _thisRect.localScale.x + _zoomSpeed * Input.mouseScrollDelta.y;
+            float newScale = _gameBoard.localScale.x + _zoomSpeed * Input.mouseScrollDelta.y;
 
             if (newScale > 0.5f && Input.mouseScrollDelta.y < 0 || newScale < 2f && Input.mouseScrollDelta.y > 0)
-                _thisRect.DOScale(newScale, 0.1f);
+                _gameBoard.DOScale(newScale, 0.1f);
         }
     }
 }

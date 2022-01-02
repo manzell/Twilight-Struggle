@@ -8,7 +8,7 @@ namespace TwilightStruggle
 {
     public class SpaceTrack : SerializedMonoBehaviour
     {
-        public Dictionary<int, SpaceRaceTrack> spaceRaceTrack = new Dictionary<int, SpaceRaceTrack>();
+        public Dictionary<int, SpaceMission> spaceRaceTrack = new Dictionary<int, SpaceMission>();
         public Dictionary<Game.Faction, int> attemptsRemaining = new Dictionary<Game.Faction, int>();
 
         [SerializeField] TextMeshProUGUI ussrSpace, usaSpace;
@@ -27,25 +27,45 @@ namespace TwilightStruggle
             }
         }
 
+        public Dictionary<Game.Faction, SpaceMission> nextMission
+        {
+            get
+            {
+                Dictionary<Game.Faction, SpaceMission> tmp = new Dictionary<Game.Faction, SpaceMission>();
+                
+                for(int i = 0; i < spaceRaceTrack.Count; i++)
+                {
+                    if(tmp.ContainsKey(Game.Faction.USA) == false && spaceRaceTrack[i].acheived.Contains(Game.Faction.USA) == false)
+                        tmp.Add(Game.Faction.USA, spaceRaceTrack[i]);
+                    if (tmp.ContainsKey(Game.Faction.USSR) == false && spaceRaceTrack[i].acheived.Contains(Game.Faction.USSR) == false)
+                        tmp.Add(Game.Faction.USSR, spaceRaceTrack[i]);
+                    if (tmp.Count == 2) 
+                        break; 
+                }
+
+                return tmp; 
+            }
+        }
+
         public Dictionary<Game.Faction, int> spaceRaceLevel
         {
             get
             {
                 Dictionary<Game.Faction, int> tmp = new Dictionary<Game.Faction, int> { { Game.Faction.USA, 0 }, { Game.Faction.USSR, 0 } };
 
-                foreach (SpaceRaceTrack spaceRaceTrack in spaceRaceTrack.Values)
+                foreach (SpaceMission spaceMission in spaceRaceTrack.Values)
                 {
-                    if (spaceRaceTrack.acheived.Contains(Game.Faction.USA)) tmp[Game.Faction.USA]++;
-                    if (spaceRaceTrack.acheived.Contains(Game.Faction.USSR)) tmp[Game.Faction.USSR]++;
+                    if (spaceMission.acheived.Contains(Game.Faction.USA)) tmp[Game.Faction.USA]++;
+                    if (spaceMission.acheived.Contains(Game.Faction.USSR)) tmp[Game.Faction.USSR]++;
                 }
 
                 return tmp;
             }
         }
 
-        public struct SpaceRaceTrack
+        public struct SpaceMission
         {
-            public string name;
+            public string missionName;
             public int opsRequired;
             public int rollRequired;
             public int firstVPaward, secondVPaward;

@@ -14,13 +14,19 @@ namespace TwilightStruggle
 
         public void Awake()
         {
-            GetComponent<UI.UIDropHandler>()?.cardDropEvent.AddListener(OnCardDrop);
+            GetComponent<UI.CardDropHandler>()?.cardDropEvent.AddListener(OnCardDrop);
         }
 
         public void OnCardDrop(Card card)
         {
             GameCommand command = GameCommand.Create(Game.actingPlayer, card, this);
             command.Prepare();
+        }
+
+        public void Finish(GameCommand command)
+        {
+            command.callback = null;
+            command.FinishCommand();
         }
 
         public virtual bool CanUseAction(Game.Faction actingPlayer, Card card) => true;

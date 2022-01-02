@@ -15,7 +15,17 @@
       "ProjectGuid": "f7093760-0662-f78b-4411-5a8d80b0214d",
       "DisplayName": "UnityEngine.UI",
       "ColorIndex": 1
+    },
+    "a017007c-89f7-5f91-60bf-daf596ba031a": {
+      "ProjectGuid": "a017007c-89f7-5f91-60bf-daf596ba031a",
+      "DisplayName": "Assembly-CSharp-firstpass",
+      "ColorIndex": 2
+    },
+    "ffe1ff98-57c2-60f6-a0f0-66552d7cf8d3": {
+      "ProjectGuid": "ffe1ff98-57c2-60f6-a0f0-66552d7cf8d3",
+      "DisplayName": "Assembly-CSharp.Player",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 4
 }

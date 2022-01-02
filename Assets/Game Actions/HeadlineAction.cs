@@ -12,7 +12,7 @@ namespace TwilightStruggle
 
         public new void Awake()
         {
-            foreach(UI.UIDropHandler handler in GetComponentsInChildren<UI.UIDropHandler>())
+            foreach(UI.CardDropHandler handler in GetComponentsInChildren<UI.CardDropHandler>())
                 handler.cardDropEvent.AddListener(HeadlineDrop);
         }
 

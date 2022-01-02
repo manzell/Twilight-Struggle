@@ -7,7 +7,17 @@ namespace TwilightStruggle
 {
     public class SpaceRace : GameAction, IActionPrepare, IActionComplete
     {
-        [SerializeField] SpaceTrack spaceTrack;
+        [SerializeField] SpaceTrack spaceTrack; 
+        
+        public new void Awake()
+        {
+            GetComponent<UI.CardDropHandler>().showEvent.AddListener(Setup); 
+        }
+
+        public void Setup(Card card)
+        {
+
+        }
 
         public void Prepare(GameCommand command)
         {
@@ -46,6 +56,12 @@ namespace TwilightStruggle
         {
             public int roll;
             public bool success;
+        }
+
+        public override bool CanUseAction(Game.Faction actingPlayer, Card card)
+        {
+            return spaceTrack.attemptsRemaining[actingPlayer] > 0; 
+            //return base.CanUseAction(actingPlayer, card);
         }
     }
 }

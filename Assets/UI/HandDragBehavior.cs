@@ -16,6 +16,12 @@ namespace TwilightStruggle.UI
 
         public void OnDragStart(Transform t, PointerEventData eventData)
         {
+            if (Game.currentPhase is TurnSystem.ActionRound && Game.actingPlayer != Game.phasingPlayer)
+            {
+                eventData.pointerDrag = null;
+                return;
+            }
+
             eventData.selectedObject = t.gameObject;
             _canvasGroup = t.GetComponent<CanvasGroup>();
             _canvasGroup.blocksRaycasts = false;
@@ -49,11 +55,10 @@ namespace TwilightStruggle.UI
 
         public void OnDragEnd(Transform t, PointerEventData eventData)
         {
-            _canvasGroup.blocksRaycasts = true;
-
-            if (!eventData.selectedObject.transform.GetComponent<UIDropHandler>()) 
+            if (_handUI.HasCard(_card))
                 _uiActionRound.HideARPanel();
 
+            _canvasGroup.blocksRaycasts = true;
             _handUI.RefreshHand();
         }
     }

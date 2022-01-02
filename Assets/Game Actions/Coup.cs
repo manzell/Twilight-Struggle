@@ -11,64 +11,62 @@ namespace TwilightStruggle
     {
         public void Prepare(GameCommand command)
         {
-            CoupVars coupVars = new CoupVars();
-            coupVars.coupOps = command.card.opsValue;
-            coupVars.enemyFaction = command.faction == Game.Faction.USA ? Game.Faction.USSR : Game.Faction.USA; 
-            coupVars.eligibleTargets = GetEligibleCountries(command);
-            coupVars.affectsDefcon = false;
-            coupVars.grantsMilOps = true; 
-            
+            command.parameters = new CoupVars(); 
+            ((CoupVars)command.parameters).coupOps = command.card.opsValue;
+            ((CoupVars)command.parameters).enemyFaction = command.faction == Game.Faction.USA ? Game.Faction.USSR : Game.Faction.USA;
+            ((CoupVars)command.parameters).eligibleTargets = GetEligibleCountries(command).ToList();
+            ((CoupVars)command.parameters).affectsDefcon = true;
+            ((CoupVars)command.parameters).grantsMilOps = true; 
+
             // Check our current Turn & Action Round for a modifier to ops value or coupStrength 
-            foreach(OpsBonus opsBonus in Game.currentTurn.GetComponents<OpsBonus>().Concat(Game.currentActionRound.GetComponents<OpsBonus>()))
+            foreach (OpsBonus opsBonus in Game.currentTurn.GetComponents<OpsBonus>().Concat(Game.currentActionRound.GetComponents<OpsBonus>()))
                 if(opsBonus.faction == command.faction || opsBonus.faction == Game.Faction.Neutral)
-                    coupVars.coupOps += opsBonus.amount;
+                    ((CoupVars)command.parameters).coupOps += opsBonus.amount;
             foreach (CoupBonus opsBonus in Game.currentTurn.GetComponents<CoupBonus>().Concat(Game.currentActionRound.GetComponents<CoupBonus>()))
                 if (opsBonus.faction == command.faction || opsBonus.faction == Game.Faction.Neutral)
-                    coupVars.coupOps += opsBonus.amount;
+                    ((CoupVars)command.parameters).coupOps += opsBonus.amount;
 
-            command.parameters = coupVars;
             prepareEvent.Invoke(command); 
         }
 
         public void Target(GameCommand command)
         {
-            CoupVars coupVars = (CoupVars)command.parameters;
-            coupVars.coupDefense = coupVars.targetCountry.stability * 2;
-            coupVars.roll = Random.Range(0, 6) + 1;
+            ((CoupVars)command.parameters).coupDefense = ((CoupVars)command.parameters).targetCountry.stability * 2;
+            ((CoupVars)command.parameters).roll = Random.Range(0, 6) + 1;
 
             // Check our country and card for coup or ops bonuses
-            foreach (OpsBonus opsBonus in coupVars.targetCountry.GetComponents<OpsBonus>().Concat(command.card.GetComponents<OpsBonus>()))
+            foreach (OpsBonus opsBonus in ((CoupVars)command.parameters).targetCountry.GetComponents<OpsBonus>().Concat(command.card.GetComponents<OpsBonus>()))
                 if (opsBonus.faction == command.faction || opsBonus.faction == Game.Faction.Neutral)
-                    coupVars.coupOps += opsBonus.amount;
-            foreach (CoupBonus opsBonus in coupVars.targetCountry.GetComponents<CoupBonus>().Concat(command.card.GetComponents<CoupBonus>()))
+                    ((CoupVars)command.parameters).coupOps += opsBonus.amount;
+            
+            foreach (CoupBonus opsBonus in ((CoupVars)command.parameters).targetCountry.GetComponents<CoupBonus>().Concat(command.card.GetComponents<CoupBonus>()))
                 if (opsBonus.faction == command.faction || opsBonus.faction == Game.Faction.Neutral)
-                    coupVars.coupOps += opsBonus.amount;
+                    ((CoupVars)command.parameters).coupOps += opsBonus.amount;
+           
+            int influenceToRemove = Mathf.Min(((CoupVars)command.parameters).modifiedRoll(), ((CoupVars)command.parameters).targetCountry.influence[command.opponent]);
+            int influenceToAdd = Mathf.Max(((CoupVars)command.parameters).modifiedRoll() - ((CoupVars)command.parameters).targetCountry.influence[command.opponent], 0); 
 
-            coupVars.influenceChange = new Dictionary<Game.Faction, int>(); 
-            coupVars.influenceChange.Add(command.faction, Mathf.Max(0, coupVars.modifiedRoll() - coupVars.targetCountry.influence[coupVars.enemyFaction]));
-            coupVars.influenceChange.Add(coupVars.enemyFaction, -Mathf.Min(Mathf.Max(coupVars.modifiedRoll(), coupVars.targetCountry.influence[coupVars.enemyFaction])));
+            ((CoupVars)command.parameters).influenceChange = new Dictionary<Game.Faction, int>();
+            ((CoupVars)command.parameters).influenceChange.Add(command.faction, influenceToAdd);
+            ((CoupVars)command.parameters).influenceChange.Add(command.opponent, -influenceToRemove);
 
-            command.parameters = coupVars;
             command.callback = Complete; 
             targetEvent.Invoke(command);  
         }
 
         public void Complete(GameCommand command)
         {
-            CoupVars coupVars = (CoupVars)command.parameters;
+            foreach(Game.Faction faction in ((CoupVars)command.parameters).influenceChange.Keys)
+                Game.AdjustInfluence(((CoupVars)command.parameters).targetCountry, faction, ((CoupVars)command.parameters).influenceChange[faction]);
 
-            foreach(Game.Faction faction in coupVars.influenceChange.Keys)
-                Game.AdjustInfluence(coupVars.targetCountry, faction, coupVars.influenceChange[faction]);
+            if (((CoupVars)command.parameters).grantsMilOps)
+                MilOpsTrack.GiveMilOps(command.faction, ((CoupVars)command.parameters).coupOps);
 
-            if (coupVars.grantsMilOps)
-                MilOpsTrack.GiveMilOps(command.faction, coupVars.coupOps);
-
-            if (coupVars.affectsDefcon && coupVars.targetCountry.isBattleground)
+            if (((CoupVars)command.parameters).affectsDefcon && ((CoupVars)command.parameters).targetCountry.isBattleground)
                 DEFCONtrack.AdjustDefcon(command.faction, -1);
- 
+
+            command.callback = Finish;
             completeEvent.Invoke(command);
-            command.callback = null; 
-            command.FinishCommand();
         }
 
         public class CoupVars : ICommandParameters
@@ -85,21 +83,11 @@ namespace TwilightStruggle
             public int modifiedRoll() => Mathf.Max(roll + coupOps - coupDefense, 0); 
         }
 
-        public static List<Country> GetEligibleCountries(GameCommand command)
-        {
-            CoupVars coupVars = (CoupVars)command.parameters;
-
-            List<Country> eligibleCountries = FindObjectsOfType<Country>().ToList();
-            foreach (Country country in eligibleCountries.ToArray())
-            {
-                if (DEFCONtrack.status <= DEFCONtrack.defconRestrictions[country.continent] || 
-                    country.influence[command.opponent] == 0 || 
-                    country.GetComponent<MayNotCoup>())
-
-                    eligibleCountries.Remove(country);
-            }
-
-            return eligibleCountries;
-        }
+        public static IEnumerable<Country> GetEligibleCountries(GameCommand command) =>
+            FindObjectsOfType<Country>()
+                .Where(country => country.influence[command.opponent] > 0)
+                .Where(country => !country.GetComponent<MayNotCoup>())
+                .Where(country => DEFCONtrack.status > DEFCONtrack.defconRestrictions[country.continent])
+                ;
     }
 }

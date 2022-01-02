@@ -32,21 +32,22 @@ namespace TwilightStruggle.UI
             isARpanelOpen = true;
             foreach (Transform t in _arDropPanel.transform)
             {
-                if (t.TryGetComponent(out UIDropHandler handler))
+                if (t.TryGetComponent(out CardDropHandler handler))
                 {
                     if(handler.GetComponent<GameAction>().CanUseAction(Game.actingPlayer, card) && handler.hidden)
-                        handler.Show(f += .05f);
+                        handler.Show(card, f += .05f);
                 }
             }
         }
 
         public void HideARPanel()
         {
+            Debug.Log("Hide AR Panel called"); 
             float f = 0f;
             isARpanelOpen = false; 
             foreach (Transform t in _arDropPanel.transform)
             {
-                if (t.TryGetComponent(out UIDropHandler handler))
+                if (t.TryGetComponent(out CardDropHandler handler))
                 {
                     // TODO - Keep our active Action Drop thingy open
                     if (handler.hidden == false)
