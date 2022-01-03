@@ -8,19 +8,10 @@ namespace TwilightStruggle
     public class SpaceRace : GameAction, IActionPrepare, IActionComplete
     {
         [SerializeField] SpaceTrack spaceTrack; 
-        
-        public new void Awake()
-        {
-            GetComponent<UI.CardDropHandler>().showEvent.AddListener(Setup); 
-        }
-
-        public void Setup(Card card)
-        {
-
-        }
 
         public void Prepare(GameCommand command)
         {
+            Debug.Log("Space Race Prepare"); 
             SpaceVars spaceVars = new SpaceVars();
             spaceVars.roll = Random.Range(0, 6) + 1;
 
@@ -32,6 +23,7 @@ namespace TwilightStruggle
 
         public void Complete(GameCommand command)
         {
+            Debug.Log("Space Race Complete");
             // Assume we've already checked if the player has more space attempts remaining && if the card has enough Ops
             // That check should occur in GameAction.CanUseAction
             int spaceRaceLevel = spaceTrack.spaceRaceLevel[command.faction];

@@ -42,13 +42,13 @@ namespace TwilightStruggle.UI
             {
                 if (t.localPosition.y - _initY > 35f && _arOpen == false)
                 {
-                    _uiActionRound.ShowARPanel(_card);
                     _arOpen = true;
+                    _uiActionRound.ShowARPanel(_card);
                 }
                 else if (t.localPosition.y - _initY < 35f && _arOpen == true)
                 {
-                    _uiActionRound.HideARPanel();
                     _arOpen = false;
+                    _uiActionRound.HideARPanel();
                 }
             }
         }

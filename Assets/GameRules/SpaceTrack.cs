@@ -68,7 +68,6 @@ namespace TwilightStruggle
             public string missionName;
             public int opsRequired;
             public int rollRequired;
-            public int firstVPaward, secondVPaward;
             public int[] vpAwards;
             public GameAction ability;
             public List<Game.Faction> acheived;
@@ -90,8 +89,7 @@ namespace TwilightStruggle
 
         void UpdateSpaceRace()
         {
-            ussrSpace.text = spaceRaceLevel[Game.Faction.USSR].ToString();
-            usaSpace.text = spaceRaceLevel[Game.Faction.USA].ToString();
+            Debug.Log("TODO: Update Space Race Track!"); 
         }
     }
 }

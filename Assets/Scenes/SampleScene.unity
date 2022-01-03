@@ -1342,6 +1342,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hidden: 1
   faction: 0
+  showEvent:
+    m_PersistentCalls:
+      m_Calls: []
   cardDropEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5256,6 +5259,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hidden: 1
   faction: 0
+  showEvent:
+    m_PersistentCalls:
+      m_Calls: []
   cardDropEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -40286,6 +40292,7 @@ RectTransform:
   m_Children:
   - {fileID: 459904858}
   - {fileID: 1550443783}
+  - {fileID: 1516502001}
   m_Father: {fileID: 237463036}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51899,7 +51906,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: spaceRaceTrack
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[TwilightStruggle.SpaceTrack+SpaceRaceTrack,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[TwilightStruggle.SpaceTrack+SpaceMission,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
@@ -51919,28 +51926,28 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: TwilightStruggle.SpaceTrack+SpaceRaceTrack, Assembly-CSharp
-    - Name: name
-      Entry: 6
-      Data: 
+      Data: TwilightStruggle.SpaceTrack+SpaceMission, Assembly-CSharp
+    - Name: missionName
+      Entry: 1
+      Data: Earth Satellite
     - Name: opsRequired
       Entry: 3
-      Data: 0
+      Data: 2
     - Name: rollRequired
       Entry: 3
-      Data: 0
-    - Name: firstVPaward
-      Entry: 3
-      Data: 0
-    - Name: secondVPaward
-      Entry: 3
-      Data: 0
+      Data: 3
     - Name: vpAwards
       Entry: 7
       Data: 2|System.Int32[], mscorlib
     - Name: 
       Entry: 14
-      Data: 0
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 1
     - Name: 
       Entry: 13
       Data: 
@@ -51977,22 +51984,16 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 7
-      Data: TwilightStruggle.SpaceTrack+SpaceRaceTrack, Assembly-CSharp
-    - Name: name
-      Entry: 6
-      Data: 
+      Data: TwilightStruggle.SpaceTrack+SpaceMission, Assembly-CSharp
+    - Name: missionName
+      Entry: 1
+      Data: Animal In Space
     - Name: opsRequired
       Entry: 3
-      Data: 0
+      Data: 2
     - Name: rollRequired
       Entry: 3
-      Data: 0
-    - Name: firstVPaward
-      Entry: 3
-      Data: 0
-    - Name: secondVPaward
-      Entry: 3
-      Data: 0
+      Data: 4
     - Name: vpAwards
       Entry: 7
       Data: 4|System.Int32[], mscorlib
@@ -52035,28 +52036,25 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 7
-      Data: TwilightStruggle.SpaceTrack+SpaceRaceTrack, Assembly-CSharp
-    - Name: name
-      Entry: 6
-      Data: 
+      Data: TwilightStruggle.SpaceTrack+SpaceMission, Assembly-CSharp
+    - Name: missionName
+      Entry: 1
+      Data: Man In Space
     - Name: opsRequired
       Entry: 3
-      Data: 0
+      Data: 2
     - Name: rollRequired
       Entry: 3
-      Data: 0
-    - Name: firstVPaward
-      Entry: 3
-      Data: 0
-    - Name: secondVPaward
-      Entry: 3
-      Data: 0
+      Data: 3
     - Name: vpAwards
       Entry: 7
       Data: 6|System.Int32[], mscorlib
     - Name: 
       Entry: 14
-      Data: 0
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 2
     - Name: 
       Entry: 13
       Data: 
@@ -52093,22 +52091,16 @@ MonoBehaviour:
       Data: 3
     - Name: $v
       Entry: 7
-      Data: TwilightStruggle.SpaceTrack+SpaceRaceTrack, Assembly-CSharp
-    - Name: name
-      Entry: 6
-      Data: 
+      Data: TwilightStruggle.SpaceTrack+SpaceMission, Assembly-CSharp
+    - Name: missionName
+      Entry: 1
+      Data: Man In Earth Orbit
     - Name: opsRequired
       Entry: 3
-      Data: 0
+      Data: 2
     - Name: rollRequired
       Entry: 3
-      Data: 0
-    - Name: firstVPaward
-      Entry: 3
-      Data: 0
-    - Name: secondVPaward
-      Entry: 3
-      Data: 0
+      Data: 4
     - Name: vpAwards
       Entry: 7
       Data: 8|System.Int32[], mscorlib
@@ -52151,28 +52143,28 @@ MonoBehaviour:
       Data: 4
     - Name: $v
       Entry: 7
-      Data: TwilightStruggle.SpaceTrack+SpaceRaceTrack, Assembly-CSharp
-    - Name: name
-      Entry: 6
-      Data: 
+      Data: TwilightStruggle.SpaceTrack+SpaceMission, Assembly-CSharp
+    - Name: missionName
+      Entry: 1
+      Data: Lunar Orbit
     - Name: opsRequired
       Entry: 3
-      Data: 0
+      Data: 3
     - Name: rollRequired
       Entry: 3
-      Data: 0
-    - Name: firstVPaward
-      Entry: 3
-      Data: 0
-    - Name: secondVPaward
-      Entry: 3
-      Data: 0
+      Data: 3
     - Name: vpAwards
       Entry: 7
       Data: 10|System.Int32[], mscorlib
     - Name: 
       Entry: 14
-      Data: 0
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 3
+      Data: 1
     - Name: 
       Entry: 13
       Data: 
@@ -52209,22 +52201,16 @@ MonoBehaviour:
       Data: 5
     - Name: $v
       Entry: 7
-      Data: TwilightStruggle.SpaceTrack+SpaceRaceTrack, Assembly-CSharp
-    - Name: name
-      Entry: 6
-      Data: 
+      Data: TwilightStruggle.SpaceTrack+SpaceMission, Assembly-CSharp
+    - Name: missionName
+      Entry: 1
+      Data: Moon Landing
     - Name: opsRequired
       Entry: 3
-      Data: 0
+      Data: 3
     - Name: rollRequired
       Entry: 3
-      Data: 0
-    - Name: firstVPaward
-      Entry: 3
-      Data: 0
-    - Name: secondVPaward
-      Entry: 3
-      Data: 0
+      Data: 4
     - Name: vpAwards
       Entry: 7
       Data: 12|System.Int32[], mscorlib
@@ -52267,28 +52253,28 @@ MonoBehaviour:
       Data: 6
     - Name: $v
       Entry: 7
-      Data: TwilightStruggle.SpaceTrack+SpaceRaceTrack, Assembly-CSharp
-    - Name: name
-      Entry: 6
-      Data: 
+      Data: TwilightStruggle.SpaceTrack+SpaceMission, Assembly-CSharp
+    - Name: missionName
+      Entry: 1
+      Data: Space Shattle
     - Name: opsRequired
       Entry: 3
-      Data: 0
+      Data: 3
     - Name: rollRequired
       Entry: 3
-      Data: 0
-    - Name: firstVPaward
-      Entry: 3
-      Data: 0
-    - Name: secondVPaward
-      Entry: 3
-      Data: 0
+      Data: 3
     - Name: vpAwards
       Entry: 7
       Data: 14|System.Int32[], mscorlib
     - Name: 
       Entry: 14
-      Data: 0
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 3
+      Data: 2
     - Name: 
       Entry: 13
       Data: 
@@ -52325,28 +52311,25 @@ MonoBehaviour:
       Data: 7
     - Name: $v
       Entry: 7
-      Data: TwilightStruggle.SpaceTrack+SpaceRaceTrack, Assembly-CSharp
-    - Name: name
-      Entry: 6
-      Data: 
+      Data: TwilightStruggle.SpaceTrack+SpaceMission, Assembly-CSharp
+    - Name: missionName
+      Entry: 1
+      Data: Space Station
     - Name: opsRequired
       Entry: 3
-      Data: 0
+      Data: 4
     - Name: rollRequired
       Entry: 3
-      Data: 0
-    - Name: firstVPaward
-      Entry: 3
-      Data: 0
-    - Name: secondVPaward
-      Entry: 3
-      Data: 0
+      Data: 2
     - Name: vpAwards
       Entry: 7
       Data: 16|System.Int32[], mscorlib
     - Name: 
       Entry: 14
-      Data: 0
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 2
     - Name: 
       Entry: 13
       Data: 
@@ -83209,6 +83192,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hidden: 1
   faction: 1
+  showEvent:
+    m_PersistentCalls:
+      m_Calls: []
   cardDropEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -102792,6 +102778,141 @@ MonoBehaviour:
   phaseImage: {fileID: 21300000, guid: bd4093eac62db0c4a87d174754b11c05, type: 3}
   gamePhase: 3
   phaseText: Late War
+--- !u!1 &1516502000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1516502001}
+  - component: {fileID: 1516502003}
+  - component: {fileID: 1516502002}
+  m_Layer: 5
+  m_Name: SpaceRace Ops Required
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1516502001
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516502000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 596036561}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -22.5, y: -22.5}
+  m_SizeDelta: {x: 25, y: 25}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1516502002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516502000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 2
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: a5ee15825a481924bbdffcf4a0a1c6cf, type: 2}
+  m_sharedMaterial: {fileID: 5379385442991036413, guid: a5ee15825a481924bbdffcf4a0a1c6cf, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4284374622
+  m_fontColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 30
+  m_fontSizeBase: 30
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 0
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1516502003
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516502000}
+  m_CullTransparentMesh: 1
 --- !u!1 &1516702391
 GameObject:
   m_ObjectHideFlags: 0
@@ -105118,10 +105239,10 @@ RectTransform:
   m_Father: {fileID: 596036561}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 23.408203, y: -23.408203}
-  m_SizeDelta: {x: -46.8164, y: -46.8164}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 22.5, y: -22.5}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1550443784
 MonoBehaviour:
@@ -126193,6 +126314,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hidden: 1
   faction: 0
+  showEvent:
+    m_PersistentCalls:
+      m_Calls: []
   cardDropEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -126238,12 +126362,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d19732dc3da9f4290ec329151f1558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   spaceRaceAction: {fileID: 1926918729}
-  spaceRaceTarget: {fileID: 459904859}
+  spaceRaceRoll: {fileID: 459904859}
+  spaceRaceRollTarget: {fileID: 1550443784}
+  spaceRaceOpsNeeded: {fileID: 1516502002}
   spaceRaceStage: {fileID: 1209150427}
   spaceRaceSucess: {fileID: 2004569855}
   dieGraphic: {fileID: 596036562}
   animationDuration: 0.4
+  spaceTrack: {fileID: 785098420}
+  targetHighlightColor: {r: 1, g: 0.6912281, b: 0.22807014, a: 1}
+  targetBaseColor: {r: 0.36862746, g: 0.36862746, b: 0.36862746, a: 1}
 --- !u!1 &1927278195
 GameObject:
   m_ObjectHideFlags: 0
@@ -130748,6 +130886,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hidden: 1
   faction: 0
+  showEvent:
+    m_PersistentCalls:
+      m_Calls: []
   cardDropEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -132112,6 +132253,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hidden: 1
   faction: 0
+  showEvent:
+    m_PersistentCalls:
+      m_Calls: []
   cardDropEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -139670,6 +139814,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hidden: 1
   faction: 2
+  showEvent:
+    m_PersistentCalls:
+      m_Calls: []
   cardDropEvent:
     m_PersistentCalls:
       m_Calls: []
