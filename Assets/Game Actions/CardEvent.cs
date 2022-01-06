@@ -16,8 +16,11 @@ namespace TwilightStruggle
 
             command.callback = Complete; 
 
-            if(Game.currentActionRound != null)
+            if(Game.currentPhase is TurnSystem.ActionRound)
+            {
                 Game.currentActionRound.wasEventTriggered = true;
+                Game.currentActionRound.command = command; 
+            }
  
             if( (command.card.faction == Game.Faction.USA || command.card.faction == Game.Faction.USSR) && command.card.faction != command.faction)
             {

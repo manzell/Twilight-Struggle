@@ -20,26 +20,17 @@ namespace TwilightStruggle.UI
             influencePlacement.prepareEvent.AddListener(AfterPrepare);
             influencePlacement.targetEvent.AddListener(AfterTarget);
             influencePlacement.completeEvent.AddListener(AfterComplete);
+            GetComponent<CardDropHandler>().showEvent.AddListener(Unset);
         }
 
-        private void Start()
+        private void Unset(Card card)
         {
-            Unset(); 
-        }
-
-        private void Unset()
-        {
-            dieGraphic.ChangeAlpha(0);
-            opsRemaining.text = string.Empty;
-            opsRemaining.DOFade(0, 0f); 
-            opsRemainingText.DOFade(0, 0f); 
+            opsRemaining.text = card.opsValue.ToString();
         }
 
         void AfterPrepare(GameCommand command)
         {
-            dieGraphic.DOFade(1, .8f);
             opsRemaining.text = ((PlaceInfluence.InfluencePlacementVars)command.parameters).ops.ToString();
-            opsRemainingText.DOFade(1, .8f); 
 
             CountryClickHandler.Setup(((PlaceInfluence.InfluencePlacementVars)command.parameters).eligibleCountries, OnClick); 
 
@@ -53,7 +44,6 @@ namespace TwilightStruggle.UI
 
         void AfterTarget(GameCommand command)
         {
-            Unset(); 
             CountryClickHandler.Close();
             influencePlacement.Complete(command);
         }

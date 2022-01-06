@@ -20,28 +20,22 @@ namespace TwilightStruggle.UI
             coupAction.prepareEvent.AddListener(PrepareCoup);
             coupAction.targetEvent.AddListener(SetTarget);
             coupAction.completeEvent.AddListener(ExecuteCoup);
+            GetComponent<CardDropHandler>().showEvent.AddListener(Unset);
         }
 
-        private void Start()
-        {
-            Unset(); 
-        }
-
-        public void Unset()
+        public void Unset(Card card)
         {
             selectTargetText.text = string.Empty; 
             influenceChange.text = string.Empty;
             defconChange.text = string.Empty;
-            dieResult.text = string.Empty;
-            confirmButton.GetComponent<CanvasGroup>().alpha = 0; 
-            dieGraphic.SetAlpha(0);
+            dieResult.text = card.opsValue.ToString();
+            confirmButton.GetComponent<CanvasGroup>().alpha = 0;             
         }
 
         public void PrepareCoup(GameCommand coup) // this is called at the END of Coup.Prepare(GameAction)
         {
             FindObjectOfType<UIMessage>().Message($"Select {coup.faction} Coup Target");
             
-            dieGraphic.DOFade(1, animationDuration);
             dieResult.text = ((Coup.CoupVars)coup.parameters).coupOps.ToString(); 
             dieResult.DOFade(.25f, animationDuration);
 
@@ -94,7 +88,6 @@ namespace TwilightStruggle.UI
             {
                 yield return new WaitForSeconds(t);
                 coup.callback.Invoke(coup);
-                Unset(); 
             }
         }
     }

@@ -11,6 +11,9 @@ namespace TwilightStruggle
     {
         public void Prepare(GameCommand command)
         {
+            if(Game.currentPhase is TurnSystem.ActionRound)
+                Game.currentActionRound.command = command;
+
             command.parameters = new CoupVars(); 
             ((CoupVars)command.parameters).coupOps = command.card.opsValue;
             ((CoupVars)command.parameters).enemyFaction = command.faction == Game.Faction.USA ? Game.Faction.USSR : Game.Faction.USA;

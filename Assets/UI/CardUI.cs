@@ -26,22 +26,8 @@ namespace TwilightStruggle.UI
                 _cardOps.text = card.opsValue.ToString();
         }
 
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            if(_dragBehavior != null)
-                _dragBehavior.OnDragStart(transform, eventData);
-        }
-
-        public void OnDrag(PointerEventData eventData)
-        {
-            if (_dragBehavior != null)
-                _dragBehavior.OnDrag(transform, eventData);
-        }
-
-        public void OnEndDrag(PointerEventData eventData)
-        {
-            if (_dragBehavior != null)
-                _dragBehavior.OnDragEnd(transform, eventData);
-        }
+        public void OnBeginDrag(PointerEventData eventData) => _dragBehavior?.OnDragStart(transform, eventData);        
+        public void OnDrag(PointerEventData eventData) => _dragBehavior?.OnDrag(transform, eventData);
+        public void OnEndDrag(PointerEventData eventData) => _dragBehavior?.OnDragEnd(transform, eventData);
     }
 }

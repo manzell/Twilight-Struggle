@@ -4,19 +4,23 @@ using UnityEngine;
 using UnityEngine.Events; 
 using UnityEngine.EventSystems;
 using DG.Tweening;
-
+using UnityEngine.UI; 
 namespace TwilightStruggle.UI
 {
-    public class CardDropHandler : MonoBehaviour, IDropHandler
+    public class CardDropHandler : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
     {
         public bool hidden = true;
-        public Game.Faction faction; 
+        public Game.Faction faction;
+        [SerializeField] Color baseColor, highlightColor; 
+        [SerializeField] Image panelImage;  
         [HideInInspector] public UnityEvent<Card> showEvent = new UnityEvent<Card>();
         [HideInInspector] public UnityEvent<Card> cardDropEvent = new UnityEvent<Card>();
 
         public void OnDrop(PointerEventData eventData)
         {
             Card card = eventData.selectedObject.GetComponent<CardUI>().card;
+
+            FindObjectOfType<Game>().playerMap[Game.actingPlayer].hand.Remove(card); // Always remove the card on drop; return it back if we need to
 
             if(Game.currentPhase is TurnSystem.HeadlinePhase && Game.actingPlayer != faction) return; 
             if(Game.currentPhase is TurnSystem.ActionRound && Game.phasingPlayer != Game.actingPlayer) return;
@@ -52,8 +56,18 @@ namespace TwilightStruggle.UI
                 showEvent.Invoke(card); 
                 hidden = false;
                 transform.DOKill();
-                transform.DOLocalMoveY(-300f, .1f).SetEase(Ease.InOutSine).SetDelay(f);
+                transform.DOLocalMoveY(-350f, .1f).SetEase(Ease.InOutSine).SetDelay(f);
             }
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            panelImage.color = highlightColor;
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            panelImage.color = baseColor;
         }
     }
 }

@@ -9,6 +9,9 @@ namespace TwilightStruggle
     {
         public void Prepare(GameCommand command)
         {
+            if (Game.currentPhase is TurnSystem.ActionRound)
+                Game.currentActionRound.command = command;
+
             command.parameters = new InfluencePlacementVars();
             command.callback = Complete;
 

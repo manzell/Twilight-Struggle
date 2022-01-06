@@ -11,7 +11,9 @@ namespace TwilightStruggle
 
         public void Prepare(GameCommand command)
         {
-            Debug.Log("Space Race Prepare"); 
+            if (Game.currentPhase is TurnSystem.ActionRound)
+                Game.currentActionRound.command = command;
+
             SpaceVars spaceVars = new SpaceVars();
             spaceVars.roll = Random.Range(0, 6) + 1;
 

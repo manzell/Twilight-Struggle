@@ -31,6 +31,14 @@ namespace TwilightStruggle.TurnSystem
 
         public override void EndPhase(UnityAction callback)
         {
+            if(wasEventTriggered == false && ((command.card.faction == Game.Faction.USSR && phasingPlayer == Game.Faction.USA) ||
+                    (command.card.faction == Game.Faction.USA && phasingPlayer == Game.Faction.USSR)))
+            {
+                GameCommand newCommand = GameCommand.Create(command.opponent, command.card, FindObjectOfType<CardEvent>());
+                FindObjectOfType<CardEvent>().Prepare(newCommand); 
+                
+            }
+
             Game.currentActionRound = null;
             base.EndPhase(callback);
         }

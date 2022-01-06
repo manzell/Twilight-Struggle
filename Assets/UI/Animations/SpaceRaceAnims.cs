@@ -29,7 +29,6 @@ namespace TwilightStruggle.UI
             spaceRaceOpsNeeded.text = spaceTrack.nextMission[Game.actingPlayer].opsRequired.ToString();
             spaceRaceStage.text = spaceTrack.nextMission[Game.actingPlayer].missionName.ToString();
             spaceRaceSucess.text = string.Empty;
-            dieGraphic.SetAlpha(0);
         }
 
         void AttemptMission(GameCommand command)
